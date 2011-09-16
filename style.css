@@ -1,0 +1,79 @@
+/*
+ *	Balises générales
+ */
+ 
+body
+{
+	width: 960px;
+}
+
+div
+{
+	border: solid black 1px;
+}
+
+/*
+ *	Boites Communes
+ */
+
+#logo
+{
+	float: left;
+}
+
+#logo img
+{
+	width: 170px;
+}
+
+#espace_haut
+{
+	float: right;
+}
+
+#body
+{
+	clear: both;
+}
+
+#footer
+{
+	clear: both;
+}
+
+#sitemap
+{
+	background-color : lime;
+}
+
+/*
+ *  Boites spéciales
+ */
+ 
+ /* ACCUEIL */
+ #coup_coeur
+ {
+	height: 200px;
+	background-color : navy;
+ }
+ 
+#nouveaute
+{
+	width: 49%;
+	height: 100%;
+	float: right;
+	background-color :red;
+}
+
+#best_seller 
+{
+	width: 49%;
+	height: 100%;
+	float: left;
+	background-color : red;
+}
+
+#pub
+{
+
+}
