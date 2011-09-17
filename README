@@ -1,3 +1,4 @@
+Bob-Project : Chez BOB
 Projet WEB de l'IUT
 
 Fichiers :
@@ -8,6 +9,14 @@ Fichiers :
 - script.js : Fichier contenant le javascript
 - style.css : Fichier contenant le style de la page (CSS)
 - img : les images
+
+Langages utilisés :
+- PHP
+- HTML
+- CSS
+- JavaScript (peut-être avec AJAX ou JQuery)
+- MySQL
+- htaccess
 
 Auteurs :
 Sylafrs, Sion77 et RFK78
