@@ -24,10 +24,10 @@ Rappel sur l'utilisation de Git :
 Permet de copier le repo sur l'ordi : on doit le faire quand on ne l'a pas déjà
 pour manipuler un repo en ligne, il faut se placer dans le repo en local.
  
-- git push
+- git pull
 Permet de mettre a jour le repo local
 
-- git pull origin master
+- git push origin master
 Permet de mettre a jour le repo en ligne (effectue les derniers commits)
 
 - git commit -m "un message de commit"
