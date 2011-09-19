@@ -30,7 +30,22 @@
 	function menu()
 	{
 		?>
-		
+			<div id="fat-menu">
+				<div class="elemenu">
+					ELEMENT
+				</div>
+				<div class="elemenu">
+					ELEMENT
+				</div>
+			</div>
+			<div id="skinny-menu">
+				<div class="elemenu">
+					element
+				</div>
+				<div class="elemenu">
+					element
+				</div>
+			</div>
 		<?php
 	}
 	
