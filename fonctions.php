@@ -7,7 +7,7 @@
 		
 		}
 		else
-			page("INSCRIPTION", "Erreur : données manquantes");
+			page("INSCRIPTION", "Erreur : donnÃ©es manquantes");
 	}
 
 ?>
