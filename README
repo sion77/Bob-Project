@@ -1,5 +1,6 @@
 Bob-Project : Chez BOB
 Projet WEB de l'IUT
+-- Dossier principal
 
 Fichiers :
 - index.php : Fichier principal, on entrera que par ici
@@ -8,34 +9,12 @@ Fichiers :
 - fonctions.php : Fichier contenant les fonctions manipulant la base de donnée (ne génére pas de page (directement))
 - script.js : Fichier contenant le javascript
 - style.css : Fichier contenant le style de la page (CSS)
+- donnees.sql : Fichier contenant la base de donnee (sauvegarde recente, MySQL)
+
+Dossiers :
 - img : les images
 - html : les contenus simples (c'est-à-dire sans php)
-
-Langages utilisés :
-- PHP
-- HTML
-- CSS
-- JavaScript (peut-être avec AJAX ou JQuery)
-- MySQL
-- htaccess
-
-Rappel sur l'utilisation de Git :
-
-- git clone git@github.com:sion77/Bob-Project
-Permet de copier le repo sur l'ordi : on doit le faire quand on ne l'a pas déjà
-pour manipuler un repo en ligne, il faut se placer dans le repo en local.
- 
-- git pull
-Permet de mettre a jour le repo local
-
-- git push origin master
-Permet de mettre a jour le repo en ligne (effectue les derniers commits)
-
-- git commit -m "un message de commit"
-Permet de creer le commit (avec les fichiers que l'on a ajoutés)
-
-- git add nomDuFichier
-Permet d'ajouter le fichier nomDuFichier au prochain commit
+- rapport : le rapport du projet
 
 Auteurs :
 Sylafrs, Sion77 et RFK78
