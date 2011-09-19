@@ -72,18 +72,19 @@
 							<a href="index.php">
 								<img src="img/logo.jpg" alt="Chez Bob"/>
 							</a>
-						</div>
 						<div id="espace_haut">
 							<div id="espace_membre">
 								<?php espaceMembre(); ?>
 							</div>
 							<div id="espace_recherche">
-								<!-- GET pour pouvoir retourner à un résultat de recherche aisément -->
-								<form action="index.php" method="get">
-									<input type="text" name="recherche" value="Rechercher" />
-									<input type="hidden" name="page" value="recherche" />
-									<input type="submit" value="GO" />
-								</form>
+								<!--	<img src="img/search_icon.jpg" alt="search_icon"/> -->
+									<!-- GET pour pouvoir retourner à un résultat de recherche aisément -->
+									<form action="index.php" method="get">
+										<input type="text" name="recherche" value="Rechercher" />
+										<input type="hidden" name="page" value="recherche" />
+										<input type="submit" value="GO" />
+									</form>
+								<a href="search.php" title="Recherche avancée">Recherche avancée</a>
 							</div>
 						</div>
 					</div>
