@@ -1,9 +1,6 @@
-Bob-Project : Chez BOB
-Projet WEB de l'IUT
-===================
-
--- Dossier principal --
------------------------
+# Bob-Project : Chez BOB
+## Projet WEB de l'IUT
+### -- Dossier principal --
 
 **Rôle** : Dossier principal du site, il contient tout ce dont il a besoin.
 
