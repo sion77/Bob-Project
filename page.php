@@ -29,7 +29,9 @@
 	
 	function menu()
 	{
-	
+		?>
+		
+		<?php
 	}
 	
 	function plan()
@@ -75,22 +77,9 @@
 						</div>
 					</div>
 					<div id="body">
-						<div id="fat-menu">
-							<div class="elemenu">
-								ELEMENT
-							</div>
-							<div class="elemenu">
-								ELEMENT
-							</div>
-						</div>
-						<div id="skinny-menu">
-							<div class="elemenu">
-								element
-							</div>
-							<div class="elemenu">
-								element
-							</div>
-						</div>	
+						<div id="menu">
+							<?php menu(); ?>
+						</div>							
 						<div id="fastbar">
 						
 						</div>
