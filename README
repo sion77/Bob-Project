@@ -2,6 +2,8 @@ Bob-Project : Chez BOB
 Projet WEB de l'IUT
 -- Dossier principal --
 
+Rôle : Dossier principal du site, il contient tout ce dont il a besoin.
+
 Fichiers :
 - index.php : Fichier principal, on entrera que par ici
 - page.php : Fichier contenant les fonctions pour creer une page
