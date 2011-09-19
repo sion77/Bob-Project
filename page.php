@@ -18,27 +18,13 @@
 		// Non connecté
 		if(!isset($_SESSION["connecte"]))
 		{
-			espaceMembreDeconnecte();
 		}
-		
-		// Tout juste déconnecté
-		elseif(!$_SESSION["connecte"])
-		{
-			espaceMembreDeconnecte();
-		}
-		
+				
 		// Connecté
 		else
 		{
 		
 		}
-	}
-	
-	function espaceMembreDeconnecte()
-	{
-		?>
-			
-		<?php
 	}
 	
 	function menu()
