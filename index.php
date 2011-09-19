@@ -2,12 +2,28 @@
 	session_start();
 	
 	include_once("page.php");
+	
+	if(isset($_GET["action"]))
+	{
+		switch($_GET["action"])
+		{
+			case "INSCRIPTION":
+				inscription();
+			break;
+			
+			default:
+				page("ACCUEIL");
+			break;
+		}
+	}
 
-	if(isset($_GET["page"]))
+	elseif(isset($_GET["page"]))
 	{
 		switch($_GET["page"])
 		{
-			
+			case "INSCRIPTION":
+				page("INSCRIPTION");
+			break;
 			default:
 				page("ACCUEIL");
 			break;

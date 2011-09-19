@@ -1,4 +1,8 @@
 <?php
 
+	function inscription()
+	{
+	
+	}
 
 ?>
