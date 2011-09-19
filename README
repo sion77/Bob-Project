@@ -9,6 +9,7 @@ Fichiers :
 - script.js : Fichier contenant le javascript
 - style.css : Fichier contenant le style de la page (CSS)
 - img : les images
+- html : les contenus simples (c'est-à-dire sans php)
 
 Langages utilisés :
 - PHP
