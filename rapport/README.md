@@ -7,7 +7,7 @@ Il ne change en rien le comportement de ce dernier.
 
 **Fichiers** :
 
-* *Projet2011.pdf* : Fichier pdf contenant l'énoncé du Projet.
+* *énoncé.pdf* : Fichier pdf contenant les consignes du Projet.
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
