@@ -8,7 +8,7 @@
 		{
 			case "ACCUEIL":
 			default:
-				HTML_Accueil();
+				include("html/accueil.html");
 			break;
 		}
 	}
