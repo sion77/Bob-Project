@@ -37,36 +37,36 @@ div
 
 #espace_recherche 
 {
-width :  780px;
+	width: 780px;
 }
 
 #espace_recherche img
 {
-padding-left : 25%;
-display : inline;
-padding-right : 5px;
+	padding-left : 25%;
+	display : inline;
+	padding-right : 5px;
 }
 
 #espace_recherche form
 {
-display : inline;
+	display : inline;
 }
 
 #espace_recherche a
 {
-padding-left : 30px;
-padding-right : 30px;
-display : inline;
-color : #FF9900;
-font-family:  Verdana, serif;
-text-decoration : none;
-font-weight : bold;
-font-size : small;
+	padding-left : 30px;
+	padding-right : 30px;
+	display : inline;
+	color : #FF9900;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-weight : bold;
+	font-size : small;
 }
 
 #espace_recherche a:hover
 {
-color : #CC6600;
+	color : #CC6600;
 }
 
 #body
@@ -114,4 +114,14 @@ color : #CC6600;
 #pub
 {
 
+}
+
+form table th
+{
+	text-align: right;
+}
+
+form table .centre
+{
+	text-align: center;
 }
