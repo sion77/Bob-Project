@@ -114,7 +114,7 @@ form table .centre
  /* ACCUEIL */
  #coup_coeur
  {
-	height: 220px;
+	height: 250px;
 	background-color : navy;
  }
  
@@ -125,7 +125,7 @@ form table .centre
 	width: 49%;
 	height: 100%;
 	float: right;
-	background-color :red;
+	background-color :white;
 }
 
 #best_seller 
@@ -133,7 +133,7 @@ form table .centre
 	width: 49%;
 	height: 100%;
 	float: left;
-	background-color : silver;
+	background-color : white;
 }
 
  #best_seller h3
@@ -141,7 +141,7 @@ form table .centre
  	color : #FF9900;
 	font-family: Verdana, serif;
 	font-weight : bold;
-	font-size: 22px;
+	font-size: 18px;
 	text-decoration : none;
 	padding-left : 52px;
  }
@@ -150,6 +150,17 @@ form table .centre
  {
  	color : #CC6600;
 	text-decoration : none;
+ }
+ 
+  #best_seller h1
+ {
+ 	color : #333333;
+	font-family: Verdana, serif;
+	font-size: 22px;
+	text-decoration : none;
+	margin-left : 20px;
+	padding-left : 10px;
+	border-left : 3px solid lime;
  }
  
   #prix_article_bestseller
@@ -168,16 +179,10 @@ font-size: 20px;
   color : green;
   font-family: Verdana, serif;
   font-size: 16px;
-  text-decoration : underline;
  }
  
  #voirficheproduit_bestseller:hover
  {
-  display : inline;
-  color : green;
-  font-family: Verdana, serif;
-  font-size: 16px;
-  text-decoration : underline;
   font-weight : bold;
  }
  
@@ -190,6 +195,64 @@ font-size: 20px;
 
  }
  
+ #nouveaute h3
+ {
+ 	color : #FF9900;
+	font-family: Verdana, serif;
+	font-weight : bold;
+	font-size: 18px;
+	text-decoration : none;
+	padding-left : 52px;
+ }
+ 
+  #nouveaute h3:hover
+ {
+ 	color : #CC6600;
+	text-decoration : none;
+ }
+ 
+  #nouveaute h1
+ {
+ 	color : #333333;
+	font-family: Verdana, serif;
+	font-size: 22px;
+	text-decoration : none;
+	margin-left : 20px;
+	padding-left : 10px;
+	border-left : 3px solid lime;
+ }
+ 
+  #prix_article_nouveaute
+ {
+ display : inline;
+ padding-left : 15px;
+ padding-right: 15px;
+  color : red;
+font-family: Verdana, serif;
+font-size: 20px;
+ }
+ 
+ #voirficheproduit_nouveaute
+ {
+  display : inline;
+  color : green;
+  font-family: Verdana, serif;
+  font-size: 16px;
+ }
+ 
+ #voirficheproduit_nouveaute:hover
+ {
+  font-weight : bold;
+ }
+ 
+ #nouveaute img
+ {
+ display : block;
+ float : left;
+ padding-left : 15px;
+ padding-right : 15px;
+
+ }
  
 
 #pub
