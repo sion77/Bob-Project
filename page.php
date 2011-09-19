@@ -61,7 +61,7 @@
 	
 	}
 
-	function page($nomPage, $message)
+	function page($nomPage, $message = "")
 	{
 		?>
 			<?xml version="1.0" encoding="UTF-8"?>
