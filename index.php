@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	
+	include_once("fonctions.php");
 	include_once("page.php");
 	
 	if(isset($_GET["action"]))

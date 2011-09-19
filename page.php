@@ -61,7 +61,7 @@
 	
 	}
 
-	function page($nomPage)
+	function page($nomPage, $message)
 	{
 		?>
 			<?xml version="1.0" encoding="UTF-8"?>
@@ -106,7 +106,13 @@
 						
 						</div>
 						<div id="content">
-							<?php contenu($nomPage); ?>
+							<?php 
+								if($message != "")
+								{
+									echo "<p id=\"contenu_message\">".$message."<p>";
+								}
+								contenu($nomPage); 
+							?>
 						</div>						
 					</div>
 					<div id="footer">
