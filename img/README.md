@@ -1,8 +1,8 @@
-Bob-Project : Chez BOB
-Projet WEB de l'IUT
--- Dossier /img/ --
+# Projet WEB de l'IUT
+## Bob-Project : Chez BOB
+### -- Dossier /img/ --
 
-Rôle : Contient les images du site
+**Rôle** : Contient les images du site
 
-Auteurs :
+**Auteurs** :
 Sylafrs, Sion77 et RFK78
