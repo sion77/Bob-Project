@@ -7,12 +7,12 @@
 		switch($nomPage)
 		{
 			case "INSCRIPTION":
-				include("html/inscription");
+				include(".\\html\\inscription.html");
 			break;
 			
 			case "ACCUEIL":
 			default:
-				include("html/accueil.html");
+				include(".\\html\\accueil.html");
 			break;
 		}
 	}
