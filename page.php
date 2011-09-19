@@ -6,6 +6,10 @@
 	{
 		switch($nomPage)
 		{
+			case "INSCRIPTION":
+				include("html/inscription");
+			break;
+			
 			case "ACCUEIL":
 			default:
 				include("html/accueil.html");
@@ -32,10 +36,13 @@
 		?>
 			<div id="fat-menu">
 				<div class="elemenu">
-					ELEMENT
+					Acheter
 				</div>
 				<div class="elemenu">
-					ELEMENT
+					Louer
+				</div>
+				<div class="elemenu">
+					Nous contacter
 				</div>
 			</div>
 			<div id="skinny-menu">
