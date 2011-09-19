@@ -114,9 +114,11 @@ form table .centre
  /* ACCUEIL */
  #coup_coeur
  {
-	height: 200px;
+	height: 220px;
 	background-color : navy;
  }
+ 
+
  
 #nouveaute
 {
@@ -131,8 +133,64 @@ form table .centre
 	width: 49%;
 	height: 100%;
 	float: left;
-	background-color : red;
+	background-color : silver;
 }
+
+ #best_seller h3
+ {
+ 	color : #FF9900;
+	font-family: Verdana, serif;
+	font-weight : bold;
+	font-size: 22px;
+	text-decoration : none;
+	padding-left : 52px;
+ }
+ 
+  #best_seller h3:hover
+ {
+ 	color : #CC6600;
+	text-decoration : none;
+ }
+ 
+  #prix_article_bestseller
+ {
+ display : inline;
+ padding-left : 15px;
+ padding-right: 15px;
+  color : red;
+font-family: Verdana, serif;
+font-size: 20px;
+ }
+ 
+ #voirficheproduit_bestseller
+ {
+  display : inline;
+  color : green;
+  font-family: Verdana, serif;
+  font-size: 16px;
+  text-decoration : underline;
+ }
+ 
+ #voirficheproduit_bestseller:hover
+ {
+  display : inline;
+  color : green;
+  font-family: Verdana, serif;
+  font-size: 16px;
+  text-decoration : underline;
+  font-weight : bold;
+ }
+ 
+ #best_seller img
+ {
+ display : block;
+ float : left;
+ padding-left : 15px;
+ padding-right : 15px;
+
+ }
+ 
+ 
 
 #pub
 {
