@@ -1,5 +1,5 @@
-# Bob-Project : Chez BOB
-## Projet WEB de l'IUT
+# Projet WEB de l'IUT
+## Bob-Project : Chez BOB
 ### -- Dossier principal --
 
 **Rôle** : Dossier principal du site, il contient tout ce dont il a besoin.
