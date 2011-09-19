@@ -1,6 +1,9 @@
 <?php
 	session_start();
 	
+	$link = mysql_connect("localhost", "root", "");
+	mysql_select_db("projet_bob", $link);
+	
 	include_once("fonctions.php");
 	include_once("page.php");
 	
@@ -34,4 +37,6 @@
 	{
 		page("ACCEUIL");
 	}	
+	
+	mysql_close($link);
 ?>
