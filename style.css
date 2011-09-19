@@ -15,6 +15,16 @@ div
 	border: solid black 1px;
 }
 
+form table th
+{
+	text-align: right;
+}
+
+form table .centre
+{
+	text-align: center;
+}
+
 /*
  *	Boites Communes
  */
@@ -33,7 +43,6 @@ div
 {
 	float: right;
 }
-
 
 #espace_recherche 
 {
@@ -84,6 +93,21 @@ div
 	background-color : lime;
 }
 
+/* Menu */
+#fat-menu .elemenu
+{
+	height: 30px;
+	float: left;
+	width: 13%;
+	text-align: center;
+}
+
+#skinny-menu
+{
+	display: none;
+	clear: both;
+}
+
 /*
  *  Boites spéciales
  */
@@ -114,14 +138,4 @@ div
 #pub
 {
 
-}
-
-form table th
-{
-	text-align: right;
-}
-
-form table .centre
-{
-	text-align: center;
 }
