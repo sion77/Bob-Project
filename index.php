@@ -4,8 +4,8 @@
 	$link = mysql_connect("localhost", "root", "");
 	mysql_select_db("projet_bob", $link);
 	
-	include_once("fonctions.php");
-	include_once("page.php");
+	include_once("php\\fonctions.php");
+	include_once("php\\page.php");
 	
 	if(isset($_GET["action"]))
 	{
