@@ -365,7 +365,7 @@ display : block;
 #menu .first-elem-sous-menu li a:link, 
 #menu .first-elem-sous-menu li a:visited {
 -moz-border-radius: 7px 7px 0px 0px;
--webkit-border-radius: 7px 7x 0px  0px;
+-webkit-border-radius: 7px 7px 0px  0px;
 border-radius: 7px 7px 0px 0px;
 }
 
