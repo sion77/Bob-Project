@@ -37,39 +37,39 @@
 			<ul id="menu">
 				<li><a href='#'>Acheter</a>
 					<ul class="sous-menu">
+						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
+						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
 				<li><a href='#'>Louer</a>
 					<ul class="sous-menu">
+						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
+						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
 				<li><a href='#'>Contact</a>
 					<ul class="sous-menu">
+						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
+						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
 				<li><a href='#'>Donate !</a>
 					<ul class="sous-menu">
+						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
 						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
+						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
 			</ul>

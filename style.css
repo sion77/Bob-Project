@@ -281,10 +281,13 @@ border : 0;
 #menu li
 {
 float : left;
-width : 240px;
+width : 235px;
 margin : 0;
 padding : 0;
+padding-right : 5px;
 border : 0;
+
+
 }
 
 #menu li a:link, #menu li a:visited
@@ -292,7 +295,7 @@ border : 0;
 display : block;
 height : 30px;
 color : #FFF;
-background : gray;
+background : #8c8c8c;
 margin : 0;
 padding : 4px 8px;
 border-right : 1px solid silver;
@@ -301,6 +304,9 @@ font-family: Verdana, serif;
 text-align : center;
 padding-top : 4px;
 font-size : 26px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
 }
 
 #menu li a:hover
@@ -311,18 +317,24 @@ background-color : orange;
 #menu .sous-menu li a:link, 
 #menu .sous-menu li a:visited 
 {
+background-color : #A0A0A0;
 display : block;
 color : black;
+width : 196px;
 margin : 0;
+margin-left : 12px;
 border : 0;
 text-decoration : none;
 font-size : 18px;
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+border-radius: 0px;
 }
 
-#menu .sous-menu li 'a:hover
+#menu .sous-menu li a:hover
 {
 background-image : none;
-background-color : #f2462e;
+background-color : orange;
 }
 
 #menu .sous-menu li 'a
@@ -331,9 +343,10 @@ float : none;
 margin : 0;
 padding : 0;
 border : 0;
-width : 124px;
+width : 120px;
 border-top : 1px solid transparent;
 border-right : 1px solid transparent;
+
 }
 
 #menu .sous-menu {
@@ -349,3 +362,16 @@ border : 0;
 display : block;
 }
 
+#menu .first-elem-sous-menu li a:link, 
+#menu .first-elem-sous-menu li a:visited {
+-moz-border-radius: 7px 7px 0px 0px;
+-webkit-border-radius: 7px 7x 0px  0px;
+border-radius: 7px 7px 0px 0px;
+}
+
+#menu .last-elem-sous-menu li a:link, 
+#menu .last-elem-sous-menu li a:visited {
+-moz-border-radius:  0px 0px 7px 7px;
+-webkit-border-radius: 0px  0px 7px 7px ;
+border-radius:  0px 0px 7px 7px;
+}
