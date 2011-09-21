@@ -12,7 +12,7 @@ body
 
 div
 {
-	border: solid black 1px;
+	border: solid black 0px;
 }
 
 form table th
@@ -42,6 +42,7 @@ form table .centre
 #espace_haut
 {
 	float: right;
+	padding-bottom : 12px;
 }
 
 #espace_recherche 
@@ -115,7 +116,7 @@ form table .centre
  #coup_coeur
  {
 	height: 250px;
-	background-color : navy;
+	background-color : white;
  }
  
 
@@ -166,11 +167,14 @@ form table .centre
   #prix_article_bestseller
  {
  display : inline;
- padding-left : 15px;
- padding-right: 15px;
-  color : red;
-font-family: Verdana, serif;
-font-size: 20px;
+ margin-left : 15px;
+ margin-right: 15px;
+ padding-left : 5px;
+ padding-right: 5px;
+ color : red;
+ font-family: Verdana, serif;
+ font-size: 20px;
+ border : 2px solid red;
  }
  
  #voirficheproduit_bestseller
@@ -219,17 +223,20 @@ font-size: 20px;
 	text-decoration : none;
 	margin-left : 20px;
 	padding-left : 10px;
-	border-left : 3px solid lime;
+	border-left : 3px solid orange;
  }
  
   #prix_article_nouveaute
  {
  display : inline;
- padding-left : 15px;
- padding-right: 15px;
-  color : red;
-font-family: Verdana, serif;
-font-size: 20px;
+ margin-left : 15px;
+ margin-right: 15px;
+ padding-left : 5px;
+ padding-right: 5px;
+ color : red;
+ font-family: Verdana, serif;
+ font-size: 20px;
+ border : 2px solid red;
  }
  
  #voirficheproduit_nouveaute
@@ -257,5 +264,88 @@ font-size: 20px;
 
 #pub
 {
+	padding-top : 45px;
+}
+
+#menu
+{
+position : absolute;
+width : 960px;
+list-style-type : none;
+margin : 0;
+padding : 0;
+border : 0;
 
 }
+
+#menu li
+{
+float : left;
+width : 240px;
+margin : 0;
+padding : 0;
+border : 0;
+}
+
+#menu li a:link, #menu li a:visited
+{
+display : block;
+height : 30px;
+color : #FFF;
+background : gray;
+margin : 0;
+padding : 4px 8px;
+border-right : 1px solid silver;
+text-decoration : none;
+font-family: Verdana, serif;
+text-align : center;
+padding-top : 4px;
+font-size : 26px;
+}
+
+#menu li a:hover
+{
+background-color : orange;
+}
+
+#menu .sous-menu li a:link, 
+#menu .sous-menu li a:visited 
+{
+display : block;
+color : black;
+margin : 0;
+border : 0;
+text-decoration : none;
+font-size : 18px;
+}
+
+#menu .sous-menu li 'a:hover
+{
+background-image : none;
+background-color : #f2462e;
+}
+
+#menu .sous-menu li 'a
+{
+float : none;
+margin : 0;
+padding : 0;
+border : 0;
+width : 124px;
+border-top : 1px solid transparent;
+border-right : 1px solid transparent;
+}
+
+#menu .sous-menu {
+display : none;
+list-style-type : none;
+margin : 0;
+padding : 0;
+border : 0;
+}
+
+#menu li:hover > .sous-menu 
+{
+display : block;
+}
+

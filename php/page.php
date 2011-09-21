@@ -34,25 +34,45 @@
 	function menu()
 	{
 		?>
-			<div id="fat-menu">
-				<div class="elemenu">
-					Acheter
-				</div>
-				<div class="elemenu">
-					Louer
-				</div>
-				<div class="elemenu">
-					Nous contacter
-				</div>
-			</div>
-			<div id="skinny-menu">
-				<div class="elemenu">
-					element
-				</div>
-				<div class="elemenu">
-					element
-				</div>
-			</div>
+			<ul id="menu">
+				<li><a href='#'>Acheter</a>
+					<ul class="sous-menu">
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+					</ul>
+				</li>
+				<li><a href='#'>Louer</a>
+					<ul class="sous-menu">
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+					</ul>
+				</li>
+				<li><a href='#'>Contact</a>
+					<ul class="sous-menu">
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+					</ul>
+				</li>
+				<li><a href='#'>Donate !</a>
+					<ul class="sous-menu">
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+						<li><a href='#'>Porn Pics</a></li>
+					</ul>
+				</li>
+			</ul>
 		<?php
 	}
 	
