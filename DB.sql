@@ -211,3 +211,21 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Dumping data for table `utilisateur`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `individu`
+--
+
+CREATE TABLE IF NOT EXISTS `individu` (
+  `numIndividu` int(11) NOT NULL,
+  `nomIndividu` varchar(20) NOT NULL,
+  `prenomIndividu` varchar(20) NOT NULL,
+  `adresseIndividu` text NOT NULL,
+  `telephoneIndividu` int(11) NOT NULL,
+  PRIMARY KEY (`numIndividu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `individu`
+--
