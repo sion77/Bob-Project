@@ -14,6 +14,10 @@
 				include("html\\connection.html");
 			break;
 			
+			case "CATEGORIES":
+				afficheCategories();
+			break;
+			
 			case "ACCUEIL":
 			default:
 				include("html\\accueil.html");

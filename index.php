@@ -24,7 +24,9 @@
 				session_destroy();
 				page("ACCEUIL");
 			break;	
-			
+			case "CATEGORIES":
+				page("CATEGORIES");
+			break;
 			default:
 				page("ACCUEIL");
 			break;
