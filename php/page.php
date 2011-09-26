@@ -7,12 +7,16 @@
 		switch($nomPage)
 		{
 			case "INSCRIPTION":
-				include(".\\html\\inscription.html");
+				include("html\\inscription.html");
+			break;
+			
+			case "CONNECTION":
+				include("html\\connection.html");
 			break;
 			
 			case "ACCUEIL":
 			default:
-				include(".\\html\\accueil.html");
+				include("html\\accueil.html");
 			break;
 		}
 	}
@@ -24,7 +28,7 @@
 		{
 			?>
 				Vous n'êtes pas connectés.<br/>
-				<a href="index.php?page=CONNEXION">Connection</a> - 
+				<a href="index.php?page=CONNECTION">Connection</a> - 
 				<a href="index.php?page=INSCRIPTION">Inscription</a>
 			<?php
 		}
@@ -40,7 +44,7 @@
 				<?php
 			}
 			?>
-				<a href="index.php?page=DECONNECTION">Deconnection</a>
+				<a href="index.php?action=DECONNECTION">Deconnection</a>
 			<?php
 		}
 	}

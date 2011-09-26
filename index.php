@@ -15,6 +15,16 @@
 				inscription();
 			break;
 			
+			case "CONNECTION":
+				connection();
+			break;
+			
+			case "DECONNECTION":
+				unset($_SESSION["connecte"]);
+				session_destroy();
+				page("ACCEUIL");
+			break;	
+			
 			default:
 				page("ACCUEIL");
 			break;
@@ -28,6 +38,11 @@
 			case "INSCRIPTION":
 				page("INSCRIPTION");
 			break;
+			
+			case "CONNECTION":
+				page("CONNECTION");
+			break;
+			
 			default:
 				page("ACCUEIL");
 			break;
