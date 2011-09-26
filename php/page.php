@@ -22,12 +22,26 @@
 		// Non connecté
 		if(!isset($_SESSION["connecte"]))
 		{
+			?>
+				Vous n'êtes pas connectés.<br/>
+				<a href="index.php?page=CONNEXION">Connection</a> - 
+				<a href="index.php?page=INSCRIPTION">Inscription</a>
+			<?php
 		}
 				
 		// Connecté
 		else
 		{
-		
+			echo $_SESSION["pseudo"];
+			if($_SESSION["rang"] == "Administrateur")
+			{
+				?>
+					<a href="index.php?admin=ACCUEIL">Administrer</a>
+				<?php
+			}
+			?>
+				<a href="index.php?page=DECONNECTION">Deconnection</a>
+			<?php
 		}
 	}
 	
