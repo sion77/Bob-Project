@@ -22,14 +22,14 @@
 				connection();
 			break;
 			
-			//Si on nous demande de déconnecter l'utilisateur
+			//Si on nous demande de dÃ©connecter l'utilisateur
 			case "DECONNECTION":
 				unset($_SESSION["connecte"]);
 				session_destroy();
 				page("ACCEUIL");
 			break;	
 			
-			//Si on nous demande d'afficher les catégories
+			//Si on nous demande d'afficher les catÃ©gories
 			case "CATEGORIES":
 				page("CATEGORIES");
 			break;
