@@ -6,6 +6,7 @@
 	
 	include_once("php\\fonctions.php");
 	include_once("php\\page.php");
+
 	
 	//Si on nous demande de faire quelque chose 
 	if(isset($_GET["action"])) 
@@ -34,6 +35,11 @@
 				page("CATEGORIES");
 			break;
 			
+			// Si on demande la page about
+			case "ABOUT":
+				page("ABOUT");
+			break;
+			
 			//Sinon retour a l'accueil
 			default:
 				page("ACCUEIL");
@@ -54,6 +60,16 @@
 			// On affiche le formulaire de connection
 			case "CONNECTION":
 				page("CONNECTION");
+			break;
+			
+			// Si on demande la page about
+			case "ABOUT":
+				page("ABOUT");
+			break;
+			
+			//Si on nous demande d'afficher les catégories
+			case "CATEGORIES":
+				page("CATEGORIES");
 			break;
 			
 			// Sinon on affiche la page d'acceuil

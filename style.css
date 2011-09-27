@@ -492,3 +492,21 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFAA00), to(#FF6A00));
 
 color : #3B3B3B;
 }
+
+#about-bricobob
+{
+margin-left : 30px;
+margin-right : 30px;
+margin-top : 50px;
+padding-left : 15px;
+width : 900px;
+background-color : silver;
+
+-moz-border-radius:  0px 0px 7px 7px;
+-webkit-border-radius: 0px  0px 7px 7px ;
+border-radius:  0px 0px 7px 7px;
+
+border-width: 2px;
+border-style: solid;
+border-color: #000000;
+}

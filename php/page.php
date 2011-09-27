@@ -18,6 +18,9 @@
 				afficheCategories();
 			break;
 			
+			case "ABOUT":
+				include("html\\about.html");
+			
 			case "ACCUEIL":
 			default:
 				include("html\\accueil.html");
@@ -57,7 +60,7 @@
 	{
 		?>
 			<ul id="menu">
-				<li><a href='#'>Acheter</a>
+				<li><a href='index.php?page=CATEGORIES'>Acheter</a>
 					<ul class="sous-menu">
 						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
@@ -74,14 +77,7 @@
 						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
-				<li><a href='#'>Contact</a>
-					<ul class="sous-menu">
-						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<li><a href='#'>Porn Pics</a></li>
-						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
-					</ul>
+				<li><a href='index.php?page=ABOUT'>Contact</a>
 				</li>
 				<li><a href='#'>Donate !</a>
 					<ul class="sous-menu">
@@ -163,7 +159,7 @@
 						
 						</div>
 						<div id="credits_droits">
-							Site crée par Sylafrs, {Thomas LEVASSEUR} et DIEU
+							Site crée par Sylafrs, {Thomas LEVASSEUR} et RFK78 !
 						</div>
 						<div id="partenaires">
 						
