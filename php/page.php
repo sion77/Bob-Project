@@ -34,9 +34,10 @@
 		if(!isset($_SESSION["connecte"]))
 		{
 			?>
-				Vous n'êtes pas connectés.<br/>
-				<a href="index.php?page=CONNECTION">Connection</a> - 
-				<a href="index.php?page=INSCRIPTION">Inscription</a>
+				
+				<span class="etat-co-espace-membre">Vous n'êtes pas connecté, veuillez vous <a href="index.php?page=CONNECTION">Connecter</a>
+				ou vous <a href="index.php?page=INSCRIPTION">Inscrire !</a></span>
+				
 			<?php
 		}
 				
@@ -117,11 +118,13 @@
 				</head>
 				<body>
 					<div id="header">
-						<div id="logo">
-							<a href="index.php">
-								<img src="img/logo.jpg" alt="Chez Bob"/>
-							</a>
 						<div id="espace_haut">
+							<div id="logo">
+								<a href="index.php">
+									<img src="img/logo.jpg" alt="Chez Bob"/>
+								</a>
+							</div>
+						
 							<div id="espace_membre">
 								<?php espaceMembre(); ?>
 							</div>

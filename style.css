@@ -29,19 +29,21 @@ form table .centre
  *	Boites Communes
  */
 
-#logo
+#header
 {
-	float: left;
+width : 960px;
 }
 
-#logo img
+#logo img 
 {
+	float: left;
 	width: 170px;
+	margin-right : 50px;
 }
 
 #espace_haut
 {
-	float: right;
+	
 	padding-bottom : 12px;
 }
 
@@ -67,7 +69,7 @@ form table .centre
 	padding-left : 30px;
 	padding-right : 30px;
 	display : inline;
-	color : #FF9900;
+	color : green;
 	font-family:  Verdana, serif;
 	text-decoration : none;
 	font-weight : bold;
@@ -78,6 +80,19 @@ form table .centre
 {
 	color : #CC6600;
 }
+
+#espace_membre
+{
+	color : #FF9900;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-weight : bold;
+	font-size : 14px;
+	padding-bottom : 8px;
+
+}
+
+
 
 #body
 {
