@@ -18,6 +18,10 @@
 				afficheCategories();
 			break;
 			
+			case "CATEGORIES-LOCATION":
+				afficheCategoriesLocation();
+			break;
+			
 			case "ABOUT":
 				include("html\\about.html");
 			
@@ -68,7 +72,7 @@
 						<span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 					</ul>
 				</li>
-				<li><a href='#'>Louer</a>
+				<li><a href='index.php?page=CATEGORIES-LOCATION'>Louer</a>
 					<ul class="sous-menu">
 						<span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
 						<li><a href='#'>Porn Pics</a></li>
