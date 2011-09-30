@@ -72,27 +72,37 @@
 				$pseudo = mysql_real_escape_string($_POST["pseudo"]);
 				$pass = sha1($_POST["pass"]);
 				
-				$req = mysql_query("SELECT passUtilisateur FROM utilisateur WHERE pseudoUtilisateur = '".$pseudo."'");
+				$req = mysql_query("SELECT passUtilisateur AS \"pass\", idUtilisateur AS \"id\" 
+									FROM utilisateur 
+									WHERE pseudoUtilisateur = '".$pseudo."'");
 				if($rep = mysql_fetch_array($req))
 				{
+					mysql_free_result($req);
+
 					if($rep["pass"] == $pass)
 					{
 						$_SESSION["connecte"] = true;
 						$_SESSION["pseudo"] = $pseudo;
-						$_SESSION["id"] = $id;
+						$_SESSION["id"] = $rep["id"];
+						$_SESSION["rang"] = "Membre";
+						
+						$req = mysql_query("SELECT idAdmin FROM admin WHERE idAdmin = idUtilisateur");
+						if(mysql_fetch_row($req))
+							$_SESSION["rang"] = "Administrateur";
+						
 						page("MAIN");
 					}
 					else
-						page("CONNEXION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
+						page("CONNECTION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
 				}
 				else
-					page("CONNEXION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
+					page("CONNECTION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
 				
 				mysql_free_result($req);
 			}
 		}
 		else
-			page("CONNEXION", '<span class="erreur">Erreur : il manque des données</span>');
+			page("CONNECTION", '<span class="erreur">Erreur : il manque des données</span>');
 	}
 
 ?>
