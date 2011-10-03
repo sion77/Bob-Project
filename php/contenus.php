@@ -19,51 +19,50 @@
 		mysql_free_result($req);
 	}
 
-	function afficheSousCategories()
-	{
-		?>
-		<div id="page-sous-categories">
+	function afficheSousCategories($id)
+	{// $id securisee	
+				
+		$sql = "SELECT idCat AS \"id\",
+			           nomCat AS \"nom\"
+					FROM categorie
+					WHERE idCat = '".$id."'";
+		
+		$req = mysql_query($sql) or die (erreur_sql($sql));
+		
+		if($rep = mysql_fetch_array($req))
+		{		
+			mysql_free_result($req);
 			
-				<h2>JARDIN<h2>
-				<img src="img/pub-ideejardin.jpg" alt="Test categories"/>
-				<div class="sous-categorie">
-					<h4>Tondeuses</h4>
-					<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
-					<p> Ceci est une tondeuse. Une tondeuse à gazon est une machine manuelle ou motorisée, 
-					qui sert à couper l'herbe des gazons et pelouses de manière à obtenir un tapis d'une hauteur régulière.</p>
-					<a href='#'>Voir les autres produits</a>
-				</div>
+			echo "<div id=\"page-sous-categories\">";
+				echo "<h2>".$rep["nom"]."</h2>";
+				echo "<img src=\"img/pub-ideejardin.jpg\" alt=\"Test categories\"/>";
 				
-				<div class="sous-categorie">
-					<h4>Tondeuses</h4>
-					<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
-					<p> Ceci est une tondeuse. Une tondeuse à gazon est une machine manuelle ou motorisée, 
-					qui sert à couper l'herbe des gazons et pelouses de manière à obtenir un tapis d'une hauteur régulière.</p>
-				</div>
-				
-				<div class="sous-categorie">
-					<h4>Tondeuses</h4>
-					<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
-					<p> Ceci est une tondeuse. Une tondeuse à gazon est une machine manuelle ou motorisée, 
-					qui sert à couper l'herbe des gazons et pelouses de manière à obtenir un tapis d'une hauteur régulière.</p>
-				</div>
-				
-				<div class="sous-categorie">
-					<h4>Tondeuses</h4>
-					<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
-					<p> Ceci est une tondeuse. Une tondeuse à gazon est une machine manuelle ou motorisée, 
-					qui sert à couper l'herbe des gazons et pelouses de manière à obtenir un tapis d'une hauteur régulière.</p>
-				</div>
-				
-				<div class="sous-categorie">
-					<h4>Tondeuses</h4>
-					<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
-					<p> Ceci est une tondeuse. Une tondeuse à gazon est une machine manuelle ou motorisée, 
-					qui sert à couper l'herbe des gazons et pelouses de manière à obtenir un tapis d'une hauteur régulière.</p>
-				</div>
-
-		</div>
-		<?php
+				$sql = "SELECT idCat AS \"id\",
+						   nomCat AS \"titre\",
+						   descriptionCat AS \"desc\"
+						FROM categorie
+						WHERE idParent = '".$id."'";
+			
+				$req = mysql_query($sql) or die (erreur_sql($sql));
+			
+				while($rep = mysql_fetch_array($req))
+				{
+					echo "<div class=\"sous-categorie\">";
+						echo "<h4>".$rep["titre"]."</h4>";
+						echo "<img src=\"img/souscat-tondeuses.jpg\" alt=\"Test categories\"/>";
+						echo "<p>".$rep["desc"]."</p>";
+						echo "<a href='#'>Voir les autres produits</a>";
+					echo "</div>";
+				}
+				mysql_free_result($req);
+			
+			echo "</div>";
+		}
+		else
+		{
+			mysql_free_result($req);
+			page("CATEGORIES", "<span class=\"erreur\">Erreur : la catégorie n°".$id." n'existe pas !</span>");
+		}
 	}
 
 	function afficheFicheProduit()
