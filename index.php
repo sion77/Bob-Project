@@ -29,7 +29,10 @@
 							{
 								// Supprimer un membre
 								case "SUPPRIMER":
-									admin_supprimerMembre(intval($_GET["id"]));
+									if(isset($_GET["id"]))
+										admin_supprimerMembre(intval($_GET["id"]));
+									else
+										page("ADMIN_MEMBRES", '<span class="erreur">Erreur : id non renseigné</span>');
 								break;
 								
 								default:

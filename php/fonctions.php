@@ -72,9 +72,12 @@
 				$pseudo = mysql_real_escape_string($_POST["pseudo"]);
 				$pass = sha1($_POST["pass"]);
 				
-				$req = mysql_query("SELECT passUtilisateur AS \"pass\", idUtilisateur AS \"id\" 
-									FROM utilisateur 
-									WHERE pseudoUtilisateur = '".$pseudo."'");
+				$sql = "SELECT passUtilisateur AS \"pass\", idUtilisateur AS \"id\" 
+						FROM utilisateur 
+						WHERE pseudoUtilisateur = '".$pseudo."'";
+				
+				$req = mysql_query($sql) or die(erreur_sql($sql));
+									
 				if($rep = mysql_fetch_array($req))
 				{
 					mysql_free_result($req);
@@ -90,16 +93,16 @@
 						if(mysql_fetch_row($req))
 							$_SESSION["admin"] = true;
 						
-						page("MAIN");
+						page("ACCUEIL");
 					}
 					else
 						page("CONNECTION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
 				}
 				else
 					page("CONNECTION", '<span class="erreur">Erreur : Mauvais identifiants</span>');
-				
-				mysql_free_result($req);
 			}
+			else 
+				page("CONNECTION", '<span class="erreur">Erreur : les données ne sont pas remplies</span>');
 		}
 		else
 			page("CONNECTION", '<span class="erreur">Erreur : il manque des données</span>');
