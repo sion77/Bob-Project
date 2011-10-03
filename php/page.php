@@ -32,7 +32,7 @@
 			break;
 			
 			case "SOUSCATEGORIES":
-				afficheSousCategories();
+				afficheSousCategories(intval($_GET["id"]));
 			break;
 			
 			case "FICHEPRODUIT":
