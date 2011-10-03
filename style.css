@@ -146,16 +146,6 @@ width : 960px;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#cdcdcd));
 }
 
-#form-inscription.tooltip {
-  display: inline-block;
-  margin-left: 20px;
-  padding: 2px 4px;
-  border: 1px solid #555;
-  background-color: #CCC;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
 
 #form-connection
 {
@@ -696,13 +686,12 @@ padding-top : 60px;
 	float : right;
 	width : 520px;
 	margin-top : 20px;
-
+	margin-bottom : 20px;
 	padding-left : 15px;
 
 	color : #232323;
 	font-family:  Verdana, serif;
 	text-decoration : none;
-
 	font-size : 14px;
 	padding-bottom : 8px;
 
@@ -728,6 +717,8 @@ border-top : 2px solid #9a9a9a;
 
 #prix-fiche-produit h4
 {
+
+	float : left;
 	background-color : orange;
 	width : 66px;
 	height : 24px;
@@ -755,17 +746,107 @@ border-top : 2px solid #9a9a9a;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#FDAD00), to(#906602));
 }
 
-
-#fiche-produit img
+#ajouter-au-panier h4
 {
-width : 400px;
-float : left;
+	float : left;
+	background-color : silver;
+	width : 220px;
+	height : 24px;
+	margin-bottom : 10px;
+	margin-left : 12px;
+	padding-top: 10px;
+	padding-left : 20px;
+	padding-right : 0px;
+	padding-bottom : 8px;
+	
+
+	color : #252525;
+	font-weight : bold;
+	font-size : 18px;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	/* degradé */
+	background: -moz-linear-gradient(top, #dedede, #878787);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#878787));
 }
 
-#fiche-produit .rating-star img
+#ajouter-au-panier h4:hover
+{
+	background-image : none;
+	background-color : orange;
+	
+	
+}
+
+#select-quantite
+{
+clear : both;
+}
+
+#select-quantite .fieldset
+{
+width : 120px;
+}
+
+#image-fiche-produit img
+{
+	width : 400px;
+	margin-top : 20px;
+	float : left;
+	border : 2px inset #989898;
+}
+
+.rating-star
 {
 display : inline;
 width : 30px;
+}
+
+#fiche-produit-nbavis h6
+{
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-size : 14px;
+	margin-top : -10px;
+	padding-left : 170px;
+}
+
+.avis-fiche-produit
+{
+	clear : both;
+	width : 920px;
+	position : relative;
+	margin-top : 20px;
+	padding : 20px;
+	background-color : silver;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	/* degradé */
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+.avis-fiche-produit h3
+{
+	font-family: Verdana, serif;
+	font-size : 18px;
+	font-weight : bold;
+	color : #343434;
 }
 
 #about-bricobob
