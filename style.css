@@ -666,9 +666,106 @@ font-family: Verdana, serif;
 font-size : 12px;
 }
 
+
 #fiche-produit
 {
-padding-top : 50px;
+padding-top : 60px;
+}
+
+#categorie-fiche-produit
+{
+	
+	padding-left : 30px;
+	font-family: Arial, serif;
+	font-size : 28px;
+	color : #FF9900;
+	font-weight : bold;
+}
+
+#sous-categorie-fiche-produit
+{
+	padding-left : 10px;
+	font-family: Arial, serif;
+	font-size : 20px;
+	color : #FF9900;
+	font-weight : bold;
+}
+
+#fiche-technique-produit
+{
+	float : right;
+	width : 520px;
+	margin-top : 20px;
+
+	padding-left : 15px;
+
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+
+	font-size : 14px;
+	padding-bottom : 8px;
+
+	background-color : #dedede;
+
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px  7px;
+	border-radius: 7px 7px 7px 7px;
+
+	border-width: 2px;
+	border-style: solid;
+	border-color: #bbbbbb;
+
+	background: -moz-linear-gradient(top, #dedede, #adadad);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#adadad));
+}
+
+#fiche-technique-description-produit 
+{
+width : 500px;
+border-top : 2px solid #9a9a9a;
+}
+
+#prix-fiche-produit h4
+{
+	background-color : orange;
+	width : 66px;
+	height : 24px;
+	margin-bottom : 10px;
+	padding-top: 10px;
+	padding-left : 20px;
+	padding-right : 0px;
+	padding-bottom : 8px;
+	
+
+	color : red;
+	font-weight : bold;
+	font-size : 18px;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	/* degradé */
+	background: -moz-linear-gradient(top, #FDAD00, #906602);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#FDAD00), to(#906602));
+}
+
+
+#fiche-produit img
+{
+width : 400px;
+float : left;
+}
+
+#fiche-produit .rating-star img
+{
+display : inline;
+width : 30px;
 }
 
 #about-bricobob
