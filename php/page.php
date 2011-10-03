@@ -11,6 +11,10 @@
 				include("html\\admin_accueil.html");
 			break;
 			
+			case "ADMIN_MEMBRES":
+				admin_listerMembres();
+			break;
+			
 			/* Inscription/Connection */
 			
 			case "INSCRIPTION":

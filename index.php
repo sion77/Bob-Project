@@ -19,6 +19,10 @@
 				// Selon ce que l'on veut faire..
 				switch($_GET["admin"])
 				{
+					case "MEMBRES":
+						page("ADMIN_MEMBRES");
+					break;
+				
 					case "ACCUEIL":
 					default:
 						page("ADMIN_ACCUEIL");
