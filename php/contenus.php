@@ -1,51 +1,22 @@
 <?php
 	function afficheCategories()
-	{
-		?>
+	{		
+		echo "<div id=\"panneau-categories\">";
 		
-		<div id="panneau-categories">
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a href='index.php?page=SOUSCATEGORIES'>Jardin</a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-			
-			<div class="categorie">
-				<img src="img/categorie-jardin.jpg" alt="Test categories"/>
-				<a> Titre categ </a>
-			</div>
-		</div>
-		
-		<?php
+		$sql = "SELECT idCat AS \"id\", nomCat AS \"titre\" 
+				FROM categorie
+				WHERE idParent IS NULL";
+				
+		$req = mysql_query($sql) or die(erreur_sql($sql));
+		while($rep = mysql_fetch_array($req))
+		{
+			echo "<div class=\"categorie\">";
+				echo "<img src=\"img/categorie-jardin.jpg\" alt=\"Test categories\"/>";
+				echo "<a href=\"index.php?page=SOUSCATEGORIES&amp;id=".$rep["id"]."\">".$rep["titre"]."</a>";
+			echo "</div>";
+		}
+		echo "</div>";
+		mysql_free_result($req);
 	}
 
 	function afficheSousCategories()
