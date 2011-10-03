@@ -12,6 +12,8 @@
 * *style.css* : Fichier contenant le style de la page (CSS)
 * *donnees.sql* : Fichier contenant la base de donnee (sauvegarde recente, MySQL)
 
+* *MESSAGES* : Fichier permettant de dialoguer entre nous
+
 **Dossiers** :
 
 * *img* : les images
