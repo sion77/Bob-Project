@@ -19,8 +19,26 @@
 				// Selon ce que l'on veut faire..
 				switch($_GET["admin"])
 				{
+					/* Gestion des membres */
 					case "MEMBRES":
-						page("ADMIN_MEMBRES");
+					
+						// Si on nous demande de faire quelque chose
+						if(isset($_GET["action"]))
+						{
+							switch($_GET["action"])
+							{
+								// Supprimer un membre
+								case "SUPPRIMER":
+									admin_supprimerMembre(intval($_GET["id"]));
+								break;
+								
+								default:
+									page("ADMIN_MEMBRES");
+								break;
+							}
+						}
+						else
+							page("ADMIN_MEMBRES");
 					break;
 				
 					case "ACCUEIL":

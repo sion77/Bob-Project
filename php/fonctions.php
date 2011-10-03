@@ -105,4 +105,22 @@
 			page("CONNECTION", '<span class="erreur">Erreur : il manque des données</span>');
 	}
 
+	function admin_supprimerMembre($id)
+	{// $id sécurisé
+		
+		$sql = "SELECT * FROM admin WHERE idAdmin = '".$id."'";
+		$req = mysql_query($sql) or die(erreur_sql($sql));
+		$count = mysql_num_rows($req);
+		mysql_free_result($req);
+		
+		if($count == 0)
+		{
+			$sql = "DELETE FROM utilisateur WHERE idUtilisateur = '".$id."'";
+			mysql_query($sql) or die(erreur_sql($sql));
+			
+			page("ADMIN_MEMBRES", "<span class=\"message\">Le membre n°".$id." à bien été supprimé</span>");
+		}
+		else
+			page("ADMIN_MEMBRES", "<span class=\"erreur\">Le membre n°".$id." est administrateur !</span>");
+	}
 ?>
