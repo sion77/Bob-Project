@@ -11,7 +11,7 @@
 	if(isset($_GET["admin"]))
 	{
 		// Que si on est connecte
-		if(isset($_SESSION["connecte"]) && isset($_SESSION["rang"]))
+		if(isset($_SESSION["connecte"]) && isset($_SESSION["admin"]))
 		{
 			// Que si on est admin
 			if($_SESSION["admin"] == true)
