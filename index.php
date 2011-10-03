@@ -7,9 +7,33 @@
 	include_once("php\\fonctions.php");
 	include_once("php\\page.php");
 
+	// Accès au panneau d'admin
+	if(isset($_GET["admin"]))
+	{
+		// Que si on est connecte
+		if(isset($_SESSION["connecte"]) && isset($_SESSION["rang"]))
+		{
+			// Que si on est admin
+			if($_SESSION["admin"] == true)
+			{
+				// Selon ce que l'on veut faire..
+				switch($_GET["admin"])
+				{
+					case "ACCUEIL":
+					default:
+						page("ADMIN_ACCUEIL");
+					break;
+				}
+			}
+			else
+				page("ACCUEIL");
+		}
+		else
+			page("ACCUEIL");
+	}
 	
 	//Si on nous demande de faire quelque chose 
-	if(isset($_GET["action"])) 
+	elseif(isset($_GET["action"])) 
 	{
 		switch($_GET["action"]) 
 		{

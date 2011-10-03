@@ -6,6 +6,13 @@
 	{
 		switch($nomPage)
 		{
+			/* Panneau d'admin */
+			case "ADMIN_ACCUEIL":
+				include("html\\admin_accueil.html");
+			break;
+			
+			/* Inscription/Connection */
+			
 			case "INSCRIPTION":
 				include("html\\inscription.html");
 			break;
@@ -13,6 +20,8 @@
 			case "CONNECTION":
 				include("html\\connection.html");
 			break;
+			
+			/* Parties du site */
 			
 			case "CATEGORIES":
 				afficheCategories();
@@ -28,6 +37,9 @@
 			
 			case "ABOUT":
 				include("html\\about.html");
+			break;
+			
+			/* Accueil */
 			
 			case "ACCUEIL":
 			default:
@@ -43,8 +55,10 @@
 		{
 			?>
 				
-				<span class="etat-co-espace-membre">Vous n'êtes pas connecté, veuillez vous <a href="index.php?page=CONNECTION">Connecter</a>
-				ou vous <a href="index.php?page=INSCRIPTION">Inscrire !</a></span>
+				<span class="etat-co-espace-membre">
+					Vous n'êtes pas connecté, veuillez vous <a href="index.php?page=CONNECTION">Connecter</a>
+					ou vous <a href="index.php?page=INSCRIPTION">Inscrire !</a>
+				</span>
 				
 			<?php
 		}
@@ -53,7 +67,7 @@
 		else
 		{
 			echo $_SESSION["pseudo"];
-			if($_SESSION["rang"] == "Administrateur")
+			if($_SESSION["admin"] == true)
 			{
 				?>
 					<a href="index.php?admin=ACCUEIL">Administrer</a>

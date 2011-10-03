@@ -42,7 +42,7 @@
 					{
 						$_SESSION["pseudo"] = $pseudo;
 						$_SESSION["connecte"] = true;
-						$_SESSION["rang"] = "Membre";
+						$_SESSION["admin"] = false;
 						page("ACCUEIL");
 					}
 					
@@ -84,11 +84,11 @@
 						$_SESSION["connecte"] = true;
 						$_SESSION["pseudo"] = $pseudo;
 						$_SESSION["id"] = $rep["id"];
-						$_SESSION["rang"] = "Membre";
+						$_SESSION["admin"] = false;
 						
 						$req = mysql_query("SELECT idAdmin FROM admin WHERE idAdmin = '".$rep["id"]."'");
 						if(mysql_fetch_row($req))
-							$_SESSION["rang"] = "Administrateur";
+							$_SESSION["admin"] = true;
 						
 						page("MAIN");
 					}
