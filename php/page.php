@@ -22,6 +22,10 @@
 				afficheSousCategories();
 			break;
 			
+			case "FICHEPRODUIT":
+				afficheFicheProduit();
+			break;
+			
 			case "ABOUT":
 				include("html\\about.html");
 			

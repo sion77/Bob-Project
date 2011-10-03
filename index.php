@@ -40,6 +40,10 @@
 				page("SOUSCATEGORIES");
 			break;
 			
+			case "FICHEPRODUIT":
+				afficheFicheProduit();
+			break;
+			
 			// Si on demande la page about
 			case "ABOUT":
 				page("ABOUT");
@@ -80,6 +84,10 @@
 			//Si on nous demande d'afficher les sous-catégories
 			case "SOUSCATEGORIES":
 				page("SOUSCATEGORIES");
+			break;
+			
+			case "FICHEPRODUIT":
+				page("FICHEPRODUIT");
 			break;
 			
 			// Sinon on affiche la page d'acceuil
