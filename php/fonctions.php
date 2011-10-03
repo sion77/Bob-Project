@@ -86,7 +86,7 @@
 						$_SESSION["id"] = $rep["id"];
 						$_SESSION["rang"] = "Membre";
 						
-						$req = mysql_query("SELECT idAdmin FROM admin WHERE idAdmin = idUtilisateur");
+						$req = mysql_query("SELECT idAdmin FROM admin WHERE idAdmin = '".$rep["id"]."'");
 						if(mysql_fetch_row($req))
 							$_SESSION["rang"] = "Administrateur";
 						

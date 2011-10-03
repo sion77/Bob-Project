@@ -2,10 +2,10 @@
 -- version 3.3.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 26, 2011 at 07:10 AM
--- Server version: 5.1.53
--- PHP Version: 5.3.4
+-- Serveur: localhost
+-- Généré le : Lun 03 Octobre 2011 à 06:32
+-- Version du serveur: 5.5.8
+-- Version de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,13 +16,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `bobbdd`
+-- Base de données: `projet_bob`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structure de la table `admin`
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -30,15 +30,10 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`idAdmin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admin`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorie`
+-- Structure de la table `categorie`
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
@@ -47,20 +42,12 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `nomCat` varchar(255) NOT NULL,
   `idParent` int(11) DEFAULT NULL COMMENT 'sous categorie',
   PRIMARY KEY (`idCat`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categorie`
---
-
-INSERT INTO `categorie` (`idCat`, `descriptionCat`, `nomCat`, `idParent`) VALUES
-(1, 'Retrouvez ici tous nos outils utiles pour le jardinage', 'Jardin', NULL),
-(2, 'Les meilleurs rateaux de tous les temps', 'Rateaux', 1);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ciblepub`
+-- Structure de la table `ciblepub`
 --
 
 CREATE TABLE IF NOT EXISTS `ciblepub` (
@@ -68,15 +55,10 @@ CREATE TABLE IF NOT EXISTS `ciblepub` (
   PRIMARY KEY (`idCible`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `ciblepub`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comporep`
+-- Structure de la table `comporep`
 --
 
 CREATE TABLE IF NOT EXISTS `comporep` (
@@ -85,15 +67,10 @@ CREATE TABLE IF NOT EXISTS `comporep` (
   PRIMARY KEY (`idEval`,`idReponse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `comporep`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evalproduit`
+-- Structure de la table `evalproduit`
 --
 
 CREATE TABLE IF NOT EXISTS `evalproduit` (
@@ -103,15 +80,10 @@ CREATE TABLE IF NOT EXISTS `evalproduit` (
   PRIMARY KEY (`idUtilisateur`,`idProduit`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `evalproduit`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation`
+-- Structure de la table `evaluation`
 --
 
 CREATE TABLE IF NOT EXISTS `evaluation` (
@@ -122,15 +94,25 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   PRIMARY KEY (`idEval`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `evaluation`
+-- Structure de la table `individu`
 --
 
+CREATE TABLE IF NOT EXISTS `individu` (
+  `numIndividu` int(11) NOT NULL,
+  `nomIndividu` varchar(20) NOT NULL,
+  `prenomIndividu` varchar(20) NOT NULL,
+  `adresseIndividu` text NOT NULL,
+  `telephoneIndividu` int(11) NOT NULL,
+  PRIMARY KEY (`numIndividu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produit`
+-- Structure de la table `produit`
 --
 
 CREATE TABLE IF NOT EXISTS `produit` (
@@ -147,15 +129,10 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`idProd`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `produit`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publicite`
+-- Structure de la table `publicite`
 --
 
 CREATE TABLE IF NOT EXISTS `publicite` (
@@ -166,15 +143,10 @@ CREATE TABLE IF NOT EXISTS `publicite` (
   PRIMARY KEY (`idPub`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `publicite`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reponse`
+-- Structure de la table `reponse`
 --
 
 CREATE TABLE IF NOT EXISTS `reponse` (
@@ -185,15 +157,10 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`idRep`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `reponse`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilisateur`
+-- Structure de la table `utilisateur`
 --
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -205,27 +172,4 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `cpUtilisateur` int(11) NOT NULL,
   `villeUtilisateur` varchar(255) NOT NULL,
   PRIMARY KEY (`idUtilisateur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `utilisateur`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `individu`
---
-
-CREATE TABLE IF NOT EXISTS `individu` (
-  `numIndividu` int(11) NOT NULL,
-  `nomIndividu` varchar(20) NOT NULL,
-  `prenomIndividu` varchar(20) NOT NULL,
-  `adresseIndividu` text NOT NULL,
-  `telephoneIndividu` int(11) NOT NULL,
-  PRIMARY KEY (`numIndividu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `individu`
---
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
