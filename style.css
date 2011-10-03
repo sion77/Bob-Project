@@ -666,6 +666,11 @@ font-family: Verdana, serif;
 font-size : 12px;
 }
 
+#fiche-produit
+{
+padding-top : 50px;
+}
+
 #about-bricobob
 {
 margin-left : 30px;

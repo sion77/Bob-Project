@@ -102,8 +102,10 @@
 	function afficheFicheProduit()
 	{
 		?>
-			<p> BLABBABLABL BKOIEHFIO YHUEIOFU IOEZUFIO EUGFIO REUIHG UIREFHG UIREHGIULH RUEIHGUIR EHG UIREHGUIREHG UIRREGFRE GIHUREIHGUIRHUGI RE 
-			UIRHG ERHGHRE IG RIOGIOREGIOREISGJREOSORI HIOSGHJRIO REOSI GORIEHJ </p>
+		<div id="fiche-produit">
+			<span id="categorie-fiche-produit">JARDIN ></span><span id="sous-categorie-fiche-produit">Outils</span>
+			<img src="img/rateau.jpg" alt="Rateau"/>
+		</div>
 		<?php
 	}
 
