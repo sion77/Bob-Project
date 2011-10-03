@@ -64,14 +64,13 @@
 			page("CATEGORIES", "<span class=\"erreur\">Erreur : la catégorie n°".$id." n'existe pas !</span>");
 		}
 	}
-
-	function afficheFicheProduit()
+function afficheFicheProduit()
 	{
 		?>
 		
 		<div id="fiche-produit">
 			<span id="categorie-fiche-produit">JARDIN ></span><span id="sous-categorie-fiche-produit">Outils</span>
-			<img src="img/rateau.jpg" alt="Rateau"/>
+			<div id="image-fiche-produit"><img src="img/tronconeuse.jpg" alt="Tronconeuse"/></div>
 			<div id="fiche-technique-produit">
 				<h2> TRONCONEUSE DE LA MORT QUI TUE </h2>
 				
@@ -83,35 +82,64 @@
 				</div>
 				
 				<div id="prix-fiche-produit"><h4>666E</h4></div>
-				
-				<form method="post" action="#">
-				   <p>
-					   <label for="pays">Quantité :</label><br />
-					   <select name="quantité" id="quantité">
-						   <option value="1">1</option>
-						   <option value="2">2</option>
-						   <option value="3">3</option>
-						   <option value="4">4</option>
-						   <option value="5">5</option>
-						   <option value="6">6</option>
-						   <option value="7">7</option>
-						   <option value="8">8</option>
-					   </select>
-				   </p>
-				</form>
+				<div id="ajouter-au-panier"><h4>Ajouter au panier !</h4></div>
+
+				<div id="select-quantite">
+					<form method="post" action="#">
+					   <p>
+						   <label for="pays">Quantité :</label><br />
+						   <select name="quantité" id="quantité">
+							   <option value="1">1</option>
+							   <option value="2">2</option>
+							   <option value="3">3</option>
+							   <option value="4">4</option>
+							   <option value="5">5</option>
+							   <option value="6">6</option>
+							   <option value="7">7</option>
+							   <option value="8">8</option>
+						   </select>
+					   </p>
+					</form>
+				</div>
 				
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
 				<div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-				<div id="fiche-produit-nbavis"><p>( 5 Avis )</p></div>
-				
+				</br><div id="fiche-produit-nbavis"><h6>( 5 Avis )</h6></div>
 			</div>
+			
+			<div class="avis-fiche-produit">
+				<h3> Très efficace ! <h3>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<h6> Par : Jean-luc   le 06/06/06 </h6>
+				<p> blabla blablablablablablablablablablablablablablablablablablablablablablablabla
+				blablablablablablablablablablablablablablablablablablablabla
+				blablablablablablablablablablablablablablablablablablablablablablablabla</p>
+			</div>
+			
+			<div class="avis-fiche-produit">
+				<h3> Très efficace ! <h3>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+				<h6> Par : Jean-luc   le 06/06/06 </h6>
+				<p> blabla blablablablablablablablablablablablablablablablablablablablablablablabla
+				blablablablablablablablablablablablablablablablablablablabla
+				blablablablablablablablablablablablablablablablablablablablablablablabla</p>
+			</div>
+			
 		</div>
 		<?php
 	}
-	
+
 	function admin_listerMembres()
 	{
 		$sql = "SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '0' AS \"admin\"
