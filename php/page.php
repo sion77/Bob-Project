@@ -193,7 +193,7 @@
 						
 						</div>
 						<div id="credits_droits">
-							Site crée par Sylafrs, {Thomas LEVASSEUR} et RFK78 !
+							Site crée par Sylafrs, Neo et RFK78 !
 						</div>
 						<div id="partenaires">
 						
