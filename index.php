@@ -35,6 +35,11 @@
 				page("CATEGORIES");
 			break;
 			
+			//Si on nous demande d'afficher les sous-catégories
+			case "SOUSCATEGORIES":
+				page("SOUSCATEGORIES");
+			break;
+			
 			// Si on demande la page about
 			case "ABOUT":
 				page("ABOUT");
@@ -70,6 +75,11 @@
 			//Si on nous demande d'afficher les catégories
 			case "CATEGORIES":
 				page("CATEGORIES");
+			break;
+			
+			//Si on nous demande d'afficher les sous-catégories
+			case "SOUSCATEGORIES":
+				page("SOUSCATEGORIES");
 			break;
 			
 			// Sinon on affiche la page d'acceuil
