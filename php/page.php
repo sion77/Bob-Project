@@ -32,7 +32,10 @@
 			break;
 			
 			case "SOUSCATEGORIES":
-				afficheSousCategories(intval($_GET["id"]));
+				if(isset($_GET["id"]))
+					afficheSousCategories(intval($_GET["id"]));
+				else
+					afficheCategories();
 			break;
 			
 			case "FICHEPRODUIT":
@@ -89,7 +92,7 @@
 			<ul id="menu">
 				<li><a href='index.php?page=CATEGORIES'>Acheter</a>
 					<ul class="sous-menu">
-						<span class="first-elem-sous-menu"><li><a href='index.php?page=SOUSCATEGORIES'>Jardin</a></li></span>
+						<span class="first-elem-sous-menu"><li><a href='index.php?page=SOUSCATEGORIES&amp;id=1'>Jardin</a></li></span>
 						<li><a href='#'>Menuiserie</a></li>
 						<li><a href='#'>Sols</a></li>
 						<li><a href='#'>Quilcaillerie</a></li>

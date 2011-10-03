@@ -61,7 +61,7 @@
 		else
 		{
 			mysql_free_result($req);
-			page("CATEGORIES", "<span class=\"erreur\">Erreur : la catégorie n°".$id." n'existe pas !</span>");
+			afficheCategories();
 		}
 	}
 function afficheFicheProduit()
