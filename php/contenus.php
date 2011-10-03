@@ -135,7 +135,7 @@
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
 				<div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-				<span id="nbavis"><p>( 5 Avis )</p></span>
+				<div id="fiche-produit-nbavis"><p>( 5 Avis )</p></div>
 				
 			</div>
 		</div>
