@@ -43,7 +43,12 @@
 						else
 							page("ADMIN_MEMBRES");
 					break;
-				
+					
+					/* Gestion des categories */
+					case "CATEGORIES" : 
+						page("ADMIN_CATEGORIES");
+					break;
+					
 					case "ACCUEIL":
 					default:
 						page("ADMIN_ACCUEIL");

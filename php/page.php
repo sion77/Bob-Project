@@ -15,6 +15,10 @@
 				admin_listerMembres();
 			break;
 			
+			case "ADMIN_CATEGORIES":
+				admin_listerCategories();
+			break;
+			
 			/* Inscription/Connection */
 			
 			case "INSCRIPTION":

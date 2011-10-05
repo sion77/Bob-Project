@@ -152,6 +152,7 @@ function afficheFicheProduit()
 				ORDER BY id";
 				
 		?>
+			<h1>Gestion des membres</h1>
 			<table>
 				<tr>
 					<th>Id</th>
@@ -193,6 +194,26 @@ function afficheFicheProduit()
 		mysql_free_result($req);
 		
 		echo "</table>";
+	}
+	
+	function admin_listerCategories()
+	{
+		echo "<h1>Gestion des categories</h1>";
+		
+		$sql = "SELECT * FROM categorie
+				WHERE idParent IS NULL";
+				
+		echo "<ul>";
+				
+		$req = mysql_query($sql) or die(erreur_sql($sql));
+		while($rep = mysql_fetch_array($req))
+		{
+			echo "<li>".$rep["idCat"].") ".$rep["nomCat"]."</li>";
+		}
+		mysql_free_result($req);
+		
+		echo "</ul>";
+		
 	}
 
 ?>
