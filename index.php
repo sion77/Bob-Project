@@ -1,11 +1,12 @@
 <?php
 	session_start();
 	
-	$link = mysql_connect("localhost", "root", "");
-	mysql_select_db("projet_bob", $link);
+	$link = mysql_connect("localhost", "root", ""); // Se connecte à une bdd en localhost
+	mysql_select_db("projet_bob", $link); // Nom de la base
 	
-	include_once("php\\fonctions.php");
-	include_once("php\\page.php");
+	include_once("php\\fonctions.php"); // Contient les fonctions manipulant la BDD
+	include_once("php\\page.php");      // Contient la fonction page et ses sous-fonctions (comme contenu)
+	                                    // Et les fonctions de contenus contenues dans contenus.php
 
 	// Accès au panneau d'admin
 	if(isset($_GET["admin"]))
@@ -35,11 +36,14 @@
 										page("ADMIN_MEMBRES", '<span class="erreur">Erreur : id non renseigné</span>');
 								break;
 								
+								// Sinon
 								default:
 									page("ADMIN_MEMBRES");
 								break;
 							}
 						}
+						
+						// Si on vient d'arriver sur la gestion des membres
 						else
 							page("ADMIN_MEMBRES");
 					break;
@@ -49,6 +53,7 @@
 						page("ADMIN_CATEGORIES");
 					break;
 					
+					/* Sinon, ou si on demande explicitement l'accueil */
 					case "ACCUEIL":
 					default:
 						page("ADMIN_ACCUEIL");
