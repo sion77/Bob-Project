@@ -64,11 +64,13 @@
 		// Non connecté
 		if(!isset($_SESSION["connecte"]))
 		{
-			?>				
+			?>
+				
 				<span class="etat-non-connecte">
 					Vous n'êtes pas connecté, veuillez vous <a href="index.php?page=CONNECTION">Connecter</a>
 					ou vous <a href="index.php?page=INSCRIPTION">Inscrire !</a>
-				</span>				
+				</span>
+				
 			<?php
 		}
 				
@@ -80,10 +82,10 @@
 				
 				if($_SESSION["admin"] == true)
 				{
-					echo ' <a href="index.php?admin=ACCUEIL">Administrer</a> ';
+					echo '<a href="index.php?admin=ACCUEIL">Administrer</a>';
 				}
 				
-				echo ' <a href="index.php?action=DECONNECTION">Deconnection</a> ';
+				echo '<a href="index.php?action=DECONNECTION">Deconnection</a>';
 			echo '</span>';
 		}
 	}
