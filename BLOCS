@@ -1,0 +1,23 @@
+[ --> menu()
+	body
+		#header
+			#espace_haut
+				#logo
+				#espace_membre
+				#espace_recherche
+						
+		#body
+			#menu
+			[
+			
+			]
+			#fastbar
+			#content
+				#contenu_message ?
+				(appelle contenu())
+		
+		#footer
+			#sitemap
+			#credits_droits
+			#partenaires
+]

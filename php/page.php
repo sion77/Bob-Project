@@ -93,7 +93,7 @@
 	function menu()
 	{
 		?>
-			<ul id="menu">
+			<ul id="liste_menu">
 				<li><a href='index.php?page=CATEGORIES'>Acheter</a>
 					<ul class="sous-menu">
 						<span class="first-elem-sous-menu"><li><a href='index.php?page=SOUSCATEGORIES&amp;id=1'>Jardin</a></li></span>
@@ -135,6 +135,7 @@
 	
 	}
 
+	// Fonction qui crée une page
 	function page($nomPage, $message = "")
 	{
 		?>
@@ -146,6 +147,21 @@
 				
 			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 				<head>
+					<!-- 
+						# Balises d'en-tête 
+						## Balises meta
+						
+						* Content-Type : Permet de spécifier l'encodage du contenu
+						* pragme=no-cache : Permet de demander de ne pas faire de mise en cache
+						
+						## Balises de lien
+
+						* link style.css : Insère le design
+						
+						## Autres balises
+						
+						* title : Ajoute le titre
+					-->
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 					<meta http-equiv="pragma"		content="no-cache"				   />
 					<link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
