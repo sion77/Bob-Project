@@ -19,6 +19,9 @@
 					Selon :
 						-> ADMIN_ACCUEIL
 						[
+							#page-admin
+								#panneau-admin
+									.icon-panneau-admin
 						]
 			
 						-> ADMIN_MEMBRES 
