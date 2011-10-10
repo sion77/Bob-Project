@@ -1,26 +1,19 @@
-[	
+[ --> menu()
 	body
 		#header
 			#espace_haut
 				#logo
 				#espace_membre
-					[
-						? .etat_non_connecte ?
-						? .etat_connecte ?
-					]
 				#espace_recherche
 						
 		#body
 			#menu
-				[
-					ul#liste_menu
-						li
-							ul.sous-menu
-								.first-elem-sous-menu
-								.last-elem-sous-menu
-				]
+			[
+			
+			]
 			#fastbar
 			#content
+<<<<<<< HEAD
 				? p#contenu_message ?
 				[
 					Selon :
@@ -95,6 +88,10 @@
 									#voirficheproduit_nouveaute
 						]
 				]
+=======
+				#contenu_message ?
+				(appelle contenu())
+>>>>>>> cdd6e4832fa1eaeb0e0ffaa0035abc7979ea8f38
 		
 		#footer
 			#sitemap

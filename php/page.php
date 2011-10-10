@@ -66,7 +66,7 @@
 		{
 			?>
 				
-				<span class="etat_non_connecte">
+				<span class="etat-non-connecte">
 					Vous n'êtes pas connecté, veuillez vous <a href="index.php?page=CONNECTION">Connecter</a>
 					ou vous <a href="index.php?page=INSCRIPTION">Inscrire !</a>
 				</span>
@@ -79,10 +79,12 @@
 		{
 			echo '<span class="etat_connecte">';
 				echo $_SESSION["pseudo"];
+				
 				if($_SESSION["admin"] == true)
 				{
 					echo '<a href="index.php?admin=ACCUEIL">Administrer</a>';
 				}
+				
 				echo '<a href="index.php?action=DECONNECTION">Deconnection</a>';
 			echo '</span>';
 		}
