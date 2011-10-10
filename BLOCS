@@ -1,20 +1,30 @@
-[ --> menu()
+[	
 	body
 		#header
 			#espace_haut
 				#logo
 				#espace_membre
+					[
+						? .etat_non_connecte ?
+						? .etat_connecte ?
+					]
 				#espace_recherche
 						
 		#body
 			#menu
-			[
-			
-			]
+				[
+					ul#liste_menu
+						li
+							ul.sous-menu
+								.first-elem-sous-menu
+								.last-elem-sous-menu
+				]
 			#fastbar
 			#content
-				#contenu_message ?
-				(appelle contenu())
+				? p#contenu_message ?
+				[
+					(suivant la page/l'action demandée)
+				]
 		
 		#footer
 			#sitemap
