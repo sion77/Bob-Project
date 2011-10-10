@@ -1,4 +1,4 @@
-# Projet WEB de l'IUT
+﻿# Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
 ### -- Dossier principal --
 
@@ -12,6 +12,7 @@
 * *style.css* : Fichier contenant le style de la page (CSS)
 * *donnees.sql* : Fichier contenant la base de donnee (sauvegarde recente, MySQL)
 * *MESSAGES* : Fichier permettant de dialoguer entre nous
+* *BLOCS* : Fichiers contenant les divers id du site
 
 **Dossiers** :
 
@@ -19,6 +20,7 @@
 * *html* : les contenus simples (c'est-à-dire sans php)
 * *rapport* : le rapport du projet
 * *php* : contient les fichiers php
+* *js* : contient les fichiers javascript
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
