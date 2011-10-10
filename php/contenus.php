@@ -85,6 +85,7 @@
 		}
 	}
 	
+	// ============ TEMPORAIRE ============
 	function afficheFicheProduit()
 	{
 		?>
@@ -163,15 +164,24 @@
 
 	function admin_listerMembres()
 	{
-		$sql = "SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '0' AS \"admin\"
-				FROM utilisateur M, admin A
-				WHERE idUtilisateur <> idAdmin
+		/*
+			Demande l'id et le pseudo de chaque utilisateur 
+			ainsi qu'un booléen indiquant s'il est admin ou pas.
+			Tout cela trié suivant l'id de l'utilisateur
+		*/
+		$sql = "    -- Récupère les utilisateurs non admins
+              		SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '0' AS \"admin\" 
+				    FROM utilisateur M, admin A
+				    WHERE idUtilisateur <> idAdmin
 				UNION
-				SELECT idAdmin AS \"id\", pseudoUtilisateur AS \"pseudo\", '1' AS \"admin\"
-				FROM utilisateur M, admin A
-				WHERE idUtilisateur = idAdmin
+				    -- Récupère les utilisateurs admins
+				    SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '1' AS \"admin\"
+				    FROM utilisateur M, admin A
+				    WHERE idUtilisateur = idAdmin
+					
 				ORDER BY id";
-				
+			
+		// On commence le tableau
 		?>
 			<h1>Gestion des membres</h1>
 			<table>
@@ -182,17 +192,26 @@
 				</tr>
 		<?php
 		
+		// Executer la requête, puis, pour chaque ligne de résultat
 		$req = mysql_query($sql) or die(erreur_sql($sql));
 		while($rep = mysql_fetch_array($req))
 		{
+			// On commence un ligne dans laquelle on met :
 			echo "<tr>";
+			
+				// L'id
 				echo "<td>".$rep["id"]."</td>";
+				
+				// Le pseudo
 				echo "<td>".$rep["pseudo"]."</td>";
 		
+				// "Administrateur" s'il s'agit d'un admin
 				if($rep["admin"])
 				{
 					echo "<td>Admin</td>";
 				}
+				
+				// ou la liste des actions possibles dans le cas d'un utilisateur
 				else
 				{
 					echo "<td>";
@@ -212,29 +231,37 @@
 				}
 			echo "</tr>";
 		}
-		mysql_free_result($req);
+		mysql_free_result($req); // On libère le résultat
 		
 		echo "</table>";
+		// Fin du tableau
 	}
 	
+	// Permet de lister les catégories
 	function admin_listerCategories()
 	{
+		// Titre de la page
 		echo "<h1>Gestion des categories</h1>";
+		echo "<h2><span class=\"erreur\">** En cours de création **</span></h2>";
 		
+		// Pour chaque catégorie sans parent..
 		$sql = "SELECT * FROM categorie
 				WHERE idParent IS NULL";
 				
+		// Débute la liste des catégorie
 		echo "<ul>";
-				
-		$req = mysql_query($sql) or die(erreur_sql($sql));
-		while($rep = mysql_fetch_array($req))
-		{
-			echo "<li>".$rep["idCat"].") ".$rep["nomCat"]."</li>";
-		}
-		mysql_free_result($req);
-		
+					
+			// Execute la requete, puis, pour chaque ligne de résultat..
+			$req = mysql_query($sql) or die(erreur_sql($sql));
+			while($rep = mysql_fetch_array($req))
+			{
+				// On liste les catégories
+				echo "<li>".$rep["idCat"].") ".$rep["nomCat"]."</li>";
+			}
+			mysql_free_result($req); // On libère le resultat
+			
 		echo "</ul>";
-		
+		// Fin de la liste		
 	}
 
 ?>
