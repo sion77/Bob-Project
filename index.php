@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start(); // Permet d'utiliser les sessions.
 	
 	$link = mysql_connect("localhost", "root", ""); // Se connecte à une bdd en localhost
 	mysql_select_db("projet_bob", $link); // Nom de la base

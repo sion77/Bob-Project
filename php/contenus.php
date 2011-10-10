@@ -1,6 +1,9 @@
 <?php
+
+	// Affiche les categories dans des blocs
 	function afficheCategories()
 	{		
+		
 		echo "<div id=\"panneau-categories\">";
 		
 		$sql = "SELECT idCat AS \"id\", nomCat AS \"titre\" 
@@ -19,13 +22,15 @@
 		mysql_free_result($req);
 	}
 
+	// Affiche les sous-catégories
 	function afficheSousCategories($id)
 	{// $id securisee	
 				
 		$sql = "SELECT idCat AS \"id\",
 			           nomCat AS \"nom\"
 					FROM categorie
-					WHERE idCat = '".$id."'";
+					WHERE idCat = '".$id."'
+					AND idParent IS NOT NULL";
 		
 		$req = mysql_query($sql) or die (erreur_sql($sql));
 		
@@ -64,7 +69,8 @@
 			afficheCategories();
 		}
 	}
-function afficheFicheProduit()
+	
+	function afficheFicheProduit()
 	{
 		?>
 		
