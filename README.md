@@ -1,4 +1,4 @@
-﻿# Projet WEB de l'IUT
+# Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
 ### -- Dossier principal --
 
