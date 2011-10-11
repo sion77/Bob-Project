@@ -10,15 +10,13 @@
 * *index.php* : Fichier principal, on entrera que par ici
 * *script.js* : Fichier contenant le javascript
 * *style.css* : Fichier contenant le style de la page (CSS)
-* *donnees.sql* : Fichier contenant la base de donnee (sauvegarde recente, MySQL)
-* *MESSAGES* : Fichier permettant de dialoguer entre nous
-* *BLOCS* : Fichiers contenant les divers id du site
 
 **Dossiers** :
 
 * *img* : les images
-* *html* : les contenus simples (c'est-à-dire sans php)
 * *rapport* : le rapport du projet
+* *docs* : les documents qui pourront nous aider
+* *html* : les contenus simples (c'est-à-dire sans php)
 * *php* : contient les fichiers php
 * *js* : contient les fichiers javascript
 
