@@ -2,9 +2,9 @@
 ## Présentation d'une chose à faire
 ### La liste
 
-1. ajouter à la liste à l'aide de '\*'
-2. ensuite : ajouter le titre en *italique* entre deux \*
-3. et une éventuelle phrase de description
+1. Inserer une puce à la liste à l'aide de '\*'
+2. Ajouter le titre en *italique* entre deux \*
+3. Ajouter une éventuelle phrase de description
 
 ### Voila comment on détaillera ce qu'il faut faire
 
