@@ -11,9 +11,14 @@ Il ne change en rien le comportement de ce dernier.
 
 **Fichiers** :
 
-* *énoncé.pdf* : Fichier pdf contenant les consignes du Projet.
+* *DBModel.mwb* : Fichier MySQL Workbench
+
+**Documents** :
+
+* *enonce.pdf* : contient les consignes du Projet.
 * *rapport.pdf* : Rapport pdf
 * *rapport.odt* : Rapport LibreOffice
+* *DBModel.pdf* : contient le MCD de la DB
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
