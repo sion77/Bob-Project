@@ -1,12 +1,28 @@
 # La TODO list 
-## Présentation d'une chose à faire
+## PrÃ©sentation d'une chose Ã  faire
 ### La liste
-ajouter à la liste à l'aide de '\*'
 
-### Voila comment on détaillera ce qu'il faut faire
+ajouter Ã  la liste Ã  l'aide de '\*'
+ensuite : ajouter le titre en *italique* entre deux \*
+et une Ã©ventuelle phrase de description
+
+### Voila comment on dÃ©taillera ce qu'il faut faire
+
 Pour commencer, on utilisera ### avant de mettre le titre
-Ensuite, on met les points forts en gras en utilisant \**les doubles étoiles\**
-
+Ensuite, on met les points forts en gras en utilisant \**les doubles Ã©toiles\**
 
 ## Liste
-## Détails
+
+* *Panneau d'admin* : Qui permettra Ã  un admin de pouvoir faire (presque) tout ce qu'il veut
+
+## DÃ©tails
+
+### Panneau d'admin
+
+Le panneau d'admin va devoir contenir :
+* La gestion des membres *(FAIT)*
+* La gestion des commentaires
+* La gestion des produits
+* La gestion des catÃ©gories
+
+Et bien d'autres...
