@@ -83,12 +83,13 @@
 						[
 							#pub
 							#coup_coeur
-								#best_seller
-									#prix_article_bestseller
-									#voirficheproduit_bestseller
-								#nouveaute
-									#prix_article_nouveaute
-									#voirficheproduit_nouveaute
+								.boite_coup_coeur
+									#best_seller
+										#prix_article_bestseller
+										#voirficheproduit_bestseller
+									#nouveaute
+										#prix_article_nouveaute
+										#voirficheproduit_nouveaute
 						]
 				]
 =======

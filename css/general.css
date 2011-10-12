@@ -1,0 +1,119 @@
+/*
+ *	Balises
+ */
+
+body
+{
+	width: 960px;
+	margin : auto;
+	
+	padding-top : 20px;
+	padding-bottom : 35px;
+	
+	background-image:url('img/fond.png');
+}
+
+div
+{
+	border: solid black 0px;
+}
+
+form table th
+{
+	text-align: right;
+}
+
+form table .centre
+{
+	text-align: center;
+}
+
+/*
+ *	Boites communes
+ */
+
+#header
+{
+	width : 960px;
+}
+
+#logo img 
+{
+	float: left;
+	width: 170px;
+	margin-right : 50px;
+}
+
+#espace_haut
+{
+	padding-bottom : 12px;
+}
+
+#espace_recherche 
+{
+	width: 780px;
+}
+
+#espace_recherche img
+{
+	padding-left : 25%;
+	display : inline;
+	padding-right : 5px;
+}
+
+#espace_recherche form
+{
+	display : inline;
+}
+
+#espace_recherche a
+{
+	padding-left : 30px;
+	padding-right : 30px;
+	
+	display : inline;
+	color : green;
+	
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-weight : bold;
+	font-size : small;
+}
+
+#espace_recherche a:hover
+{
+	color : #CC6600;
+}
+
+#espace_membre
+{
+	color : #FF9900;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-weight : bold;
+	font-size : 14px;
+	
+	padding-bottom : 8px;
+}
+
+#body
+{
+	clear: both;
+}
+
+#footer
+{
+	clear: both;
+}
+
+#sitemap
+{
+	background-color : lime;
+}
+
+/*
+ *	Les boites bien pimpées
+ */
+ 
+@import url("/css/big/ID_liste_menu.css");
+
