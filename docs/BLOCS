@@ -13,7 +13,6 @@
 			]
 			#fastbar
 			#content
-<<<<<<< HEAD
 				? p#contenu_message ?
 				[
 					Selon :
@@ -83,19 +82,15 @@
 						[
 							#pub
 							#coup_coeur
-								.boite_coup_coeur
-									#best_seller
-										#prix_article_bestseller
-										#voirficheproduit_bestseller
-									#nouveaute
-										#prix_article_nouveaute
-										#voirficheproduit_nouveaute
+								.boite_coup_coeur#best_seller
+										.prix_article_coup_coeur#prix_article_bestseller
+										.voirficheproduit_coup_coeur#voirficheproduit_bestseller
+										
+								.boite_coup_coeur#nouveaute
+										.prix_article_coup_coeur#prix_article_nouveaute
+										.voirficheproduit_coup_coeur#voirficheproduit_nouveaute
 						]
 				]
-=======
-				#contenu_message ?
-				(appelle contenu())
->>>>>>> cdd6e4832fa1eaeb0e0ffaa0035abc7979ea8f38
 		
 		#footer
 			#sitemap
