@@ -2,7 +2,7 @@
 ## Présentation d'une chose à faire
 ### La liste
 
-1. Inserer une puce à la liste à l'aide de '\*'
+1. Inserer une puce à la liste à l'aide d'une \*
 2. Ajouter le titre en *italique* entre deux \*
 3. Ajouter une éventuelle phrase de description
 
@@ -10,7 +10,7 @@
 
 Pour commencer, on utilisera ### avant de mettre le titre
 
-Ensuite, on met les points forts en gras en utilisant ** \**les doubles étoiles\** **
+Ensuite, on met les points forts en gras en utilisant \** **les doubles étoiles** \**
 
 ## Liste
 
@@ -23,10 +23,10 @@ Ensuite, on met les points forts en gras en utilisant ** \**les doubles étoiles
 
 Le panneau d'admin va devoir contenir :
 
-1. La gestion des membres *(FAIT)*
-2. La gestion des commentaires
-3. La gestion des produits
-4. La gestion des catégories
+* La gestion des membres *(FAIT)*
+* La gestion des commentaires
+* La gestion des produits
+* La gestion des catégories
 
 Et bien d'autres...
 
