@@ -1,4 +1,10 @@
 /*
+ *	Les balises/boites bien pimpées
+ */
+ 
+@import url("big/ID_liste_menu.css");
+
+/*
  *	Balises
  */
 
@@ -110,10 +116,3 @@ form table .centre
 {
 	background-color : lime;
 }
-
-/*
- *	Les boites bien pimpées
- */
- 
-@import url("/css/big/ID_liste_menu.css");
-

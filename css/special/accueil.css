@@ -3,8 +3,6 @@
 height: 250px;
 }
 
-
-
 #nouveaute
 {
 width: 49%;
@@ -19,7 +17,10 @@ width: 48%;
 height: 100%;
 float: left;
 background-color : white;
+}
 
+.boite_coup_coeur
+{
 margin-left : 10px;
 
 box-shadow:1px 3px 8px #000000;
@@ -36,7 +37,7 @@ background: -moz-linear-gradient(top, #f0f0f0, #cecece);
 background: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#cecece));
 }
 
-#best_seller h3
+.boite_coup_coeur h3
 {
 color : #FF9900;
 font-family: Verdana, serif;
@@ -46,13 +47,13 @@ text-decoration : none;
 padding-left : 52px;
 }
 
-#best_seller h3:hover
+.boite_coup_coeur h3:hover
 {
 color : #CC6600;
 text-decoration : none;
 }
 
-#best_seller h1
+.boite_coup_coeur h1
 {
 color : #333333;
 font-family: Verdana, serif;

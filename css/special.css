@@ -1,12 +1,12 @@
 /* Panneau d'admin */
-@import url("/css/admin.css");
+@import url("admin.css");
 
 /* Pages du site */
-@import url("/css/special/accueil.css");       	/* ACCUEIL */
-@import url("/css/special/inscr-connect.css"); 	/* INSCRIPTION et CONNECTION */
-@import url("/css/special/categorie.css");		/* CATEGORIES */
-@import url("/css/special/sous-categorie.css");	/* SOUSCATEGORIES */
-@import url("/css/special/fiche-prod.css");    	/* FICHEPRODUIT */
+@import url("special/accueil.css");       	/* ACCUEIL */
+@import url("special/inscr-connect.css"); 	/* INSCRIPTION et CONNECTION */
+@import url("special/categorie.css");		/* CATEGORIES */
+@import url("special/sous-categorie.css");	/* SOUSCATEGORIES */
+@import url("special/fiche-prod.css");    	/* FICHEPRODUIT */
 
 /* ABOUT */
 #about-bricobob
