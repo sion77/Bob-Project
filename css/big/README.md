@@ -2,7 +2,7 @@
 ## Bob-Project : Chez BOB
 ### -- Dossier /css/big --
 
-**Rôle** : Contient les fichiers spécifiques à un seul élément (et ses sous-elements)
+**RÃ´le** : Contient les fichiers spÃ©cifiques Ã  un seul Ã©lÃ©ment (et ses sous-elements)
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
