@@ -1,4 +1,4 @@
-# Projet WEB de l'IUT
+﻿# Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
 ### -- Dossier /rapport/ --
 
@@ -8,17 +8,13 @@ Il ne change en rien le comportement de ce dernier.
 **Dossiers** :
 
 * *latex* : Source du rapport en latex
+* *ACSI* : Fichier permettant la création du dossier d'analyse
 
 **Fichiers** :
-
-* *DBModel.mwb* : Fichier MySQL Workbench
-
-**Documents** :
 
 * *enonce.pdf* : contient les consignes du Projet.
 * *rapport.pdf* : Rapport pdf
 * *rapport.odt* : Rapport LibreOffice
-* *DBModel.pdf* : contient le MCD de la DB
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
