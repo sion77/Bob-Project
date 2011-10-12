@@ -10,7 +10,7 @@
 
 Pour commencer, on utilisera ### avant de mettre le titre
 
-Ensuite, on met les points forts en gras en utilisant \**les doubles étoiles\**
+Ensuite, on met les points forts en gras en utilisant ** \**les doubles étoiles\** **
 
 ## Liste
 
@@ -22,9 +22,9 @@ Ensuite, on met les points forts en gras en utilisant \**les doubles étoiles\**
 
 Le panneau d'admin va devoir contenir :
 
-* La gestion des membres *(FAIT)*
-* La gestion des commentaires
-* La gestion des produits
-* La gestion des catégories
+1. La gestion des membres *(FAIT)*
+2. La gestion des commentaires
+3. La gestion des produits
+4. La gestion des catégories
 
 Et bien d'autres...
