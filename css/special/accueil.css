@@ -75,15 +75,16 @@ font-size: 20px;
 border : 2px solid red;
 }
 
-.voirficheproduit_coup_coeur
+.voirficheproduit_coup_coeur a
 {
 display : inline;
+text-decoration: none;
 color : green;
 font-family: Verdana, serif;
 font-size: 16px;
 }
 
-.voirficheproduit_coup_coeur:hover
+.voirficheproduit_coup_coeur a:hover
 {
 font-weight : bold;
 }
