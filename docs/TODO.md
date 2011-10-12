@@ -1,4 +1,4 @@
-# La TODO list 
+﻿# La TODO list 
 ## Présentation d'une chose à faire
 ### La liste
 
@@ -15,6 +15,7 @@ Ensuite, on met les points forts en gras en utilisant \**les doubles étoiles\**
 ## Liste
 
 * *Panneau d'admin* : Qui permettra à un admin de pouvoir faire (presque) tout ce qu'il veut
+* *Dossier d'analyse* : A faire pour le **mardi** 18 octobre **avant 13 heures**
 
 ## Détails
 
@@ -28,3 +29,26 @@ Le panneau d'admin va devoir contenir :
 * La gestion des catégories
 
 Et bien d'autres...
+
+### Dossier d'analyse
+
+Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
+
+* Cahier des charges
+	* Définition des utilisateurs
+	* Cas d'utilisation : description synthètique
+	* Diagramme de ces cas
+	* Description textuelle des 3 de ces cas les plus importants
+	* Spécification des contraintes non fonctionnelles
+		* rapidité de réponse
+		* charte graphique utilisée
+		* norme ergonomiques
+		* portabilité de l'application
+		* matériel/logiciels utilisés
+		* etc..
+* Analyse des données
+	* Dico des données
+	* Diagramme de classe 
+		* Justification des cardinalites
+		* Précision des classes qui font ou non l'objet d'un historique
+	* Liste des contraintes non modélisables (Ex : le format d'une adresse email)
