@@ -45,7 +45,7 @@ Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
 		* **FAIT !**
 	* Description textuelle des 3 de ces cas les plus importants 
 		* connection / inscription
-			* **sion77**
+			* **DONE !**
 		* recherche
 			* **FAIT !**
 		* fiche produit
