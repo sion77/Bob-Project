@@ -1,4 +1,4 @@
-﻿# La TODO list 
+# La TODO list 
 ## Présentation d'une chose à faire
 ### La liste
 
@@ -23,7 +23,7 @@ Ensuite, on met les points forts en gras en utilisant \** **les doubles étoiles
 
 Le panneau d'admin va devoir contenir :
 
-* La gestion des membres *(FAIT)*
+* La gestion des membres **(FAIT)**
 * La gestion des commentaires
 * La gestion des produits
 * La gestion des catégories
@@ -35,22 +35,37 @@ Et bien d'autres...
 Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
 
 * Cahier des charges
-	* Intro ( françois )
-	* Définition des utilisateurs ( done ! )
-	* Cas d'utilisation : description synthètique ( françois )
-	* Diagramme de ces cas ( done ! )
-	* Description textuelle des 3 de ces cas les plus importants ( reste connection / inscription -> thomas )
-	* Spécification des contraintes non fonctionnelles ( françois )
+	* Intro
+		* **FAIT !**
+	* Définition des utilisateurs
+		* **FAIT !**
+	* Cas d'utilisation : description synthètique
+		* **rfk78**
+	* Diagramme de ces cas
+		* **FAIT !**
+	* Description textuelle des 3 de ces cas les plus importants 
+		* connection / inscription
+			* **sion77**
+		* recherche
+			* **FAIT !**
+		* fiche produit
+			* **rfk78**
+	* Spécification des contraintes non fonctionnelles
 		* rapidité de réponse
 		* charte graphique utilisée
 		* norme ergonomiques
 		* portabilité de l'application
 		* matériel/logiciels utilisés
 		* etc..
+			* **rfk78**
 * Analyse des données
-	* Dico des données ( thomas )
-	* Diagramme de classe ( sylvain )
-		* Justification des cardinalites ( sylvain )
-		* Précision des classes qui font ou non l'objet d'un historique ( sylvain )
-	* Liste des contraintes non modélisables (Ex : le format d'une adresse email) ( thomas )
-	* Jeu de tests ( françois )
+	* Dico des données
+		* **sion77**
+	* Diagramme de classe
+		* Justification des cardinalites
+		* Précision des classes qui font ou non l'objet d'un historique
+			* **sylafrs**
+	* Liste des contraintes non modélisables (Ex : le format d'une adresse email)
+		* **sion77**
+	* Jeu de tests
+		* **rfk78**
