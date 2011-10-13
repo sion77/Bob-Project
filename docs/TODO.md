@@ -35,11 +35,12 @@ Et bien d'autres...
 Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
 
 * Cahier des charges
-	* Définition des utilisateurs
-	* Cas d'utilisation : description synthètique
-	* Diagramme de ces cas
-	* Description textuelle des 3 de ces cas les plus importants
-	* Spécification des contraintes non fonctionnelles
+	* Intro ( françois )
+	* Définition des utilisateurs ( done ! )
+	* Cas d'utilisation : description synthètique ( françois )
+	* Diagramme de ces cas ( done ! )
+	* Description textuelle des 3 de ces cas les plus importants ( reste connection / inscription -> thomas )
+	* Spécification des contraintes non fonctionnelles ( françois )
 		* rapidité de réponse
 		* charte graphique utilisée
 		* norme ergonomiques
@@ -47,8 +48,9 @@ Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
 		* matériel/logiciels utilisés
 		* etc..
 * Analyse des données
-	* Dico des données
-	* Diagramme de classe 
-		* Justification des cardinalites
-		* Précision des classes qui font ou non l'objet d'un historique
-	* Liste des contraintes non modélisables (Ex : le format d'une adresse email)
+	* Dico des données ( thomas )
+	* Diagramme de classe ( sylvain )
+		* Justification des cardinalites ( sylvain )
+		* Précision des classes qui font ou non l'objet d'un historique ( sylvain )
+	* Liste des contraintes non modélisables (Ex : le format d'une adresse email) ( thomas )
+	* Jeu de tests ( françois )
