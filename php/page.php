@@ -180,12 +180,11 @@
 							<div id="espace_recherche">
 								<!--	<img src="img/search_icon.jpg" alt="search_icon"/> -->
 									<!-- GET pour pouvoir retourner à un résultat de recherche aisément -->
-									<form action="index.php" method="get">
+									<form action="index.php?action=RECHERCHE" method="get">
 										<input type="text" name="recherche" value="Rechercher" />
-										<input type="hidden" name="page" value="recherche" />
 										<input type="submit" value="GO" />
 									</form>
-								<a href="search.php" title="Recherche avancée">Recherche avancée</a>
+								<a href="index.php?page=RECHERCHE_AVANCEE" title="Recherche avancée">Recherche avancée</a>
 							</div>
 						</div>
 					</div>

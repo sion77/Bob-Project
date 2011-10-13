@@ -72,6 +72,11 @@
 	{
 		switch($_GET["action"]) 
 		{
+			// Si on veut faire une recherche rapide
+			case "RECHERCHE":
+				page("ACCUEIL", '<span class="erreur">Fonction non implémentée</span>'); // Pas pour le moment
+			break;
+		
 			//Si on nous demande d'inscrire un utilisateur
 			case "INSCRIPTION":
 				inscription(); 
@@ -120,6 +125,11 @@
 	{
 		switch($_GET["page"])
 		{	
+			// Si on veut faire une recherche rapide
+			case "RECHERCHE_ACCUEIL":
+				page("ACCUEIL", '<span class="erreur">Fonction non implémentée</span>'); // Pas pour le moment
+			break;
+			
 			// On affiche le formulaire d'inscription
 			case "INSCRIPTION":
 				page("INSCRIPTION");
