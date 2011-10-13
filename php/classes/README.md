@@ -1,6 +1,6 @@
 # Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
-### -- Dossier /php/objets/ --
+### -- Dossier /php/classes/ --
 
 **Rôle** : Contient les fichiers php définissant les classes du projet
 

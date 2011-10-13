@@ -79,7 +79,20 @@
 		
 			//Si on nous demande d'inscrire un utilisateur
 			case "INSCRIPTION":
-				inscription(); 
+				if(isset($_POST["pseudo"]) && isset($_POST["pass"]) && isset($_POST["pass2"]))
+				{
+					$ok = Membre::inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]); 
+					if($ok)
+					{
+						page("ACCUEIL");
+					}
+					else
+					{
+						page("ACCEUIL", '<span class="Error">'.Membre::get_erreur().'</span>');
+					}
+				}
+				else
+					page("INSCRIPTION", '<span class="Error">Erreur : données manquantes</span>');
 			break;
 			
 			//Si on nous demande de connecter l'utilisateur
