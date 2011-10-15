@@ -51,11 +51,11 @@ Contenu dans le dossier /rapport/ACSI, ce dossier devra contenir :
 		* fiche produit
 			* **rfk78**
 	* Spécification des contraintes non fonctionnelles
-		* rapidité de réponse
-		* charte graphique utilisée
-		* norme ergonomiques
+		* rapidité de réponse -> DONE
+		* charte graphique utilisée -> DOOOOONE !
+		* norme ergonomiques ( integré a la charte graphique )
 		* portabilité de l'application
-		* matériel/logiciels utilisés
+		* matériel/logiciels utilisés -> DONE
 		* etc..
 			* **rfk78**
 * Analyse des données
