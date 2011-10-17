@@ -1,19 +1,3 @@
-1 Le système propose à l'internaute de s'inscrire.
-2 L'internaute clique sur "s'inscrire".
-3 Le système demande à l'internaute de lui fournir un nom de compte, un mot de passe et une vérification du mot de passe.
-4 L'internet entre les informations demandées.
-5 L'internaute clique sur "s'inscrire".
-6 L'internaute est inscrit et connecter.
-
-Exceptions: 
-			5a L'internaute a entrer un pseudo éxistant.
-			6 Le systeme affiche "Pseudo déja utiliser".
-			7 Le système propose de nouveau à l'internaute de s'incrire.
-			
-			5a L'internaute a entrer deux mot de passe differents.
-			6 Le système affiche "Les mots de passe ne sont pas identiques".
-			7 Le système propose de rentrer à nouveau les mots de passe.
-
 \begin{boxedminipage}[t]{12cm}
 	\begin{itemize}
 		\item Système : Site web "Chez Bob"
@@ -28,8 +12,36 @@ Exceptions:
 	\renewcommand\labelenumii{(\theenumii)}
 	\paragraph{Scénario :} 
 	\begin{enumerate}
-		\item \label{sc1l1} un item
+		\item \label{sc1l1} Le système propose à l'internaute de s'inscrire.
+		\item \label{sc1l2} L'internaute clique sur "s'inscrire".
+		\item \label{sc1l3} Le système demande à l'internaute de lui fournir un nom de compte, un mot de passe et une vérification du mot de passe.
+		\item \label{sc1l4} L'internet entre les informations demandées.
+		\item \label{sc1l5} L'internaute clique sur "s'inscrire".
+		\item \label{sc1l6} L'internaute est inscrit et connecter.
 	\end{enumerate}
+	
+	\renewcommand\theenumi{\Alph{enumi}}
+	\renewcommand\labelenumi{\theenumi)}
+	\renewcommand\theenumii{\arabic{enumii}}
+	\renewcommand\labelenumii{\theenumii .}
+	\paragraph{Exceptions :}
+	\begin{enumerate}
+		\item
+			\begin{enumerate}
+				\addtocounter{enumii}{4}
+				\item L'internaute a entrer un pseudo éxistant.
+				\item Le systeme affiche "Pseudo déja utiliser".
+				\item Le système propose de nouveau à l'internaute de s'incrire.
+			\end{enumerate}
+		\item
+			\begin{enumerate}
+				\addtocounter{enumii}{4}
+				\item L'internaute a entrer deux mot de passe differents.
+				\item Le système affiche "Les mots de passe ne sont pas identiques".
+				\item Le système propose de rentrer à nouveau les mots de passe.
+			\end{enumerate}
+	\end{enumerate}	 
+			
 \end{boxedminipage}
 \newpage
 
