@@ -1,3 +1,9 @@
+Confidentialité
+
+Lors de l'inscription, l'internaute n'entre pas ses données personnelles ( Nom, Adresse ... ) afin de ne pas lui demander trop vite
+d'informations personelles, ce qui pourrait être perçu comme une intrusion dans sa vie privée alors que ces données ne sont pas encore
+nécessaires. Elle lui seront demandées seulement lors de la validation d'une commande ( Utilisation non prévue dans le cadre de cette étude )
+
 CONTRAINTES NON FONCTIONNELLES
 
 	Rapidité de Réponse
