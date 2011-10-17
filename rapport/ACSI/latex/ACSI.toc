@@ -1,0 +1,20 @@
+\select@language {french}
+\contentsline {part}{I\hspace {1em}Introduction}{2}
+\contentsline {part}{II\hspace {1em}Fonctionnalit\IeC {\'e}s}{3}
+\contentsline {section}{\numberline {1}Cas d'utilisation}{3}
+\contentsline {subsection}{\numberline {1.1}Description des acteurs}{3}
+\contentsline {subsubsection}{\numberline {1.1.1}internaute}{3}
+\contentsline {subsubsection}{\numberline {1.1.2}membre}{3}
+\contentsline {subsubsection}{\numberline {1.1.3}admin}{3}
+\contentsline {subsection}{\numberline {1.2}Description des cas d'utilisation}{3}
+\contentsline {subsection}{\numberline {1.3}Description synth\IeC {\'e}tique}{5}
+\contentsline {subsubsection}{\numberline {1.3.1}Inscription, connexion et deconnexion}{5}
+\contentsline {paragraph}{Sc\IeC {\'e}nario :}{5}
+\contentsline {paragraph}{Exceptions :}{5}
+\contentsline {paragraph}{Sc\IeC {\'e}nario : }{6}
+\contentsline {paragraph}{Exceptions :}{6}
+\contentsline {paragraph}{Sc\IeC {\'e}nario :}{6}
+\contentsline {subsubsection}{\numberline {1.3.2}Recherche d'un produit}{7}
+\contentsline {subsubsection}{\numberline {1.3.3}Affichage d'un produit}{10}
+\contentsline {paragraph}{Sc\IeC {\'e}nario : }{10}
+\contentsline {subsection}{\numberline {1.4}Diagramme de cas d'utilisation}{11}
