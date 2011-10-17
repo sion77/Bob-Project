@@ -21,14 +21,23 @@
 \contentsline {part}{III\hspace {1em}Donn\IeC {\'e}es}{12}
 \contentsline {section}{\numberline {2}Dictionnaire de donn\IeC {\'e}es}{12}
 \contentsline {section}{\numberline {3}Structures de donn\IeC {\'e}es}{13}
-\contentsline {subsection}{\numberline {3.1}Base de donn\IeC {\'e}e}{13}
+\contentsline {subsection}{\numberline {3.1}Base de donn\IeC {\'e}es}{13}
 \contentsline {subsubsection}{\numberline {3.1.1}Mod\IeC {\`e}le entit\IeC {\'e}-relation}{13}
 \contentsline {subsubsection}{\numberline {3.1.2}Sch\IeC {\'e}ma relationnel}{13}
 \contentsline {subsection}{\numberline {3.2}Objets}{13}
 \contentsline {subsubsection}{\numberline {3.2.1}Diagramme de classe}{13}
 \contentsline {subsubsection}{\numberline {3.2.2}Justification des cardinalit\IeC {\'e}s}{13}
-\contentsline {subsubsection}{\numberline {3.2.3}Historique}{13}
-\contentsline {subsubsection}{\numberline {3.2.4}Contraintes non mod\IeC {\'e}lisables}{13}
-\contentsline {part}{IV\hspace {1em}Jeux de test}{14}
-\contentsline {part}{V\hspace {1em}Annexes}{15}
-\contentsline {section}{\numberline {4}Liste des annexes}{15}
+\contentsline {paragraph}{Classe Membre :}{13}
+\contentsline {paragraph}{Classe Categorie :}{14}
+\contentsline {subsubsection}{\numberline {3.2.3}Historique}{14}
+\contentsline {subsubsection}{\numberline {3.2.4}Contraintes non mod\IeC {\'e}lisables}{14}
+\contentsline {paragraph}{Confidentialit\IeC {\'e}}{14}
+\contentsline {paragraph}{Rapidit\IeC {\'e} de R\IeC {\'e}ponse}{14}
+\contentsline {paragraph}{Charte graphique}{14}
+\contentsline {paragraph}{Normes Ergonomiques}{14}
+\contentsline {paragraph}{Portabilit\IeC {\'e} de l'application}{14}
+\contentsline {paragraph}{Modification du contexte}{15}
+\contentsline {paragraph}{Mat\IeC {\'e}riel et logiciels utilis\IeC {\'e}s}{15}
+\contentsline {part}{IV\hspace {1em}Jeux de test}{16}
+\contentsline {part}{V\hspace {1em}Annexes}{17}
+\contentsline {section}{\numberline {4}Liste des annexes}{17}
