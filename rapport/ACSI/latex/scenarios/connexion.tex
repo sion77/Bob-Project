@@ -1,0 +1,85 @@
+\begin{boxedminipage}[t]{12cm}
+	\begin{itemize}
+		\item Système : Site web "Chez Bob"
+		\item Acteur : Internaute
+		\item Objectif : Inscrire un compte
+		\item Pré-condition : (aucune)
+	\end{itemize}
+
+	\renewcommand\theenumi{\arabic{enumi}}
+	\renewcommand\labelenumi{\theenumi .}
+	\renewcommand\theenumii{\Alph{enumii}}
+	\renewcommand\labelenumii{(\theenumii)}
+	\paragraph{Scénario :} 
+	\begin{enumerate}
+		\item \label{sc1l1} un item
+	\end{enumerate}
+\end{boxedminipage}
+\newpage
+
+\begin{boxedminipage}[t]{12cm}
+	\begin{itemize}
+		\item Système : Site web "Chez Bob"
+		\item Acteur : Internaute
+		\item Objectif : Se connecter sur le compte de l'utilisateur
+		\item Pré-condition : L'utilisateur est enregistré
+	\end{itemize}
+
+	\renewcommand\theenumi{\arabic{enumi}}
+	\renewcommand\labelenumi{\theenumi .}
+	\renewcommand\theenumii{\Alph{enumii}}
+	\renewcommand\labelenumii{(\theenumii)}
+	\paragraph{Scénario : }
+	\begin{enumerate}
+		\item \label{sc2l1} Le système propose à l'utilisateur de se connecter à son compte.
+		\item \label{sc2l2} L'utilisateur clique sur "se connecter".
+		\item \label{sc2l3} Le système demande le nom de compte et le mot de passe de l'utilisateur.
+		\item \label{sc2l4} L'internaute entre les informations demandées.
+		\item \label{sc2l5} L'internaute clique sur "se connecter".
+		\item \label{sc2l6} L'internaute est connecté à son compte.
+	\end{enumerate}
+
+	\renewcommand\theenumi{\Alph{enumi}}
+	\renewcommand\labelenumi{\theenumi )}
+	\renewcommand\theenumii{\arabic{enumii}}
+	\renewcommand\labelenumii{\theenumii .}
+	\paragraph{Exceptions :} 
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\addtocounter{enumii}{4}
+			\item Une des informations ou les deux demandées ne correspondent pas.
+			\item Le système affiche un message d'erreur
+			\item Retour à \ref{sc2l3}
+		\end{enumerate}
+	\end{enumerate}
+\end{boxedminipage}
+\newline
+
+\begin{boxedminipage}[t]{12cm}
+	\begin{itemize}
+		\item Système : Site web "Chez Bob"
+		\item Acteur : Internaute
+		\item Objectif : Se déconnecter de son compte
+		\item Pré-condition : L'utilisateur est connecté à son compte
+	\end{itemize}
+
+	\renewcommand\theenumi{\arabic{enumi}}
+	\renewcommand\labelenumi{\theenumi .}
+	\renewcommand\theenumii{\Alph{enumii}}
+	\renewcommand\labelenumii{(\theenumii)}
+	\paragraph{Scénario :} 
+	\begin{enumerate}
+		\item \label{sc3l1} Le système propose à l'utilisateur de se déconnecter de son compte.
+		\item \label{sc3l2} L'utilisateur clique sur "se déconnecter".
+		\item \label{sc3l3} Le système déconnecte le membre de son compte.
+		\item \label{sc3l4} Le système redirige l'internaute vers l'accueil.
+	\end{enumerate}
+\end{boxedminipage}
+\newpage
+
+% On remet les valeurs qui sont là par défaut.
+\renewcommand\theenumi{\arabic{enumi}}
+\renewcommand\labelenumi{\theenumi .}
+\renewcommand\theenumii{\Alph{enumii}}
+\renewcommand\labelenumii{(\theenumii)}

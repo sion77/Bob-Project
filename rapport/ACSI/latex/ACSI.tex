@@ -1,0 +1,37 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{boxedminipage}
+\addtolength{\fboxsep}{3pt}
+
+\title{Cahier des charges de Bob-Project}
+\author{LAFON Sylvain, LEVASSEUR Thomas et MAINGRET François}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\part{Introduction}
+		\input{content/intro.tex}
+	\newpage
+	\part{Fonctionnalités}
+		\section{Cas d'utilisation}
+			\subsection{Description des acteurs}
+				\input{cas/acteurs.tex}
+			\subsection{Diagramme de cas d'utilisation}
+			\subsection{Scénario de cas d'utilisation}
+				\subsubsection{Inscription, connexion et deconnexion}
+					\input{scenarios/connexion.tex}
+				\subsubsection{Recherche d'un produit}
+					\input{scenarios/recherche.tex}
+				\subsubsection{Affichage d'un produit}
+					\input{scenarios/fiche.tex}
+\end{document}
