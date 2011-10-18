@@ -15,7 +15,7 @@
 \usepackage{boxedminipage}
 \addtolength{\fboxsep}{3pt}
 
-\title{Cahier des charges de Bob-Project}
+\title{Cahier des charges de Bob-Project (TD 33)}
 \author{LAFON Sylvain, LEVASSEUR Thomas et MAINGRET François}
 
 \begin{document}
@@ -44,15 +44,17 @@
 					
 				\includegraphics[scale=0.5]{cas/diagramme.jpg}
 			\subsection{Contraintes non fonctionnelles}
-				\input{scenarios/contraintes_non.tex}
+				\input{donnees/contraintes.tex}
 	\newpage			
 	\part{Données}
 		\section{Dictionnaire de données}
 			\input{donnees/dico.tex}
 		\section{Structures de données}
-			\subsection{Base de données}
-				\subsubsection{Modèle entité-relation}
-				\subsubsection{Schéma relationnel}
+			\subsection{Schéma relationnel}
+				Le schéma relationnel est fourni en annexe
+				\newline
+					
+				\includegraphics[scale=0.2]{donnees/SR.png}
 			\subsection{Objets}
 				\subsubsection{Diagramme de classe}
 					Le diagramme de classe est fourni en annexe
@@ -64,16 +66,18 @@
 				\subsubsection{Historique}
 					\input{donnees/histo.tex}
 				\subsubsection{Contraintes non modélisables}
-					\input{donnees/contraintes_non.tex}
+					\input{cas/contraintes_non.tex}
 	\newpage
 	\part{Jeux de test}
 		\input{content/tests.tex}
 	\newpage
 	\part{Annexes}
-		\section{Liste des annexes}
+		\section*{Liste des annexes}
 		\begin{itemize}
 			\item Diagramme de cas d'utilisation
+			\item Schéma relationnel
 			\item Diagramme de classes
 			\item Dossier : Charte graphique et normes ergonomiques
+			\item Maquette d'écran
 		\end{itemize}
 \end{document}

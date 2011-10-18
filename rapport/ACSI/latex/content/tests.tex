@@ -1,0 +1,46 @@
+\paragraph{inscription : }
+\begin{itemize}
+	\item cas normal
+	\begin{itemize}
+		\item pseudo n'existe pas deja
+		\item mot de passe identique
+	\end{itemize}
+	\item pseudo qui existe deja
+	\item mot de passe différents
+	\item un champ pas rempli
+\end{itemize}
+
+\paragraph{connection : }
+\begin{itemize}
+	\item cas normal
+	\item mauvais pass
+	\item pseudo existe pas
+	\item un champ pas rempli
+\end{itemize}
+
+\paragraph{commenter produit :}
+\begin{itemize}
+	\item cas normal : champ du commentaire rempli
+	\item pas de commentaire
+\end{itemize}
+
+\paragraph{recherche simple :}
+\begin{itemize}	
+	\item champ de recherche vide
+\end{itemize}
+
+\paragraph{recherche avancée :}
+\begin{itemize}
+	\item cas normal 
+		\begin{itemize}
+			\item nom de produit entré
+			\item au moins une case "achat/loc" cochée
+			\item prix > 0 et numerique
+			\item prix min < prix max 
+		\end{itemize} 
+	\item champ "nom" vide
+	\item composante de prix < 0
+	\item prix min > prix max
+	\item aucune case cochée pour achat / location
+	\item champ prix non numerique
+\end{itemize}
