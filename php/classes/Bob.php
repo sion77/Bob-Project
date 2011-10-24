@@ -6,14 +6,14 @@
 		private $action;
 		private $message;
 				
-		public function __construct($host, $port, $db, $login, $pass, $smarty)
+		public function __construct($host, $port, $db, $login, $pass)
 		{
 			// On commence par le constructeur de PDO
 			PDO::__construct('mysql:host='.$host.';port='.$port.';dbname='.$db, $login, $pass);
 			
 			// Puis les dépendances
-			$this->smarty = $smarty;
-			
+			$this->smarty = new Smarty();
+				
 			// Et enfin nos variables
 			$this->template = "accueil";
 			$this->action = false;		
@@ -205,8 +205,18 @@
 		
 		public function afficher()
 		{
-			$this->smarty->assign("message", $this->message);
+			$this->smarty->assign(array(
+				"message" => $this->message,
+				"connecte" => isset($_SESSION["connecte"])
+			));
+			
 			$this->smarty->display("templates\\".$this->template.".tpl");
 		}
+	
+		public function inscription()
+		{
+			
+		}
+	
 	}
 ?>
