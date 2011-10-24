@@ -8,12 +8,12 @@
 										
 	include_once("php\\classes\\Bob.php");
 		
-	$bob = Bob::construct("localhost", 3306, "projet_bob", "root", "", new Smarty());
+	$bob = new Bob("localhost", 3306, "projet_bob", "root", "", new Smarty());
 
 	$bob->analyser();
 	
 	if($bob->estAction())
 		$bob->executer();
-		
+	
 	$bob->afficher();
 ?>
