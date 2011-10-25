@@ -4,25 +4,56 @@
 		private $template;
 		private $smarty;
 		private $action;
+		
+		private $membres;
+		private $nbMembres;
+		
 		private $message;
+		private $erreur;
 				
-		public function __construct($host, $port, $db, $login, $pass)
+		public function __construct($host, $port, $db, $login, $pass, $smarty = "")
 		{
 			// On commence par le constructeur de PDO
 			PDO::__construct('mysql:host='.$host.';port='.$port.';dbname='.$db, $login, $pass);
 			
 			// Puis les dépendances
-			$this->smarty = new Smarty();
+			$this->smarty = (($smarty == "") ? new Smarty() : $smarty);
+			$this->initMembres();
 				
 			// Et enfin nos variables
 			$this->template = "accueil";
 			$this->action = false;		
 			$this->message = false;
+			$this->erreur = false;
+		}
+		
+		private function initMembres()
+		{
+			$this->nbMembres = 0;
+			//$this->membres = new Array();
+			
+			$req = $this->query("SELECT * FROM utilisateur");			
+			while($rep = $req->fetch())
+			{
+				$this->membres[$this->nbMembres] = new Membre($this, $rep["pseudoUtilisateur"]);				
+				$this->nbMembres++;
+			}
+			$req->closeCursor();
 		}
 		
 		public function estAction()
 		{
 			return $this->action;
+		}
+		
+		public function getMessage()
+		{
+			return $message;
+		}
+		
+		public function getErreur()
+		{
+			return $erreur;
 		}
 		
 		public function analyser()
@@ -56,7 +87,8 @@
 											else
 											{
 												$this->template("admin_membres");
-												$this->smarty->assign("erreur", "id non renseigné");
+												$this->message = "id non renseigné";
+												$this->erreur = true;
 											}
 										break;
 										
@@ -184,19 +216,32 @@
 				switch($this->action)
 				{
 					case "recherche rapide":						
-						$this->smarty->assign("erreur", "Fonction non implémentée");
+						$this->erreur = true;
+						$this->message = "Fonction non implémentée";
 						$this->template("accueil");
 					break;
 					
 					case "inscription":
 						if(isset($_POST["pseudo"]) && isset($_POST["pass"]) && isset($_POST["pass2"]))
-						{							
-							
+						{	
+							try
+							{
+								$this->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]);
+								$this->template = "accueil";
+								$this->message = "Votre inscription s'est déroulée avec succès";								
+							}
+							catch(Exception $e)
+							{
+								$this->template = "inscription";
+								$this->erreur = true;
+								$this->message = $e->getMessage();
+							}
 						}
 						else
 						{
-							$this->template("inscription");
-							$this->smarty->assign("erreur", "Données manquantes");
+							$this->template = "inscription";
+							$this->erreur = true;
+							$this->message = "Données manquantes";
 						}
 					break;
 				}
@@ -206,6 +251,7 @@
 		public function afficher()
 		{
 			$this->smarty->assign(array(
+				"erreur" => $this->erreur,
 				"message" => $this->message,
 				"connecte" => isset($_SESSION["connecte"])
 			));
@@ -213,10 +259,52 @@
 			$this->smarty->display("templates\\".$this->template.".tpl");
 		}
 	
-		public function inscription()
+		private function inscription($pseudo , $pass, $pass2) // return Membre
 		{
+			// On vérifie que les infos sont là
+			if($pseudo == "" || $pass == "")
+			{
+				throw new Exception("Certains champs sont vides !");
+			}
 			
-		}
-	
+			// On vérifie que les mots de passe sont identiques
+			if($pass != $pass2)
+			{
+				throw new Exception("Les mots de passes sont différents");
+			}
+			
+			// On crypte le mot de passe pour qu'il ne soit pas lisible du premier coup d'oeil dans la BDD
+			$pass = sha1($pass);
+			
+			// On echappe les quotes pour éviter les injections SQL.
+			// $pseudo = mysql_real_escape_string($pseudo);
+			
+			// On regarde s'il n'y a pas déjà de membres avec ce pseudo
+			$i = 0;
+			$dejaUtilise = false;
+			while($i < $this->nbMembres && !$dejaUtilise)
+			{
+				$dejaUtilise = ($this->membres[$i]->getPseudo() == $pseudo);
+				$i++;
+			}
+							
+			// Si personne n'a déjà ce pseudo
+			if($dejaUtilise)
+			{
+				throw new Exception("Quelqu'un utilise déjà ce pseudo");
+			}
+			
+			// On ajoute l'utilisateur
+			$sql = "INSERT INTO utilisateur(pseudoUtilisateur, passUtilisateur)
+					VALUES(:pseudo, :pass)";
+												
+			$req = $this->prepare($sql);
+			$req->execute(array(
+				"pseudo" => $pseudo,
+				"pass" => $pass
+			));
+			
+			return new Membre($this, $pseudo);
+		}	
 	}
 ?>

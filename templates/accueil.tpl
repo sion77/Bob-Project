@@ -1,4 +1,4 @@
-{* Le modèle de la page *}
+{* Le modÃ¨le de la page *}
 {extends file="modele/main.tpl"}
 
 {* Le design de la page *}
@@ -9,7 +9,7 @@
 {* Le contenu de la page *}
 {block name=content}
 	<div id="pub">
-		<img src="img/test 960x200.jpg" alt="Merci de débloquer votre bloqueur de pubs pour la survie du site. Merci m_(-_-)_m" /> 
+		<img src="img/test 960x200.jpg" alt="Merci de dÃ©bloquer votre bloqueur de pubs pour la survie du site. Merci m_(-_-)_m" /> 
 	</div>
 	<div id="coup_coeur">
 		<div class="boite_coup_coeur" id="best_seller">
@@ -19,7 +19,7 @@
 			
 			<img src="img/marteau.jpg" alt="Test image"/>
 			
-			<p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long
+			<p> Ceci est la description de l'article. Ce texte sera surement tronquÃ© au cas ou il sera trop long
 				Certains elements ici seront a changer pour mettre des liens vers la fiche de l'article.
 				 </p>
 				
@@ -29,12 +29,12 @@
 		
 		<div class="boite_coup_coeur" id="nouveaute">
 		
-		<h1> Exclusivité BricoBob !</h1>
+		<h1> ExclusivitÃ© BricoBob !</h1>
 			<h3> Titre article </h3>
 			
 			<img src="img/marteau.jpg" alt="Test image"/>
 			
-			<p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long
+			<p> Ceci est la description de l'article. Ce texte sera surement tronquÃ© au cas ou il sera trop long
 				Certains elements ici seront a changer pour mettre des liens vers la fiche de l'article.
 				 </p>
 				

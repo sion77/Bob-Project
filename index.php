@@ -8,7 +8,10 @@
 										
 	include_once("php\\classes\\Bob.php");
 		
-	$bob = new Bob("localhost", 3306, "projet_bob", "root", "");
+	$smarty = new Smarty();
+	$smarty->caching = 0;
+	
+	$bob = new Bob("localhost", 3306, "projet_bob", "root", "", $smarty);
 
 	$bob->analyser();
 	

@@ -41,7 +41,13 @@
 			<div id="content">
 				{if $message}
 					<p id="contenu_message">
-						{$message}
+						{if $erreur}
+							<span class="erreur">Erreur : 
+						{else}
+							<span class="message">
+						{/if}
+							{$message}
+						</span>
 					<p>
 				{/if}
 				{block name=content}
