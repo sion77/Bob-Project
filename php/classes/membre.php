@@ -20,10 +20,7 @@
 			$this->pseudo = $pseudo;
 		}
 		
-		public static function get_erreur()
-		{
-			return $this->erreur;
-		}
+		public static function get_erreur() { return $this->erreur; }
 			
 		public static function connection()
 		{

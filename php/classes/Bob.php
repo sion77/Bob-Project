@@ -16,7 +16,7 @@
 			// On commence par le constructeur de PDO
 			PDO::__construct('mysql:host='.$host.';port='.$port.';dbname='.$db, $login, $pass);
 			
-			// Puis les dÈpendances
+			// Puis les d√©pendances
 			$this->smarty = (($smarty == "") ? new Smarty() : $smarty);
 			$this->initMembres();
 				
@@ -58,7 +58,7 @@
 		
 		public function analyser()
 		{			
-			// AccËs au panneau d'admin
+			// Acc√®s au panneau d'admin
 			if(isset($_GET["admin"]))
 			{
 				// Que si on est connecte
@@ -87,7 +87,7 @@
 											else
 											{
 												$this->template("admin_membres");
-												$this->message = "id non renseignÈ";
+												$this->message = "id non renseign√©";
 												$this->erreur = true;
 											}
 										break;
@@ -144,7 +144,7 @@
 						$this->action = "connection";
 					break;
 					
-					//Si on nous demande de dÈconnecter l'utilisateur
+					//Si on nous demande de d√©connecter l'utilisateur
 					case "DECONNECTION":
 						$this->action = "deconnection";
 						
@@ -180,12 +180,12 @@
 						$this->template = "about";
 					break;
 					
-					//Si on nous demande d'afficher les catÈgories
+					//Si on nous demande d'afficher les cat√©gories
 					case "CATEGORIES":
 						$this->template = "categories";
 					break;
 					
-					//Si on nous demande d'afficher les sous-catÈgories
+					//Si on nous demande d'afficher les sous-cat√©gories
 					case "SOUSCATEGORIES":
 						$this->template = "sous-categories";
 					break;
@@ -217,32 +217,48 @@
 				{
 					case "recherche rapide":						
 						$this->erreur = true;
-						$this->message = "Fonction non implÈmentÈe";
+						$this->message = "Fonction non impl√©ment√©e";
 						$this->template("accueil");
 					break;
 					
 					case "inscription":
 						if(isset($_POST["pseudo"]) && isset($_POST["pass"]) && isset($_POST["pass2"]))
 						{	
-							try
+							if($membre = $this->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]))
 							{
-								$this->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]);
 								$this->template = "accueil";
-								$this->message = "Votre inscription s'est dÈroulÈe avec succËs";								
+								$this->message = "Votre inscription s'est d√©roul√©e avec succ√®s";	
+								
+								$this->membres[$this->nbMembre] = $membre;
+								$this->nbMembre++;
 							}
-							catch(Exception $e)
+							else
 							{
 								$this->template = "inscription";
-								$this->erreur = true;
-								$this->message = $e->getMessage();
+								// $this->message mis-√†-jour.
 							}
-						}
+						}		
 						else
 						{
 							$this->template = "inscription";
 							$this->erreur = true;
-							$this->message = "DonnÈes manquantes";
+							$this->message = "Donn√©es manquantes";
 						}
+					break;
+					
+					case "connection":
+						if(isset($_POST["pseudo"]) || isset($_POST["pass"]))
+						{							
+							$this->template = "accueil";
+						}
+						else
+						{							
+							$this->template = "connection";
+						}
+					break;
+										
+					default:
+						$this->template = "accueil";
 					break;
 				}
 			}
@@ -259,27 +275,31 @@
 			$this->smarty->display("templates\\".$this->template.".tpl");
 		}
 	
-		private function inscription($pseudo , $pass, $pass2) // return Membre
+		private function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
-			// On vÈrifie que les infos sont l‡
+			// On v√©rifie que les infos sont l√†
 			if($pseudo == "" || $pass == "")
 			{
-				throw new Exception("Certains champs sont vides !");
+				$this->erreur = true;
+				$this->message = "Certains champs sont vides !";
+				return false;
 			}
 			
-			// On vÈrifie que les mots de passe sont identiques
+			// On v√©rifie que les mots de passe sont identiques
 			if($pass != $pass2)
 			{
-				throw new Exception("Les mots de passes sont diffÈrents");
+				$this->erreur = true;
+				$this->message = "Les mots de passes sont diff√©rents";
+				return false;
 			}
 			
 			// On crypte le mot de passe pour qu'il ne soit pas lisible du premier coup d'oeil dans la BDD
 			$pass = sha1($pass);
 			
-			// On echappe les quotes pour Èviter les injections SQL.
+			// On echappe les quotes pour √©viter les injections SQL.
 			// $pseudo = mysql_real_escape_string($pseudo);
 			
-			// On regarde s'il n'y a pas dÈj‡ de membres avec ce pseudo
+			// On regarde s'il n'y a pas d√©j√† de membres avec ce pseudo
 			$i = 0;
 			$dejaUtilise = false;
 			while($i < $this->nbMembres && !$dejaUtilise)
@@ -288,10 +308,12 @@
 				$i++;
 			}
 							
-			// Si personne n'a dÈj‡ ce pseudo
+			// Si personne n'a d√©j√† ce pseudo
 			if($dejaUtilise)
 			{
-				throw new Exception("Quelqu'un utilise dÈj‡ ce pseudo");
+				$this->message = "Quelqu'un utilise d√©j√† ce pseudo";
+				$this->erreur = false;
+				return false;
 			}
 			
 			// On ajoute l'utilisateur
