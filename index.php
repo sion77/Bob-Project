@@ -10,6 +10,7 @@
 		
 	$smarty = new Smarty();
 	$smarty->caching = 0;
+	$smarty->force_compile = 1;
 	
 	$bob = new Bob("localhost", 3306, "projet_bob", "root", "", $smarty);
 
@@ -19,4 +20,5 @@
 		$bob->executer();
 	
 	$bob->afficher();
+	
 ?>

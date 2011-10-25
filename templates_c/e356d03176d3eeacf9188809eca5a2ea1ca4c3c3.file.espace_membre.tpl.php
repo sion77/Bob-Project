@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:07:22
+<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:54:10
          compiled from ".\templates\modele\espace_membre.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:249674ea6a67a664e63-66676182%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:154474ea6b172b6f056-69654770%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '249674ea6a67a664e63-66676182',
+  'nocache_hash' => '154474ea6b172b6f056-69654770',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty 3.1.4',
-  'unifunc' => 'content_4ea6a67a7a9a9',
+  'unifunc' => 'content_4ea6b172ccad5',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4ea6a67a7a9a9')) {function content_4ea6a67a7a9a9($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['connecte']->value){?>
+<?php if ($_valid && !is_callable('content_4ea6b172ccad5')) {function content_4ea6b172ccad5($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['connecte']->value){?>
 	<span class="etat_connecte">
 		<?php echo $_SESSION['pseudo'];?>
 

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:07:22
+<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:54:10
          compiled from ".\templates\modele\menu.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:227084ea6a67a81b078-59627529%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:254124ea6b172d06ec5-78018958%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '227084ea6a67a81b078-59627529',
+  'nocache_hash' => '254124ea6b172d06ec5-78018958',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty 3.1.4',
-  'unifunc' => 'content_4ea6a67a992d5',
+  'unifunc' => 'content_4ea6b172e9672',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4ea6a67a992d5')) {function content_4ea6a67a992d5($_smarty_tpl) {?><ul id="liste_menu">
+<?php if ($_valid && !is_callable('content_4ea6b172e9672')) {function content_4ea6b172e9672($_smarty_tpl) {?><ul id="liste_menu">
 	<li><a href='index.php?page=CATEGORIES'>Acheter</a>
 		<ul class="sous-menu">
 			<span class="first-elem-sous-menu"><li><a href='index.php?page=SOUSCATEGORIES&amp;id=1'>Jardin</a></li></span>

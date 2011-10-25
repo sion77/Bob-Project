@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:54:05
-         compiled from "templates\connection.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:216894ea6b16d93fc81-96517368%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:39:37
+         compiled from "templates\inscription.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:173254ea6ae093ef4d5-82924135%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'bcbdd2f7fdbae8a4a8f07b87e85dcf98a8baa158' => 
+    '56fec87ad8abd67e025e9b14e4baf41c119b6d90' => 
     array (
-      0 => 'templates\\connection.tpl',
-      1 => 1319544424,
+      0 => 'templates\\inscription.tpl',
+      1 => 1319535864,
       2 => 'file',
     ),
     '052881f7f30ed3dac613b15ae7bee0674d848f7e' => 
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '216894ea6b16d93fc81-96517368',
+  'nocache_hash' => '173254ea6ae093ef4d5-82924135',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty 3.1.4',
-  'unifunc' => 'content_4ea6b16e05362',
+  'unifunc' => 'content_4ea6ae09b4d83',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4ea6b16e05362')) {function content_4ea6b16e05362($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8"<?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_4ea6ae09b4d83')) {function content_4ea6ae09b4d83($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8"<?php echo '?>';?>
 
 <!DOCTYPE html 
 	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
@@ -87,9 +87,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<p>
 				<?php }?>
 				
-	<div id="form-connection">
-		<h1>CONNECTION !</h1>
-		<form action="index.php?action=CONNECTION" method="post">
+	<div id="form-inscription">
+		<h1>INSCRIPTION !</h1>
+		<h4>Les deux mots de passe doivent être identiques.</h4>
+		<h6>Veuillez ne pas tenter d'injections SQL S.V.P, merci ;)</h6>
+		
+		<form action="index.php?action=INSCRIPTION" method="post">		
 			<table>
 				<tr>
 					<th><label for="pseudo">Pseudo :</label></td>
@@ -100,14 +103,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<td><input id="pass" name="pass" type="password" /></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="centre"><input type="submit" value="C'est parti !" /></td>
+					<th><label for="pass2">Confirmation :</label></td>
+					<td><input id="pass2" name="pass2" type="password" /></td>
+					<span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span>
+					
+				</tr>
+				<tr>
+					<td colspan="2" class="centre"><input type="submit" value="Je m'inscris" /></td>
 				</tr>
 			</table>	
 		</form>
 	</div>
-	<div id="pub-connection">
-		<img src="img/neweststuffpub.jpg" alt="Newest Stuff"/>
+	<div id="pourquoi-sinscrire">
+		<h2> Pourquoi s'inscrire sur Brico-Bob ? </h2>
+		<p>
+			Il existe de nombreuses raisons qui pourraient vous pousser à vous inscrire sur Brico-Bob. Tout d'abord parce que 
+			ce site est cool.</br>
+			</br> 
+			Ensuite parce que si vous ne le faites pas, vous ne pourrez rien acheter, ni louer, vous ne pourrez
+			qu'admirer les superbes offres que nous vous proposons.</br>
+			</br>
+			Ensuite parce que ce site est cool.</br>
+			</br>
+			Une autre raison importante	est que nous sommes de méchants administrateurs qui vendent vos données privées et nous enregistrons vos données banquaires,
+			ce qui constitue notre principale source de revenus 8D
+		</p>
 	</div>
+	<script language="javascript" src="script.js"></script>
 
 			</div>						
 		</div>

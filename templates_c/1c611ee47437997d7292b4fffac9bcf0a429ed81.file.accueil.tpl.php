@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:54:05
-         compiled from "templates\connection.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:216894ea6b16d93fc81-96517368%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty 3.1.4, created on 2011-10-25 12:54:10
+         compiled from "templates\accueil.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:254674ea6b172378472-42023578%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'bcbdd2f7fdbae8a4a8f07b87e85dcf98a8baa158' => 
+    '1c611ee47437997d7292b4fffac9bcf0a429ed81' => 
     array (
-      0 => 'templates\\connection.tpl',
-      1 => 1319544424,
+      0 => 'templates\\accueil.tpl',
+      1 => 1319536825,
       2 => 'file',
     ),
     '052881f7f30ed3dac613b15ae7bee0674d848f7e' => 
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '216894ea6b16d93fc81-96517368',
+  'nocache_hash' => '254674ea6b172378472-42023578',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty 3.1.4',
-  'unifunc' => 'content_4ea6b16e05362',
+  'unifunc' => 'content_4ea6b172a4d7f',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4ea6b16e05362')) {function content_4ea6b16e05362($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8"<?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_4ea6b172a4d7f')) {function content_4ea6b172a4d7f($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8"<?php echo '?>';?>
 
 <!DOCTYPE html 
 	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
@@ -87,26 +87,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<p>
 				<?php }?>
 				
-	<div id="form-connection">
-		<h1>CONNECTION !</h1>
-		<form action="index.php?action=CONNECTION" method="post">
-			<table>
-				<tr>
-					<th><label for="pseudo">Pseudo :</label></td>
-					<td><input id="pseudo" name="pseudo" type="text" /></td>
-				</tr>
-				<tr>
-					<th><label for="pass">Mot de passe :</label></td>
-					<td><input id="pass" name="pass" type="password" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" class="centre"><input type="submit" value="C'est parti !" /></td>
-				</tr>
-			</table>	
-		</form>
+	<div id="pub">
+		<img src="img/test 960x200.jpg" alt="Merci de débloquer votre bloqueur de pubs pour la survie du site. Merci m_(-_-)_m" /> 
 	</div>
-	<div id="pub-connection">
-		<img src="img/neweststuffpub.jpg" alt="Newest Stuff"/>
+	<div id="coup_coeur">
+		<div class="boite_coup_coeur" id="best_seller">
+
+			<h1> Meilleure vente du momment !</h1>
+			<h3> Titre article </h3>
+			
+			<img src="img/marteau.jpg" alt="Test image"/>
+			
+			<p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long
+				Certains elements ici seront a changer pour mettre des liens vers la fiche de l'article.
+				 </p>
+				
+			<span id="prix_article_bestseller" class="prix_article_coup_coeur">5e</span>  
+			<span id="voirficheproduit_bestseller" class="voirficheproduit_coup_coeur"><a href='index.php?page=FICHEPRODUIT'>Voir fiche produit</a></span>
+		</div>
+		
+		<div class="boite_coup_coeur" id="nouveaute">
+		
+		<h1> Exclusivité BricoBob !</h1>
+			<h3> Titre article </h3>
+			
+			<img src="img/marteau.jpg" alt="Test image"/>
+			
+			<p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long
+				Certains elements ici seront a changer pour mettre des liens vers la fiche de l'article.
+				 </p>
+				
+			<span id="prix_article_nouveaute" class="prix_article_coup_coeur">79.99e</span> 
+			<span id="voirficheproduit_nouveaute" class="voirficheproduit_coup_coeur"><a href='index.php?page=FICHEPRODUIT'>Voir la fiche produit</a></span>
+		
+		</div>
 	</div>
 
 			</div>						

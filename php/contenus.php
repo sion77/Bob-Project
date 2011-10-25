@@ -6,16 +6,16 @@
 		// Bloc panneau-categories
 		echo "<div id=\"panneau-categories\">";
 		
-			// "Demande le numéro et le nom de chaque catégorie sans parent"
+			// "Demande le numÃ©ro et le nom de chaque catÃ©gorie sans parent"
 			$sql = "SELECT idCat AS \"id\", nomCat AS \"titre\" 
 					FROM categorie
 					WHERE idParent IS NULL";
 					
-			// Pour chaque ligne de résultat
+			// Pour chaque ligne de rÃ©sultat
 			$req = mysql_query($sql) or die(erreur_sql($sql)); // Execute la requete
 			while($rep = mysql_fetch_array($req))              // Recupere le resultat de la prochaine ligne
 			{
-				// Bloc categorie (image de la catégorie + lien vers la page contenant ses sous-catégories)
+				// Bloc categorie (image de la catÃ©gorie + lien vers la page contenant ses sous-catÃ©gories)
 				echo "<div class=\"categorie\">";
 					echo "<img src=\"img/categorie-jardin.jpg\" alt=\"Test categories\"/>";
 					echo "<a href=\"index.php?page=SOUSCATEGORIES&amp;id=".$rep["id"]."\">".$rep["titre"]."</a>";
@@ -26,61 +26,61 @@
 		echo "</div>";
 	}
 
-	// Affiche les sous-catégories
+	// Affiche les sous-catÃ©gories
 	function afficheSousCategories($id)
 	{// $id securisee	
 				
-		// Recupere le nom de la catégorie dont l'id est $id
+		// Recupere le nom de la catÃ©gorie dont l'id est $id
 		$sql = "SELECT nomCat AS \"nom\"
 				FROM categorie
 				WHERE idCat = '".$id."'";
 		
-		// Execute la requete et pour chaque ligne de résultat
+		// Execute la requete et pour chaque ligne de rÃ©sultat
 		$req = mysql_query($sql) or die (erreur_sql($sql));
 		if($rep = mysql_fetch_array($req))
 		{		
-			// Libère le résultat
+			// LibÃ¨re le rÃ©sultat
 			mysql_free_result($req);
 			
 			// Bloc "page-sous-categorie"
 			echo "<div id=\"page-sous-categories\">";
 			
-				// Titre : nom de la catégorie mère (suivie d'une image)
+				// Titre : nom de la catÃ©gorie mÃ¨re (suivie d'une image)
 				echo "<h2>".$rep["nom"]."</h2>";
 				echo "<img src=\"img/pub-ideejardin.jpg\" alt=\"Test categories\"/>";
 				
-				// Récupérer l'id, le titre, la description de chaque catégorie dont le père à pour id : $id
+				// RÃ©cupÃ©rer l'id, le titre, la description de chaque catÃ©gorie dont le pÃ¨re Ã  pour id : $id
 				$sql = "SELECT idCat AS \"id\",
 						       nomCat AS \"titre\",
 						       descriptionCat AS \"desc\"
 						FROM categorie
 						WHERE idParent = '".$id."'";
 
-				// Executer la requête et, pour chaque ligne de résultat :
+				// Executer la requÃªte et, pour chaque ligne de rÃ©sultat :
 				$req = mysql_query($sql) or die (erreur_sql($sql));
 				while($rep = mysql_fetch_array($req))
 				{
 					// Bloc sous-categorie
 					echo "<div class=\"sous-categorie\">";
-						// On affiche le titre, l'image et la description de la catégorie
+						// On affiche le titre, l'image et la description de la catÃ©gorie
 						echo "<h4>".$rep["titre"]."</h4>";
 						echo "<img src=\"img/souscat-tondeuses.jpg\" alt=\"Test categories\"/>";
 						echo "<p>".$rep["desc"]."</p>";
 						echo "<a href='#'>Voir les autres produits</a>";
 					echo "</div>";
 				}
-				mysql_free_result($req); // On libère le resultat
+				mysql_free_result($req); // On libÃ¨re le resultat
 			
 			echo "</div>";
 		}
 		
-		// On ne trouve pas la catégorie mère :
+		// On ne trouve pas la catÃ©gorie mÃ¨re :
 		else
 		{
-			// On libère le résultat
+			// On libÃ¨re le rÃ©sultat
 			mysql_free_result($req);
 			
-			// On affiche les catégories sans parent..
+			// On affiche les catÃ©gories sans parent..
 			afficheCategories();
 		}
 	}
@@ -109,8 +109,8 @@
 				<div id="select-quantite">
 					<form method="post" action="#">
 					   <p>
-						   <label for="pays">Quantité :</label><br />
-						   <select name="quantité" id="quantité">
+						   <label for="pays">QuantitÃ© :</label><br />
+						   <select name="quantitÃ©" id="quantitÃ©">
 							   <option value="1">1</option>
 							   <option value="2">2</option>
 							   <option value="3">3</option>
@@ -133,7 +133,7 @@
 			</div>
 			
 			<div class="avis-fiche-produit">
-				<h3> Très efficace ! <h3>
+				<h3> TrÃ¨s efficace ! <h3>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
@@ -146,7 +146,7 @@
 			</div>
 			
 			<div class="avis-fiche-produit">
-				<h3> Très efficace ! <h3>
+				<h3> TrÃ¨s efficace ! <h3>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
 				<div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
@@ -166,15 +166,15 @@
 	{
 		/*
 			Demande l'id et le pseudo de chaque utilisateur 
-			ainsi qu'un booléen indiquant s'il est admin ou pas.
-			Tout cela trié suivant l'id de l'utilisateur
+			ainsi qu'un boolÃ©en indiquant s'il est admin ou pas.
+			Tout cela triÃ© suivant l'id de l'utilisateur
 		*/
-		$sql = "    -- Récupère les utilisateurs non admins
+		$sql = "    -- RÃ©cupÃ¨re les utilisateurs non admins
               		SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '0' AS \"admin\" 
 				    FROM utilisateur M, admin A
 				    WHERE idUtilisateur <> idAdmin
 				UNION
-				    -- Récupère les utilisateurs admins
+				    -- RÃ©cupÃ¨re les utilisateurs admins
 				    SELECT idUtilisateur AS \"id\", pseudoUtilisateur AS \"pseudo\", '1' AS \"admin\"
 				    FROM utilisateur M, admin A
 				    WHERE idUtilisateur = idAdmin
@@ -192,7 +192,7 @@
 				</tr>
 		<?php
 		
-		// Executer la requête, puis, pour chaque ligne de résultat
+		// Executer la requÃªte, puis, pour chaque ligne de rÃ©sultat
 		$req = mysql_query($sql) or die(erreur_sql($sql));
 		while($rep = mysql_fetch_array($req))
 		{
@@ -231,34 +231,34 @@
 				}
 			echo "</tr>";
 		}
-		mysql_free_result($req); // On libère le résultat
+		mysql_free_result($req); // On libÃ¨re le rÃ©sultat
 		
 		echo "</table>";
 		// Fin du tableau
 	}
 	
-	// Permet de lister les catégories
+	// Permet de lister les catÃ©gories
 	function admin_listerCategories()
 	{
 		// Titre de la page
 		echo "<h1>Gestion des categories</h1>";
-		echo "<h2><span class=\"erreur\">** En cours de création **</span></h2>";
+		echo "<h2><span class=\"erreur\">** En cours de crÃ©ation **</span></h2>";
 		
-		// Pour chaque catégorie sans parent..
+		// Pour chaque catÃ©gorie sans parent..
 		$sql = "SELECT * FROM categorie
 				WHERE idParent IS NULL";
 				
-		// Débute la liste des catégorie
+		// DÃ©bute la liste des catÃ©gorie
 		echo "<ul>";
 					
-			// Execute la requete, puis, pour chaque ligne de résultat..
+			// Execute la requete, puis, pour chaque ligne de rÃ©sultat..
 			$req = mysql_query($sql) or die(erreur_sql($sql));
 			while($rep = mysql_fetch_array($req))
 			{
-				// On liste les catégories
+				// On liste les catÃ©gories
 				echo "<li>".$rep["idCat"].") ".$rep["nomCat"]."</li>";
 			}
-			mysql_free_result($req); // On libère le resultat
+			mysql_free_result($req); // On libÃ¨re le resultat
 			
 		echo "</ul>";
 		// Fin de la liste		

@@ -5,8 +5,8 @@
 		private $smarty;
 		private $action;
 		
-		private $membres;
-		private $nbMembres;
+		private $membres;   // Tableau de membres et admins
+		private $nbMembres; // taille du tableau
 		
 		private $message;
 		private $erreur;
@@ -30,12 +30,31 @@
 		private function initMembres()
 		{
 			$this->nbMembres = 0;
-			//$this->membres = new Array();
 			
-			$req = $this->query("SELECT * FROM utilisateur");			
+			$req = $this->query("	SELECT idUtilisateur AS \"id\",
+											pseudoUtilisateur AS \"pseudo\",
+											passUtilisateur AS \"pass\",
+											'0' AS \"admin\"
+									FROM utilisateur
+									WHERE idUtilisateur NOT IN( SELECT idAdmin FROM admin )
+									
+								UNION
+									
+									SELECT idUtilisateur AS \"id\",
+										   pseudoUtilisateur AS \"pseudo\",
+										   passUtilisateur AS \"pass\",
+										   '1' AS \"admin\"
+									FROM utilisateur
+									WHERE idUtilisateur IN( SELECT idAdmin FROM admin )
+								");			
 			while($rep = $req->fetch())
 			{
-				$this->membres[$this->nbMembres] = new Membre($this, $rep["pseudoUtilisateur"]);				
+				if($rep["admin"])
+					$m = new Admin($this, $rep["id"], $rep["pseudo"], $rep["pass"]);
+				else
+					$m = new Membre($this, $rep["id"], $rep["pseudo"], $rep["pass"]);
+					
+				$this->membres[$this->nbMembres] = $m;			
 				$this->nbMembres++;
 			}
 			$req->closeCursor();
@@ -248,12 +267,21 @@
 					
 					case "connection":
 						if(isset($_POST["pseudo"]) || isset($_POST["pass"]))
-						{							
-							$this->template = "accueil";
+						{	
+							if($membre = $this->connection($_POST["pseudo"], $_POST["pass"]))
+							{
+								$this->template = "accueil";
+							}
+							else
+							{
+								$this->template = "connection";
+							}
 						}
 						else
 						{							
 							$this->template = "connection";
+							$this->message = "Il manque des données";
+							$this->erreur = true;
 						}
 					break;
 										
@@ -326,7 +354,56 @@
 				"pass" => $pass
 			));
 			
-			return new Membre($this, $pseudo);
+			return new Membre($this, 0, $pseudo, $pass);
 		}	
+	
+		private function connection($pseudo, $pass)
+		{
+			if($pseudo == "" || $pass == "")
+			{
+				$this->message = "Certains champs sont vides";
+				$this->erreur = true;
+				return false;
+			}
+			
+			$trouve = false;
+			$i = 0;
+			while($i < $this->nbMembres && !$trouve)
+			{
+				$trouve = ($this->membres[$i]->getPseudo() == $pseudo);
+				$i++;
+			}
+			
+			if(!$trouve)
+			{
+				$this->message = "Identifiants incorrects"; // Utilisateur non trouvé
+				$this->erreur = true;
+				return false;
+			}
+			
+			$membre = $this->membres[$i-1];
+			
+			if($membre->getPassCrypte() != sha1($pass))
+			{
+				$this->message = "Identifiants incorrects"; // Mot de passe incorrect
+				$this->erreur = true;
+				return false;
+			}
+			
+			$_SESSION["connecte"] = true;
+			$_SESSION["id"] = $membre->getId();
+			$_SESSION["pseudo"] = $membre->getPseudo();
+			$_SESSION["admin"] = $membre->estAdmin();
+			
+			/*$i = 0;
+			$trouve = false;
+			while($i < $this->nbAdmin && !$trouve)
+			{
+				$trouve = ($this->admins[$i] == $membre);
+				$i++;
+			}*/
+			
+			return $membre;
+		}
 	}
 ?>
