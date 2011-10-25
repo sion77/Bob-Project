@@ -1,4 +1,4 @@
-# Projet WEB de l'IUT
+﻿# Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
 ### -- Dossier principal --
 
@@ -19,6 +19,7 @@
 * *html* : les contenus simples (c'est-à-dire sans php)
 * *php* : contient les fichiers php
 * *js* : contient les fichiers javascript
+* *css* : contient les fichiers de style css
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
