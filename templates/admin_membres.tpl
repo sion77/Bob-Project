@@ -8,19 +8,19 @@
 	<h1>Gestion des membres</h1>
 	<table>
 		<tr>
-			<th>Id</th>
-			<th>Pseudo</th>
-			<th>Actions</th>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">Pseudo</th>
+			<th style="text-align: center;">Actions</th>
 		</tr>
 		
 		{foreach from=$membres item=membre}
 			<tr>
-				<td>{$membre->getId()}</td>
-				<td>{$membre->getPseudo()}</td>
-				<td>
-					{if $membre->estAdmin()}
-						Admin
-					{else}
+				<td style="text-align: center;">{$membre->getId()}</td>
+				<td style="text-align: center;">{$membre->getPseudo()}</td>
+				{if $membre->estAdmin()}					
+					<td style="text-align: center;">Admin</td>					
+				{else}
+					<td style="text-align: left;">
 						<ul>
 							<li>
 								<a href="index.php?admin=MEMBRES&amp;action=PROMO&amp;id={$membre->getId()}">
@@ -33,8 +33,8 @@
 								</a>
 							</li>
 						</ul>
-					{/if}
-				</td>
+					</td>
+				{/if}
 			</tr>			
 		{/foreach}
 		

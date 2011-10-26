@@ -284,6 +284,13 @@
 							$this->erreur = true;
 						}
 					break;
+					
+					case "supprimer membre":
+						if(isset($_GET["id"]))
+						{
+							$this->supprimerMembre(intval($_GET["id"]));
+						}
+					break;
 										
 					default:
 						$this->template = "accueil";
@@ -399,5 +406,58 @@
 			return $membre;
 		}
 	
+		private function supprimerMembre($id)
+		{
+			// Quoi qu'il arrive, même template :
+			$this->template = "admin_membres";
+			
+			// On recherche le membre à supprimer
+			$i = 0;
+			$trouve = false;
+			while($i < $this->nbMembres && !$trouve)
+			{
+				$trouve = ($this->membres[$i]->getId() == $id);
+				$i++;
+			}
+			
+			// On a pas l'id
+			if(!$trouve)
+			{
+				$this->message = "Cet id n'est pas attribué";
+				$this->erreur = true;
+				return false;
+			}
+			
+			// On a trouvé, mais on a incrémenté une fois de trop.
+			$i--;
+			
+			// Le membre est administrateur
+			if($this->membres[$i]->estAdmin())
+			{
+				$this->message = "Cet id appartient à un admin";
+				$this->erreur = true;
+				return false;
+			}
+					
+			// Erreur lors de la suppression
+			if(!$this->membres[$i]->supprimer())
+			{
+				$this->message = "Erreur sql";
+				$this->erreur = true;
+				return false;
+			}
+			
+			// On va supprimer le Membre du tableau
+			if($i < $this->nbMembres-1)
+			{
+				$this->membres[$i] = $this->membres[$this->nbMembres-1];
+			}			
+			unset($this->membres[$this->nbMembres-1]);
+			$this->nbMembres--;	
+
+			// Tout est ok !
+			$this->message = "Suppression du membre terminée";
+			return true;
+		}
 	}
 ?>

@@ -1,23 +1,23 @@
 #liste_menu /* La barre de menu */
 {
+
 position : absolute;
-width : 960px;
-list-style-type : none;
-margin : 0;
-padding : 0;
-border : 0;
-z-index : 5;
+	width : 960px;
+	list-style-type : none;
+	margin : 0;
+	padding : 0;
+	border : 0;
+	z-index : 5;
 }
 
 #liste_menu li /* un element de la barre de menu */
 {
-float : left;
-width : 235px;
-margin : 0;
-padding : 0;
-padding-right : 5px;
-border : 0;
-
+	float : left;
+	width : 235px;
+	margin : 0;
+	padding : 0;
+	padding-right : 5px;
+	border : 0;
 
 }
 

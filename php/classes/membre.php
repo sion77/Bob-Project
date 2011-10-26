@@ -43,6 +43,24 @@
 		{
 		
 		}
+	
+		public function supprimer()
+		{
+			// S'il s'agit d'un admin
+			if($this->estAdmin())
+			{
+				// On supprime son entree dans la table admin
+				$req = $this->Bob->prepare("DELETE FROM admin WHERE idAdmin = ?");
+				if(!$req->execute(array($this->id)))
+				{
+					return false;
+				}
+			}
+			
+			// Suppression !
+			$req = $this->Bob->prepare("DELETE FROM utilisateur WHERE idUtilisateur = ?");
+			return $req->execute(array($this->id));
+		}	
 	}
 	
 	class Admin extends Membre {
