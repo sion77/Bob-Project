@@ -1,7 +1,7 @@
 {extends file="modele/main.tpl"}
 
 {block name=design}
-	<link rel="stylesheet" media="screen" href="css/special/inscr-connect.css" type="text/css"/>
+	{assign name="design" value="special/inscr-connect.css"}
 {/block}
 
 {block name=content}

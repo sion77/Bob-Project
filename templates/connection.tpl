@@ -1,9 +1,12 @@
+{* Le modèle de la page *}
 {extends file="modele/main.tpl"}
 
+{* Le design de la page *}
 {block name=design}
-	<link rel="stylesheet" media="screen" href="css/special/inscr-connect.css" type="text/css"/>
+	{assign var='design' value="special/inscr-connect"}
 {/block}
 
+{* Le contenu de la page *}
 {block name=content}
 	<div id="form-connection">
 		<h1>CONNECTION !</h1>

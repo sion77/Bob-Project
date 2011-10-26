@@ -60,20 +60,9 @@
 			$req->closeCursor();
 		}
 		
-		public function estAction()
-		{
-			return $this->action;
-		}
-		
-		public function getMessage()
-		{
-			return $message;
-		}
-		
-		public function getErreur()
-		{
-			return $erreur;
-		}
+		public function estAction() { return $this->action; }		
+		public function getMessage() { return $message; }
+		public function getErreur()	{ return $erreur; }
 		
 		public function analyser()
 		{			
@@ -105,7 +94,7 @@
 											}
 											else
 											{
-												$this->template("admin_membres");
+												$this->template = "admin_membres";
 												$this->message = "id non renseigné";
 												$this->erreur = true;
 											}
@@ -113,33 +102,33 @@
 										
 										// Sinon
 										default:
-											$this->template("admin_membres");
+											$this->template = "admin_membres";
 										break;
 									}
 								}
 								
 								// Si on vient d'arriver sur la gestion des membres
 								else
-									$this->template("admin_membres");
+									$this->template = "admin_membres";
 							break;
 							
 							/* Gestion des categories */
 							case "CATEGORIES" : 
-								$this->template("admin_categories");
+								$this->template = "admin_categories";
 							break;
 							
 							/* Sinon, ou si on demande explicitement l'accueil */
 							case "ACCUEIL":
 							default:
-								$this->template("admin");
+								$this->template = "admin";
 							break;
 						}
 					}
 					else
-						$this->template("acceuil");
+						$this->template = "accueil";
 				}
 				else
-					$this->template("acceuil");
+					$this->template = "accueil";
 			}
 			
 			//Si on nous demande de faire quelque chose 
@@ -237,7 +226,7 @@
 					case "recherche rapide":						
 						$this->erreur = true;
 						$this->message = "Fonction non implémentée";
-						$this->template("accueil");
+						$this->template = ("accueil");
 					break;
 					
 					case "inscription":
@@ -394,15 +383,7 @@
 			$_SESSION["id"] = $membre->getId();
 			$_SESSION["pseudo"] = $membre->getPseudo();
 			$_SESSION["admin"] = $membre->estAdmin();
-			
-			/*$i = 0;
-			$trouve = false;
-			while($i < $this->nbAdmin && !$trouve)
-			{
-				$trouve = ($this->admins[$i] == $membre);
-				$i++;
-			}*/
-			
+						
 			return $membre;
 		}
 	}

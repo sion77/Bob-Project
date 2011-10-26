@@ -3,7 +3,7 @@
 
 {* Le design de la page *}
 {block name=design}
-	<link rel="stylesheet" media="screen" href="css/special/accueil.css" type="text/css"/>
+	{assign var='design' value="special/accueil"}
 {/block}
 
 {* Le contenu de la page *}

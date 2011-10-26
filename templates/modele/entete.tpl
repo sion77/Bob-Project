@@ -6,4 +6,8 @@
 	<!-- Aucun design supplémentaire -->
 {/block}
 
+{foreach from=$design item=item}
+	<link rel="stylesheet" media="screen" href="css/{$item}.css" type="text/css"/>
+{/foreach}
+
 <title>Site - Chez Bob</title>
