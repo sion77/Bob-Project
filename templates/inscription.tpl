@@ -1,7 +1,7 @@
 {extends file="modele/main.tpl"}
 
 {block name=design}
-	{assign name="design" value="special/inscr-connect.css"}
+	{assign var='design' value="special/inscr-connect"}
 {/block}
 
 {block name=content}

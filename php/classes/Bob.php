@@ -46,6 +46,8 @@
 										   '1' AS \"admin\"
 									FROM utilisateur
 									WHERE idUtilisateur IN( SELECT idAdmin FROM admin )
+									
+								ORDER BY id
 								");			
 			while($rep = $req->fetch())
 			{
@@ -234,11 +236,20 @@
 						{	
 							if($membre = $this->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]))
 							{
-								$this->template = "accueil";
-								$this->message = "Votre inscription s'est déroulée avec succès";	
+								$this->membres[$this->nbMembres] = $membre;
+								$this->nbMembres++;
 								
-								$this->membres[$this->nbMembre] = $membre;
-								$this->nbMembre++;
+								if($this->connection($_POST["pseudo"], $_POST["pass"]))
+								{
+									$this->template = "accueil";
+									$this->message = "Votre inscription s'est déroulée avec succès";	
+								}
+								else
+								{
+									$this->template = "accueil";
+									$this->erreur = true;
+									$this->message = "La connection suivant l'inscription à échouée";
+								}								
 							}
 							else
 							{
@@ -286,7 +297,8 @@
 			$this->smarty->assign(array(
 				"erreur" => $this->erreur,
 				"message" => $this->message,
-				"connecte" => isset($_SESSION["connecte"])
+				"connecte" => isset($_SESSION["connecte"]),
+				"membres" => $this->membres
 			));
 			
 			$this->smarty->display("templates\\".$this->template.".tpl");
@@ -342,7 +354,7 @@
 				"pseudo" => $pseudo,
 				"pass" => $pass
 			));
-			
+						
 			return new Membre($this, 0, $pseudo, $pass);
 		}	
 	
@@ -386,5 +398,6 @@
 						
 			return $membre;
 		}
+	
 	}
 ?>

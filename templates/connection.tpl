@@ -1,4 +1,4 @@
-{* Le modèle de la page *}
+{* Le modÃ¨le de la page *}
 {extends file="modele/main.tpl"}
 
 {* Le design de la page *}
