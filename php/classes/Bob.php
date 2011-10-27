@@ -90,16 +90,12 @@
 									{
 										// Supprimer un membre
 										case "SUPPRIMER":
-											if(isset($_GET["id"]))
-											{
-												$this->action = "supprimer membre";
-											}
-											else
-											{
-												$this->template = "admin_membres";
-												$this->message = "id non renseigné";
-												$this->erreur = true;
-											}
+											$this->action = "supprimer membre";											
+										break;
+										
+										// Promouvoir un membre (au rang d'admin)
+										case "PROMO":
+											$this->action = "promo membre";
 										break;
 										
 										// Sinon
@@ -290,6 +286,25 @@
 						{
 							$this->supprimerMembre(intval($_GET["id"]));
 						}
+						else
+						{
+							$this->template = "admin_membres";
+							$this->message = "id non renseigné";
+							$this->erreur = true;
+						}
+					break;
+					
+					case "promo membre":
+						if(isset($_GET["id"]))
+						{
+							$this->promoMembre(intval($_GET["id"]));
+						}
+						else
+						{
+							$this->template = "admin_membres";
+							$this->message = "id non renseigné";
+							$this->erreur = true;
+						}
 					break;
 										
 					default:
@@ -310,6 +325,8 @@
 			
 			$this->smarty->display("templates\\".$this->template.".tpl");
 		}
+	
+		// ============= ACTIONS ============= //
 	
 		private function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
@@ -406,11 +423,8 @@
 			return $membre;
 		}
 	
-		private function supprimerMembre($id)
+		private function getMembre($id)
 		{
-			// Quoi qu'il arrive, même template :
-			$this->template = "admin_membres";
-			
 			// On recherche le membre à supprimer
 			$i = 0;
 			$trouve = false;
@@ -430,6 +444,18 @@
 			
 			// On a trouvé, mais on a incrémenté une fois de trop.
 			$i--;
+			
+			return $i;
+		}
+		
+		private function supprimerMembre($id)
+		{
+			// Quoi qu'il arrive, même template :
+			$this->template = "admin_membres";
+			
+			// On recherche le membre
+			$i = $this->getMembre($id);
+			if(!$i) return false;
 			
 			// Le membre est administrateur
 			if($this->membres[$i]->estAdmin())
@@ -457,6 +483,43 @@
 
 			// Tout est ok !
 			$this->message = "Suppression du membre terminée";
+			return true;
+		}
+		
+		private function promoMembre($id)
+		{
+			// Quoi qu'il arrive, même template :
+			$this->template = "admin_membres";
+			
+			// On recherche le membre
+			$i = $this->getMembre($id);
+			if(!$i) return false;
+			
+			// On a trouvé, mais on a incrémenté une fois de trop.
+			$i--;
+			
+			// Le membre est déjà administrateur
+			if($this->membres[$i]->estAdmin())
+			{
+				$this->message = "Cet id appartient à un admin";
+				$this->erreur = true;
+				return false;
+			}
+					
+			// Erreur lors de la promotion
+			$admin = $this->membres[$i]->upgrade();
+			if(!$admin)
+			{
+				$this->message = "Erreur sql";
+				$this->erreur = true;
+				return false;
+			}
+			
+			// Transformation >.< !!!! 
+			$this->membres[$i] = $admin;
+
+			// Tout est ok !
+			$this->message = "Promotion du membre terminée";
 			return true;
 		}
 	}

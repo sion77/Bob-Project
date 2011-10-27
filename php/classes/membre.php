@@ -41,7 +41,12 @@
 		
 		public function upgrade()
 		{
-		
+			$req = $this->Bob->prepare("INSERT INTO admin VALUES (?)");
+			
+			if(!$req->execute(array($this->id)))
+				return false;
+				
+			return new Admin($this->Bob, $this->id, $this->pseudo, $this->passCrypte);
 		}
 	
 		public function supprimer()
@@ -65,5 +70,6 @@
 	
 	class Admin extends Membre {
 		public function estAdmin() { return true; }
+		public function upgrade() { return false; }
 	}
 ?>
