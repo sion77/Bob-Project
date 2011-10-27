@@ -1,4 +1,7 @@
 <?php
+
+	require("classes\\Membre.class.php");
+
 	class Bob extends PDO
 	{
 		private $template;
@@ -193,11 +196,12 @@
 					
 					//Si on nous demande d'afficher les sous-catégories
 					case "SOUSCATEGORIES":
-						$this->template = "sous-categories";
+						$this->template = "sous_categories";
 					break;
 					
+					// La fiche d'un produit
 					case "FICHEPRODUIT":
-						$this->template = "fiche-produit";
+						$this->template = "fiche_produit";
 					break;
 					
 					// Sinon on affiche la page d'acceuil

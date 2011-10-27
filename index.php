@@ -2,11 +2,7 @@
 	session_start(); // Permet d'utiliser les sessions.
 		
 	require("Smarty\\Smarty.class.php"); // Contient Smarty
-	include_once("php\\fonctions.php"); // Contient les fonctions manipulant la BDD
-	include_once("php\\page.php");      // Contient la fonction page et ses sous-fonctions (comme contenu)
-	                                    // Et les fonctions de contenus contenues dans contenus.php
-										
-	include_once("php\\classes\\Bob.php");
+	require("classes\\Bob.class.php"); // Contient Bob
 		
 	$smarty = new Smarty();
 	$smarty->caching = 0;
