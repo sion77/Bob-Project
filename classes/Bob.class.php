@@ -495,9 +495,6 @@
 			$i = $this->getMembre($id);
 			if(!$i) return false;
 			
-			// On a trouvé, mais on a incrémenté une fois de trop.
-			$i--;
-			
 			// Le membre est déjà administrateur
 			if($this->membres[$i]->estAdmin())
 			{
