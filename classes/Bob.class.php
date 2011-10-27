@@ -11,8 +11,19 @@
 		private $membres;   // Tableau de membres et admins
 		private $nbMembres; // taille du tableau
 		
+		private $categories;	// Tableau de categories
+		private $nbCategories;	// Nombre de categories
+		
 		private $message;
 		private $erreur;
+		
+		// ============= GETTERS ============= //
+		
+		public function estAction() { return $this->action; }		
+		public function getMessage() { return $message; }
+		public function getErreur()	{ return $erreur; }
+		
+		// ============= INITS ============= //
 				
 		public function __construct($host, $port, $db, $login, $pass, $smarty = "")
 		{
@@ -21,17 +32,29 @@
 			
 			// Puis les dépendances
 			$this->smarty = (($smarty == "") ? new Smarty() : $smarty);
-			$this->initMembres();
+			
+			$this->nbMembres = 0;
+			$this->membres = NULL;
+			
+			$this->nbCategories = 0;
+			$this->categories = NULL;
 				
 			// Et enfin nos variables
 			$this->template = "accueil";
 			$this->action = false;		
 			$this->message = false;
 			$this->erreur = false;
+			
+			// Le mieux serait de les appeller que si besoin
+			$this->initMembres();
+			$this->initCategories();
 		}
 		
 		private function initMembres()
 		{
+			if($this->membres != NULL)
+				return false;
+
 			$this->nbMembres = 0;
 			
 			$req = $this->query("	SELECT idUtilisateur AS \"id\",
@@ -63,11 +86,37 @@
 				$this->nbMembres++;
 			}
 			$req->closeCursor();
+			
+			return true;
 		}
 		
-		public function estAction() { return $this->action; }		
-		public function getMessage() { return $message; }
-		public function getErreur()	{ return $erreur; }
+		private function initCategories()
+		{
+			if($this->categories != NULL)
+				return false;
+
+			$this->nbCategories = 0;
+			
+			$req = $this->query("SELECT idCat AS \"id\",
+										descriptionCat AS \"desc\",
+										nomCat AS \"nom\"
+								 FROM categorie
+								 WHERE idParent IS NULL
+								 ORDER BY id");		
+								
+			while($rep = $req->fetch())
+			{
+				$c = new Categorie($this, $rep["id"], $rep["nom"], $rep["desc"], NULL);
+					
+				$this->categories[$this->nbCategories] = $c;			
+				$this->nbCategories++;
+			}
+			$req->closeCursor();
+			
+			return true;
+		}
+				
+		// ============= PUBLIC ============= //
 		
 		public function analyser()
 		{			
@@ -427,7 +476,7 @@
 			return $membre;
 		}
 	
-		private function getMembre($id)
+		private function getIndiceMembre($id)
 		{
 			// On recherche le membre à supprimer
 			$i = 0;
@@ -458,7 +507,7 @@
 			$this->template = "admin_membres";
 			
 			// On recherche le membre
-			$i = $this->getMembre($id);
+			$i = $this->getIndiceMembre($id);
 			if(!$i) return false;
 			
 			// Le membre est administrateur
@@ -496,7 +545,7 @@
 			$this->template = "admin_membres";
 			
 			// On recherche le membre
-			$i = $this->getMembre($id);
+			$i = $this->getIndiceMembre($id);
 			if(!$i) return false;
 			
 			// Le membre est déjà administrateur
@@ -522,6 +571,25 @@
 			// Tout est ok !
 			$this->message = "Promotion du membre terminée";
 			return true;
+		}
+	
+		public function getMembre($id)
+		{
+			return $this->membres[getIndiceMembre($id)];
+		}
+		
+		///
+	
+		public function getCategorie($id)
+		{
+			$i = 0;
+			while($i < $this->nbCategories && !$trouve)
+			{
+				$trouve = ($this->categories[$i]->getCategorie());
+				$i++;
+			}
+			
+			return $trouve;
 		}
 	}
 ?>
