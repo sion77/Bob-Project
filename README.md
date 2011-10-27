@@ -14,12 +14,15 @@
 **Dossiers** :
 
 * *img* : les images
-* *html* : les contenus simples (c'est-à-dire sans php)
-* *php* : contient les fichiers php
+* *classes* : contient les fichiers contenant les classes php
 * *js* : contient les fichiers javascript
 * *css* : contient le style css
 * *Smarty* : contient le moteur de templates Smarty
 * *templates* : contient les templates
+
+**Dossiers temporaires** :
+
+* *templates_c* : contient le cache
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
