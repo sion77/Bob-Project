@@ -1,6 +1,7 @@
 <?php
 
 	require("classes\\Membre.class.php");
+	require("classes\\Categorie.class.php");
 
 	class Bob extends PDO
 	{
@@ -245,7 +246,27 @@
 					
 					//Si on nous demande d'afficher les sous-catégories
 					case "SOUSCATEGORIES":
-						$this->template = "sous_categories";
+						if(isset($_GET["id"]))
+						{
+							$sc = $this->getCategorie(intval($_GET["id"]));
+							if($sc != false)
+							{
+								$this->smarty->assign("sc", $sc);
+								$this->template = "sous_categories";
+							}
+							else
+							{
+								$this->erreur = true;
+								$this->message = "cet id n'est pas attribué";
+								$this->template = "categories";
+							}
+						}
+						else
+						{
+							$this->erreur = true;
+							$this->message = "Il manque l'id de la categorie";
+							$this->template = "categories";
+						}
 					break;
 					
 					// La fiche d'un produit
@@ -373,7 +394,8 @@
 				"erreur" => $this->erreur,
 				"message" => $this->message,
 				"connecte" => isset($_SESSION["connecte"]),
-				"membres" => $this->membres
+				"membres" => $this->membres,
+				"categories" => $this->categories
 			));
 			
 			$this->smarty->display("templates\\".$this->template.".tpl");
@@ -583,9 +605,10 @@
 		public function getCategorie($id)
 		{
 			$i = 0;
+			$trouve = false;
 			while($i < $this->nbCategories && !$trouve)
 			{
-				$trouve = ($this->categories[$i]->getCategorie());
+				$trouve = ($this->categories[$i]->getCategorie($id));
 				$i++;
 			}
 			

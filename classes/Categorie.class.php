@@ -1,7 +1,7 @@
 <?php
 	class Categorie
 	{
-		private $Bob
+		private $Bob;
 		
 		private $mere;
 		private $fils;
@@ -15,6 +15,7 @@
 		public function getNom() { return $this->nom; }
 		public function getDesc() { return $this->desc; }
 		public function getMere() { return $this->mere; }
+		public function getFils() { return $this->fils; }
 		
 		public function __construct($Bob, $id, $nom, $desc, $mere)
 		{
@@ -68,6 +69,7 @@
 				return $this;
 				
 			$i = 0;
+			$trouve = false;
 			while($i < $this->nbFils && !$trouve)
 			{
 				$trouve = ($this->fils[$i]->getCategorie());
@@ -76,5 +78,6 @@
 			
 			return $trouve;
 		}
+	
 	}
 ?>
