@@ -1,0 +1,83 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{multirow}
+\usepackage{graphicx}
+
+\usepackage{boxedminipage}
+\addtolength{\fboxsep}{3pt}
+
+\title{Cahier des charges de Bob-Project (TD 33)}
+\author{LAFON Sylvain, LEVASSEUR Thomas et MAINGRET François}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\part{Introduction}
+		\input{content/intro.tex}
+	\newpage
+	\part{Fonctionnalités}
+		\section{Cas d'utilisation}
+			\subsection{Description des acteurs}
+				\input{cas/acteurs.tex}
+			\subsection{Description des cas d'utilisation}
+				\input{cas/desc.tex}
+			\subsection{Description synthétique}
+				\subsubsection{Inscription, connexion et deconnexion}
+					\input{scenarios/connexion.tex}
+				\subsubsection{Recherche d'un produit}
+					\input{scenarios/recherche.tex}
+				\subsubsection{Affichage d'un produit}
+					\input{scenarios/fiche.tex}
+			\subsection{Diagramme de cas d'utilisation}
+				Le diagramme de cas d'utilisation est fourni en annexe
+				\newline
+					
+				\includegraphics[scale=0.5]{cas/diagramme.jpg}
+			\subsection{Contraintes non fonctionnelles}
+				\input{donnees/contraintes.tex}
+	\newpage			
+	\part{Données}
+		\section{Dictionnaire de données}
+			\input{donnees/dico.tex}
+		\section{Structures de données}
+			\subsection{Schéma relationnel}
+				Le schéma relationnel est fourni en annexe
+				\newline
+					
+				\includegraphics[scale=0.2]{donnees/SR.png}
+			\subsection{Objets}
+				\subsubsection{Diagramme de classe}
+					Le diagramme de classe est fourni en annexe
+					\newline
+					
+					\includegraphics[scale=0.2]{donnees/classes.jpg}
+				\subsubsection{Justification des cardinalités}
+					\input{donnees/cards.tex}
+				\subsubsection{Historique}
+					\input{donnees/histo.tex}
+				\subsubsection{Contraintes non modélisables}
+					\input{cas/contraintes_non.tex}
+	\newpage
+	\part{Jeux de test}
+		\input{content/tests.tex}
+	\newpage
+	\part{Annexes}
+		\section*{Liste des annexes}
+		\begin{itemize}
+			\item Diagramme de cas d'utilisation
+			\item Schéma relationnel
+			\item Diagramme de classes
+			\item Dossier : Charte graphique et normes ergonomiques
+			\item Maquette d'écran
+		\end{itemize}
+\end{document}
