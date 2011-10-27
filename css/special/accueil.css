@@ -1,0 +1,104 @@
+#coup_coeur
+{
+height: 250px;
+}
+
+#nouveaute
+{
+width: 49%;
+}
+
+#best_seller 
+{
+width: 48%;
+}
+
+.boite_coup_coeur
+{
+height: 100%;
+float: right;
+background-color :white;
+
+margin-left : 10px;
+
+box-shadow:1px 3px 8px #000000;
+
+-moz-border-radius: 15px 0px 15px 0px;
+-webkit-border-radius: 15px 0px 15px  0px;
+border-radius: 15px 0px 15px 0px;
+
+border-width: 2px;
+border-style: inset;
+border-color: #121212;
+
+background: -moz-linear-gradient(top, #f0f0f0, #cecece);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#cecece));
+}
+
+.boite_coup_coeur h3
+{
+color : #FF9900;
+font-family: Verdana, serif;
+font-weight : bold;
+font-size: 18px;
+text-decoration : none;
+padding-left : 52px;
+}
+
+.boite_coup_coeur h3:hover
+{
+color : #CC6600;
+text-decoration : none;
+}
+
+.boite_coup_coeur h1
+{
+color : #333333;
+font-family: Verdana, serif;
+font-size: 22px;
+text-decoration : none;
+margin-left : 20px;
+padding-left : 10px;
+border-left : 3px solid lime;
+}
+
+.prix_article_coup_coeur
+{
+display : inline;
+margin-left : 15px;
+margin-right: 15px;
+padding-left : 5px;
+padding-right: 5px;
+color : red;
+font-family: Verdana, serif;
+font-size: 20px;
+border : 2px solid red;
+}
+
+.voirficheproduit_coup_coeur a
+{
+display : inline;
+text-decoration: none;
+color : green;
+font-family: Verdana, serif;
+font-size: 16px;
+}
+
+.voirficheproduit_coup_coeur a:hover
+{
+font-weight : bold;
+}
+
+.boite_coup_coeur img
+{
+display : block;
+float : left;
+
+padding-left : 15px;
+padding-right : 15px;	
+}
+
+#pub
+{
+padding-top : 45px;
+}
