@@ -14,17 +14,15 @@
 				
 		{* Bloc categorie *}
 		{foreach from=$sc->getFils() item=f}
-			
+		
 			{* On affiche le titre, l'image et la description de la catégorie *}
-			<div class="sous-categorie">	
-			
+			<div class="sous-categorie">			
 				<h4>{$f->getNom()}</h4>
 				<img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
 				<p>
 					{$f->getDesc()}
 				</p>
-				<a href='#'>Voir les autres produits</a>
-				
+				<a href='#'>Voir les autres produits</a>				
 			</div>			
 		{/foreach}			
 	</div>
