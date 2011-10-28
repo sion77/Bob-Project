@@ -1,0 +1,80 @@
+#page-sous-categories
+{
+padding-top : 50px;
+}
+
+#panneau-sous-categories
+{
+margin-top : 5px;
+width : 950px;
+border-style: solid;
+border-color: #000000;
+border-width: 2px;
+background-color : #ABE7A2;
+
+}
+
+#page-sous-categories h2
+{
+padding-left : 30px;
+font-family: Arial, serif;
+font-size : 28px;
+color : #27CC0E;
+}
+
+.sous-categorie
+{
+float : left;
+width : 420px;
+height : 200px;
+background-color : #eeeeee;
+padding-top : 1px;
+padding-left : 10px;
+margin-right : 15px;
+margin-bottom : 15px;
+
+-moz-border-radius:  12px 0px 12px 0px;
+-webkit-border-radius: 12px  0px 12px 0px ;
+border-radius:  12px 0px 12px 0px;
+
+border-style: solid;
+border-color: #aaaaaa;
+border-width: 2px;
+}
+
+.sous-categorie p
+{
+padding-left : 30px;
+font-family: Verdana, serif;
+font-size : 13px;
+color : #000000;
+}
+
+.sous-categorie h4
+{
+border-left : 4px solid #27cc45;
+margin-left : 25px;
+padding-left : 10px;
+font-family: Verdana, serif;
+font-size : 18px;
+font-weight : bold;
+color : #44B54F;
+}
+
+.sous-categorie h4:hover
+{
+color : orange;;
+}
+
+.sous-categorie img
+{
+float : left;
+margin-right : 8px;
+border : 1px solid #222222;
+}
+
+.sous-categorie a
+{
+font-family: Verdana, serif;
+font-size : 12px;
+}
