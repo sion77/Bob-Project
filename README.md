@@ -1,4 +1,4 @@
-# Projet WEB de l'IUT
+﻿# Projet WEB de l'IUT
 ## Bob-Project : Chez BOB
 ### -- Dossier principal --
 
@@ -16,6 +16,7 @@
 * *img* : les images
 * *classes* : contient les fichiers contenant les classes php
 * *js* : contient les fichiers javascript
+<<<<<<< HEAD
 * *css* : contient le style css
 * *Smarty* : contient le moteur de templates Smarty
 * *templates* : contient les templates
@@ -23,6 +24,9 @@
 **Dossiers temporaires** :
 
 * *templates_c* : contient le cache
+=======
+* *css* : contient les fichiers de style css
+>>>>>>> master
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
