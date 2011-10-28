@@ -1,0 +1,99 @@
+[ --> menu()
+	body
+		#header
+			#espace_haut
+				#logo
+				#espace_membre
+				#espace_recherche
+						
+		#body
+			#menu
+			[
+			
+			]
+			#fastbar
+			#content
+				? p#contenu_message ?
+				[
+					Selon :
+						-> ADMIN_ACCUEIL
+						[
+							#page-admin
+								#panneau-admin
+									.icon-panneau-admin
+						]
+			
+						-> ADMIN_MEMBRES 
+						[
+						]
+						
+						-> ADMIN_CATEGORIES
+						[
+						]
+			
+						-> INSCRIPTION
+						[
+							#form-inscription
+							#pourquoi-sinscrire
+						]
+						
+						-> CONNECTION
+						[
+							#form-connection
+							#pub-connection
+						]
+						
+						-> CATEGORIES
+						[
+							#panneau-categories
+								.categorie
+						]
+						
+						-> SOUSCATEGORIES
+						[
+							#page-sous-categories
+								.sous-categorie
+						]
+			
+						-> FICHEPRODUIT
+						[
+							#fiche-produit
+								#categorie-fiche-produit
+								#sous-categorie-fiche-produit
+								#image-fiche-produit
+								#fiche-technique-produit
+									#fiche-technique-description-produit
+									#prix-fiche-produit
+									#ajouter-au-panier
+									#select-quantite
+									.rating-stars
+									#fiche-produit-nbavis
+									
+								.avis-fiche-produit
+									.rating-star
+						]
+			
+						-> ABOUT
+						[
+							#about-bricobob
+						]
+			
+						-> ACCUEIL
+						[
+							#pub
+							#coup_coeur
+								.boite_coup_coeur#best_seller
+										.prix_article_coup_coeur#prix_article_bestseller
+										.voirficheproduit_coup_coeur#voirficheproduit_bestseller
+										
+								.boite_coup_coeur#nouveaute
+										.prix_article_coup_coeur#prix_article_nouveaute
+										.voirficheproduit_coup_coeur#voirficheproduit_nouveaute
+						]
+				]
+		
+		#footer
+			#sitemap
+			#credits_droits
+			#partenaires
+]
