@@ -106,7 +106,7 @@
 		public function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
 			// On vérifie que les infos sont là
-			if($pseudo == "" || $pass == "")
+			if(empty($pseudo)|| empty($pass))
 			{
 				$this->erreur = true;
 				$this->message = "Certains champs sont vides !";
