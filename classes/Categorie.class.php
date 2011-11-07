@@ -19,7 +19,8 @@
 		public function getNbFils() { return $this->nbFils; }
 		
 		public function getFreres() 
-		{ 
+		{ // Attention ! on est dans le tableau !
+		
 			if($this->mere == NULL)
 				return $this->Bob->getCategories();
 				
@@ -29,9 +30,9 @@
 		public function getNbFreres() 
 		{ 
 			if($this->mere == NULL)
-				return $this->Bob->getNbCategories();
+				return ($this->Bob->getNbCategories() - 1);
 				
-			return $this->mere->getNbFils(); 
+			return ($this->mere->getNbFils() - 1); // Moins 1 car on se comptait
 		}
 		
 		public function __construct($Bob, $id, $nom, $desc, $mere)
@@ -70,7 +71,7 @@
 								   $rep["id"],
 								   $rep["nom"],
 								   $rep["desc"],
-								   $this->id);
+								   $this);
 								   
 				$this->fils[$this->nbFils] = $f;
 				$this->nbFils++;
@@ -108,7 +109,22 @@
 				if($this->getNbFreres() > 0)
 				{
 					echo " -- ";
-					echo "Attacher";
+					?>
+						<form>							  
+							<select name="pere">
+								<optgroup label="Attacher">
+								<?php
+									$freres = $this->getFreres();
+									foreach($this->getFreres() as $f)
+									{
+										if($f != $this)
+											echo "<option value=\"".$f->getId()."\">".$f->getNom()."</option>";
+									}
+								?>
+								</optgroup>
+							</select>
+						</form>
+					<?php
 				}
 				
 				if($this->mere != null)

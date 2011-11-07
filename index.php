@@ -29,7 +29,8 @@
 				switch($_GET["admin"])
 				{
 					/* Gestion des membres */
-					case "MEMBRES":
+					case "MEMBRES":					
+						$Bob->initMembres();
 					
 						// Si on nous demande de faire quelque chose
 						if(isset($_GET["action"]))
@@ -65,8 +66,8 @@
 								break;
 								
 								// Sinon
-								default:
-									$template = "accueil";
+								default:									
+									$template = "admin_membres";
 								break;
 							}
 						}
@@ -78,6 +79,7 @@
 					
 					/* Gestion des categories */
 					case "CATEGORIES" : 
+						$Bob->initCategories();
 						$template = "admin_categories";
 					break;
 					
@@ -104,7 +106,7 @@
 			case "RECHERCHE":
 				$erreur = true;
 				$message = "Fonction non implémentée";
-				$template = ("accueil");
+				$template = "accueil";
 			break;
 		
 			//Si on nous demande d'inscrire un utilisateur
