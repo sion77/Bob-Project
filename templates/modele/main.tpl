@@ -62,8 +62,8 @@
 			<div id="credits_droits">
 				Site crée par Sylafrs, Neo et RFK78 !
 			</div>
-			<div id="partenaires">
-				
+			<div id="partenaires">				
+				<img src="img/smarty_logo.png" alt="Utilise Smarty"/>
 			</div>						
 		</div>
 		<script type="text/javascript" src="script.js"></script>
