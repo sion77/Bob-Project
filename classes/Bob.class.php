@@ -5,25 +5,14 @@
 
 	class Bob extends PDO
 	{
-		private $template;
-		private $smarty;
-		private $action;
-		
 		private $membres;   // Tableau de membres et admins
 		private $nbMembres; // taille du tableau
 		
 		private $categories;	// Tableau de categories
 		private $nbCategories;	// Nombre de categories
 		
-		private $message;
 		private $erreur;
-		
-		// ============= GETTERS ============= //
-		
-		public function estAction() { return $this->action; }		
-		public function getMessage() { return $message; }
-		public function getErreur()	{ return $erreur; }
-		
+				
 		// ============= INITS ============= //
 				
 		public function __construct($host, $port, $db, $login, $pass, $smarty = "")
@@ -31,21 +20,16 @@
 			// On commence par le constructeur de PDO
 			PDO::__construct('mysql:host='.$host.';port='.$port.';dbname='.$db, $login, $pass);
 			
-			// Puis les dépendances
-			$this->smarty = (($smarty == "") ? new Smarty() : $smarty);
+			// Les attributs
+			$this->erreur = false;
 			
+			// Les dépendances
 			$this->nbMembres = 0;
 			$this->membres = NULL;
 			
 			$this->nbCategories = 0;
 			$this->categories = NULL;
-				
-			// Et enfin nos variables
-			$this->template = "accueil";
-			$this->action = false;		
-			$this->message = false;
-			$this->erreur = false;
-			
+						
 			// Le mieux serait de les appeller que si besoin
 			$this->initMembres();
 			$this->initCategories();
@@ -118,292 +102,8 @@
 		}
 				
 		// ============= PUBLIC ============= //
-		
-		public function analyser()
-		{			
-			// Accès au panneau d'admin
-			if(isset($_GET["admin"]))
-			{
-				// Que si on est connecte
-				if(isset($_SESSION["connecte"]) && isset($_SESSION["admin"]))
-				{
-					// Que si on est admin
-					if($_SESSION["admin"] == true)
-					{
-						// Selon ce que l'on veut faire..
-						switch($_GET["admin"])
-						{
-							/* Gestion des membres */
-							case "MEMBRES":
-							
-								// Si on nous demande de faire quelque chose
-								if(isset($_GET["action"]))
-								{
-									switch($_GET["action"])
-									{
-										// Supprimer un membre
-										case "SUPPRIMER":
-											$this->action = "supprimer membre";											
-										break;
-										
-										// Promouvoir un membre (au rang d'admin)
-										case "PROMO":
-											$this->action = "promo membre";
-										break;
-										
-										// Sinon
-										default:
-											$this->template = "admin_membres";
-										break;
-									}
-								}
-								
-								// Si on vient d'arriver sur la gestion des membres
-								else
-									$this->template = "admin_membres";
-							break;
-							
-							/* Gestion des categories */
-							case "CATEGORIES" : 
-								$this->template = "admin_categories";
-							break;
-							
-							/* Sinon, ou si on demande explicitement l'accueil */
-							case "ACCUEIL":
-							default:
-								$this->template = "admin";
-							break;
-						}
-					}
-					else
-						$this->template = "accueil";
-				}
-				else
-					$this->template = "accueil";
-			}
-			
-			//Si on nous demande de faire quelque chose 
-			elseif(isset($_GET["action"])) 
-			{
-				switch($_GET["action"]) 
-				{
-					// Si on veut faire une recherche rapide
-					case "RECHERCHE":
-						$this->action = "recherche rapide";
-					break;
 				
-					//Si on nous demande d'inscrire un utilisateur
-					case "INSCRIPTION":
-						$this->action = "inscription";
-						
-					break;
-					
-					//Si on nous demande de connecter l'utilisateur
-					case "CONNECTION":
-						$this->action = "connection";
-					break;
-					
-					//Si on nous demande de déconnecter l'utilisateur
-					case "DECONNECTION":
-						$this->action = "deconnection";
-						
-						unset($_SESSION["connecte"]);
-						session_destroy();
-						$this->template = "accueil";
-					break;	
-								
-					//Sinon retour a l'accueil
-					default:
-						$this->template = "accueil";
-					break;
-				}
-			}
-			
-			// Si l'adresse est de la forme http://bob-poject.com/index.php?page=XXX
-			elseif(isset($_GET["page"]))
-			{
-				switch($_GET["page"])
-				{						
-					// On affiche le formulaire d'inscription
-					case "INSCRIPTION":
-						$this->template = "inscription";
-					break;
-					
-					// On affiche le formulaire de connection
-					case "CONNECTION":
-						$this->template = "connection";
-					break;
-					
-					// Si on demande la page about
-					case "ABOUT":
-						$this->template = "about";
-					break;
-					
-					//Si on nous demande d'afficher les catégories
-					case "CATEGORIES":
-						$this->template = "categories";
-					break;
-					
-					//Si on nous demande d'afficher les sous-catégories
-					case "SOUSCATEGORIES":
-						if(isset($_GET["id"]))
-						{
-							$sc = $this->getCategorie(intval($_GET["id"]));
-							if($sc != false)
-							{
-								$this->smarty->assign("sc", $sc);
-								$this->template = "sous_categories";
-							}
-							else
-							{
-								$this->erreur = true;
-								$this->message = "cet id n'est pas attribué";
-								$this->template = "categories";
-							}
-						}
-						else
-						{
-							$this->erreur = true;
-							$this->message = "Il manque l'id de la categorie";
-							$this->template = "categories";
-						}
-					break;
-					
-					// La fiche d'un produit
-					case "FICHEPRODUIT":
-						$this->template = "fiche_produit";
-					break;
-					
-					// Sinon on affiche la page d'acceuil
-					default:
-						$this->template = "accueil";
-					break;
-				}
-			}
-			
-			// Si on vient tout juste de se connecter sur le site 
-			else
-			{
-				$this->template = "accueil";
-			}
-
-		}
-		
-		public function executer()
-		{
-			if($this->action)
-			{
-				switch($this->action)
-				{
-					case "recherche rapide":						
-						$this->erreur = true;
-						$this->message = "Fonction non implémentée";
-						$this->template = ("accueil");
-					break;
-					
-					case "inscription":
-						if(isset($_POST["pseudo"]) && isset($_POST["pass"]) && isset($_POST["pass2"]))
-						{	
-							if($membre = $this->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]))
-							{
-								$this->membres[$this->nbMembres] = $membre;
-								$this->nbMembres++;
-								
-								if($this->connection($_POST["pseudo"], $_POST["pass"]))
-								{
-									$this->template = "accueil";
-									$this->message = "Votre inscription s'est déroulée avec succès";	
-								}
-								else
-								{
-									$this->template = "accueil";
-									$this->erreur = true;
-									$this->message = "La connection suivant l'inscription à échouée";
-								}								
-							}
-							else
-							{
-								$this->template = "inscription";
-								// $this->message mis-à-jour.
-							}
-						}		
-						else
-						{
-							$this->template = "inscription";
-							$this->erreur = true;
-							$this->message = "Données manquantes";
-						}
-					break;
-					
-					case "connection":
-						if(isset($_POST["pseudo"]) || isset($_POST["pass"]))
-						{	
-							if($membre = $this->connection($_POST["pseudo"], $_POST["pass"]))
-							{
-								$this->template = "accueil";
-							}
-							else
-							{
-								$this->template = "connection";
-							}
-						}
-						else
-						{							
-							$this->template = "connection";
-							$this->message = "Il manque des données";
-							$this->erreur = true;
-						}
-					break;
-					
-					case "supprimer membre":
-						if(isset($_GET["id"]))
-						{
-							$this->supprimerMembre(intval($_GET["id"]));
-						}
-						else
-						{
-							$this->template = "admin_membres";
-							$this->message = "id non renseigné";
-							$this->erreur = true;
-						}
-					break;
-					
-					case "promo membre":
-						if(isset($_GET["id"]))
-						{
-							$this->promoMembre(intval($_GET["id"]));
-						}
-						else
-						{
-							$this->template = "admin_membres";
-							$this->message = "id non renseigné";
-							$this->erreur = true;
-						}
-					break;
-										
-					default:
-						$this->template = "accueil";
-					break;
-				}
-			}
-		}
-		
-		public function afficher()
-		{
-			$this->smarty->assign(array(
-				"erreur" => $this->erreur,
-				"message" => $this->message,
-				"connecte" => isset($_SESSION["connecte"]),
-				"membres" => $this->membres,
-				"categories" => $this->categories
-			));
-			
-			$this->smarty->display("templates\\".$this->template.".tpl");
-		}
-	
-		// ============= ACTIONS ============= //
-	
-		private function inscription($pseudo , $pass, $pass2) // return Membre ou false
+		public function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
 			// On vérifie que les infos sont là
 			if($pseudo == "" || $pass == "")
@@ -453,11 +153,22 @@
 				"pseudo" => $pseudo,
 				"pass" => $pass
 			));
+			
+			$m = new Membre($this, 0, $pseudo, $pass);
+			ajouterMembre($m);
 						
-			return new Membre($this, 0, $pseudo, $pass);
+			return $m;
 		}	
 	
-		private function connection($pseudo, $pass)
+		public function ajouterMembre($membre)
+		{
+			$Bob->membres[$Bob->nbMembres] = $membre;
+			$Bob->nbMembres++;
+
+			return true;
+		}	
+	
+		public function connection($pseudo, $pass)
 		{
 			if($pseudo == "" || $pass == "")
 			{
@@ -498,7 +209,7 @@
 			return $membre;
 		}
 	
-		private function getIndiceMembre($id)
+		public function getIndiceMembre($id)
 		{
 			// On recherche le membre à supprimer
 			$i = 0;
@@ -523,7 +234,7 @@
 			return $i;
 		}
 		
-		private function supprimerMembre($id)
+		public function supprimerMembre($id)
 		{
 			// Quoi qu'il arrive, même template :
 			$this->template = "admin_membres";
@@ -561,7 +272,7 @@
 			return true;
 		}
 		
-		private function promoMembre($id)
+		public function promoMembre($id)
 		{
 			// Quoi qu'il arrive, même template :
 			$this->template = "admin_membres";
@@ -614,5 +325,23 @@
 			
 			return $trouve;
 		}
+	
+		// ============= GETTERS ============= //
+		
+		public function getMembres()
+		{
+			return $this->membres;
+		}
+		
+		public function getCategories()
+		{
+			return $this->categories;
+		}
+		
+		public function getErreur()
+		{
+			return $this->erreur;
+		}
+	
 	}
 ?>
