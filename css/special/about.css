@@ -1,0 +1,74 @@
+/* ABOUT */
+#page-about-bricobob
+{
+	padding-top : 50px;
+}
+
+#about
+{
+	width : 900px;
+	
+	margin-left : 30px;
+	margin-right : 30px;
+	
+	-moz-border-radius:  0px 0px 7px 7px;
+	-webkit-border-radius: 0px  0px 7px 7px ;
+	border-radius:  0px 0px 7px 7px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #000000;
+	
+	background-color : #dedede;
+
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px  7px;
+	border-radius: 7px 7px 7px 7px;
+
+	border-width: 2px;
+	border-style: solid;
+	border-color: #666;
+
+	background: -moz-linear-gradient(top, #dedede, #adadad);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#adadad));
+	
+	padding-left : 15px;
+	
+}
+
+#about img
+{
+	float : left;
+	margin-left : 30px;
+	border-bottom : 2px solid #666;
+}
+
+#about h1
+{
+	width : 600px;
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-size : 26px;
+	padding-bottom : 23px;
+	margin-left : 100px;
+	margin-top : 25px;
+	font-weight : none;
+	padding-left : 25px;
+	padding-right : 25px;
+	border-bottom : 2px solid #666;
+}
+
+#about p
+{
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-size : 16px;
+	padding : 25px;
+}
+
+#about li
+{
+	list-style-type : none;
+	font-family:  Verdana, serif;
+}

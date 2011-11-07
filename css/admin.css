@@ -33,6 +33,7 @@ border-color: #121212;
 
 background: -moz-linear-gradient(top, #dedede, #acacac);
 background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+
 }
 
 #panneau-admin h1
@@ -44,17 +45,126 @@ border-left : 6px solid orange;
 
 .icon-panneau-admin
 {
-display : inline;
-padding-right : 50px;
-}
-
-.icon-panneau-admin img
-{
-width : 120px;
+width : 760px;
+height : 80px;
 }
 
 .icon-panneau-admin a
 {
-text-decoration : none;
-
+	text-decoration : none;
+	margin-left : 35px;
+	margin-top : 20px;
+	color : #660099;
+	font-size : 18px;
 }
+
+.icon-panneau-admin p
+{
+	margin-left : 85px;
+	font-size : 15px;
+}
+
+.icon-panneau-admin a:hover
+{
+	color : #663399;
+	font-weight : bold;
+}
+
+#gestion-membres
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/membreso.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+	float : left;
+	
+}
+
+
+#gestion-membres:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/membresy.jpg');
+}
+
+#gestion-categories
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/categorieo.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-categories:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/categoriey.jpg');
+}
+
+
+#gestion-produits
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/produitso.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-produits:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/produitsy.jpg');
+}
+
+#gestion-question
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiono.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-question:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiony.jpg');
+}
+
