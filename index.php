@@ -1,8 +1,10 @@
 <?php
-	session_start(); // Permet d'utiliser les sessions.
-		
+	// session_save_path("mes_zolies_sessions");		 // Endroit de sauvegarde des sessions
+	// session_name("J'aime les nouilles au beurre");   // Nom de la session
+	session_start();								 // Permet d'utiliser les sessions.
+
 	require("Smarty\\Smarty.class.php"); // Contient Smarty
-	require("classes\\Bob.class.php"); // Contient Bob
+	require("classes\\Bob.class.php");   // Contient Bob
 		
 	$smarty = new Smarty();
 	$smarty->caching = 0;
@@ -238,10 +240,17 @@
 	$smarty->assign(array(
 		"erreur" => $erreur,
 		"message" => $message,
-		"connecte" => isset($_SESSION["connecte"]),
-		"membres" => $Bob->getMembres(),
-		"categories" => $Bob->getCategories()
+		"connecte" => isset($_SESSION["connecte"])		
 	));
+	
+	if($Bob->membresInited())
+	{
+		$smarty->assign("membres", $Bob->getMembres());
+	}	
+	if($Bob->categoriesInited())
+	{
+		$smarty->assign("categories", $Bob->getCategories());
+	}
 	
 	$smarty->display("templates\\".$template.".tpl");
 	

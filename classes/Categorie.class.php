@@ -16,6 +16,23 @@
 		public function getDesc() { return $this->desc; }
 		public function getMere() { return $this->mere; }
 		public function getFils() { return $this->fils; }
+		public function getNbFils() { return $this->nbFils; }
+		
+		public function getFreres() 
+		{ 
+			if($this->mere == NULL)
+				return $this->Bob->getCategories();
+				
+			return $this->mere->getFils(); 			
+		}
+		
+		public function getNbFreres() 
+		{ 
+			if($this->mere == NULL)
+				return $this->Bob->getNbCategories();
+				
+			return $this->mere->getNbFils(); 
+		}
 		
 		public function __construct($Bob, $id, $nom, $desc, $mere)
 		{
@@ -79,5 +96,37 @@
 			return $trouve;
 		}
 	
+		public function affiche()
+		{
+			echo "<li>";
+				echo $this->nom;
+				echo " -- ";
+				echo "Supprimer";
+				echo " -- ";
+				echo "Modifier";
+				
+				if($this->getNbFreres() > 0)
+				{
+					echo " -- ";
+					echo "Attacher";
+				}
+				
+				if($this->mere != null)
+				{
+					echo " -- ";
+					echo "Detacher";
+				}
+			echo "</li>";
+			
+			if($this->nbFils > 0)
+			{
+				echo "<ul>";
+					foreach($this->fils as $fils)
+					{
+						$fils->affiche();
+					}
+				echo "</ul>";
+			}
+		}
 	}
 ?>

@@ -326,7 +326,18 @@
 			return $trouve;
 		}
 	
+		
 		// ============= GETTERS ============= //
+		
+		public function membresInited()
+		{
+			return ($this->membres != NULL);
+		}
+		
+		public function categoriesInited()
+		{
+			return ($this->membres != NULL);
+		}
 		
 		public function getMembres()
 		{
@@ -336,6 +347,11 @@
 		public function getCategories()
 		{
 			return $this->categories;
+		}
+		
+		public function getNbCategories()
+		{
+			return $this->nbCategories;
 		}
 		
 		public function getErreur()
