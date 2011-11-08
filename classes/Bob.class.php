@@ -106,18 +106,16 @@
 		public function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
 			// On vérifie que les infos sont là
-			if(empty($pseudo)|| empty($pass))
+			if(empty($pseudo) || empty($pass))
 			{
-				$this->erreur = true;
-				$this->message = "Certains champs sont vides !";
+				$this->erreur = "Certains champs sont vides !";
 				return false;
 			}
 			
 			// On vérifie que les mots de passe sont identiques
 			if($pass != $pass2)
 			{
-				$this->erreur = true;
-				$this->message = "Les mots de passes sont différents";
+				$this->erreur = "Les mots de passes sont différents";
 				return false;
 			}
 			
@@ -140,8 +138,7 @@
 			// Si personne n'a déjà ce pseudo
 			if($dejaUtilise)
 			{
-				$this->message = "Quelqu'un utilise déjà ce pseudo";
-				$this->erreur = false;
+				$this->erreur = "Quelqu'un utilise déjà ce pseudo";
 				return false;
 			}
 			
@@ -315,7 +312,7 @@
 		public function getMembre($id)
 		{
 			$this->initMembres();
-			return $this->membres[getIndiceMembre($id)];
+			return $this->membres[$this->getIndiceMembre($id)];
 		}
 		
 		///

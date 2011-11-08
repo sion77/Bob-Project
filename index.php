@@ -202,8 +202,8 @@
 				{
 					$sc = $Bob->getCategorie(intval($_GET["id"]));
 					if($sc != false)
-					{
-						$Bob->smarty->assign("sc", $sc);
+					{						
+						$smarty->assign("sc", $sc);
 						$template = "sous_categories";
 					}
 					else
