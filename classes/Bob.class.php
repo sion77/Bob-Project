@@ -24,22 +24,12 @@
             $this->erreur = false;
             
             // Les dépendances
-            $this->nbMembres = 0;
-            $this->membres = NULL;
-            
-            $this->nbCategories = 0;
-            $this->categories = NULL;
-                        
-            // Le mieux serait de les appeller que si besoin
-            // $this->initMembres();
-            // $this->initCategories();
+            $this->initMembres();
+            $this->initCategories();
         }
         
-        public function initMembres()
+        private function initMembres()
         {
-            if($this->membres != NULL)
-                return false;
-
             $this->nbMembres = 0;
             
             $req = $this->query("    SELECT idUtilisateur AS \"id\",
@@ -77,9 +67,6 @@
         
         public function initCategories()
         {
-            if($this->categories != NULL)
-                return false;
-
             $this->nbCategories = 0;
             
             $req = $this->query("SELECT idCat AS \"id\",
@@ -128,7 +115,7 @@
             // On regarde s'il n'y a pas déjà de membres avec ce pseudo
             $i = 0;
             $dejaUtilise = false;
-            initMembres();            
+                        
             while($i < $this->nbMembres && !$dejaUtilise)
             {
                 $dejaUtilise = ($this->membres[$i]->getPseudo() == $pseudo);
@@ -160,7 +147,6 @@
     
         public function ajouterMembre($membre)
         {
-            $this->initMembres();
             $this->membres[$this->nbMembres] = $membre;
             $this->nbMembres++;
 
@@ -178,7 +164,7 @@
             
             $trouve = false;
             $i = 0;
-            $this->initMembres();
+            
             while($i < $this->nbMembres && !$trouve)
             {
                 $trouve = ($this->membres[$i]->getPseudo() == $pseudo);
@@ -214,7 +200,7 @@
             // On recherche le membre à supprimer
             $i = 0;
             $trouve = false;
-            $this->initMembres();
+            
             while($i < $this->nbMembres && !$trouve)
             {
                 $trouve = ($this->membres[$i]->getId() == $id);
@@ -241,7 +227,7 @@
             $this->template = "admin_membres";
             
             // On recherche le membre
-            $this->initMembres();
+            
             $i = $this->getIndiceMembre($id);
             if(!$i) return false;
             
@@ -280,7 +266,7 @@
             $this->template = "admin_membres";
             
             // On recherche le membre
-            $this->initMembres();
+            
             $i = $this->getIndiceMembre($id);
             if(!$i) return false;
             
@@ -311,7 +297,6 @@
     
         public function getMembre($id)
         {
-            $this->initMembres();
             return $this->membres[$this->getIndiceMembre($id)];
         }
         
@@ -319,8 +304,6 @@
         
         public function creerCategorie()
         {
-            $this->initCategories();
-            
             if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]))
             {
                 $this->erreur = "Il manque des données";
@@ -332,10 +315,10 @@
                 $this->erreur = "Le titre n'est pas rempli";
                 return null;
             }
+			            
             
-            if($_POST["mere"] == "NULL") 
-                $mere = null;
-            else 
+            $mere = null;
+            if($_POST["mere"] != "NULL") 
                 $mere = $this->getCategorie(intval($_POST["mere"]));
                                         
             $sql = "INSERT INTO categorie(idCat, nomCat, descriptionCat, idParent)
@@ -350,15 +333,14 @@
                 return $mere->ajouterFils($cat);
             }
             
-            $req->execute(array($_POST["titre"], $_POST["desc"], "NULL"));                
+            $req->execute(array($_POST["titre"], $_POST["desc"], null));                
             $cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], null);    
             return $this->ajouterCategorie($cat);
         }
         
         public function ajouterCategorie($cat)
         {// Une categorie mère, bien sûr
-        
-            $this->initCategories();
+                    
             $this->categories[$this->nbCategories] = $cat;
             $this->nbCategories++;
             
@@ -369,7 +351,7 @@
         {
             $i = 0;
             $trouve = false;
-            $this->initCategories();
+            
             while($i < $this->nbCategories && !$trouve)
             {
                 $trouve = ($this->categories[$i]->getCategorie($id));
@@ -381,39 +363,25 @@
     
         
         // ============= GETTERS ============= //
-        
-        public function membresInited()
-        {
-            return ($this->membres != NULL);
-        }
-        
-        public function categoriesInited()
-        {
-            return ($this->categories != NULL);
-        }
-        
+         
         public function getMembres()
         {
-            $this->initMembres();
-            return $this->membres;
+			return $this->membres;
         }
         
         public function getCategories()
         {
-            $this->initCategories();
             return $this->categories;
         }
         
         public function getNbCategories()
         {
-            $this->initCategories();
             return $this->nbCategories;
         }
         
         public function getErreur()
         {
             return $this->erreur;
-        }
-    
+        }    
     }
 ?>

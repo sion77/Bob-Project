@@ -40,7 +40,7 @@
                 {
                     /* Gestion des membres */
                     case "MEMBRES":                    
-                        $Bob->initMembres();
+                        
                     
                         // Si on nous demande de faire quelque chose
                         if(isset($_GET["action"]))
@@ -88,8 +88,7 @@
                     break;
                     
                     /* Gestion des categories */
-                    case "CATEGORIES" : 
-                        $Bob->initCategories();
+                    case "CATEGORIES" :                         
                         
                         // Si on nous demande de faire quelque chose
                         if(isset($_GET["action"]))
@@ -231,7 +230,7 @@
             // Si on nous demande d'afficher les catégories
             case "CATEGORIES":
                 $template = "categories";
-                $Bob->initCategories();
+                
             break;
             
             // Si on nous demande d'afficher les sous-catégories
@@ -253,7 +252,6 @@
                 }
                 else
                 {
-                    $Bob->initCategories();
                     $erreur = true;
                     $message = "Il manque l'id de la categorie";
                     $template = "categories";
@@ -287,21 +285,11 @@
     $smarty->assign(array(
         "erreur" => $erreur,
         "message" => $message,
-        "connecte" => isset($_SESSION["connecte"])        
+        "connecte" => isset($_SESSION["connecte"]),
+		"membres" => $Bob->getMembres(),
+		"categories" => $Bob->getCategories()
     ));
-    
-    // Si on a utilisé Bob::membres, va surement en avoir besoin dans smarty
-    if($Bob->membresInited())
-    {
-        $smarty->assign("membres", $Bob->getMembres());
-    }    
-    
-    // Si on a utilisé Bob::categories, va surement en avoir besoin dans smarty
-    if($Bob->categoriesInited())
-    {
-        $smarty->assign("categories", $Bob->getCategories());
-    }
-    
+        
     // On affiche la page compilée à l'aide du template passé ici
     $smarty->display("templates\\".$template.".tpl");    
 ?>

@@ -8,6 +8,10 @@
 {block name="content"}
     <div id="admin_creer_categorie">
         <h1>Ajouter une nouvelle catégorie</h1>
+		<p>
+			Ce paragraphe est temporaire, et le menu n'a pas disparu : il est désormais automatisé.<br/>
+			C'est pour cela qu'il est conseillé d'ajouter ces categories dans / : Menuiserie, Sols, Quilcaillerie et Peinture
+		</p>
         <form action="index.php?admin=CATEGORIES&amp;action=CREER" method="POST">
         <p style="text-align: center;">
             <label for="titre">Le titre : </label>
