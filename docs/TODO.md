@@ -32,7 +32,6 @@ Le panneau d'admin va devoir contenir :
 * La gestion des catégories : **En cours**
 * La gestion des produits
 * La gestion des commentaires
-
 * Le design du panneau d'admin
 	* Page principale **(FAIT)**
  	* Les autre pages
