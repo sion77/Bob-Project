@@ -29,7 +29,10 @@ Ensuite, on met les points forts en gras en utilisant \** **les doubles étoiles
 Le panneau d'admin va devoir contenir :
 
 * La gestion des membres : **(FAIT)**
-* La gestion des catégories : **En cours**
+* La gestion des catégories
+	* Ajout **(FAIT)**
+	* Edition/Organisation ** En cours **
+        * Suppression ** En cours **
 * La gestion des produits
 * La gestion des commentaires
 * Le design du panneau d'admin
