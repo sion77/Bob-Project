@@ -39,9 +39,8 @@
                 switch($_GET["admin"])
                 {
                     /* Gestion des membres */
-                    case "MEMBRES":                    
-                        
-                    
+                    case "MEMBRES":   
+					
                         // Si on nous demande de faire quelque chose
                         if(isset($_GET["action"]))
                         {
@@ -214,12 +213,30 @@
         {                        
             // On affiche le formulaire d'inscription
             case "INSCRIPTION":
-                $template = "inscription";
+				if(!$_SESSION["connecte"])
+				{
+					$template = "inscription";
+				}
+				else
+				{
+					$template = "accueil";
+					$erreur = true;
+					$message = "Vous êtes déjà inscrit : vous êtes même connecté !";
+				}
             break;
             
             // On affiche le formulaire de connection
             case "CONNECTION":
-                $template = "connection";
+				if(!$_SESSION["connecte"])
+				{
+					$template = "connection";
+				}
+				else
+				{
+					$template = "accueil";
+					$erreur = true;
+					$message = "Vous êtes déjà connecté";
+				}
             break;
             
             // Si on demande la page about
@@ -229,8 +246,7 @@
             
             // Si on nous demande d'afficher les catégories
             case "CATEGORIES":
-                $template = "categories";
-                
+                $template = "categories";                
             break;
             
             // Si on nous demande d'afficher les sous-catégories
