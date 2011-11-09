@@ -161,8 +161,8 @@
 		public function ajouterMembre($membre)
 		{
 			$this->initMembres();
-			$Bob->membres[$Bob->nbMembres] = $membre;
-			$Bob->nbMembres++;
+			$this->membres[$this->nbMembres] = $membre;
+			$this->nbMembres++;
 
 			return true;
 		}	
@@ -316,6 +316,40 @@
 		}
 		
 		///
+		
+		public function creerCategorie()
+		{
+			if(!isset($_POST["titre"]) || !isset($_POST["desc"]))
+			{
+				$this->erreur = "Il manque des données";
+				return null;
+			}
+			
+			if($_POST["titre"] == "")
+			{
+				$this->erreur = "Le titre n'est pas rempli";
+				return null;
+			}
+			
+			$sql = "INSERT INTO categorie(idCat, nomCat, descriptionCat, idParent)
+			        VALUES ('', ?, ?, NULL)";
+								   
+			$req = $this->prepare($sql);
+			$req->execute(array($_POST["titre"], $_POST["desc"]));
+			
+			$cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], null);			
+			return $this->ajouterCategorie($cat);
+		}
+		
+		public function ajouterCategorie($cat)
+		{// Une categorie mère, bien sûr
+		
+			$this->initCategories();
+			$this->categories[$this->nbCategories] = $cat;
+			$this->nbCategories++;
+			
+			return true;
+		}
 	
 		public function getCategorie($id)
 		{

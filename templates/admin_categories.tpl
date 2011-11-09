@@ -8,14 +8,23 @@
 {block name="content"}
 	<div id="admin_creer_categorie">
 		<h1>Ajouter une nouvelle catégorie</h1>
-		<form action="" method="POST">
-		<p>
+		<form action="index.php?admin=CATEGORIES&amp;action=CREER" method="POST">
+		<p style="text-align: center;">
 			<label for="titre">Le titre : </label>
 			<input type="text" id="titre" name="titre" />
 			<br/><br/>
 			
 			<label for="desc">Description : </label><br/>
-			<textarea id="desc" name="desc" cols="100" rows="10"></textarea>
+			<textarea id="desc" name="desc" cols="70" rows="10"></textarea>
+			<br/><br/>
+			
+			<label for="pere">Attacher à : </label>
+			<select id="pere" name="pere">
+				<option value="NULL">/</option>
+				{foreach from=$categories item=cat} 
+					{$cat->afficheOption()}
+				{/foreach}
+			</select>
 			<br/><br/>
 			
 			<input type="submit" value="Creer"/>
@@ -33,7 +42,7 @@
 		<div id="admin_arbre_categories">
 			<ul>
 				{foreach from=$categories item=cat} 
-					{$cat->affiche()}
+					{$cat->afficheListe()}
 				{/foreach}
 			</ul>
 		</div>

@@ -16,7 +16,7 @@
 	$message = false;
 	$erreur = false;
 
-	// Accès au panneau d'admin
+	// AccÃ¨s au panneau d'admin
 	if(isset($_GET["admin"]))
 	{
 		// Que si on est connecte
@@ -46,7 +46,7 @@
 									else
 									{
 										$template = "admin_membres";
-										$message = "id non renseigné";
+										$message = "id non renseignÃ©";
 										$erreur = true;
 									}									
 								break;
@@ -60,7 +60,7 @@
 									else
 									{
 										$template = "admin_membres";
-										$message = "id non renseigné";
+										$message = "id non renseignÃ©";
 										$erreur = true;
 									}
 								break;
@@ -80,7 +80,34 @@
 					/* Gestion des categories */
 					case "CATEGORIES" : 
 						$Bob->initCategories();
-						$template = "admin_categories";
+						
+						// Si on nous demande de faire quelque chose
+						if(isset($_GET["action"]))
+						{
+							switch($_GET["action"])
+							{
+								case "CREER":
+									$template = "admin_categories";
+									if($Bob->creerCategorie())
+									{
+										$message = "CatÃ©gorie ajoutÃ©e avec succÃ¨s";
+									}
+									else
+									{
+										$erreur = true;
+										$message = $Bob->getErreur();
+									}
+								break;
+								
+								default:
+									$template = "admin_categories";
+								break;
+							}
+						}
+						
+						// Si on vient d'arriver sur la gestion des catÃ©gories
+						else
+							$template = "admin_categories";
 					break;
 					
 					/* Sinon, ou si on demande explicitement l'accueil */
@@ -105,7 +132,7 @@
 			// Si on veut faire une recherche rapide
 			case "RECHERCHE":
 				$erreur = true;
-				$message = "Fonction non implémentée";
+				$message = "Fonction non implÃ©mentÃ©e";
 				$template = "accueil";
 			break;
 		
@@ -117,7 +144,7 @@
 					{
 						$Bob->connection($_POST["pseudo"], $_POST["pass"]);
 						$template = "accueil";
-						$message = "Votre inscription s'est déroulée avec succès";									
+						$message = "Votre inscription s'est dÃ©roulÃ©e avec succÃ¨s";									
 					}
 					else
 					{
@@ -130,7 +157,7 @@
 				{
 					$template = "inscription";
 					$erreur = true;
-					$message = "Données manquantes";
+					$message = "DonnÃ©es manquantes";
 				}
 			break;
 			
@@ -152,12 +179,12 @@
 				else
 				{							
 					$template = "connection";
-					$message = "Il manque des données";
+					$message = "Il manque des donnÃ©es";
 					$erreur = true;
 				}
 			break;
 			
-			//Si on nous demande de déconnecter l'utilisateur
+			//Si on nous demande de dÃ©connecter l'utilisateur
 			case "DECONNECTION":			
 				unset($_SESSION["connecte"]);
 				session_destroy();
@@ -191,12 +218,13 @@
 				$template = "about";
 			break;
 			
-			//Si on nous demande d'afficher les catégories
+			//Si on nous demande d'afficher les catÃ©gories
 			case "CATEGORIES":
 				$template = "categories";
+				$Bob->initCategories();
 			break;
 			
-			//Si on nous demande d'afficher les sous-catégories
+			//Si on nous demande d'afficher les sous-catÃ©gories
 			case "SOUSCATEGORIES":
 				if(isset($_GET["id"]))
 				{
@@ -209,12 +237,13 @@
 					else
 					{
 						$erreur = true;
-						$message = "cet id n'est pas attribué";
+						$message = "cet id n'est pas attribuÃ©";
 						$template = "categories";
 					}
 				}
 				else
 				{
+					$Bob->initCategories();
 					$erreur = true;
 					$message = "Il manque l'id de la categorie";
 					$template = "categories";

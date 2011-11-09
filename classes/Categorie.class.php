@@ -11,6 +11,8 @@
 		private $nom;
 		private $desc;
 		
+		private static $maxId = 0;
+		
 		public function getId() { return $this->id; }
 		public function getNom() { return $this->nom; }
 		public function getDesc() { return $this->desc; }
@@ -40,12 +42,22 @@
 			$this->Bob = $Bob;
 			$this->mere = $mere;
 			
+			if($id == 0)
+			{
+				$id = self::$maxId+1;
+			}
+			
 			$this->id = $id;
 			$this->nom = $nom;
 			$this->desc = $desc;
 			
 			$this->fils = NULL;
 			$this->nb_fils = 0;
+			
+			if(self::$maxId < $id)
+			{
+				self::$maxId = $id;
+			}
 			
 			$this->initFils();
 		}
@@ -90,48 +102,19 @@
 			$trouve = false;
 			while($i < $this->nbFils && !$trouve)
 			{
-				$trouve = ($this->fils[$i]->getCategorie());
+				$trouve = ($this->fils[$i]->getCategorie($id));
 				$i++;
 			}
 			
 			return $trouve;
 		}
 	
-		public function affiche()
+		public function afficheListe()
 		{
 			echo "<li>";
-				echo $this->nom;
-				echo " -- ";
-				echo "Supprimer";
-				echo " -- ";
-				echo "Modifier";
-				
-				if($this->getNbFreres() > 0)
-				{
-					echo " -- ";
-					?>
-						<form>							  
-							<select name="pere">
-								<optgroup label="Attacher">
-								<?php
-									$freres = $this->getFreres();
-									foreach($this->getFreres() as $f)
-									{
-										if($f != $this)
-											echo "<option value=\"".$f->getId()."\">".$f->getNom()."</option>";
-									}
-								?>
-								</optgroup>
-							</select>
-						</form>
-					<?php
-				}
-				
-				if($this->mere != null)
-				{
-					echo " -- ";
-					echo "Detacher";
-				}
+				echo "<a href=\"index.php?admin=CATEGORIES&amp;page=EDITER&amp;id=".$this->id."\">";
+					echo $this->nom;
+				echo "</a>";
 			echo "</li>";
 			
 			if($this->nbFils > 0)
@@ -139,7 +122,36 @@
 				echo "<ul>";
 					foreach($this->fils as $fils)
 					{
-						$fils->affiche();
+						$fils->afficheListe();
+					}
+				echo "</ul>";
+			}
+		}
+		
+		public function afficheOption()
+		{
+			$cat = $this;
+			$i = 0;
+			echo "<option name=\"".$this->nom."\">";				
+				while($cat != null)
+				{
+					$hierarchie[] = $cat->getNom();
+					$cat = $cat->getMere();
+					$i++;
+				}
+				while($i > 0)
+				{
+					$i--;
+					echo "/".$hierarchie[$i];
+				}
+			echo "</option>";
+			
+			if($this->nbFils > 0)
+			{
+				echo "<ul>";
+					foreach($this->fils as $fils)
+					{
+						$fils->afficheOption();
 					}
 				echo "</ul>";
 			}
