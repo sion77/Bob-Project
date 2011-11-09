@@ -132,7 +132,7 @@
 		{
 			$cat = $this;
 			$i = 0;
-			echo "<option name=\"".$this->nom."\">";				
+			echo "<option value=\"".$this->id."\">";				
 				while($cat != null)
 				{
 					$hierarchie[] = $cat->getNom();
@@ -156,5 +156,12 @@
 				echo "</ul>";
 			}
 		}
+	
+		public function ajouterFils($cat)
+		{
+			$this->fils[$this->nbFils] = $cat;
+			$this->nbFils++;
+			return true;
+		}	
 	}
 ?>

@@ -319,7 +319,9 @@
 		
 		public function creerCategorie()
 		{
-			if(!isset($_POST["titre"]) || !isset($_POST["desc"]))
+			$this->initCategories();
+			
+			if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]))
 			{
 				$this->erreur = "Il manque des données";
 				return null;
@@ -331,13 +333,25 @@
 				return null;
 			}
 			
+			if($_POST["mere"] == "NULL") 
+				$mere = null;
+			else 
+				$mere = $this->getCategorie(intval($_POST["mere"]));
+										
 			$sql = "INSERT INTO categorie(idCat, nomCat, descriptionCat, idParent)
-			        VALUES ('', ?, ?, NULL)";
+			        VALUES ('', ?, ?, ?)";
 								   
 			$req = $this->prepare($sql);
-			$req->execute(array($_POST["titre"], $_POST["desc"]));
 			
-			$cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], null);			
+			if($mere)
+			{
+				$req->execute(array($_POST["titre"], $_POST["desc"], $mere->getId()));				
+				$cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], $mere);	
+				return $mere->ajouterFils($cat);
+			}
+			
+			$req->execute(array($_POST["titre"], $_POST["desc"], "NULL"));				
+			$cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], null);	
 			return $this->ajouterCategorie($cat);
 		}
 		

@@ -18,8 +18,8 @@
 			<textarea id="desc" name="desc" cols="70" rows="10"></textarea>
 			<br/><br/>
 			
-			<label for="pere">Attacher à : </label>
-			<select id="pere" name="pere">
+			<label for="mere">Attacher à : </label>
+			<select id="mere" name="mere">
 				<option value="NULL">/</option>
 				{foreach from=$categories item=cat} 
 					{$cat->afficheOption()}
