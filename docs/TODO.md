@@ -58,7 +58,9 @@ Et bien d'autres...
 ### Recherche produit
 
 **Formulaire avancé** : Fait
+
 **algorithme de recherche** : Une petite requete SQL à faire
+
 **Page résultat** : Forme d'une page sous-categorie mais contenant le resultat
 	
 ### Gestion des images
