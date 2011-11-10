@@ -17,6 +17,18 @@ Ensuite, on met les points forts en gras en utilisant \** **les doubles étoiles
 ### En cours
 
 * *Panneau d'admin* : Qui permettra à un admin de pouvoir faire (presque) tout ce qu'il veut
+* *Fiche produit*
+* *Recherche produit*
+	* *Formulaire avancé* : **(FAIT)**
+	* *algorithme de recherche* : **(Requete SQL simple)**
+	* *Page résultat* : **(Sous-categorie fictive : resultat)**
+* *Gestion des images* :
+* *Gestion des utilisateurs* : **Si on a le temps**
+* *Gestion des commentaires*
+* *Gestion des coups de coeur*
+	* *Meilleure vente*
+	* *Meilleure note* : (si notes =, prendre meilleure vente)
+* *Séparer Achat/Locations*
                 
 ### Terminé
 
@@ -37,7 +49,7 @@ Le panneau d'admin va devoir contenir :
 * La gestion des commentaires
 * Le design du panneau d'admin
 	* Page principale **(FAIT)**
- 	* Les autre pages
+ 	* Les autres pages
 
 Et bien d'autres...
 
