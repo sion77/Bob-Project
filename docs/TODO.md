@@ -59,15 +59,17 @@ On va la rendre automatique, il faut donner à Bob l'ensemble des produits
 
 ### Recherche produit
 
-**Formulaire avancé** : Fait
-
-**algorithme de recherche** : Une petite requete SQL à faire
-
-**Page résultat** : Forme d'une page sous-categorie mais contenant le resultat
+* **Formulaire avancé** : 
+	* Fait
+* **algorithme de recherche** : 
+	* Une petite requete SQL à faire
+* **Page résultat** : 
+	* Forme d'une page sous-categorie mais contenant le resultat
 	
 ### Gestion des images
 
-**dans le Panneau d'admin** : il faudra l'ajouter à la création de catégories/Produits
+* **dans le Panneau d'admin** : 
+	* il faudra l'ajouter à la création de catégories/Produits
 
 ### Gestion des utilisateurs
 
