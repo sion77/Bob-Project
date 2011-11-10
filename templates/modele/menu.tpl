@@ -6,8 +6,14 @@
 					<span class="first-elem-sous-menu">
 				{elseif $smarty.foreach.categorieSousMenu.last}
 					<span class="last-elem-sous-menu">
+				{else}
+					<span>
 				{/if}
-					<li><a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}'>{$mere->getNom()}</a></li>
+					<li>
+						<a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}'>
+							{$mere->getNom()}
+						</a>
+					</li>
 				</span>
 			{/foreach}
         </ul>

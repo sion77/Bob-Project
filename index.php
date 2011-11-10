@@ -213,7 +213,7 @@
         {                        
             // On affiche le formulaire d'inscription
             case "INSCRIPTION":
-				if(!$_SESSION["connecte"])
+				if(!isset($_SESSION["connecte"]))
 				{
 					$template = "inscription";
 				}
@@ -227,7 +227,7 @@
             
             // On affiche le formulaire de connection
             case "CONNECTION":
-				if(!$_SESSION["connecte"])
+				if(!isset($_SESSION["connecte"]))
 				{
 					$template = "connection";
 				}

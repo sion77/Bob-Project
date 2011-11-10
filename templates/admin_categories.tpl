@@ -24,7 +24,7 @@
             
             <label for="mere">Attacher à : </label>
             <select id="mere" name="mere">
-                <option value="NULL">/</option>
+                <option value="NULL">(categorie mère)</option>
                 {foreach from=$categories item=cat} 
                     {$cat->afficheOption()}
                 {/foreach}
