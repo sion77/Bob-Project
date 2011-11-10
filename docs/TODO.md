@@ -55,6 +55,8 @@ Et bien d'autres...
 
 ### Fiche produit
 
+On va la rendre automatique, il faut donner à Bob l'ensemble des produits
+
 ### Recherche produit
 
 **Formulaire avancé** : Fait
@@ -65,9 +67,18 @@ Et bien d'autres...
 	
 ### Gestion des images
 
+**dans le Panneau d'admin** : il faudra l'ajouter à la création de catégories/Produits
+
 ### Gestion des utilisateurs
 
+* **dans le Panneau d'admin** : il faudra modérer les options
+* **dans le Panneau du membre** : il faudra permettre la modification, la suppression et l'ajout de données personnelles
+
 ### Gestion des commentaires
+
+* **dans le Panneau d'admin** : il faudra pouvoir répondre et moderer les commentaires
+* **dans la Fiche produit** : on pourra ajouter un commentaire
+* **dans la Fiche produit** : il faudra afficher les commentaires
 
 ### Gestion des coups de coeur
 **Meilleure vente** 
@@ -83,6 +94,10 @@ Et bien d'autres...
 * si ex-aequo prendre aléatoirement
 
 ### Séparer Achat/Locations
+
+* **Si on navigue en ayant appuyé sur "Acheter"** : montrer que les produits achetables
+* **Si on navigue en ayant appuyé sur "Louer"** : montrer que les produits louables
+* Permettre l'affichage des deux ?!? **Non**
 
 ## Terminé
 
