@@ -53,6 +53,35 @@ Le panneau d'admin va devoir contenir :
 
 Et bien d'autres...
 
+### Fiche produit
+
+### Recherche produit
+
+**Formulaire avancé** : Fait
+**algorithme de recherche** : Une petite requete SQL à faire
+**Page résultat** : Forme d'une page sous-categorie mais contenant le resultat
+	
+### Gestion des images
+
+### Gestion des utilisateurs
+
+### Gestion des commentaires
+
+### Gestion des coups de coeur
+**Meilleure vente** 
+
+* Le produit le plus acheté/loué, 
+* si ex-aequo, prendre la meilleure note, 
+* si ex-aequo prendre aléatoirement
+
+**Meilleure note**
+
+* Le produit le mieux noté, 
+* si ex-aequo, prendre la meilleure vente, 
+* si ex-aequo prendre aléatoirement
+
+### Séparer Achat/Locations
+
 ## Terminé
 
 ### Dossier d'analyse
