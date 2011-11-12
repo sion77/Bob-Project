@@ -1,0 +1,133 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[french]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{listings}
+
+\author{LAFON Sylvain}
+\title{TP de Smarty}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\part{Introduction}
+Smarty est un moteur de template, c'est un système permettant de séparer la mise en forme d'une page de ses données.
+En soi : on va traiter les données dans le php (*.php) et s'occuper de les afficher dans des templates (*.tpl)\\
+
+Commencez par installer Smarty dans un dossier.
+Prendre un fichier html basique (appellez le maPage.tpl) :
+	\lstset{language=html}	
+	\begin{lstlisting}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Ma page (html 5)</title>
+    </head>
+    <body>
+    	Ceci est une page (en html 5, ce n'est pas oblige mais bon..)<br/>
+    	Oh, et voici une variable : {$maVariable}
+    </body>
+</html>
+	\end{lstlisting}
+Creez un index.php contenant ceci :
+	\lstset{language=php}
+	\begin{lstlisting}
+<?php
+	require("dossier/Smarty.class.php");
+	$smarty = new Smarty();
+	
+	$smarty->assign("uneVariable", "uneValeur");
+	$smarty->display("maPage.tpl");
+?>
+	\end{lstlisting}
+	
+	Résultat :
+	\begin{itemize}
+	\item Si vous ouvrez maPage.tpl, vous obtiendrez une page html dans laquelle est notemment écrit : "Oh, et voici une variable : \{\$maVariable\}"
+	\item Si vous ouvrez index.php, vous obtiendrez une page html dans laquelle est notemment écrit : "Oh, et voici une variable : uneValeur"\\
+	\end{itemize}
+		
+	Sachez que pour assign, vous pouvez également passer en paramètre un tableau associatif.\\
+	
+	\begin{lstlisting}
+// Plus propre que plusieurs appels d'assign
+$smarty->assign(Array(
+	"unNom" => "uneValeur",
+	"unAutreNom" => "uneAutreValeur"
+));
+	\end{lstlisting}
+	
+	Et on peut aussi passer un objet en valeur !\\
+	Sachant déjà tout cela, vous pouvez commencer par faire de bonnes pages
+		
+	\newpage
+	\part{Une documentation}
+	Smarty contient une très bonne documentation en ligne : http://www.smarty.net/docsv2/fr/.\\
+	
+	Vous pouvez aussi regarder ma présentation (sautez les parties sur la fabrication de fonctions (qui ne doit pas être à jour :/)\\
+	
+	Vous devrez, pour réaliser ces exercices, avoir la documentation sous la main.\\
+	
+	Vous pouvez dès à présent feuilleter la doc, notemment pour voir :
+	\begin{itemize}
+		\item Les variables (et les tableaux !)
+		\item La variable \$smarty
+		\item Les modificateurs (je n'en utilise pas si je me souviens)
+		\item Les fonctions natives
+		\item La boucle foreach
+		\item La fonction \{assign\}
+		\item La fonction \{extends\} et \{block\} (voir sur ma présentation)
+	\end{itemize}
+	\newpage
+	\part{Exercices}
+	\section{Variables et Modificateurs}
+		\subsection{Utilisation d'une variable simple}
+			\paragraph{Exercice 1 :} Votre but est d'afficher la somme de deux variables passées par la barre d'adresse (faire la somme dans le php)
+			\paragraph{Exercice 2 :} Votre but est d'afficher en majuscule une chaine passée par la barre d'adresse
+		\subsection{Utilisation d'un tableau}
+			\paragraph{Exercice 3 :} Votre but est d'afficher l'ensemble des jours de la semaine en passant par un tableau indexé (utilisation de foreach non demandée pour le moment, tapez les 7 cases du tableau à la main)
+			\paragraph{Exercice 4 :} Votre but est d'afficher la traduction des 12 mois de l'année en passant par un tableau associatif (utilisation de foreach toujours pas demandée, tapez les 12 cases à la main)
+		\subsection{Utilisation de \$smarty}
+			\paragraph{Exercice 5 :} Votre but est d'afficher la date d'aujourd'hui de manière 'lisible' (on se fiche de la langue)
+			\paragraph{Exercice 6 :} Refaire l'exercice 2 sans utiliser Smarty$::$assign() dans le php
+	\section{Les fonctions}
+		\subsection{Les fonctions simples}
+			\paragraph{Exercice 7 :} Refaire l'exercice 6 en vérifiant l'existance de la variable (utiliser isset() dans votre test du coté template, bien sur)
+		\subsection{\{include\}, \{extends\} et \{block\}}
+			\paragraph{Exercice 8 :} Nous allons creer un site ayant une sorte de 'modèle'. 
+			\subsubsection{\{include\}}
+				Pour commencer, creer une page index.php et main.tpl : index.php va pour le moment ne faire qu'appeller main.tpl.\\
+				Dans main.tpl, commencer l'architecture de votre site en plusieurs templates : utilisez \{include\} pour séparer votre main.tpl en plusieurs fichiers, par exemple pour le menu
+			\subsubsection{\{block\}}
+				Ensuite, mettez à l'endroit où devra se trouver le contenu un \{block name=contenu\}Ceci sera le contenu de la page\{/block\}\\
+				Vous pouvez en ajouter plusieurs : ce seront les endroits de la page qui pourront etre modifies
+			\subsubsection{\{extends\}}
+				Creez maintenant un template page1.tpl (que votre index.php va appeller).
+				La premiere ligne devra contenir \{extends file="main.tpl"\} .\\
+				Ajoutez ensuite : \{block name=contenu\}Hey ! C'est énooorme !!!\{/block\}
+				Vous pouvez observer que l'on retrouve la page "main.tpl" avec seul le contenu qui a changé.\\
+		\subsection{Foreach}
+			\paragraph{Exercice 9 :} Reprendre l'exercice 3 et 4 en utilisant foreach
+			\paragraph{Exercice 10 :} Reprendre l'exercice 9 en ajoutant le numéro du jour et le nom en anglais du mois
+			\paragraph{Exercice 11 :} Reprendre l'exercice 10 en remplacant l'indice du premier jour par : "Premier jour" et le dernier par : "Dernier jour"
+			\paragraph{Exercice 12 :} Utiliser \{assign name="monTableau" value=Array("January", "February", "March", "April", "May", "June", "Juillet", "August", "September", "October", "November", "December")\}\\
+			Puis utiliser foreach pour les afficher	
+	\newpage
+	\part{Conclusion}
+		Maintenant que vous avez un peu mieux compris (je l'espere) comment fonctionne Smarty, voici comment je l'ai utilisé dans le projet Bob.\\
+		
+		index.php est notre fichier principal, il appelle la classe Bob, qui appelle à son tour d'autres classes telles que Membre, Admin, Categories, etc..\\
+		ensuite, index.php va traiter la requete : que doit-on faire ?\\
+		Selon la requete il va choisir quelles opérations faire et aussi quel template appeller.\\
+		
+		Chaque template qu'index.php appelle étant une extension du meme template /templates/modele/main.tpl : cela nous permet d'avoir une meme page type, et de n'avoir que son contenu qui change.
+	
+\end{document}
