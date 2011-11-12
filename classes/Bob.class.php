@@ -1,5 +1,5 @@
 <?php
-
+	require("classes\\Image.class.php");
     require("classes\\Membre.class.php");
     require("classes\\Categorie.class.php");
 
@@ -101,12 +101,12 @@
             while($rep = $req->fetch())
             {
                 $i = new Image($this, 
-				               $req["titre"], 
-							   $req["type"], 
-							   $req["legend"], 
-							   $req["image"], 
-							   $req["taille"], 
-							   $req["idImage"]);
+				               $rep["titre"], 
+							   $rep["type"], 
+							   $rep["legende"], 
+							   $rep["image"], 
+							   $rep["taille"], 
+							   $rep["idImage"]);
                     
                 $this->images[$this->nbImages] = $i;            
                 $this->nbImages++;
@@ -460,10 +460,9 @@
 			
 			$fp      = fopen($_FILES['img']['tmp_name'], 'r');
 			$content = fread($fp, filesize($_FILES['img']['tmp_name']));
-			$content = addslashes($content);
 			fclose($fp);
 
-			$req = $this->prepare("INSERT INTO image(titre, legend, taille, image, type)
+			$req = $this->prepare("INSERT INTO image(titre, legende, taille, image, type)
 								   VALUES(?, ?, ?, ?, ?)");
 					
 			$ok = $req->execute(Array(
@@ -481,13 +480,13 @@
 			
 			$i = new Image(	$this, 
 							$_POST["titre"], 
-							$_FILES['file']['type'], 
+							$_FILES['img']['type'], 
 							$_POST["desc"], 
 							$content,
-							$_FILES['file']['size']);
-							
+							$_FILES['img']['size']);
+											
 			$this->ajouterImage($i);
-
+			
 			return true;
 		}
 		
@@ -498,8 +497,29 @@
 			return true;
 		}
         
-        // ============= GETTERS ============= //
+        public function getImage($id)
+		{
+			$trouve = false;
+			$i = 0;
+			while(!$trouve && $i < $this->nbImages)
+			{
+				$trouve = ($this->images[$i]->getId() == $id);
+				$i++;
+			}
+			
+			if(!$trouve)
+				return null;
+			
+			return $this->images[$i-1];
+		}
+		
+		// ============= GETTERS ============= //
          
+		public function getImages()
+        {
+			return $this->images;
+        }
+		
         public function getMembres()
         {
 			return $this->membres;
@@ -519,5 +539,6 @@
         {
             return $this->erreur;
         }    
-    }
+  
+   }
 ?>

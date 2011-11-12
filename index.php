@@ -20,7 +20,8 @@
     $template = "accueil"; // Template qui sera utilisé (modifié dans le code ci-dessous)
     $message = false;      // Pas de message (au départ)
     $erreur = false;       // Par défaut, s'il y a un message, ce n'est pas une erreur
-    
+    	
+	
     /*
         DEBUT DU PROGRAMME PRINCIPAL
         -- traitement des données --
@@ -364,6 +365,15 @@
             break;
         }
     }
+	
+	elseif(isset($_GET["image"]))
+	{
+		$img = $Bob->getImage(intval($_GET["image"]));
+		if($img != NULL)
+		{
+			die($img->generer());
+		}
+	}
     
     // Si on vient tout juste de se connecter sur le site 
     else
@@ -383,9 +393,10 @@
         "connecte" => isset($_SESSION["connecte"]),
 		"Bob" => $Bob,
 		"membres" => $Bob->getMembres(),
-		"categories" => $Bob->getCategories()
+		"categories" => $Bob->getCategories(),
+		"images" => $Bob->getImages()
     ));
         
     // On affiche la page compilée à l'aide du template passé ici
-    $smarty->display("templates\\".$template.".tpl");    
+    $smarty->display("templates\\".$template.".tpl");   
 ?>
