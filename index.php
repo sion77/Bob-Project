@@ -112,6 +112,30 @@
                                 break;
                             }
                         }
+						
+						elseif(isset($_GET["page"]))
+						{
+							switch($_GET["page"])
+							{
+								case "EDITER":
+									if(isset($_GET["id"]))
+									{
+										$template = "admin_editer_categorie";
+									}
+									else
+									{	
+										$template = "admin_categories";
+										$erreur = true;
+										$message = "Id de la catégorie manquante";
+									}
+								break;
+								
+								case "ACCUEIL":
+								default:
+                                    $template = "admin_categories";
+                                break;
+							}
+						}
                         
                         // Si on vient d'arriver sur la gestion des catégories
                         else
@@ -302,6 +326,7 @@
         "erreur" => $erreur,
         "message" => $message,
         "connecte" => isset($_SESSION["connecte"]),
+		"Bob" => $Bob,
 		"membres" => $Bob->getMembres(),
 		"categories" => $Bob->getCategories()
     ));

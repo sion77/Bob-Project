@@ -37,12 +37,6 @@
     </div>
     <div id="admin_edit_categories">
         <h1>Editer une catégorie</h1>
-        <noscript>
-            <span class="erreur">
-                Pour pouvoir attacher, détacher ou supprimer une categorie, 
-                il faut activer le javascript !
-            </span>
-        </noscript>
         <div id="admin_arbre_categories">
             <ul>
                 {foreach from=$categories item=cat} 
@@ -50,17 +44,5 @@
                 {/foreach}
             </ul>
         </div>
-        {literal}
-            <!-- Script AJAX permettant de modifier la hierarchie sans recharger la page -->
-            <script type="text/javascript">
-            <!--
-                // Appelle index.php?admin=CATEGORIE&amp;AJAX=arbre
-                function afficher()
-                {
-                    
-                }
-            // -->
-            </script>
-        {/literal}
     </div>
 {/block}

@@ -112,9 +112,17 @@
         public function afficheListe()
         {
             echo "<li>";
-                echo "<a href=\"index.php?admin=CATEGORIES&amp;page=EDITER&amp;id=".$this->id."\">";
+                echo "<a href=\"index.php?page=SOUSCATEGORIES&amp;id=".$this->id."\">";
                     echo $this->nom;
                 echo "</a>";
+				echo " : ";
+				echo "<a href=\"index.php?admin=CATEGORIES&amp;page=EDITER&amp;id=".$this->id."\">";
+					echo "Modifier";
+				echo "</a>";
+				echo " -- ";
+				echo "<a href=\"index.php?admin=CATEGORIES&amp;action=SUPPR&amp;id=".$this->id."\">";
+					echo "Supprimer";
+				echo "</a>";
             echo "</li>";
             
             if($this->nbFils > 0)
@@ -127,23 +135,40 @@
                 echo "</ul>";
             }
         }
-        
-        public function afficheOption()
-        {
-            $cat = $this;
+		
+		public function getInvertedPath()
+		{
+			$cat = $this;
             $i = 0;
-            echo "<option value=\"".$this->id."\">";                
-                while($cat != null)
-                {
-                    $hierarchie[] = $cat->getNom();
-                    $cat = $cat->getMere();
-                    $i++;
-                }
-                while($i > 0)
-                {
-                    $i--;
-                    echo "/".$hierarchie[$i];
-                }
+			while($cat != null)
+			{
+				$hierarchie[] = $cat;
+				$cat = $cat->getMere();
+				$i++;
+			}
+			return $hierarchie;
+		}
+		
+		public function getPath()
+		{
+			$hierarchie = $this->getInvertedPath();
+			$i = sizeof($hierarchie);
+			while($i > 0)
+			{
+				$i--;
+				$path[] = $hierarchie[$i];				
+			}		
+			return $path;
+		}       
+		
+		public function afficheOption()
+        {
+            echo "<option value=\"".$this->id."\">";    
+				$path = $this->getPath();
+                foreach($path as $cat)
+				{
+					echo "/".$cat->getNom();
+				}
             echo "</option>";
             
             if($this->nbFils > 0)
