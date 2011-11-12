@@ -9,6 +9,8 @@
 * *Bob.class.php* : contient Bob, la classe principale héritée de PDO
 * *Membre.class.php* : contient Membre et Admin (héritée de Membre)
 * *Categorie.class.php* : contient Categorie
+* *Image.class.php* : contient Image
+* *Produit.class.php* : contient Produit
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78

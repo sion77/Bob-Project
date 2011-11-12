@@ -371,7 +371,8 @@
 		$img = $Bob->getImage(intval($_GET["image"]));
 		if($img != NULL)
 		{
-			die($img->generer());
+			$img->generer();
+			// -- Cette méthode met fin à l'execution du script -- //
 		}
 	}
     

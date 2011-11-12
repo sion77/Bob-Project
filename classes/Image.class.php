@@ -43,8 +43,8 @@
 		{
 			header("Content-length: ".$this->taille);
 			header("Content-type: ".$this->type);
-			//header('Content-transfer-encoding: binary');
-			echo $this->getBin();
+			header('Content-transfer-encoding: binary');
+			die(print($this->getBin()));
 		}
 	}
 ?>
