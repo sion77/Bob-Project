@@ -166,6 +166,36 @@
                         else
                             $template = "admin_categories";
                     break;
+					
+					/* Gestion des images */
+					case "IMAGES":
+						if(isset($_GET["action"]))
+						{
+							switch($_GET["action"])
+							{
+								case "UPLOAD":
+									$template = "admin_images";
+									if($Bob->uploadImage())
+									{
+										$message = "L'image est bien arrivée";
+									}
+									else
+									{
+										$erreur = true;
+										$message = $Bob->getErreur();
+									}
+								break;
+								
+								default:
+									$template = "admin_images";
+								break;
+							}
+						}
+						else
+						{
+							$template = "admin_images";
+						}
+					break;
                     
                     /* Sinon, ou si on demande explicitement l'accueil */
                     case "ACCUEIL":

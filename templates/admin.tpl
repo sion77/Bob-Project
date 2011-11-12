@@ -3,7 +3,7 @@
 
 {* Le design de la page *}
 {block name=design}
-    {assign var='design' value="special"}
+    {assign var='design' value="admin"}
 {/block}
 
 {* Le contenu de la page *}
@@ -48,6 +48,16 @@
                 </a>
                 <a href="index.php?admin=CATEGORIES">Gestion des questions</a>
                 <p>Permet de voir la liste des commentaires sur les produits afin de pouvoir les moderer et de répondre aux eventuelles questions</p>
+            </div>
+			<div class="icon-panneau-admin">
+                <a href="index.php?admin=IMAGES">
+                <div id="gestion-images">
+                    
+                </div>
+                
+                </a>
+                <a href="index.php?admin=IMAGES">Gestion des images</a>
+                <p>Permet de voir la liste des images, de les modifier, d'en ajouter et de supprimer les images inutiles</p>
             </div>
         </div>
     </div>

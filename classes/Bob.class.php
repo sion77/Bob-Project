@@ -10,6 +10,9 @@
         
         private $categories;    // Tableau de categories
         private $nbCategories;  // Nombre de categories
+		
+		private $images;   // Tableau d'images
+		private $nbImages; // taille du tableau
         
         private $erreur;
                 
@@ -24,8 +27,9 @@
             $this->erreur = false;
             
             // Les dépendances
+			$this->initImages();
             $this->initMembres();
-            $this->initCategories();
+            $this->initCategories();			
         }
         
         private function initMembres()
@@ -88,7 +92,31 @@
             return true;
         }
                 
-        // ============= PUBLIC ============= //
+	    public function initImages()
+        {
+            $this->nbImages = 0;
+						 
+            $req = $this->query("SELECT * FROM image");        
+                                
+            while($rep = $req->fetch())
+            {
+                $i = new Image($this, 
+				               $req["titre"], 
+							   $req["type"], 
+							   $req["legend"], 
+							   $req["image"], 
+							   $req["taille"], 
+							   $req["idImage"]);
+                    
+                $this->images[$this->nbImages] = $i;            
+                $this->nbImages++;
+            }
+            $req->closeCursor();
+            
+            return true;
+        }
+		
+		// ============= PUBLIC ============= //
                 
         public function inscription($pseudo , $pass, $pass2) // return Membre ou false
         {
@@ -407,7 +435,68 @@
             
             return $trouve;
         }
-    
+
+		///
+		
+		public function uploadImage()
+		{
+			if(!isset($_POST['titre']) || !isset($_POST["desc"]) || !isset($_FILES['img']))
+			{
+				$this->erreur = "il manque des données";
+				return false;
+			}
+			
+			if($_POST['titre'] == "")
+			{
+				$this->erreur = "Il manque le titre !";
+				return false;
+			}
+			
+			if($_FILES['img']['size'] <= 0)
+			{
+				$this->erreur = "erreur lors de l'upload";
+				return false;
+			}
+			
+			$fp      = fopen($_FILES['img']['tmp_name'], 'r');
+			$content = fread($fp, filesize($_FILES['img']['tmp_name']));
+			$content = addslashes($content);
+			fclose($fp);
+
+			$req = $this->prepare("INSERT INTO image(titre, legend, taille, image, type)
+								   VALUES(?, ?, ?, ?, ?)");
+					
+			$ok = $req->execute(Array(
+				$_POST["titre"],
+				$_POST["desc"],
+				$_FILES['img']['size'],
+				$content,
+				$_FILES['img']['type']
+			));
+			
+			if(!$ok)
+			{
+				return false;
+			}
+			
+			$i = new Image(	$this, 
+							$_POST["titre"], 
+							$_FILES['file']['type'], 
+							$_POST["desc"], 
+							$content,
+							$_FILES['file']['size']);
+							
+			$this->ajouterImage($i);
+
+			return true;
+		}
+		
+		public function ajouterImage($image)
+		{
+			$this->images[] = $image;
+			$this->nbImages++;
+			return true;
+		}
         
         // ============= GETTERS ============= //
          
