@@ -106,6 +106,31 @@
                                         $message = $Bob->getErreur();
                                     }
                                 break;
+								
+								case "EDITER":
+									$template = "admin_categories";
+									if(isset($_GET["id"]))
+									{
+										if($Bob->modifCategorie(intval($_GET["id"])))
+										{
+											$message = "Categorie modifiee avec succes";
+										}
+										else
+										{
+											$erreur = true;
+											$message = $Bob->getErreur();
+										}										
+									}
+									else
+									{
+										$erreur = true;
+										$message = "ID de la categorie à modifier manquant";
+									}									
+								break;
+								
+								case "SUPPR":
+								
+								break;
                                 
                                 default:
                                     $template = "admin_categories";

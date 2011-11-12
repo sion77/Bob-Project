@@ -12,6 +12,8 @@
         private $desc;
         
         private static $maxId = 0;
+		
+		// =========== GETTERS =========== //
         
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
@@ -21,7 +23,7 @@
         public function getNbFils() { return $this->nbFils; }
         
         public function getFreres() 
-        { // Attention ! on est dans le tableau !
+        {
         
             if($this->mere == NULL)
                 return $this->Bob->getCategories();
@@ -37,7 +39,37 @@
             return ($this->mere->getNbFils() - 1); // Moins 1 car on se comptait
         }
         
-        public function __construct($Bob, $id, $nom, $desc, $mere)
+		public function getInvertedPath()
+		{
+			// On commence ici
+			$cat = $this; 
+			
+			// Et on va remonter tout en haut
+			while($cat != null)
+			{
+				$hierarchie[] = $cat;   // on enregistre $cat
+				$cat = $cat->getMere(); // on remonte d'un cran
+			}
+			return $hierarchie;
+		}
+		
+		public function getPath()
+		{
+			$hierarchie = $this->getInvertedPath(); // On prend le path (inversé)
+			$i = sizeof($hierarchie);               // Taille du path (inversé)
+			
+			// De la derniere case à la premiere
+			while($i > 0)
+			{
+				$i--;
+				$path[] = $hierarchie[$i];	// On copie dans un autre tableau			
+			}		
+			return $path;
+		}       
+		
+        // =========== SETTERS =========== //
+		
+		public function __construct($Bob, $id, $nom, $desc, $mere)
         {
             $this->Bob = $Bob;
             $this->mere = $mere;
@@ -93,7 +125,71 @@
             return true;            
         }
             
-        public function getCategorie($id)
+		public function detacher($cat)
+		{
+			// On cherche le fils
+			$trouve = false;
+			$i = 0;
+			while(!$trouve && $i < $this->nb_fils)
+			{
+				$trouve = ($this->fils[$i]->getId() == $cat->getId());
+				$i++;
+			}
+			if(!$trouve)
+				return false;
+				
+			$i--;
+			
+			// Si ce n'est pas le dernier, on met le dernier à cette place
+			if($i < $this->nb_fils-1)
+            {
+                $this->fils[$i] = $this->fils[$this->nb_fils-1];
+            }
+
+			// On supprime le dernier
+			unset($this->fils[$this->nb_fils-1]);
+            $this->nb_fils--;
+						
+			return true;
+		}
+
+		public function attacher($cat)
+		{
+			$this->fils[] = $cat;
+			$this->nb_fils++;		
+		}	
+			
+		public function modifier($titre, $desc, $mere)
+		{
+			$req = $this->Bob->prepare("UPDATE categorie SET nomCat=?, descriptionCat=?, idParent=? WHERE idCat=?");
+			$rep = $req->execute(Array(
+				$titre, $desc, (($mere == null) ? NULL : $mere->getId()), $this->getId()
+			));
+			
+			if(!$rep)
+				return false;
+				
+			if($this->mere)
+				$this->mere->detacher($this);
+			else
+				$this->Bob->enleverCategorie($this);
+				
+			$this->mere = $mere;
+			
+			if($this->mere)
+				$this->mere->attacher($this);
+			else
+				$this->Bob->ajouterCategorie($this);
+			
+			$this->nom = $titre;
+			$this->desc = $desc;
+			
+			return true;
+		}	   
+	   
+	    // =========== AFFICHAGE =========== //
+
+		public function getCategorie($id)
         {
             if($id == $this->id)
                 return $this;
@@ -136,39 +232,19 @@
             }
         }
 		
-		public function getInvertedPath()
+		public function affichePath()
 		{
-			$cat = $this;
-            $i = 0;
-			while($cat != null)
+			$path = $this->getPath();
+			foreach($path as $cat)
 			{
-				$hierarchie[] = $cat;
-				$cat = $cat->getMere();
-				$i++;
+				echo "/".$cat->getNom();
 			}
-			return $hierarchie;
 		}
-		
-		public function getPath()
-		{
-			$hierarchie = $this->getInvertedPath();
-			$i = sizeof($hierarchie);
-			while($i > 0)
-			{
-				$i--;
-				$path[] = $hierarchie[$i];				
-			}		
-			return $path;
-		}       
-		
+				
 		public function afficheOption()
         {
             echo "<option value=\"".$this->id."\">";    
-				$path = $this->getPath();
-                foreach($path as $cat)
-				{
-					echo "/".$cat->getNom();
-				}
+				$this->affichePath();
             echo "</option>";
             
             if($this->nbFils > 0)
@@ -188,5 +264,6 @@
             $this->nbFils++;
             return true;
         }    
-    }
+  
+   }
 ?>

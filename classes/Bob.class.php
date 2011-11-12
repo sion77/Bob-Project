@@ -315,11 +315,8 @@
                 $this->erreur = "Le titre n'est pas rempli";
                 return null;
             }
-			            
-            
-            $mere = null;
-            if($_POST["mere"] != "NULL") 
-                $mere = $this->getCategorie(intval($_POST["mere"]));
+			                      
+            $mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
                                         
             $sql = "INSERT INTO categorie(idCat, nomCat, descriptionCat, idParent)
                     VALUES ('', ?, ?, ?)";
@@ -338,6 +335,31 @@
             return $this->ajouterCategorie($cat);
         }
         
+		public function modifCategorie($id)
+		{
+			if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]))
+            {
+                $this->erreur = "Il manque des données";
+                return null;
+            }
+            
+            if($_POST["titre"] == "")
+            {
+                $this->erreur = "Le titre n'est pas rempli";
+                return null;
+            }
+			
+			$cat = $this->getCategorie($id);
+			$mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
+			
+			if(!$cat->modifier($_POST["titre"], $_POST["desc"], $mere))
+			{
+				$this->erreur = "Erreur SQL";
+				return false;
+			}
+			return true;
+		}
+		
         public function ajouterCategorie($cat)
         {// Une categorie mère, bien sûr
                     
@@ -347,6 +369,31 @@
             return true;
         }
     
+		public function enleverCategorie($cat)
+		{
+			$trouve = false;
+			$i = 0;
+			while(!$trouve && $i < $this->nbCategories)
+			{
+				$trouve = ($this->categories[$i]->getId() == $cat->getId());
+				$i++;
+			}
+			if(!$trouve)
+				return false;
+				
+			$i--;
+				
+			// On va supprimer le Membre du tableau
+            if($i < $this->nbCategories-1)
+            {
+                $this->categories[$i] = $this->categories[$this->nbCategories-1];
+            }            
+            unset($this->categories[$this->nbCategories-1]);
+            $this->nbCategories--; 
+						
+			return true;
+		}
+	
         public function getCategorie($id)
         {
             $i = 0;

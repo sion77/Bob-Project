@@ -22,13 +22,34 @@
             <label for="mere">Attacher à : </label>
             <select id="mere" name="mere">
 				<optgroup label="Avant">
-					<option value="{$cat->getMere()}">{$cat->affichePath()}</option>
+					{if $cat->getMere() != null}
+						<option value="{$cat->getMere()->getId()}">{$cat->getMere()->affichePath()}</option>
+					{else}
+						<option value="NULL">/</option>
+					{/if}
 				</optgroup>
+				
+				{* On affiche tout sauf nous, notre mère et nos sous-catégories *}
 				<optgroup label="Modifier">
-					<option value="NULL">(categorie mère)</option>
-					{foreach from=$categories item=cat} 
-						{$cat->afficheOption()}
+					{if $cat->getMere() != null}
+						<option value="NULL">(categorie mère)</option>
+					{/if}			
+					
+					{* On affiche les freres et leurs sous-categories *}
+					{foreach from=$cat->getFreres() item=cats} 
+						{if $cats->getId() != $cat->getId()}
+							{$cats->afficheOption()}
+						{/if}
 					{/foreach}
+					
+					{* On affiche les frères de notre mères et leurs sous-catégories *}
+					{if $cat->getMere() != null}
+						{foreach from=$cat->getMere()->getFreres() item=cats} 
+							{if $cats->getId() != $cat->getMere()->getId()}
+								{$cats->afficheOption()}
+							{/if}
+						{/foreach}
+					{/if}
 				</optgroup>
             </select>
             <br/><br/>
