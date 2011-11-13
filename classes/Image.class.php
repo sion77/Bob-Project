@@ -71,20 +71,26 @@
 			header('Content-transfer-encoding: binary');
 		}
 			
+		public function getNewImage()
+		{
+			if($this->w == $this->src_w && $this->h == $this->src_h)
+			{
+				return $this->img;
+			}
+			
+			$dst = imagecreatetruecolor($this->w, $this->h);					
+			if(!imagecopyresampled($dst, $this->img , 0, 0, 0, 0 , $this->w , $this->h , $this->src_w , $this->src_h ))
+			{
+				die(print("erreur"));
+				return $this->img;
+			}		
+			
+			return $dst;			
+		}
+		
 		public function generer() 
 		{					
-			if($this->w != $this->src_w || $this->x != $this->src_x)
-			{
-				$dst = imagecreatetruecolor($this->w, $this->h);					
-				if(!imagecopyresampled($dst, $this->img , 0, 0, 0, 0 , $this->w , $this->h , $this->src_w , $this->src_h ))
-				{
-					die(print('An error occurred.'));
-				}		
-			}
-			else
-			{
-				$dst = $this->img;
-			}
+			$dst = $this->getNewImage();
 								
 			switch($this->type)
 			{
