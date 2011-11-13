@@ -93,6 +93,8 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`image` (
   `image` BLOB NULL ,
   `titre` VARCHAR(45) NOT NULL ,
   `legende` TEXT NULL ,
+  `taille` INT NOT NULL,
+  `type` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idImage`) )
 ENGINE = InnoDB;
 
