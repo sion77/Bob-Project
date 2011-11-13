@@ -66,7 +66,6 @@
 		
 		private function headers()
 		{
-			header("Content-length: ".$this->taille);
 			header("Content-type: ".$this->type);
 			header('Content-transfer-encoding: binary');
 		}
