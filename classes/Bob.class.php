@@ -497,7 +497,7 @@
 		
 		public function ajouterImage($image)
 		{
-			$this->images[] = $image;
+			$this->images[$this->nbImages] = $image;
 			$this->nbImages++;
 			return true;
 		}
