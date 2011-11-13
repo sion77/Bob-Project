@@ -130,7 +130,24 @@
 								break;
 								
 								case "SUPPR":
-								
+									$template = "admin_categories";
+									if(isset($_GET["id"]))
+									{
+										if($Bob->supprCategorie(intval($_GET["id"])))
+										{
+											$message = "Categorie supprimée avec succes";
+										}
+										else
+										{
+											$erreur = true;
+											$message = $Bob->getErreur();
+										}										
+									}
+									else
+									{
+										$erreur = true;
+										$message = "ID de la categorie à modifier manquant";
+									}	
 								break;
                                 
                                 default:
@@ -192,10 +209,11 @@
 								break;
 							}
 						}
-						else
-						{
+						
+						// Si on vient d'arriver sur la gestion des images
+						else						
 							$template = "admin_images";
-						}
+						
 					break;
                     
                     /* Sinon, ou si on demande explicitement l'accueil */

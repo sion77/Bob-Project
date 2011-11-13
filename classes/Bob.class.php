@@ -388,7 +388,12 @@
 			return true;
 		}
 		
-        public function ajouterCategorie($cat)
+        public function supprCategorie($id)
+		{
+			
+		}
+		
+		public function ajouterCategorie($cat)
         {// Une categorie mère, bien sûr
                     
             $this->categories[$this->nbCategories] = $cat;
