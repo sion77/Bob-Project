@@ -168,7 +168,7 @@
             ));
             
             $m = new Membre($this, 0, $pseudo, $pass);
-            ajouterMembre($m);
+            $this->ajouterMembre($m);
                         
             return $m;
         }    
