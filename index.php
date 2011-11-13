@@ -389,6 +389,21 @@
 		$img = $Bob->getImage(intval($_GET["image"]));
 		if($img != NULL)
 		{
+			if(isset($_GET["s"])) {				
+				$h = $img->getHeight();
+				$w = $img->getWidth();	
+				$s = floatval($_GET["s"]);
+				$img->setHeight(round($s*$h));
+				$img->setWidth(round($s*$w));
+			}
+			else {
+				if(isset($_GET["h"]))
+					$img->setHeight(intval($_GET["h"]));
+					
+				if(isset($_GET["w"]))
+					$img->setWidth(intval($_GET["w"]));	
+			}
+			
 			$img->generer();
 			// -- Cette méthode met fin à l'execution du script -- //
 		}

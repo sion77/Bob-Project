@@ -8,11 +8,23 @@
 		private $binary;
 		private $taille;
 		
+		private $img;
+		private $src_h;
+		private $src_w;
+		private $h;
+		private $w;
+		
 		private $illustre;
 		private $nbIllustre;
 		
 		private $Bob;
 		private static $maxId = 0;
+		
+		public function getImage() { return $this->img; }
+		public function getHeight() { return $this->h; }
+		public function setHeight($h) { $this->h = $h; }
+		public function getWidth() { return $this->w; }
+		public function setWidth($w) { $this->w = $w; }
 		
 		public function getId() { return $this->id; }
 		public function getDesc() { return $this->desc; }
@@ -29,7 +41,15 @@
 			$this->type = $type;
 			$this->desc = $desc;
 			$this->binary = $bin;
-			$this->taille = $taille;
+			$this->taille = $taille;			
+			
+			$this->img = $this->createImage();
+			if($this->img) {
+				$this->w = imagesx($this->img);
+				$this->h = imagesy($this->img);
+				$this->src_w = $this->w;
+				$this->src_h = $this->h;
+			}
 			
 			if($id == 0) $id = self::$maxId + 1;
 			$this->id = $id;
@@ -38,13 +58,52 @@
 			$this->illustre = null;
 			$this->nbIllustre = 0;
 		}
-	
-		public function generer() 
+		
+		private function createImage()
+		{
+			return imagecreatefromstring($this->getBin());
+		}
+		
+		private function headers()
 		{
 			header("Content-length: ".$this->taille);
 			header("Content-type: ".$this->type);
 			header('Content-transfer-encoding: binary');
-			die(print($this->getBin()));
+		}
+			
+		public function generer() 
+		{					
+			if($this->w != $this->src_w || $this->x != $this->src_x)
+			{
+				$dst = imagecreatetruecolor($this->w, $this->h);					
+				if(!imagecopyresampled($dst, $this->img , 0, 0, 0, 0 , $this->w , $this->h , $this->src_w , $this->src_h ))
+				{
+					die(print('An error occurred.'));
+				}		
+			}
+			else
+			{
+				$dst = $this->img;
+			}
+								
+			switch($this->type)
+			{
+				case "image/jpeg":
+					$this->headers();
+					die(imagejpeg($dst));
+				break;
+				case "image/gif":
+					$this->headers();
+					die(imagegif($dst));
+				break;
+				case "image/png":
+					$this->headers();
+					die(imagepng($dst));
+				break;
+				default:
+					die(print("Extension non supportée"));
+				break;
+			}			
 		}
 	}
 ?>
