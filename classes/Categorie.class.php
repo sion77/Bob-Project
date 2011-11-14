@@ -208,9 +208,10 @@
         public function afficheListe()
         {
             echo "<li>";
+				echo"<span class=\"gerer-categorie-nom-cat\">";
                 echo "<a href=\"index.php?page=SOUSCATEGORIES&amp;id=".$this->id."\">";
                     echo $this->nom;
-                echo "</a>";
+                echo "</span>";
 				echo " : ";
 				echo "<a href=\"index.php?admin=CATEGORIES&amp;page=EDITER&amp;id=".$this->id."\">";
 					echo "Modifier";

@@ -65,7 +65,6 @@ height : 80px;
 }
 
 .icon-panneau-admin a:hover
-<<<<<<< HEAD
 {
 	color : #663399;
 	font-weight : bold;
@@ -224,152 +223,120 @@ padding-top : 40px;
 #administrer-membres table
 {
 
-padding : 30px;
-		font-family : Verdana, Arial, Sans-serif;
+	padding : 30px;
+	font-family : Verdana, Arial, Sans-serif;
 	font-weight : bold;
 	color : #222;
 	text-align : center;
 	
 	box-shadow:1px 3px 8px #000000;
 
--moz-border-radius: 10px;
--webkit-border-radius: 10px;
-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 
-border-width: 2px;
-border-style: inset;
-border-color: #121212;
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
 
-background: -moz-linear-gradient(top, #dedede, #acacac);
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+
+#panneau-gestion-categories
+{
+	padding-top :  60px;
+		font-family : Verdana, Arial, Sans-serif;
+}
+
+#panneau-gestion-categories h1
+{
+	color : orange;
+	padding-left : 25px;
+	border-left : 6px solid orange;
+	font-weight : bold;
 
 }
 
-=======
+#admin_creer_categorie
 {
-	color : #663399;
+	padding : 30px;
+	padding-top : 10px;
+	margin-bottom : 30px;
+
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+#admin_edit_categories
+{
+	padding : 30px;
+	padding-top : 10px;
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+#admin_edit_categories a
+{
+	text-decoration : none;	
+}
+
+.gerer-categorie-nom-cat a
+{
+	color : #111;
 	font-weight : bold;
 }
 
-#gestion-membres
+#panneau-admin_editer_categorie
 {
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/membreso.jpg');
+			font-family : Verdana, Arial, Sans-serif;
+
+	padding : 30px;
+	padding-top : 10px;
 	box-shadow:1px 3px 8px #000000;
 
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 
-	border : 2px solid black;
-	
-	float : left;
-	
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
 }
 
-
-#gestion-membres:hover
+#panneau-admin_editer_categorie h1
 {
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/membresy.jpg');
+	color : orange;
+	padding-left : 25px;
+	border-left : 6px solid orange;
+	font-weight : bold;
 }
 
-#gestion-categories
+#page-editer-categorie
 {
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/categorieo.jpg');
-	box-shadow:1px 3px 8px #000000;
-
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
-	border : 2px solid black;
-	
-		float : left;
-	
-}
-
-#gestion-categories:hover
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/categoriey.jpg');
-}
-
-
-#gestion-produits
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/produitso.jpg');
-	box-shadow:1px 3px 8px #000000;
-
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
-	border : 2px solid black;
-	
-		float : left;
-	
-}
-
-#gestion-produits:hover
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/produitsy.jpg');
-}
-
-#gestion-question
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/questiono.jpg');
-	box-shadow:1px 3px 8px #000000;
-
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
-	border : 2px solid black;
-	
-		float : left;
-	
-}
-
-#gestion-question:hover
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/questiony.jpg');
-}
->>>>>>> 59617a69aa15ee6cd87563b3285c7fc9c211cc76
-
-#gestion-images
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/questiono.jpg');
-	box-shadow:1px 3px 8px #000000;
-
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
-	border : 2px solid black;
-	
-		float : left;
-	
-}
-
-#gestion-images:hover
-{
-	width : 64px;
-	height : 64px;
-	background:url('../img/admin/questiony.jpg');
+	padding-top : 50px;
 }

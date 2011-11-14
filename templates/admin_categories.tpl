@@ -2,16 +2,16 @@
 {extends file="modele/main.tpl"}
 
 {* Le design de la page *}
-{* Pas de design supplémentaire *}
+{block name=design}
+	{assign var='design' value="special"}
+{/block}
 
 {* Le contenu de la page *}
 {block name="content"}
+	<div id="panneau-gestion-categories">
     <div id="admin_creer_categorie">
         <h1>Ajouter une nouvelle catégorie</h1>
-		<p>
-			Ce paragraphe est temporaire, et le menu n'a pas disparu : il est désormais automatisé.<br/>
-			C'est pour cela qu'il est conseillé d'ajouter ces categories dans / : Menuiserie, Sols, Quilcaillerie et Peinture
-		</p>
+		
         <form action="index.php?admin=CATEGORIES&amp;action=CREER" method="POST">
         <p style="text-align: center;">
             <label for="titre">Le titre : </label>
@@ -45,4 +45,5 @@
             </ul>
         </div>
     </div>
+	</div>
 {/block}
