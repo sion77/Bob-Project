@@ -15,7 +15,8 @@
 	define("database_pass", "");           // Le mot de passe de l'utilisateur
 	
 	// Informations relatives aux images
-	define("image_defaut_categorie", "img/catego.jpg"); // Image par défaut utilisée pour une catégorie
+	define("image_defaut_categorie", "img/catego.jpg");            // Image par défaut utilisée pour une catégorie
+	define("image_defaut_sous_categorie", image_defaut_categorie); // Image par défaut utilisée pour une sous catégorie
 	
 	/*------- Inclusion des classes -----------*/
 	

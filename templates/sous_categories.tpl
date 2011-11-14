@@ -38,7 +38,13 @@
             {* On affiche le titre, l'image et la description de la catégorie *}
             <div class="sous-categorie">            
                 <h4><a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}">{$f->getNom()}</a></h4>
-                <img src="img/souscat-tondeuses.jpg" alt="Test categories"/>
+                {if $f->getImg() == null}
+					<img src="{$smarty.const.image_defaut_sous_categorie}"
+						 alt="categorie" style="height: 110px; width: 100px;" />
+				{else}
+					<img src="index.php?image={$f->getImg()->getId()}&amp;h=110&amp;w=110" 
+						 alt="image : {$f->getImg()->getTitre()}"/>
+				{/if}				
                 <p>
                     {$f->getDesc()}
                 </p>
