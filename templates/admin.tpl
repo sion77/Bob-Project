@@ -36,11 +36,11 @@
                 </div>
                 
                 </a>
-                <a href="index.php?admin=CATEGORIES">Gestion des produits</a>
+                <a href="index.php?admin=PRODUITS">Gestion des produits</a>
                 <p>Permet d'ajouter, de modifier, de supprimer et d'organiser les produits</p>
             </div>
             <div class="icon-panneau-admin">
-                <a href="index.php?admin=CATEGORIES">
+                <a href="index.php?admin=PRODUITS">
                 <div id="gestion-question">
                     
                 </div>

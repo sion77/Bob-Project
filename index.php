@@ -216,6 +216,10 @@
 						
 					break;
 					
+					case "PRODUITS":
+						$template = "admin_produits";
+					break;
+					
 					/* Sinon, ou si on nous le demande explicitement */
 					case "ACCUEIL":
 					default:
@@ -399,7 +403,7 @@
 				$template = "fiche_produit";
 			break;
 			
-			// La recherche avanc�e
+			// La recherche avancée
 			case "RECHERCHE_AVANCEE":
 				$template = "recherche_avancee";
 			break;			
@@ -410,6 +414,8 @@
 			break;
         }
     }	
+
+	// Si on veut generer une image
 	elseif(isset($_GET["image"]))
 	{
 		$img = $Bob->getImage(intval($_GET["image"]));
@@ -454,7 +460,8 @@
 		"Bob" => $Bob,
 		"membres" => $Bob->getMembres(),
 		"categories" => $Bob->getCategories(),
-		"images" => $Bob->getImages()
+		"images" => $Bob->getImages(),
+		"produits" => $Bob->getProduits()
     ));
         
     // On affiche la page compilée à l'aide du template passé ici

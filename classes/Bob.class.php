@@ -2,14 +2,18 @@
 	require("classes\\Image.class.php");
     require("classes\\Membre.class.php");
     require("classes\\Categorie.class.php");
+	require("classes\\Produit.class.php");
 
     class Bob extends PDO
     {
         private $membres;   // Tableau de membres et admins
         private $nbMembres; // taille du tableau
+		
+		private $produits;	 // Tableau de produits
+		private $nbProduits; // taille du tableau
         
         private $categories;    // Tableau de categories
-        private $nbCategories;  // Nombre de categories
+        private $nbCategories;  // taille du tableau
 		
 		private $images;   // Tableau d'images
 		private $nbImages; // taille du tableau
@@ -29,7 +33,8 @@
             // Les dépendances
 			$this->initImages();
             $this->initMembres();
-            $this->initCategories();			
+            $this->initCategories();
+			$this->initProduits();
         }
         
         private function initMembres()
@@ -69,7 +74,7 @@
             return true;
         }
         
-        public function initCategories()
+        private function initCategories()
         {
             $this->nbCategories = 0;
             
@@ -92,7 +97,7 @@
             return true;
         }
                 
-	    public function initImages()
+	    private function initImages()
         {
             $this->nbImages = 0;
 						 
@@ -115,6 +120,37 @@
             
             return true;
         }
+		
+		private function initProduits()
+		{		
+			$this->nbProduits = 0;
+            
+            $req = $this->query("SELECT *
+                                 FROM produit
+                                 ORDER BY idProd") or die(print_r($this->errorInfo()));        
+                                
+            while($rep = $req->fetch())
+            {
+                $p = new Produit(
+					$this, 
+					$this->getCategorie($rep["idCat"]), 
+					$rep["nomProd"],
+					$rep["libelle"],
+					$rep["stockProd"], 
+		            $rep["nbVentesProd"],
+					$rep["nbLocProd"], 
+					$rep["prixProdVente"], 
+					$rep["prixProdLoc"],
+					$rep["idProd"]
+				);
+                    
+                $this->produits[$this->nbProduits] = $p;            
+                $this->nbProduits++;
+            }
+            $req->closeCursor();
+            
+            return true;
+		}
 		
 		// ============= PUBLIC ============= //
                 
@@ -541,6 +577,11 @@
 		public function getCategories()
 		{
 			return $this->categories;
+		}
+		
+		public function getProduits()
+		{
+			return $this->produits;
 		}
 		
 		public function getNbCategories()
