@@ -215,6 +215,12 @@
 							$template = "admin_images";
 						
 					break;
+					
+					/* Sinon, ou si on nous le demande explicitement */
+					case "ACCUEIL":
+					default:
+						$template = "admin";
+					break;
 				}
 			}
 			else
