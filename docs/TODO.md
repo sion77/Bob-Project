@@ -2,7 +2,7 @@
 ## Présentation d'une chose à faire
 ### La liste
 
-1. Inserer une puce à la liste à l'aide d'une \*
+1. Insérer une puce à la liste à l'aide d'une \*
 2. Ajouter le titre en *italique* entre deux \*
 3. Ajouter une éventuelle phrase de description
 
@@ -41,11 +41,11 @@ Ensuite, on met les points forts en gras en utilisant \** **les doubles étoiles
 Le panneau d'admin va devoir contenir :
 
 * La gestion des membres : **(FAIT)**
-* La gestion des catégories
-	* Ajout **(FAIT)**
-	* Edition/Organisation **En cours**
-	* Suppression **En cours**
+* La gestion des catégories : **(FAIT)**
 * La gestion des produits
+	* Ajout d'un produit
+	* Modification d'un produit
+	* Suppression d'un produit
 * La gestion des commentaires
 * Le design du panneau d'admin
 	* Page principale **(FAIT)**
@@ -69,6 +69,8 @@ On va la rendre automatique, il faut donner à Bob l'ensemble des produits
 ### Gestion des images
 
 * **dans le Panneau d'admin** : 
+	* insérer une image : **FAIT**
+	* lier une image à une catégorie/à un produit/à une pub : **FAIT pour les (sous) catégories**
 	* il faudra l'ajouter à la création de catégories/Produits
 
 ### Gestion des utilisateurs
