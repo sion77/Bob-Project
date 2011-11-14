@@ -1,9 +1,4 @@
 <?php
-	require("classes\\Image.class.php");
-    require("classes\\Membre.class.php");
-    require("classes\\Categorie.class.php");
-	require("classes\\Produit.class.php");
-
     class Bob extends PDO
     {
         private $membres;   // Tableau de membres et admins

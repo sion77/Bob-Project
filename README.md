@@ -7,9 +7,10 @@
 
 **Fichiers** :
 
-* *index.php* : Fichier principal, on entrera que par ici
-* *script.js* : Fichier contenant le javascript
-* *style.css* : Fichier contenant le style de la page (CSS)
+* *index.php*  : Fichier principal, on entrera que par ici
+* *header.php* : Fichier contenant les appels aux autres fichiers php, les constantes et session_start()
+* *script.js*  : Fichier contenant le javascript
+* *style.css*  : Fichier contenant le style de la page (CSS)
 
 **Dossiers** :
 

@@ -4,18 +4,15 @@
         -- inclusions, declarations et initialisations --
     */
     
- // session_save_path("mes_zolies_sessions");        // Endroit de sauvegarde des sessions
- // session_name("J'aime les nouilles au beurre");   // Nom de la session
-    session_start();                                 // Per met d'utiliser les sessions.
-
-    require("Smarty\\Smarty.class.php"); // Contient Smarty
-    require("classes\\Bob.class.php");   // Contient Bob
+	include("header.php");
         
     $smarty = new Smarty();     // Instance de Smarty
     $smarty->caching = 0;       // Desactive la mise en cache
     $smarty->force_compile = 1; // On demande de toujours compiler
  
-    $Bob = new Bob("localhost", 3306, "projet_bob", "root", ""); // Instance de Bob (hérité de PDO), ce sera notre interface avec les données du site
+    // Instance de Bob (hérité de PDO), ce sera notre interface avec les données du site
+    $Bob = new Bob(database_host, database_port, database_name, 
+	               database_user, database_pass); 
     
     $template = "accueil"; // Template qui sera utilisé (modifié dans le code ci-dessous)
     $message = false;      // Pas de message (au départ)
