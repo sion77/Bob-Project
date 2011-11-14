@@ -49,9 +49,9 @@ DROP TABLE IF EXISTS `projet_bob`.`admin` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`admin` (
   `idAdmin` INT(11) NOT NULL ,
-  INDEX `fk_admin_utilisateur` (`idAdmin` ASC) ,
+  INDEX `fk_admin_utilisateur` (`idAdmin` ASC),
+  PRIMARY KEY (`idAdmin`),
   CONSTRAINT `fk_admin_utilisateur`
-    PRIMARY KEY (`idAdmin`)
     FOREIGN KEY (`idAdmin` )
     REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
     ON DELETE NO ACTION
