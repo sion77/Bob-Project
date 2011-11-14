@@ -133,7 +133,7 @@
             {
                 $p = new Produit(
 					$this, 
-					$this->getCategorie($rep["idCat"]), 
+					$this->getCategorie($rep["idCatProd"]), 
 					$rep["nomProd"],
 					$rep["libelle"],
 					$rep["stockProd"], 
