@@ -75,7 +75,7 @@
 		
 		private function createImage()
 		{
-			if($this->type != "image/jpeg" &&
+			if($this->type != "image/jpeg"  &&
 			   $this->type != "image/png"  &&
 			   $this->type != "image/gif"     )
 			{

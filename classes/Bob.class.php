@@ -540,13 +540,12 @@
 			$content = fread($fp, filesize($_FILES['img']['tmp_name']));
 			fclose($fp);
 
-			$req = $this->prepare("INSERT INTO image(titre, legende, taille, image, type)
-								   VALUES(?, ?, ?, ?, ?)");
+			$req = $this->prepare("INSERT INTO image(titre, legende, image, type)
+								   VALUES(?, ?, ?, ?)");
 					
 			$ok = $req->execute(Array(
 				$_POST["titre"],
 				$_POST["desc"],
-				$_FILES['img']['size'],
 				$content,
 				$_FILES['img']['type']
 			));
