@@ -444,14 +444,17 @@
 			
 			$mere = $cat->getMere();
 			$fils = $cat->getFils();
-			foreach($fils as $f)
+			if($fils != null)
 			{
-				$f->modifier($f->getTitre(), $f->getDesc(), $mere);
+				foreach($fils as $f)
+				{
+					$f->modifier($f->getNom(), $f->getDesc(), $mere);
+				}
 			}
-			
 			if(!$cat->supprimer())
 			{
-				$this->erreur = "Erreur lors de la suppression";
+				$this->erreur = "Erreur lors de la suppression : \n";
+				print_r($this->errorInfo());
 				return false;
 			}
 			

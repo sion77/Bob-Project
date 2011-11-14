@@ -55,10 +55,10 @@
 		
 		public function getPath()
 		{
-			$hierarchie = $this->getInvertedPath(); // On prend le path (invers�)
-			$i = sizeof($hierarchie);               // Taille du path (invers�)
+			$hierarchie = $this->getInvertedPath(); // On prend le path (inversé)
+			$i = sizeof($hierarchie);               // Taille du path (inversé)
 			
-			// De la derniere case � la premiere
+			// De la derniere case à la premiere
 			while($i > 0)
 			{
 				$i--;
@@ -73,6 +73,7 @@
         {
             $this->Bob = $Bob;
             $this->mere = $mere;
+			$this->fils = null;
             
             if($id == 0)
             {
@@ -140,7 +141,7 @@
 				
 			$i--;
 			
-			// Si ce n'est pas le dernier, on met le dernier � cette place
+			// Si ce n'est pas le dernier, on met le dernier à cette place
 			if($i < $this->nb_fils-1)
             {
                 $this->fils[$i] = $this->fils[$this->nb_fils-1];
@@ -187,7 +188,38 @@
 			return true;
 		}	   
 	   
-	    // =========== AFFICHAGE =========== //
+		public function supprimer()
+		{
+			/*
+				Ici, on suppose que tous les fils ont été rattachés à une autre catégorie.
+				Si ce n'est pas le cas, on les supprime ici.
+				Pareil pour les produits.
+			*/
+			
+			if($this->fils != null)
+			{
+				foreach($this->fils as $fils)
+				{
+					$fils->supprimer();
+				}
+			}
+			
+			/*
+				foreach($this->produits as $prods)
+				{
+					$prods->supprimer();
+				}
+			*/
+			
+			// Au cas où..
+			if($this->mere != null)
+				$this->mere->detacher($this);
+			
+			$req = $this->Bob->prepare("DELETE FROM categorie WHERE idCat = ?");
+			return $req->execute(array($this->id));
+		}
+
+        // =========== AFFICHAGE =========== //
 
 		public function getCategorie($id)
         {
