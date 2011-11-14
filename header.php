@@ -14,6 +14,9 @@
 	define("database_user", "root");       // Le nom d'utilisateur
 	define("database_pass", "");           // Le mot de passe de l'utilisateur
 	
+	// Informations relatives aux images
+	define("image_defaut_categorie", "img/catego.jpg"); // Image par défaut utilisée pour une catégorie
+	
 	/*------- Inclusion des classes -----------*/
 	
 	require("Smarty\\Smarty.class.php");     // Contient Smarty

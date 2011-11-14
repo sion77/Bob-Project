@@ -12,7 +12,7 @@
         {foreach from=$categories item=mere}        
                 <div class="categorie">
                     {if $mere->getImg() == null}
-						<img src="img/categorie-jardin.jpg" alt="Test categories"/>
+						<img src="{$smarty.const.image_defaut_categorie}" alt="Test categories"/>
 					{else}
 						<img src="index.php?image={$mere->getImg()->getId()}&amp;h=170&amp;w=225" 
 						     alt="image {$mere->getNom()}"/>
