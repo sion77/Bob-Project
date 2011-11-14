@@ -9,6 +9,7 @@
 
 {* Le contenu de la page *}
 {block name=content}
+<<<<<<< HEAD
 	<div id="administrer-membres">
 		<h1>Gestion des membres</h1>
 		<table>
@@ -41,8 +42,7 @@
 						</td>
 					{/if}
 				</tr>			
-			{/foreach}
-			
+			{/foreach}			
 		</table>
 	</div>
 {/block}

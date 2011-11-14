@@ -350,3 +350,26 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
 }
 >>>>>>> 59617a69aa15ee6cd87563b3285c7fc9c211cc76
 
+#gestion-images
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiono.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-images:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiony.jpg');
+}

@@ -39,7 +39,6 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`utilisateur` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -50,9 +49,9 @@ DROP TABLE IF EXISTS `projet_bob`.`admin` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`admin` (
   `idAdmin` INT(11) NOT NULL ,
-  PRIMARY KEY (`idAdmin`) ,
   INDEX `fk_admin_utilisateur` (`idAdmin` ASC) ,
   CONSTRAINT `fk_admin_utilisateur`
+    PRIMARY KEY (`idAdmin`)
     FOREIGN KEY (`idAdmin` )
     REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
     ON DELETE NO ACTION
@@ -79,7 +78,6 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`categorie` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -93,6 +91,8 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`image` (
   `image` BLOB NULL ,
   `titre` VARCHAR(45) NOT NULL ,
   `legende` TEXT NULL ,
+  `taille` INT NOT NULL,
+  `type` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idImage`) )
 ENGINE = InnoDB;
 

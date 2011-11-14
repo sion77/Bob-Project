@@ -3,35 +3,35 @@
 
 {* Le design de la page *}
 {block name=design}
-	{assign var="design" value="special/fiche-prod"}
+    {assign var="design" value="special/fiche-prod"}
 {/block}
 
 {* Le contenu de la page *}
 {block name=content}
-	<div id="fiche-produit">
-		<span id="categorie-fiche-produit">JARDIN ></span><span id="sous-categorie-fiche-produit">Outils</span>
-		
-		<div id="image-fiche-produit">
-			<img src="img/tronconeuse.jpg" alt="Tronconeuse"/>
-		</div>
-		<div id="fiche-technique-produit">
-			<h2> TRONCONEUSE DE LA MORT QUI TUE </h2>
-			
-			<div id="fiche-technique-description-produit">
-				<p>
-					Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-					Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-					Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-					Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique
-				</p>
-			</div>
-			
-			<div id="prix-fiche-produit">
-				<h4>666E</h4>
-			</div>
-			<div id="ajouter-au-panier">
-				<h4>Ajouter au panier !</h4>
-			</div>
+    <div id="fiche-produit">
+        <span id="categorie-fiche-produit">JARDIN ></span><span id="sous-categorie-fiche-produit">Outils</span>
+        
+        <div id="image-fiche-produit">
+            <img src="img/tronconeuse.jpg" alt="Tronconeuse"/>
+        </div>
+        <div id="fiche-technique-produit">
+            <h2> TRONCONEUSE DE LA MORT QUI TUE </h2>
+            
+            <div id="fiche-technique-description-produit">
+                <p>
+                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
+                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
+                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
+                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique
+                </p>
+            </div>
+            
+            <div id="prix-fiche-produit">
+                <h4>666E</h4>
+            </div>
+            <div id="ajouter-au-panier">
+                <h4>Ajouter au panier !</h4>
+            </div>
 
 			<div id="select-quantite">
 				<form method="post" action="#">
@@ -89,7 +89,6 @@
 				blablablablablablablablablablablablablablablablablablablablablablablabla
 			</p>
 		</div>	
-
 			
 		<div id="ajouter-un-avis">
 					<h1>Ajouter un avis</h1>
