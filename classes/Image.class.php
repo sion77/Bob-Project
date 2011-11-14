@@ -61,7 +61,14 @@
 		
 		private function createImage()
 		{
-			return imagecreatefromstring($this->getBin());
+			if($type != "image/jpeg" &&
+			   $type != "image/png"  &&
+			   $type != "image/gif"     )
+			{
+				return null;
+			}
+			   
+			return imagecreatefromstring($this->getBin());			
 		}
 		
 		private function headers()
@@ -72,6 +79,9 @@
 			
 		public function getNewImage()
 		{
+			if($this->img == null)
+				return null;
+		
 			if($this->w == $this->src_w && $this->h == $this->src_h)
 			{
 				return $this->img;
@@ -90,6 +100,10 @@
 		public function generer() 
 		{					
 			$dst = $this->getNewImage();
+			if($dst == NULL)
+			{
+				die(print("Erreur lors de la recuperation de l'image"));
+			}
 								
 			switch($this->type)
 			{

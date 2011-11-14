@@ -457,6 +457,14 @@
 				return false;
 			}
 			
+			if($_FILES['img']['type'] != "image/jpeg" &&
+			   $_FILES['img']['type'] != "image/png"  &&
+			   $_FILES['img']['type'] != "image/gif"     )
+			{
+				$this->erreur = "Type non supporté (jpeg/png/gif)";
+				return false;
+			}
+			
 			if($_FILES['img']['size'] <= 0)
 			{
 				$this->erreur = "erreur lors de l'upload";
