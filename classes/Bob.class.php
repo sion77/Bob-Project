@@ -75,14 +75,16 @@
             
             $req = $this->query("SELECT idCat AS \"id\",
                                         descriptionCat AS \"desc\",
-                                        nomCat AS \"nom\"
+                                        nomCat AS \"nom\",
+										idImgCat AS \"img\"
                                  FROM categorie
                                  WHERE idParent IS NULL
                                  ORDER BY id");        
                                 
             while($rep = $req->fetch())
             {
-                $c = new Categorie($this, $rep["id"], $rep["nom"], $rep["desc"], NULL);
+				$img = ($rep["img"] == "NULL") ? null : $this->getImage($rep["img"]);
+                $c = new Categorie($this, $img, $rep["id"], $rep["nom"], $rep["desc"], NULL);
                     
                 $this->categories[$this->nbCategories] = $c;            
                 $this->nbCategories++;
@@ -105,7 +107,6 @@
 							   $rep["type"], 
 							   $rep["legende"], 
 							   $rep["image"], 
-							   $rep["taille"], 
 							   $rep["idImage"]);
                     
                 $this->images[$this->nbImages] = $i;            

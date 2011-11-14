@@ -10,6 +10,7 @@
         private $id;
         private $nom;
         private $desc;
+		private $img;
         
         private static $maxId = 0;
 		
@@ -21,6 +22,7 @@
         public function getMere() { return $this->mere; }
         public function getFils() { return $this->fils; }
         public function getNbFils() { return $this->nbFils; }
+		public function getImg() { return $this->img; }
         
         public function getFreres() 
         {
@@ -69,9 +71,10 @@
 		
         // =========== SETTERS =========== //
 		
-		public function __construct($Bob, $id, $nom, $desc, $mere)
+		public function __construct($Bob, $img, $id, $nom, $desc, $mere)
         {
             $this->Bob = $Bob;
+			$this->img = $img;
             $this->mere = $mere;
 			$this->fils = null;
             
@@ -102,7 +105,8 @@
             
             $req = $this->Bob->prepare("SELECT  idCat AS \"id\",
                                                 descriptionCat AS \"desc\",
-                                                nomCat AS \"nom\"
+                                                nomCat AS \"nom\",
+												idImgCat AS \"img\"
                                         FROM categorie
                                         WHERE idParent IS NOT NULL AND idParent = ?
                                         ORDER BY id");    
@@ -112,7 +116,9 @@
             $this->nbFils = 0;
             while($rep = $req->fetch())
             {
+				$img = ($rep["img"] == "NULL") ? null : $this->Bob->getImage($rep["img"]);
                 $f = new Categorie($this->Bob,
+								   $img,
                                    $rep["id"],
                                    $rep["nom"],
                                    $rep["desc"],
