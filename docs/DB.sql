@@ -69,12 +69,19 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`categorie` (
   `idCat` INT(11) NOT NULL AUTO_INCREMENT ,
   `descriptionCat` TEXT NOT NULL ,
   `nomCat` VARCHAR(255) NOT NULL ,
+  `idImgCat` INT(11) NULL DEFAULT NULL COMMENT 'image (fk)',
   `idParent` INT(11) NULL DEFAULT NULL COMMENT 'sous categorie' ,
   PRIMARY KEY (`idCat`) ,
   INDEX `fk_categorie_categorie1` (`idParent` ASC) ,
+  INDEX `fk_categorie_img` (`idImgCat` ASC) ,
   CONSTRAINT `fk_categorie_categorie1`
     FOREIGN KEY (`idParent` )
     REFERENCES `projet_bob`.`categorie` (`idCat` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_categorie_img`
+    FOREIGN KEY (`idImgCat` )
+    REFERENCES `projet_bob`.`image` (`idImage` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
@@ -90,8 +97,7 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`image` (
   `idImage` INT NOT NULL ,
   `image` BLOB NULL ,
   `titre` VARCHAR(45) NOT NULL ,
-  `legende` TEXT NULL ,
-  `taille` INT NOT NULL,
+  `legende` TEXT NULL,
   `type` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idImage`) )
 ENGINE = InnoDB;
