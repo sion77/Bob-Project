@@ -1,0 +1,129 @@
+#page-rech-avancee
+{
+	padding-top : 35px;
+	font-family :  Verdana, Arial, Sans-serif;
+}
+
+#panneau-rech-avancee
+{
+	width : 65%;
+	padding : 20px;
+	padding-top : 0px;
+	padding-left : 45px;
+	margin-top : 20px;
+
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+#page-rech-avancee h1
+{	
+	color : orange;
+	padding-left : 25px;
+	border-left : 6px solid orange;
+
+	
+}
+
+#nom-prod-rech
+{
+	margin-top : 5px;
+	margin-left : 80px;
+	font-weight : bold;
+}
+
+#selection-categorie
+{
+	float : left;
+
+	width : 160px;
+	
+	margin-top : 20px;
+	margin-bottom : 20px;
+	
+	padding: 15px;
+	padding-top : 0px;
+
+	border :  2px solid #091122;
+	
+	-moz-border-radius: 6px 6px 6px 6px;
+	-webkit-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+	
+	box-shadow:3px 3px 4px #000000;
+	
+	background: -moz-linear-gradient(top, #eee, #bbb);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#bbb));
+}
+
+#selection-categorie h4
+{
+	color : #4c116b;
+	font-family : Lucida grande, Tahoma, Verdana, Arial, Sans-serif;
+	text-align : center;
+	font-weight : bold;
+	font-size : 14px;
+}
+
+#bloc-droit-rech
+{
+	float : left;
+}
+
+#selection-prix
+{
+	padding: 15px;
+	
+	margin-left : 30px;
+	margin-top : 20px;
+	
+}
+
+#selection-achat-loc
+{
+	width : 200px;
+	
+	padding: 15px;
+	
+	margin-left : 50px;
+
+	border :  2px solid #091122;
+	
+	-moz-border-radius: 6px 6px 6px 6px;
+	-webkit-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+	
+	box-shadow:3px 3px 4px #000000;
+	
+	background: -moz-linear-gradient(top, #eee, #bbb);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#bbb));
+}
+
+
+#selection-prix h4
+{
+	display : inline;
+}
+
+
+#submit-rech-avancee
+{
+	clear : both;
+	margin-left : 20%;
+}
+
+#submit-rech-avancee > input
+{
+	width : 140px;
+	height : 30px;
+}

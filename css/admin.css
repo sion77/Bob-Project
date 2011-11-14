@@ -33,6 +33,7 @@ border-color: #121212;
 
 background: -moz-linear-gradient(top, #dedede, #acacac);
 background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+
 }
 
 #panneau-admin h1
@@ -44,17 +45,203 @@ border-left : 6px solid orange;
 
 .icon-panneau-admin
 {
-display : inline;
-padding-right : 50px;
-}
-
-.icon-panneau-admin img
-{
-width : 120px;
+width : 760px;
+height : 80px;
 }
 
 .icon-panneau-admin a
 {
-text-decoration : none;
+	text-decoration : none;
+	margin-left : 35px;
+	margin-top : 20px;
+	color : #660099;
+	font-size : 18px;
+}
+
+.icon-panneau-admin p
+{
+	margin-left : 85px;
+	font-size : 15px;
+}
+
+.icon-panneau-admin a:hover
+{
+	color : #663399;
+	font-weight : bold;
+}
+
+#gestion-membres
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/membreso.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+	float : left;
+	
+}
+
+
+#gestion-membres:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/membresy.jpg');
+}
+
+#gestion-categories
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/categorieo.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-categories:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/categoriey.jpg');
+}
+
+
+#gestion-produits
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/produitso.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+	float : left;
+	
+}
+
+#gestion-produits:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/produitsy.jpg');
+}
+
+#gestion-question
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiono.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+	
+}
+
+#gestion-question:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/questiony.jpg');
+}
+
+#administrer-membres 
+{
+padding-top : 40px;
+}
+
+#administrer-membres h1
+{
+	text-decoration : none;
+	color: orange;
+	font-family : Verdana, Arial, Sans-serif;
+	font-weight : bold;
+	font-size : 28px;
+}
+
+#administrer-membres li
+{
+	list-style-type : none;
+}
+
+#administrer-membres a
+{
+	text-decoration : none;
+	color: #6f1670;
+	font-family : Verdana, Arial, Sans-serif;
+	font-weight : bold;
+}
+
+#administrer-membres a:hover
+{
+	text-decoration : none;
+	color: green;
+}
+#administrer-membres td
+{
+	padding-bottom : 15px;
+	width : 200px;
+	font-family : Verdana, Arial, Sans-serif;
+	font-weight : bold;
+	color : #222;
+	text-align : center;
+}
+
+#administrer-membres th
+{
+	font-size : 22px;
+	font-weight : bold;
+	color : #222;
+	text-align : center;
+	padding-bottom : 25px;
+}
+
+
+#administrer-membres table
+{
+
+padding : 30px;
+		font-family : Verdana, Arial, Sans-serif;
+	font-weight : bold;
+	color : #222;
+	text-align : center;
+	
+	box-shadow:1px 3px 8px #000000;
+
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+
+border-width: 2px;
+border-style: inset;
+border-color: #121212;
+
+background: -moz-linear-gradient(top, #dedede, #acacac);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
 
 }
+
+

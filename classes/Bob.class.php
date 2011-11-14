@@ -102,6 +102,21 @@
 		}
 				
 		// ============= PUBLIC ============= //
+		
+		public function recherche($rech) 
+		{
+
+			// On vérifie que les infos sont là
+			if($rech == "")
+			{
+				$this->erreur = true;
+				$this->message = "Le champ de recherche est vide";
+				return false;
+			}
+
+			
+			return true;
+		}
 				
 		public function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
@@ -343,5 +358,6 @@
 			return $this->erreur;
 		}
 	
+		
 	}
 ?>

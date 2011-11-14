@@ -88,6 +88,40 @@
 				blablablablablablablablablablablablablablablablablablablabla
 				blablablablablablablablablablablablablablablablablablablablablablablabla
 			</p>
-		</div>		
-	</div>
+		</div>	
+
+			
+		<div id="ajouter-un-avis">
+					<h1>Ajouter un avis</h1>
+				<form action="#" method="post">
+					
+					<tr>
+						<th><label for="titre">Titre :</label></td>
+						<td><input id="titre" name="titre" type="text" /></td>
+						<th><label for="pseudo">Votre pseudo :</label></td>
+						<td><input id="pseudo" name="pseudo" type="text" /></td>
+					</tr>
+					<tr>
+						<textarea name="commentaire" rows="8" cols="60">
+						</textarea>
+					</tr>
+					<tr>
+					<div id="select-quantite">
+						   <p>
+							   <label for="note">Note :</label><br />
+							   <select name="note" id="note">
+								   <option value="1">1</option>
+								   <option value="2">2</option>
+								   <option value="3">3</option>
+								   <option value="4">4</option>
+								   <option value="5">5</option>
+							   </select>
+						   </p>
+					</div>
+					</tr>
+										<tr>
+						<td colspan="2" class="centre"><input type="submit" value="Send !" /></td>
+					</tr>	
+				</form>	
+		</div>
 {/block}

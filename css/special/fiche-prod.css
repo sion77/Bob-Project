@@ -1,191 +1,226 @@
-#fiche-produit
-{
-padding-top : 60px;
-}
+	#fiche-produit
+	{
+	padding-top : 60px;
+	}
 
-#categorie-fiche-produit
-{
+	#categorie-fiche-produit
+	{
 
-padding-left : 30px;
-font-family: Arial, serif;
-font-size : 28px;
-color : #FF9900;
-font-weight : bold;
-}
+	padding-left : 30px;
+	font-family: Arial, serif;
+	font-size : 28px;
+	color : #FF9900;
+	font-weight : bold;
+	}
 
-#sous-categorie-fiche-produit
-{
-padding-left : 10px;
-font-family: Arial, serif;
-font-size : 20px;
-color : #FF9900;
-font-weight : bold;
-}
+	#sous-categorie-fiche-produit
+	{
+	padding-left : 10px;
+	font-family: Arial, serif;
+	font-size : 20px;
+	color : #FF9900;
+	font-weight : bold;
+	}
 
-#fiche-technique-produit
-{
-float : right;
-width : 520px;
-margin-top : 20px;
-margin-bottom : 20px;
-padding-left : 15px;
+	#fiche-technique-produit
+	{
+	float : right;
+	width : 520px;
+	margin-top : 20px;
+	margin-bottom : 20px;
+	padding-left : 15px;
 
-color : #232323;
-font-family:  Verdana, serif;
-text-decoration : none;
-font-size : 14px;
-padding-bottom : 8px;
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-size : 14px;
+	padding-bottom : 8px;
 
-background-color : #dedede;
+	background-color : #dedede;
 
--moz-border-radius: 7px 7px 7px 7px;
--webkit-border-radius: 7px 7px 7px  7px;
-border-radius: 7px 7px 7px 7px;
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px  7px;
+	border-radius: 7px 7px 7px 7px;
 
-border-width: 2px;
-border-style: solid;
-border-color: #bbbbbb;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #bbbbbb;
 
-background: -moz-linear-gradient(top, #dedede, #adadad);
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#adadad));
-}
+	background: -moz-linear-gradient(top, #dedede, #adadad);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#adadad));
+	}
 
-#fiche-technique-description-produit 
-{
-width : 500px;
-border-top : 2px solid #9a9a9a;
-}
+	#fiche-technique-description-produit 
+	{
+	width : 500px;
+	border-top : 2px solid #9a9a9a;
+	}
 
-#prix-fiche-produit h4
-{
+	#prix-fiche-produit h4
+	{
 
-float : left;
-background-color : orange;
-width : 66px;
-height : 24px;
-margin-bottom : 10px;
-padding-top: 10px;
-padding-left : 20px;
-padding-right : 0px;
-padding-bottom : 8px;
-
-
-color : red;
-font-weight : bold;
-font-size : 18px;
-
--moz-border-radius: 10px;
--webkit-border-radius: 10px;
-border-radius: 10px;
-
-border-width: 2px;
-border-style: inset;
-border-color: #121212;
-
-/* degradé */
-background: -moz-linear-gradient(top, #FDAD00, #906602);
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#FDAD00), to(#906602));
-}
-
-#ajouter-au-panier h4
-{
-float : left;
-background-color : silver;
-width : 220px;
-height : 24px;
-margin-bottom : 10px;
-margin-left : 12px;
-padding-top: 10px;
-padding-left : 20px;
-padding-right : 0px;
-padding-bottom : 8px;
+	float : left;
+	background-color : orange;
+	width : 66px;
+	height : 24px;
+	margin-bottom : 10px;
+	padding-top: 10px;
+	padding-left : 20px;
+	padding-right : 0px;
+	padding-bottom : 8px;
 
 
-color : #252525;
-font-weight : bold;
-font-size : 18px;
+	color : red;
+	font-weight : bold;
+	font-size : 18px;
 
--moz-border-radius: 10px;
--webkit-border-radius: 10px;
-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 
-border-width: 2px;
-border-style: inset;
-border-color: #121212;
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
 
-/* degradé */
-background: -moz-linear-gradient(top, #dedede, #878787);
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#878787));
-}
+	/* degradé */
+	background: -moz-linear-gradient(top, #FDAD00, #906602);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#FDAD00), to(#906602));
+	}
 
-#ajouter-au-panier h4:hover
-{
-background-image : none;
-background-color : orange;
+	#ajouter-au-panier h4
+	{
+	float : left;
+	background-color : silver;
+	width : 220px;
+	height : 24px;
+	margin-bottom : 10px;
+	margin-left : 12px;
+	padding-top: 10px;
+	padding-left : 20px;
+	padding-right : 0px;
+	padding-bottom : 8px;
 
 
-}
+	color : #252525;
+	font-weight : bold;
+	font-size : 18px;
 
-#select-quantite
-{
-clear : both;
-}
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 
-#select-quantite .fieldset
-{
-width : 120px;
-}
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
 
-#image-fiche-produit img
-{
-width : 400px;
-margin-top : 20px;
-float : left;
-border : 2px inset #989898;
-}
+	/* degradé */
+	background: -moz-linear-gradient(top, #dedede, #878787);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#878787));
+	}
 
-.rating-star
-{
-display : inline;
-width : 30px;
-}
+	#ajouter-au-panier h4:hover
+	{
+	background-image : none;
+	background-color : orange;
 
-#fiche-produit-nbavis h6
-{
-color : #232323;
-font-family:  Verdana, serif;
-text-decoration : none;
-font-size : 14px;
-margin-top : -10px;
-padding-left : 170px;
-}
 
-.avis-fiche-produit
-{
-clear : both;
-width : 920px;
-position : relative;
-margin-top : 20px;
-padding : 20px;
-background-color : silver;
+	}
 
--moz-border-radius: 10px;
--webkit-border-radius: 10px;
-border-radius: 10px;
+	#select-quantite
+	{
+	clear : both;
+	}
 
-border-width: 2px;
-border-style: inset;
-border-color: #121212;
+	#select-quantite .fieldset
+	{
+	width : 120px;
+	}
 
-/* degradé */
-background: -moz-linear-gradient(top, #dedede, #acacac);
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
-}
+	#image-fiche-produit img
+	{
+	width : 400px;
+	margin-top : 20px;
+	float : left;
+	border : 2px inset #989898;
+	}
 
-.avis-fiche-produit h3
-{
-font-family: Verdana, serif;
-font-size : 18px;
-font-weight : bold;
-color : #343434;
-}
+	.rating-star
+	{
+	display : inline;
+	width : 30px;
+	}
+
+	#fiche-produit-nbavis h6
+	{
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+	font-size : 14px;
+	margin-top : -10px;
+	padding-left : 170px;
+	}
+
+	.avis-fiche-produit
+	{
+	clear : both;
+	width : 920px;
+	position : relative;
+	margin-top : 20px;
+	padding : 20px;
+	background-color : silver;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	/* degradé */
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+	}
+
+	.avis-fiche-produit h3
+	{
+	font-family: Verdana, serif;
+	font-size : 18px;
+	font-weight : bold;
+	color : #343434;
+	}
+	
+	#ajouter-un-avis
+	{
+	clear : both;
+	width : 920px;
+	position : relative;
+	margin-top : 20px;
+	padding : 20px;
+	background-color : silver;
+	
+	color : #232323;
+	font-family:  Verdana, serif;
+	text-decoration : none;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	/* degradé */
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+	}
+	
+	#ajouter-un-avis h1
+	{
+		margin-bottom : 30px;
+		font-size : 24px;
+		text-align : center;
+	}
+	
+	

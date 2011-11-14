@@ -22,8 +22,7 @@
 				</div>
 				<div id="espace_recherche">
 					<!--	<img src="img/search_icon.jpg" alt="search_icon"/> -->
-					<!-- GET pour pouvoir retourner à un résultat de recherche aisément -->
-					<form action="index.php?action=RECHERCHE" method="get">
+					<form action="index.php?action=RECHERCHE" method="post">
 						<input type="text" name="recherche" value="Rechercher" />
 						<input type="submit" value="GO" />
 					</form>

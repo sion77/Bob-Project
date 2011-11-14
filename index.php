@@ -96,17 +96,29 @@
 	//Si on nous demande de faire quelque chose 
 	elseif(isset($_GET["action"])) 
 	{
+	
 		switch($_GET["action"]) 
 		{
 			// Si on veut faire une recherche rapide
 			case "RECHERCHE":
+		
+			if(isset($_POST['recherche']))
+				{
+					$Bob->recherche($_POST['recherche']);
+					$template = "recherche";
+					$message = "recherche effectuée !";
+				}
+			else
+				{
 				$erreur = true;
-				$message = "Fonction non implémentée";
+				$message = "Erreur recherche";
 				$template = ("accueil");
+				}
 			break;
 		
 			//Si on nous demande d'inscrire un utilisateur
 			case "INSCRIPTION":				
+			
 				if(isset($_POST["pseudo"]) && isset($_POST["pass"]) && isset($_POST["pass2"]))
 				{	
 					if($membre = $Bob->inscription($_POST["pseudo"], $_POST["pass"], $_POST["pass2"]))
@@ -187,6 +199,11 @@
 				$template = "about";
 			break;
 			
+			// Si on demande la page about
+			case "CONTACT":
+				$template = "contact";
+			break;
+			
 			//Si on nous demande d'afficher les catégories
 			case "CATEGORIES":
 				$template = "categories";
@@ -221,6 +238,12 @@
 			case "FICHEPRODUIT":
 				$template = "fiche_produit";
 			break;
+			
+			// La recherche avancée
+			case "RECHERCHE_AVANCEE":
+				$template = "recherche_avancee";
+			break;
+			
 			
 			// Sinon on affiche la page d'acceuil
 			default:
