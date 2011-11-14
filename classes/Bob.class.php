@@ -397,7 +397,7 @@
         
 		public function modifCategorie($id)
 		{
-			if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]))
+			if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]) || !isset($_POST["image"]))
             {
                 $this->erreur = "Il manque des données";
                 return null;
@@ -411,8 +411,9 @@
 			
 			$cat = $this->getCategorie($id);
 			$mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
+			$img = ($_POST["image"] == "NULL") ? NULL : $this->getImage(intval($_POST["image"]));
 			
-			if(!$cat->modifier($_POST["titre"], $_POST["desc"], $mere))
+			if(!$cat->modifier($_POST["titre"], $_POST["desc"], $img, $mere))
 			{
 				$this->erreur = "Erreur SQL";
 				return false;

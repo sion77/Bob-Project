@@ -166,11 +166,15 @@
 			$this->nb_fils++;		
 		}	
 			
-		public function modifier($titre, $desc, $mere)
+		public function modifier($titre, $desc, $img, $mere)
 		{
-			$req = $this->Bob->prepare("UPDATE categorie SET nomCat=?, descriptionCat=?, idParent=? WHERE idCat=?");
+			$req = $this->Bob->prepare("UPDATE categorie SET nomCat=?, descriptionCat=?, idParent=?, idImgCat=? WHERE idCat=?");
 			$rep = $req->execute(Array(
-				$titre, $desc, (($mere == null) ? NULL : $mere->getId()), $this->getId()
+				$titre, 
+				$desc, 
+				(($mere == null) ? NULL : $mere->getId()), 
+				(($img == null) ? NULL : $img->getId()),
+				$this->getId()
 			));
 			
 			if(!$rep)

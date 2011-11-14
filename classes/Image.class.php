@@ -13,7 +13,6 @@
 		private $h;
 		private $w;
 		
-		private $illustre;
 		private $nbIllustre;
 		
 		private $Bob;
@@ -30,6 +29,7 @@
 		public function getTitre() { return $this->titre; }
 		public function getType() { return $this->type; }
 		public function getBin() { return $this->binary; }
+		public function getUsing() { return $this->nbIllustre; }
 		public function used() { return $this->nbIllustre != 0; }
 		
 		public function __construct($Bob, $titre, $type, $desc, $bin, $id = 0)
@@ -52,7 +52,6 @@
 		
 		public function ajouteCible($cible)
 		{
-			$this->illustre[$this->nbIllustre] = $cible;
 			$this->nbIllustre++;
 		}
 		

@@ -56,6 +56,27 @@
 					</optgroup>
 				</select>
 				<br/><br/>
+				<label for="image">Image : </label>
+				<select id="image" name="image">
+					<optgroup label="Avant">
+						{if $cat->getImg() == NULL}
+							<option value="NULL">Par défaut</option>
+						{else}
+							<option value="{$cat->getImg()->getId()}">{$cat->getImg()->getTitre()}</option>
+						{/if}
+					</optgroup>
+					<optgroup label="Modifier">
+						{if $cat->getImg() != NULL}
+							<option value="NULL">Par défaut</option>
+						{/if}
+						{foreach from=$images item=img}
+							{if $cat->getImg() == NULL || $cat->getImg()->getId() != $img->getId()}
+								<option value="{$img->getId()}">{$img->getTitre()}</option>
+							{/if}
+						{/foreach}
+					</optgroup>
+				</select>
+				<br/><br/>
 				
 				<input type="submit" value="Modifier"/>
 			</p>
