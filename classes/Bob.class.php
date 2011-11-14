@@ -426,7 +426,36 @@
 		
         public function supprCategorie($id)
 		{
+			// Quoi qu'il arrive, même template :
+            $this->template = "admin_categories";
+            
+            /*
+				1) Verifier l'existence de la catégorie
+				2) Modifier les fils : il faut les affecter à la catégorie mère
+				3) Supprimer la catégorie
+			*/
 			
+			$cat = $this->getCategorie($id);
+			if($cat == null)
+			{
+				$this->erreur = "catégorie non trouvée";
+				return false;
+			}
+			
+			$mere = $cat->getMere();
+			$fils = $cat->getFils();
+			foreach($fils as $f)
+			{
+				$f->modifier($f->getTitre(), $f->getDesc(), $mere);
+			}
+			
+			if(!$cat->supprimer())
+			{
+				$this->erreur = "Erreur lors de la suppression";
+				return false;
+			}
+			
+			return true;
 		}
 		
 		public function ajouterCategorie($cat)

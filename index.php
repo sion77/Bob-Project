@@ -14,7 +14,7 @@
     $smarty = new Smarty();     // Instance de Smarty
     $smarty->caching = 0;       // Desactive la mise en cache
     $smarty->force_compile = 1; // On demande de toujours compiler
-    
+ 
     $Bob = new Bob("localhost", 3306, "projet_bob", "root", ""); // Instance de Bob (hérité de PDO), ce sera notre interface avec les données du site
     
     $template = "accueil"; // Template qui sera utilisé (modifié dans le code ci-dessous)
