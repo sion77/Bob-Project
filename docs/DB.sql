@@ -112,7 +112,7 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`produit` (
   `idProd` INT(11) NOT NULL ,
   `nomProd` VARCHAR(255) NOT NULL ,
   `libelle` TEXT NOT NULL ,
-  `imageProd` INT NOT NULL ,
+  `idImageProd` INT NOT NULL ,
   `stockProd` INT(11) NOT NULL ,
   `nbVentesProd` INT(11) NOT NULL ,
   `nbLocProd` INT(11) NOT NULL ,
@@ -121,14 +121,14 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`produit` (
   `idCatProd` INT(11) NOT NULL ,
   PRIMARY KEY (`idProd`) ,
   INDEX `fk_produit_categorie1` (`idCatProd` ASC) ,
-  INDEX `fk_produit_image` (`imageProd` ASC) ,
+  INDEX `fk_produit_image` (`idImageProd` ASC) ,
   CONSTRAINT `fk_produit_categorie1`
     FOREIGN KEY (`idCatProd` )
     REFERENCES `projet_bob`.`categorie` (`idCat` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_produit_image`
-    FOREIGN KEY (`imageProd` )
+    FOREIGN KEY (`idImageProd` )
     REFERENCES `projet_bob`.`image` (`idImage` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
