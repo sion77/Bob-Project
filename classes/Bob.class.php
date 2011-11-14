@@ -31,11 +31,11 @@
 			$this->categories = NULL;
 						
 			// Le mieux serait de les appeller que si besoin
-			$this->initMembres();
-			$this->initCategories();
+			// $this->initMembres();
+			// $this->initCategories();
 		}
 		
-		private function initMembres()
+		public function initMembres()
 		{
 			if($this->membres != NULL)
 				return false;
@@ -75,7 +75,7 @@
 			return true;
 		}
 		
-		private function initCategories()
+		public function initCategories()
 		{
 			if($this->categories != NULL)
 				return false;
@@ -121,18 +121,16 @@
 		public function inscription($pseudo , $pass, $pass2) // return Membre ou false
 		{
 			// On vérifie que les infos sont là
-			if($pseudo == "" || $pass == "")
+			if(empty($pseudo) || empty($pass))
 			{
-				$this->erreur = true;
-				$this->message = "Certains champs sont vides !";
+				$this->erreur = "Certains champs sont vides !";
 				return false;
 			}
 			
 			// On vérifie que les mots de passe sont identiques
 			if($pass != $pass2)
 			{
-				$this->erreur = true;
-				$this->message = "Les mots de passes sont différents";
+				$this->erreur = "Les mots de passes sont différents";
 				return false;
 			}
 			
@@ -145,6 +143,7 @@
 			// On regarde s'il n'y a pas déjà de membres avec ce pseudo
 			$i = 0;
 			$dejaUtilise = false;
+			initMembres();			
 			while($i < $this->nbMembres && !$dejaUtilise)
 			{
 				$dejaUtilise = ($this->membres[$i]->getPseudo() == $pseudo);
@@ -154,8 +153,7 @@
 			// Si personne n'a déjà ce pseudo
 			if($dejaUtilise)
 			{
-				$this->message = "Quelqu'un utilise déjà ce pseudo";
-				$this->erreur = false;
+				$this->erreur = "Quelqu'un utilise déjà ce pseudo";
 				return false;
 			}
 			
@@ -177,6 +175,7 @@
 	
 		public function ajouterMembre($membre)
 		{
+			$this->initMembres();
 			$Bob->membres[$Bob->nbMembres] = $membre;
 			$Bob->nbMembres++;
 
@@ -194,6 +193,7 @@
 			
 			$trouve = false;
 			$i = 0;
+			$this->initMembres();
 			while($i < $this->nbMembres && !$trouve)
 			{
 				$trouve = ($this->membres[$i]->getPseudo() == $pseudo);
@@ -229,6 +229,7 @@
 			// On recherche le membre à supprimer
 			$i = 0;
 			$trouve = false;
+			$this->initMembres();
 			while($i < $this->nbMembres && !$trouve)
 			{
 				$trouve = ($this->membres[$i]->getId() == $id);
@@ -255,6 +256,7 @@
 			$this->template = "admin_membres";
 			
 			// On recherche le membre
+			$this->initMembres();
 			$i = $this->getIndiceMembre($id);
 			if(!$i) return false;
 			
@@ -293,6 +295,7 @@
 			$this->template = "admin_membres";
 			
 			// On recherche le membre
+			$this->initMembres();
 			$i = $this->getIndiceMembre($id);
 			if(!$i) return false;
 			
@@ -323,7 +326,8 @@
 	
 		public function getMembre($id)
 		{
-			return $this->membres[getIndiceMembre($id)];
+			$this->initMembres();
+			return $this->membres[$this->getIndiceMembre($id)];
 		}
 		
 		///
@@ -332,6 +336,7 @@
 		{
 			$i = 0;
 			$trouve = false;
+			$this->initCategories();
 			while($i < $this->nbCategories && !$trouve)
 			{
 				$trouve = ($this->categories[$i]->getCategorie($id));
@@ -341,16 +346,35 @@
 			return $trouve;
 		}
 	
+		
 		// ============= GETTERS ============= //
+		
+		public function membresInited()
+		{
+			return ($this->membres != NULL);
+		}
+		
+		public function categoriesInited()
+		{
+			return ($this->categories != NULL);
+		}
 		
 		public function getMembres()
 		{
+			$this->initMembres();
 			return $this->membres;
 		}
 		
 		public function getCategories()
 		{
+			$this->initCategories();
 			return $this->categories;
+		}
+		
+		public function getNbCategories()
+		{
+			$this->initCategories();
+			return $this->nbCategories;
 		}
 		
 		public function getErreur()

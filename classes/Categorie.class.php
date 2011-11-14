@@ -16,6 +16,24 @@
 		public function getDesc() { return $this->desc; }
 		public function getMere() { return $this->mere; }
 		public function getFils() { return $this->fils; }
+		public function getNbFils() { return $this->nbFils; }
+		
+		public function getFreres() 
+		{ // Attention ! on est dans le tableau !
+		
+			if($this->mere == NULL)
+				return $this->Bob->getCategories();
+				
+			return $this->mere->getFils(); 			
+		}
+		
+		public function getNbFreres() 
+		{ 
+			if($this->mere == NULL)
+				return ($this->Bob->getNbCategories() - 1);
+				
+			return ($this->mere->getNbFils() - 1); // Moins 1 car on se comptait
+		}
 		
 		public function __construct($Bob, $id, $nom, $desc, $mere)
 		{
@@ -53,7 +71,7 @@
 								   $rep["id"],
 								   $rep["nom"],
 								   $rep["desc"],
-								   $this->id);
+								   $this);
 								   
 				$this->fils[$this->nbFils] = $f;
 				$this->nbFils++;
@@ -79,5 +97,52 @@
 			return $trouve;
 		}
 	
+		public function affiche()
+		{
+			echo "<li>";
+				echo $this->nom;
+				echo " -- ";
+				echo "Supprimer";
+				echo " -- ";
+				echo "Modifier";
+				
+				if($this->getNbFreres() > 0)
+				{
+					echo " -- ";
+					?>
+						<form>							  
+							<select name="pere">
+								<optgroup label="Attacher">
+								<?php
+									$freres = $this->getFreres();
+									foreach($this->getFreres() as $f)
+									{
+										if($f != $this)
+											echo "<option value=\"".$f->getId()."\">".$f->getNom()."</option>";
+									}
+								?>
+								</optgroup>
+							</select>
+						</form>
+					<?php
+				}
+				
+				if($this->mere != null)
+				{
+					echo " -- ";
+					echo "Detacher";
+				}
+			echo "</li>";
+			
+			if($this->nbFils > 0)
+			{
+				echo "<ul>";
+					foreach($this->fils as $fils)
+					{
+						$fils->affiche();
+					}
+				echo "</ul>";
+			}
+		}
 	}
 ?>

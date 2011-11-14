@@ -1,8 +1,10 @@
 <?php
-	session_start(); // Permet d'utiliser les sessions.
-		
+	// session_save_path("mes_zolies_sessions");		 // Endroit de sauvegarde des sessions
+	// session_name("J'aime les nouilles au beurre");   // Nom de la session
+	session_start();								 // Permet d'utiliser les sessions.
+
 	require("Smarty\\Smarty.class.php"); // Contient Smarty
-	require("classes\\Bob.class.php"); // Contient Bob
+	require("classes\\Bob.class.php");   // Contient Bob
 		
 	$smarty = new Smarty();
 	$smarty->caching = 0;
@@ -27,7 +29,8 @@
 				switch($_GET["admin"])
 				{
 					/* Gestion des membres */
-					case "MEMBRES":
+					case "MEMBRES":					
+						$Bob->initMembres();
 					
 						// Si on nous demande de faire quelque chose
 						if(isset($_GET["action"]))
@@ -63,8 +66,8 @@
 								break;
 								
 								// Sinon
-								default:
-									$template = "accueil";
+								default:									
+									$template = "admin_membres";
 								break;
 							}
 						}
@@ -76,6 +79,7 @@
 					
 					/* Gestion des categories */
 					case "CATEGORIES" : 
+						$Bob->initCategories();
 						$template = "admin_categories";
 					break;
 					
@@ -111,9 +115,14 @@
 			else
 				{
 				$erreur = true;
+<<<<<<< HEAD
 				$message = "Erreur recherche";
 				$template = ("accueil");
 				}
+=======
+				$message = "Fonction non implémentée";
+				$template = "accueil";
+>>>>>>> 59617a69aa15ee6cd87563b3285c7fc9c211cc76
 			break;
 		
 			//Si on nous demande d'inscrire un utilisateur
@@ -215,8 +224,8 @@
 				{
 					$sc = $Bob->getCategorie(intval($_GET["id"]));
 					if($sc != false)
-					{
-						$Bob->smarty->assign("sc", $sc);
+					{						
+						$smarty->assign("sc", $sc);
 						$template = "sous_categories";
 					}
 					else
@@ -261,10 +270,17 @@
 	$smarty->assign(array(
 		"erreur" => $erreur,
 		"message" => $message,
-		"connecte" => isset($_SESSION["connecte"]),
-		"membres" => $Bob->getMembres(),
-		"categories" => $Bob->getCategories()
+		"connecte" => isset($_SESSION["connecte"])		
 	));
+	
+	if($Bob->membresInited())
+	{
+		$smarty->assign("membres", $Bob->getMembres());
+	}	
+	if($Bob->categoriesInited())
+	{
+		$smarty->assign("categories", $Bob->getCategories());
+	}
 	
 	$smarty->display("templates\\".$template.".tpl");
 	
