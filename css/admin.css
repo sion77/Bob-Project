@@ -302,6 +302,27 @@ padding-top : 40px;
 	text-decoration : none;	
 }
 
+#admin_edit_categories li
+{
+	margin-top : 10px;	
+}
+
+#admin_edit_categories img
+{
+	width : 24px;
+	margin : 5px;
+	margin-bottom : -8px;
+	
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+}
+
 .gerer-categorie-nom-cat a
 {
 	color : #111;

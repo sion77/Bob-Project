@@ -6,7 +6,7 @@
     
  // session_save_path("mes_zolies_sessions");        // Endroit de sauvegarde des sessions
  // session_name("J'aime les nouilles au beurre");   // Nom de la session
-    session_start();                                 // Permet d'utiliser les sessions.
+    session_start();                                 // Per met d'utiliser les sessions.
 
     require("Smarty\\Smarty.class.php"); // Contient Smarty
     require("classes\\Bob.class.php");   // Contient Bob

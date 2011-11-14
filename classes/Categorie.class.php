@@ -212,13 +212,12 @@
                 echo "<a href=\"index.php?page=SOUSCATEGORIES&amp;id=".$this->id."\">";
                     echo $this->nom;
                 echo "</span>";
-				echo " : ";
+				echo "  ";
 				echo "<a href=\"index.php?admin=CATEGORIES&amp;page=EDITER&amp;id=".$this->id."\">";
-					echo "Modifier";
+					echo "<img src=\"img/admin/modifiero.png\" alt=\"Delete\"/>";
 				echo "</a>";
-				echo " -- ";
 				echo "<a href=\"index.php?admin=CATEGORIES&amp;action=SUPPR&amp;id=".$this->id."\">";
-					echo "Supprimer";
+					echo "<img src=\"img/admin/delete.png\" alt=\"Delete\"/>";
 				echo "</a>";
             echo "</li>";
             

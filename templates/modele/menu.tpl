@@ -28,17 +28,8 @@
             <span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
         </ul>
     </li>
-    <li><a href='index.php?page=ABOUT'>Contact</a>
+    <li><a href='index.php?page=ABOUT'>A propos</a>
     </li>
-    <li><a href='#'>Donate !</a>
-        <ul class="sous-menu">
-            <span class="first-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
-            <li><a href='#'>Porn Pics</a></li>
-            <li><a href='#'>Porn Pics</a></li>
-            <li><a href='#'>Porn Pics</a></li>
-            <li><a href='#'>Porn Pics</a></li>
-            <li><a href='#'>Porn Pics</a></li>
-            <span class="last-elem-sous-menu"><li><a href='#'>Porn Pics</a></li></span>
-        </ul>
+     <li><a href='index.php?page=CONTACT'>Contact</a>
     </li>
 </ul>
