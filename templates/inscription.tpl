@@ -1,6 +1,5 @@
 {extends file="modele/main.tpl"}
 
-
 {block name=design}
     {assign var='design' value="special/inscr-connect"}
 {/block}
@@ -26,8 +25,8 @@
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
                     <td><input onchange="checkPass2();" id="pass2" name="pass2" type="password" /></td>
-                    <td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span><td>
-                    <td><span id="confirm-etat">Différents</span></td>
+                    <!-- td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span></td -->
+                    <td><span id="confirmEtat">Différents</span></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="centre"><input type="submit" value="Je m'inscris" /></td>

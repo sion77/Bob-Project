@@ -8,7 +8,7 @@ function checkPseudo()
 {
 	var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
 	
-	if(pseudo != "")
+	if(pseudo.length > 0)
 	{
 		if(verifAlphaNum(pseudo))
 		{	
@@ -30,7 +30,7 @@ function checkPseudo()
 						
 						case "Erreur" : 
 						default : 
-							document.getElementById("pseudoEtat").innerHTML = "Erreur ajax contacter administrateur";
+							document.getElementById("pseudoEtat").innerHTML = "Erreur AJAX contacter administrateur";
 						break;
 					}
 				}		
@@ -49,26 +49,27 @@ function checkPseudo()
 
 function checkPass()
 {	
-	var pass = document.getElementById("pass").value;
+	var pass = document.getElementById("pass").value;	
 	
-	if(pass != "")
-	{	
-		if(pass.length >= 4 && pass.length<8)
-		{
-			document.getElementById("passEtat").innerHTML = "Mot de passe court";
-		}
-		else if (pass.length >= 8 && pass.length<12)
-		{
-			document.getElementById("passEtat").innerHTML = "Mot de passe correct";
-		}
-		else if (pass.length >=12)
-		{
-			document.getElementById("passEtat").innerHTML = "Mot de passe sécuriser";
-		}
-		else 
-		{
-			document.getElementById("passEtat").innerHTML = "Mot de passe trop court";
-		}
+	if(pass.length <= 0) // Vide (ou bizarre)
+	{
+		document.getElementById("passEtat").innerHTML = "Mot de passe non renseigné";
+	}
+	else if(pass.length <= 4) // Entre 0 (exclu) et 4 (inclu)
+	{
+		document.getElementById("passEtat").innerHTML = "Mot de passe trop court";
+	}
+	else if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
+	{
+		document.getElementById("passEtat").innerHTML = "Mot de passe court";
+	}
+	else if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
+	{
+		document.getElementById("passEtat").innerHTML = "Mot de passe correct";
+	}
+	else // Supérieur à 12 strictement
+	{
+		document.getElementById("passEtat").innerHTML = "Mot de passe sécurisé";
 	}
 	
 	checkPass2(); // Ne pas oublier !
@@ -79,17 +80,20 @@ function checkPass2()
 	var pass = document.getElementById("pass").value;
 	var pass2 = document.getElementById("pass2").value;
 	
-	if(pass != "")
+	if(pass2.length > 0)
 	{	
 		if(pass2 == pass)
 		{
-			document.getElementById("confirm-etat").innerHTML = "Identiques";
+			document.getElementById("confirmEtat").innerHTML = "Identiques";
 		}
 		else
 		{
-			document.getElementById("confirm-etat").innerHTML = "Differents";
-		}
-		
+			document.getElementById("confirmEtat").innerHTML = "Differents";
+		}		
+	}
+	else
+	{
+		document.getElementById("confirmEtat").innerHTML = "Non renseigné";
 	}
 }
 
