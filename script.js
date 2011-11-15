@@ -53,21 +53,21 @@ function checkPass()
 	
 	if(!empty(pass))
 	{	
-		if(pass.length > 4 && pass.length<8)
+		if(pass.length >= 4 && pass.length<8)
 		{
-			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe court";
+			document.getElementById("passEtat").innerHTML = "Mot de passe court";
 		}
-		else if (pass.length > 8 && pass.length<12)
+		else if (pass.length >= 8 && pass.length<12)
 		{
-			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe correct";
+			document.getElementById("passEtat").innerHTML = "Mot de passe correct";
 		}
-		else if (pass.length >12)
+		else if (pass.length >=12)
 		{
-			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe sécuriser";
+			document.getElementById("passEtat").innerHTML = "Mot de passe sécuriser";
 		}
 		else 
 		{
-			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe trop court";
+			document.getElementById("passEtat").innerHTML = "Mot de passe trop court";
 		}
 	}
 }

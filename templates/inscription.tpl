@@ -21,7 +21,7 @@
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
                     <td><input onchange="checkPass();" id="pass" name="pass" type="password" /></td>
-                    <td><span id="pseudoEtatPass">Non renseigné</span></td>
+                    <td><span id="passEtat">Non renseigné</span></td>
                 </tr>
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
