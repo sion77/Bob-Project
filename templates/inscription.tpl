@@ -16,16 +16,18 @@
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
                     <td><input onchange="checkPseudo();" id="pseudo" name="pseudo" type="text"  /></td>
+                    <td><span id="pseudo-etat">Non rensigné</span></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
                     <td><input id="pass" name="pass" type="password" /></td>
+                    <td><span id="pass-etat">Non rensigné</span></td>
                 </tr>
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
                     <td><input id="pass2" name="pass2" type="password" /></td>
-                    <span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span>
-                    
+                    <td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span><td>
+                    <td><span id="confirm-etat">Différents</span></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="centre"><input type="submit" value="Je m'inscris" /></td>
