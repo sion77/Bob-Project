@@ -85,6 +85,9 @@
             {
 				$img = ($rep["img"] == "NULL") ? null : $this->getImage($rep["img"]);
                 $c = new Categorie($this, $img, $rep["id"], $rep["nom"], $rep["desc"], NULL);
+				
+				if($img)
+					$img->ajouteCible($c);
                     
                 $this->categories[$this->nbCategories] = $c;            
                 $this->nbCategories++;

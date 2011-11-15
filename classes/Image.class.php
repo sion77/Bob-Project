@@ -13,6 +13,7 @@
 		private $h;
 		private $w;
 		
+		private $illustre;
 		private $nbIllustre;
 		
 		private $Bob;
@@ -52,6 +53,7 @@
 		
 		public function ajouteCible($cible)
 		{
+			$this->illustre[$this->nbIllustre] = $cible;
 			$this->nbIllustre++;
 		}
 		

@@ -123,6 +123,8 @@
                                    $rep["nom"],
                                    $rep["desc"],
                                    $this);
+				if($img)
+					$img->ajouteCible($f);
                                    
                 $this->fils[$this->nbFils] = $f;
                 $this->nbFils++;
