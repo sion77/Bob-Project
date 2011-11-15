@@ -359,6 +359,20 @@
         {
             return $this->membres[$this->getIndiceMembre($id)];
         }
+		
+		public function membreExiste($pseudo)
+		{
+			$trouve = false;
+			$i = 0;
+			
+			while(!$trouve && $i < $this->nbMembres)
+			{
+				$trouve = ($this->membres[$i]->getPseudo() == $pseudo);
+				$i++;
+			}
+			
+			return $trouve;
+		}
         
         ///
         
