@@ -386,3 +386,78 @@ padding-top : 40px;
 {
 	padding-top : 50px;
 }
+
+#page-admin-images
+{
+	padding-top : 60px;;
+	font-family : Verdana, Arial, Sans-serif;
+	
+
+}
+
+#admin_images
+{
+	padding-left : 40px;
+	padding-bottom : 30px;
+	font-family : Verdana, Arial, Sans-serif;
+		box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+#admin_images h1
+{
+	color : orange;
+}
+
+.boite_images
+{
+	width : 600px;
+}
+
+.boite_images img
+{
+	float : left;
+	margin : 5px;
+	padding : 0px;
+	border : 2px solid black;
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	 /* Fonctionne déjà sur webkit */
+				-webkit-transition-property: opacity;
+				-webkit-transition-duration: 0.4s;
+				-webkit-transition-timing-function: ease-out;
+				
+				/* Bientôt supporté par Firefox */
+				-moz-transition-property: opacity;
+				-moz-transition-duration:0.4s;
+				-moz-transition-timing-function: ease-out;
+				
+				/* … et lorsque ce sera standardisé */
+				transition-property: opacity;
+				transition-duration: 0.4s;
+				transition-timing-function: ease-out;
+}
+
+.boite_images img:hover
+{
+	opacity : 0.7;
+}
+
+#bas-images
+{
+	clear : both;
+}
