@@ -49,7 +49,7 @@ function checkPseudo()
 
 function checkPass()
 {	
-	var pass = encodeURIComponent(document.getElementById("pass").value);
+	var pass = document.getElementById("pass").value;
 	
 	if(!empty(pass))
 	{	
@@ -74,8 +74,8 @@ function checkPass()
 
 function checkPass2()
 {
-	var pass = encodeURIComponent(document.getElementById("pass").value);
-	var pass2 = encodeURIComponent(document.getElementById("pass2").value);
+	var pass = document.getElementById("pass").value;
+	var pass2 = document.getElementById("pass2").value;
 	
 	if(!empty(pass))
 	{	
