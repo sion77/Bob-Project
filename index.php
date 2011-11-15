@@ -438,7 +438,36 @@
 		}
 	}
     
-    // Si on vient tout juste de se connecter sur le site 
+	// Infos textuelle demandée
+    elseif(isset($_GET["ajax"]))
+	{
+		switch($_GET["ajax"])
+		{
+			case "existe_membre":
+				if(isset($_GET["pseudo"]))
+				{
+					if($Bob->membreExiste($_GET["pseudo"]))
+					{
+						die(print("1"));
+					}
+					else
+					{
+						die(print("0"));
+					}
+				}
+				else
+				{
+					die(print("Erreur"));
+				}
+			break;
+			
+			default:
+				die(print("Erreur"));
+			break;
+		}
+	}
+	
+	// Si on vient tout juste de se connecter sur le site 
     else
     {
         $template = "accueil";
