@@ -1,5 +1,9 @@
 {extends file="modele/main.tpl"}
 
+{block name="javascript"}
+<script type="text/javascript" src="./script.js"></script>
+{/block}
+
 {block name=design}
     {assign var='design' value="special/inscr-connect"}
 {/block}
@@ -14,7 +18,7 @@
             <table>
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
-                    <td><input id="pseudo" name="pseudo" type="text" /></td>
+                    <td><input onchange="checkPseudo()" id="pseudo" name="pseudo" type="text"  /></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>

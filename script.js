@@ -4,3 +4,8 @@ function verifAlphaNum(chaine)
 	return regex.test(chaine);
 }
 
+function checkPseudo()
+{
+	var pseudo = document.getElementById("pseudo").value;
+	alert(pseudo);	
+}
