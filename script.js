@@ -10,13 +10,7 @@ function checkPseudo()
 	
 	if(verifAlphaNum(pseudo) == true)
 	{
-		xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
-		xhr.send(null);
-		xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4 && xhr.status == 200) 
-		{
-			alert(xhr.responseText);
-		}
+		document.getElementById("pseudoEtat").innerHTML = "Pseudo correct (syntaxe)";
 	}
 	else
 	{
@@ -24,6 +18,13 @@ function checkPseudo()
 	}
 	
 	
+	xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
+	xhr.send(null);
+	xhr.onreadystatechange = function() {
+    if(xhr.readyState == 4 && xhr.status == 200) 
+	{
+		alert(xhr.responseText);
+    }
 };
 	
 	
