@@ -9,23 +9,30 @@ function checkPseudo()
 	var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
 	
 	if(verifAlphaNum(pseudo) == true)
-	{
+	{	
+		var xhr = new XMLHttpRequest();
 		xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
 		xhr.send(null);
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4 && xhr.status == 200) 
 			{
-				alert(xhr.responseText);
+				switch(xhr.responseText)
+				{
+					case "0" : document.getElementById("pseudoEtat").innerHTML = "Pseudo ok";
+					break;
+					case "1" : document.getElementById("pseudoEtat").innerHTML = "Pseudo pas ok";
+					break;
+					case "Erreur" : default : document.getElementById("pseudoEtat").innerHTML = "Erreur ajax contacter administrateur";
+				};
 			}		
-		}; // Ici
+		};
 	}
 	else
 	{
 		document.getElementById("pseudoEtat").innerHTML = "Pseudo incorrect (syntaxe)";
 	}	
 
-//};	
+};	
 	
-}
 
 /* http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=root */
