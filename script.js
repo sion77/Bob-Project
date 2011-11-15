@@ -7,7 +7,7 @@ function verifAlphaNum(chaine)
 function checkPseudo()
 {
 	var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
-	
+		
 	if(!empty(pseudo))
 	{
 		if(verifAlphaNum(pseudo) == true)
@@ -45,10 +45,51 @@ function checkPseudo()
 	{
 		document.getElementById("pseudoEtat").innerHTML = "Pseudo non renseigné";
 	}
+};
+
+function checkPass()
+{	
+	var pass = encodeURIComponent(document.getElementById("pass").value);
 	
+	if(!empty(pass))
+	{	
+		if(pass.length > 4 && pass.length<8)
+		{
+			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe court";
+		}
+		else if (pass.length > 8 && pass.length<12)
+		{
+			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe correct";
+		}
+		else if (pass.length >12)
+		{
+			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe sécuriser";
+		}
+		else 
+		{
+			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe trop court";
+		}
 
 };	
+
+function checkPass2()
+{
+	var pass = encodeURIComponent(document.getElementById("pass").value);
+	var pass2 = encodeURIComponent(document.getElementById("pass2").value);
 	
+	if(!empty(pass))
+	{	
+		if(pass2 == pass)
+		{
+			document.getElementById("confirm-etat").innerHTML = "Identiques";
+		}
+		else
+		{
+			document.getElementById("confirm-etat").innerHTML = "Differents";
+		}
+		
+	}
+};
 
 /* http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=root */
 /* document.getElementById("pseudoEtat").innerHTML */

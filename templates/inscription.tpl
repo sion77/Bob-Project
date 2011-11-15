@@ -20,12 +20,12 @@
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
-                    <td><input id="pass" name="pass" type="password" /></td>
-                    <td><span id="pseudoEtat">Non renseigné</span></td>
+                    <td><input onchange="checkPass();" id="pass" name="pass" type="password" /></td>
+                    <td><span id="pseudoEtatPass">Non renseigné</span></td>
                 </tr>
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
-                    <td><input id="pass2" name="pass2" type="password" /></td>
+                    <td><input onchange="checkPass2();" id="pass2" name="pass2" type="password" /></td>
                     <td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span><td>
                     <td><span id="confirm-etat">Différents</span></td>
                 </tr>
