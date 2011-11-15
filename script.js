@@ -32,7 +32,7 @@ function checkPseudo()
 						default : 
 							document.getElementById("pseudoEtat").innerHTML = "Erreur ajax contacter administrateur";
 						break;
-					};
+					}
 				}		
 			};
 		}
@@ -45,7 +45,7 @@ function checkPseudo()
 	{
 		document.getElementById("pseudoEtat").innerHTML = "Pseudo non renseigné";
 	}
-};
+}
 
 function checkPass()
 {	
@@ -69,8 +69,8 @@ function checkPass()
 		{
 			document.getElementById("pseudoEtatPass").innerHTML = "Mot de passe trop court";
 		}
-
-};	
+	}
+}
 
 function checkPass2()
 {
@@ -89,7 +89,7 @@ function checkPass2()
 		}
 		
 	}
-};
+}
 
 /* http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=root */
 /* document.getElementById("pseudoEtat").innerHTML */
