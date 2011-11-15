@@ -1,8 +1,5 @@
 {extends file="modele/main.tpl"}
 
-{block name="javascript"}
-<script type="text/javascript" src="./script.js"></script>
-{/block}
 
 {block name=design}
     {assign var='design' value="special/inscr-connect"}
@@ -18,7 +15,7 @@
             <table>
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
-                    <td><input onchange="checkPseudo()" id="pseudo" name="pseudo" type="text"  /></td>
+                    <td><input onchange="checkPseudo();" id="pseudo" name="pseudo" type="text"  /></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
@@ -51,5 +48,5 @@
             ce qui constitue notre principale source de revenus 8D
         </p>
     </div>
-    <script language="javascript" src="script.js"></script>
+    <script language="text/javascript" src="script.js"></script>
 {/block}
