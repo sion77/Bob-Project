@@ -13,10 +13,12 @@ function checkPseudo()
 		xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
 		xhr.send(null);
 		xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4 && xhr.status == 200) 
-		{
-			alert(xhr.responseText);
-		}
+			if(xhr.readyState == 4 && xhr.status == 200) 
+			{
+				alert(xhr.responseText);
+			}
+		// Ici
+		};
 	}
 	else
 	{
@@ -24,7 +26,7 @@ function checkPseudo()
 	}
 	
 	
-};
+//};
 	
 	
 }
