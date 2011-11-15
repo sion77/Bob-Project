@@ -7,10 +7,10 @@ function verifAlphaNum(chaine)
 function checkPseudo()
 {
 	var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
-		
-	if(!empty(pseudo))
+	
+	if(pseudo != "")
 	{
-		if(verifAlphaNum(pseudo) == true)
+		if(verifAlphaNum(pseudo))
 		{	
 			var xhr = new XMLHttpRequest();
 			xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
@@ -51,7 +51,7 @@ function checkPass()
 {	
 	var pass = document.getElementById("pass").value;
 	
-	if(!empty(pass))
+	if(pass != "")
 	{	
 		if(pass.length >= 4 && pass.length<8)
 		{
@@ -70,6 +70,8 @@ function checkPass()
 			document.getElementById("passEtat").innerHTML = "Mot de passe trop court";
 		}
 	}
+	
+	checkPass2(); // Ne pas oublier !
 }
 
 function checkPass2()
@@ -77,7 +79,7 @@ function checkPass2()
 	var pass = document.getElementById("pass").value;
 	var pass2 = document.getElementById("pass2").value;
 	
-	if(!empty(pass))
+	if(pass != "")
 	{	
 		if(pass2 == pass)
 		{
