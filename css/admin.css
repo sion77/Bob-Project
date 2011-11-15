@@ -168,6 +168,31 @@ height : 80px;
 	background:url('../img/admin/questiony.jpg');
 }
 
+#gestion-image
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/imageo.jpg');
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border : 2px solid black;
+	
+		float : left;
+		
+	
+}
+
+#gestion-image:hover
+{
+	width : 64px;
+	height : 64px;
+	background:url('../img/admin/imagey.jpg');
+}
+
 #administrer-membres 
 {
 padding-top : 40px;

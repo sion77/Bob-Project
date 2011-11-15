@@ -26,7 +26,4 @@
             </table>    
         </form>
     </div>
-    <div id="pub-connection">
-        <img src="img/neweststuffpub.jpg" alt="Newest Stuff"/>
-    </div>
 {/block}

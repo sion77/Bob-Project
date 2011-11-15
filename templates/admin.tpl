@@ -51,7 +51,7 @@
             </div>
 			<div class="icon-panneau-admin">
                 <a href="index.php?admin=IMAGES">
-                <div id="gestion-images">
+                <div id="gestion-image">
                     
                 </div>
                 
