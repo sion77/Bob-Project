@@ -364,7 +364,7 @@
         
         public function creerCategorie()
         {
-            if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]))
+            if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]) || !isset($_POST["image"]))
             {
                 $this->erreur = "Il manque des données";
                 return null;
@@ -377,21 +377,22 @@
             }
 			                      
             $mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
-                                        
-            $sql = "INSERT INTO categorie(idCat, nomCat, descriptionCat, idParent)
-                    VALUES ('', ?, ?, ?)";
+            $img = ($_POST["image"] == "NULL") ? NULL : $this->getImage(intval($_POST["image"]));
+						
+            $sql = "INSERT INTO categorie(nomCat, descriptionCat, idParent, idImgCat)
+                    VALUES (?, ?, ?, ?)";
                                    
             $req = $this->prepare($sql);
             
             if($mere)
             {
-                $req->execute(array($_POST["titre"], $_POST["desc"], $mere->getId()));                
-                $cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], $mere);    
+                $req->execute(array($_POST["titre"], $_POST["desc"], $mere->getId(), ($img == NULL) ? NULL : $img->getId()));                
+                $cat = new Categorie($this, $img, 0, $_POST["titre"], $_POST["desc"], $mere);    
                 return $mere->ajouterFils($cat);
             }
             
-            $req->execute(array($_POST["titre"], $_POST["desc"], null));                
-            $cat = new Categorie($this, 0, $_POST["titre"], $_POST["desc"], null);    
+            $req->execute(array($_POST["titre"], $_POST["desc"], null, ($img == NULL) ? NULL : $img->getId()));                
+            $cat = new Categorie($this, $img, 0, $_POST["titre"], $_POST["desc"], null);    
             return $this->ajouterCategorie($cat);
         }
         

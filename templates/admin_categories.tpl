@@ -30,6 +30,15 @@
                 {/foreach}
             </select>
             <br/><br/>
+			
+			<label for="image">Image : </label>
+            <select id="image" name="image">
+                <option value="NULL">(image par défaut)</option>
+                {foreach from=$images item=img} 
+                    <option value="{$img->getId()}">{$img->getTitre()}</option>
+                {/foreach}
+            </select>
+            <br/><br/>
             
             <input type="submit" value="Creer"/>
         </p>
