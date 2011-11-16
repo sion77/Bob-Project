@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^admin-([A-Za-z]+)\.html$ index.php?admin=$1 [L]
+RewriteRule ^admin-([A-Za-z]+)-(action|page)-([A-Za-z]+)\.html$ index.php?admin=$1&$2=$3 [L]
+RewriteRule ^admin-([A-Za-z]+)-(action|page)-([A-Za-z]+)-([0-9]+)\.html$ index.php?admin=$1&$2=$3&id=$4 [L]
+
+RewriteRule ^(action|page)-([A-Za-z]+)\.html$  index.php?$1=$2 [L]
+RewriteRule ^(action|page)-([A-Za-z]+)-([0-9]+)\.html$  index.php?$1=$2&id=$3 [L]
+
+RewriteRule ^image-([0-9]+)\.(png|gif|jpeg|jpg)$ index.php?image=$1
