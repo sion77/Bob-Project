@@ -3,15 +3,15 @@
 
 {* Le design de la page *}
 {block name=design}
-	{assign var='design' value="special"}
+    {assign var='design' value="special"}
 {/block}
 
 {* Le contenu de la page *}
 {block name="content"}
-	<div id="panneau-gestion-categories">
+    <div id="panneau-gestion-categories">
     <div id="admin_creer_categorie">
         <h1>Ajouter une nouvelle catégorie</h1>
-		
+        
         <form action="index.php?admin=CATEGORIES&amp;action=CREER" method="POST">
         <p style="text-align: center;">
             <label for="titre">Le titre : </label>
@@ -30,8 +30,8 @@
                 {/foreach}
             </select>
             <br/><br/>
-			
-			<label for="image">Image : </label>
+            
+            <label for="image">Image : </label>
             <select id="image" name="image">
                 <option value="NULL">(image par défaut)</option>
                 {foreach from=$images item=img} 
@@ -54,5 +54,5 @@
             </ul>
         </div>
     </div>
-	</div>
+    </div>
 {/block}

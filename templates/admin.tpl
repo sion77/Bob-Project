@@ -49,7 +49,7 @@
                 <a href="index.php?admin=CATEGORIES">Gestion des questions</a>
                 <p>Permet de voir la liste des commentaires sur les produits afin de pouvoir les moderer et de répondre aux eventuelles questions</p>
             </div>
-			<div class="icon-panneau-admin">
+            <div class="icon-panneau-admin">
                 <a href="index.php?admin=IMAGES">
                 <div id="gestion-image">
                     

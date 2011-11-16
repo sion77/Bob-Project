@@ -3,15 +3,15 @@
     {
         private $membres;   // Tableau de membres et admins
         private $nbMembres; // taille du tableau
-		
-		private $produits;	 // Tableau de produits
-		private $nbProduits; // taille du tableau
+        
+        private $produits;     // Tableau de produits
+        private $nbProduits; // taille du tableau
         
         private $categories;    // Tableau de categories
         private $nbCategories;  // taille du tableau
-		
-		private $images;   // Tableau d'images
-		private $nbImages; // taille du tableau
+        
+        private $images;   // Tableau d'images
+        private $nbImages; // taille du tableau
         
         private $erreur;
                 
@@ -26,10 +26,10 @@
             $this->erreur = false;
             
             // Les dépendances
-			$this->initImages();
+            $this->initImages();
             $this->initMembres();
             $this->initCategories();
-			$this->initProduits();
+            $this->initProduits();
         }
         
         private function initMembres()
@@ -76,18 +76,18 @@
             $req = $this->query("SELECT idCat AS \"id\",
                                         descriptionCat AS \"desc\",
                                         nomCat AS \"nom\",
-										idImgCat AS \"img\"
+                                        idImgCat AS \"img\"
                                  FROM categorie
                                  WHERE idParent IS NULL
                                  ORDER BY id");        
                                 
             while($rep = $req->fetch())
             {
-				$img = ($rep["img"] == "NULL") ? null : $this->getImage($rep["img"]);
+                $img = ($rep["img"] == "NULL") ? null : $this->getImage($rep["img"]);
                 $c = new Categorie($this, $img, $rep["id"], $rep["nom"], $rep["desc"], NULL);
-				
-				if($img)
-					$img->ajouteCible($c);
+                
+                if($img)
+                    $img->ajouteCible($c);
                     
                 $this->categories[$this->nbCategories] = $c;            
                 $this->nbCategories++;
@@ -97,20 +97,20 @@
             return true;
         }
                 
-	    private function initImages()
+        private function initImages()
         {
             $this->nbImages = 0;
-						 
+                         
             $req = $this->query("SELECT * FROM image");        
                                 
             while($rep = $req->fetch())
             {
                 $i = new Image($this, 
-				               $rep["titre"], 
-							   $rep["type"], 
-							   $rep["legende"], 
-							   $rep["image"], 
-							   $rep["idImage"]);
+                               $rep["titre"], 
+                               $rep["type"], 
+                               $rep["legende"], 
+                               $rep["image"], 
+                               $rep["idImage"]);
                     
                 $this->images[$this->nbImages] = $i;            
                 $this->nbImages++;
@@ -119,10 +119,10 @@
             
             return true;
         }
-		
-		private function initProduits()
-		{		
-			$this->nbProduits = 0;
+        
+        private function initProduits()
+        {        
+            $this->nbProduits = 0;
             
             $req = $this->query("SELECT *
                                  FROM produit
@@ -131,17 +131,17 @@
             while($rep = $req->fetch())
             {
                 $p = new Produit(
-					$this, 
-					$this->getCategorie($rep["idCatProd"]), 
-					$rep["nomProd"],
-					$rep["libelle"],
-					$rep["stockProd"], 
-		            $rep["nbVentesProd"],
-					$rep["nbLocProd"], 
-					$rep["prixProdVente"], 
-					$rep["prixProdLoc"],
-					$rep["idProd"]
-				);
+                    $this, 
+                    $this->getCategorie($rep["idCatProd"]), 
+                    $rep["nomProd"],
+                    $rep["libelle"],
+                    $rep["stockProd"], 
+                    $rep["nbVentesProd"],
+                    $rep["nbLocProd"], 
+                    $rep["prixProdVente"], 
+                    $rep["prixProdLoc"],
+                    $rep["idProd"]
+                );
                     
                 $this->produits[$this->nbProduits] = $p;            
                 $this->nbProduits++;
@@ -149,9 +149,9 @@
             $req->closeCursor();
             
             return true;
-		}
-		
-		// ============= PUBLIC ============= //
+        }
+        
+        // ============= PUBLIC ============= //
                 
         public function inscription($pseudo , $pass, $pass2) // return Membre ou false
         {
@@ -362,20 +362,20 @@
         {
             return $this->membres[$this->getIndiceMembre($id)];
         }
-		
-		public function membreExiste($pseudo)
-		{
-			$trouve = false;
-			$i = 0;
-			
-			while(!$trouve && $i < $this->nbMembres)
-			{
-				$trouve = ($this->membres[$i]->getPseudo() == $pseudo);
-				$i++;
-			}
-			
-			return $trouve;
-		}
+        
+        public function membreExiste($pseudo)
+        {
+            $trouve = false;
+            $i = 0;
+            
+            while(!$trouve && $i < $this->nbMembres)
+            {
+                $trouve = ($this->membres[$i]->getPseudo() == $pseudo);
+                $i++;
+            }
+            
+            return $trouve;
+        }
         
         ///
         
@@ -392,10 +392,10 @@
                 $this->erreur = "Le titre n'est pas rempli";
                 return null;
             }
-			                      
+                                  
             $mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
             $img = ($_POST["image"] == "NULL") ? NULL : $this->getImage(intval($_POST["image"]));
-						
+                        
             $sql = "INSERT INTO categorie(nomCat, descriptionCat, idParent, idImgCat)
                     VALUES (?, ?, ?, ?)";
                                    
@@ -413,9 +413,9 @@
             return $this->ajouterCategorie($cat);
         }
         
-		public function modifCategorie($id)
-		{
-			if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]) || !isset($_POST["image"]))
+        public function modifCategorie($id)
+        {
+            if(!isset($_POST["titre"]) || !isset($_POST["desc"]) || !isset($_POST["mere"]) || !isset($_POST["image"]))
             {
                 $this->erreur = "Il manque des données";
                 return null;
@@ -426,57 +426,57 @@
                 $this->erreur = "Le titre n'est pas rempli";
                 return null;
             }
-			
-			$cat = $this->getCategorie($id);
-			$mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
-			$img = ($_POST["image"] == "NULL") ? NULL : $this->getImage(intval($_POST["image"]));
-			
-			if(!$cat->modifier($_POST["titre"], $_POST["desc"], $img, $mere))
-			{
-				$this->erreur = "Erreur SQL";
-				return false;
-			}
-			return true;
-		}
-		
+            
+            $cat = $this->getCategorie($id);
+            $mere = ($_POST["mere"] == "NULL") ? NULL : $this->getCategorie(intval($_POST["mere"]));
+            $img = ($_POST["image"] == "NULL") ? NULL : $this->getImage(intval($_POST["image"]));
+            
+            if(!$cat->modifier($_POST["titre"], $_POST["desc"], $img, $mere))
+            {
+                $this->erreur = "Erreur SQL";
+                return false;
+            }
+            return true;
+        }
+        
         public function supprCategorie($id)
-		{
-			// Quoi qu'il arrive, même template :
+        {
+            // Quoi qu'il arrive, même template :
             $this->template = "admin_categories";
             
             /*
-				1) Verifier l'existence de la catégorie
-				2) Modifier les fils : il faut les affecter à la catégorie mère
-				3) Supprimer la catégorie
-			*/
-			
-			$cat = $this->getCategorie($id);
-			if($cat == null)
-			{
-				$this->erreur = "catégorie non trouvée";
-				return false;
-			}
-			
-			$mere = $cat->getMere();
-			$fils = $cat->getFils();
-			if($fils != null)
-			{
-				foreach($fils as $f)
-				{
-					$f->modifier($f->getNom(), $f->getDesc(), $mere);
-				}
-			}
-			if(!$cat->supprimer())
-			{
-				$this->erreur = "Erreur lors de la suppression : \n";
-				print_r($this->errorInfo());
-				return false;
-			}
-			
-			return true;
-		}
-		
-		public function ajouterCategorie($cat)
+                1) Verifier l'existence de la catégorie
+                2) Modifier les fils : il faut les affecter à la catégorie mère
+                3) Supprimer la catégorie
+            */
+            
+            $cat = $this->getCategorie($id);
+            if($cat == null)
+            {
+                $this->erreur = "catégorie non trouvée";
+                return false;
+            }
+            
+            $mere = $cat->getMere();
+            $fils = $cat->getFils();
+            if($fils != null)
+            {
+                foreach($fils as $f)
+                {
+                    $f->modifier($f->getNom(), $f->getDesc(), $mere);
+                }
+            }
+            if(!$cat->supprimer())
+            {
+                $this->erreur = "Erreur lors de la suppression : \n";
+                print_r($this->errorInfo());
+                return false;
+            }
+            
+            return true;
+        }
+        
+        public function ajouterCategorie($cat)
         {// Une categorie mère, bien sûr
                     
             $this->categories[$this->nbCategories] = $cat;
@@ -485,31 +485,31 @@
             return true;
         }
     
-		public function enleverCategorie($cat)
-		{
-			$trouve = false;
-			$i = 0;
-			while(!$trouve && $i < $this->nbCategories)
-			{
-				$trouve = ($this->categories[$i]->getId() == $cat->getId());
-				$i++;
-			}
-			if(!$trouve)
-				return false;
-				
-			$i--;
-				
-			// On va supprimer le Membre du tableau
+        public function enleverCategorie($cat)
+        {
+            $trouve = false;
+            $i = 0;
+            while(!$trouve && $i < $this->nbCategories)
+            {
+                $trouve = ($this->categories[$i]->getId() == $cat->getId());
+                $i++;
+            }
+            if(!$trouve)
+                return false;
+                
+            $i--;
+                
+            // On va supprimer le Membre du tableau
             if($i < $this->nbCategories-1)
             {
                 $this->categories[$i] = $this->categories[$this->nbCategories-1];
             }            
             unset($this->categories[$this->nbCategories-1]);
             $this->nbCategories--; 
-						
-			return true;
-		}
-	
+                        
+            return true;
+        }
+    
         public function getCategorie($id)
         {
             $i = 0;
@@ -524,122 +524,122 @@
             return $trouve;
         }
 
-		///
-		
-		public function uploadImage()
-		{
-			if(!isset($_POST['titre']) || !isset($_POST["desc"]) || !isset($_FILES['img']))
-			{
-				$this->erreur = "il manque des données";
-				return false;
-			}
-			
-			if($_POST['titre'] == "")
-			{
-				$this->erreur = "Il manque le titre !";
-				return false;
-			}
-			
-			if($_FILES['img']['type'] != "image/jpeg" &&
-			   $_FILES['img']['type'] != "image/png"  &&
-			   $_FILES['img']['type'] != "image/gif"     )
-			{
-				$this->erreur = "Type non supporté (jpeg/png/gif)";
-				return false;
-			}
-			
-			if($_FILES['img']['size'] <= 0)
-			{
-				$this->erreur = "erreur lors de l'upload";
-				return false;
-			}
-			
-			$fp      = fopen($_FILES['img']['tmp_name'], 'r');
-			$content = fread($fp, filesize($_FILES['img']['tmp_name']));
-			fclose($fp);
+        ///
+        
+        public function uploadImage()
+        {
+            if(!isset($_POST['titre']) || !isset($_POST["desc"]) || !isset($_FILES['img']))
+            {
+                $this->erreur = "il manque des données";
+                return false;
+            }
+            
+            if($_POST['titre'] == "")
+            {
+                $this->erreur = "Il manque le titre !";
+                return false;
+            }
+            
+            if($_FILES['img']['type'] != "image/jpeg" &&
+               $_FILES['img']['type'] != "image/png"  &&
+               $_FILES['img']['type'] != "image/gif"     )
+            {
+                $this->erreur = "Type non supporté (jpeg/png/gif)";
+                return false;
+            }
+            
+            if($_FILES['img']['size'] <= 0)
+            {
+                $this->erreur = "erreur lors de l'upload";
+                return false;
+            }
+            
+            $fp      = fopen($_FILES['img']['tmp_name'], 'r');
+            $content = fread($fp, filesize($_FILES['img']['tmp_name']));
+            fclose($fp);
 
-			$req = $this->prepare("INSERT INTO image(titre, legende, image, type)
-								   VALUES(?, ?, ?, ?)");
-					
-			$ok = $req->execute(Array(
-				$_POST["titre"],
-				$_POST["desc"],
-				$content,
-				$_FILES['img']['type']
-			));
-			
-			if(!$ok)
-			{
-				return false;
-			}
-			
-			$i = new Image(	$this, 
-							$_POST["titre"], 
-							$_FILES['img']['type'], 
-							$_POST["desc"], 
-							$content,
-							$_FILES['img']['size']);
-											
-			$this->ajouterImage($i);
-			
-			return true;
-		}
-		
-		public function ajouterImage($image)
-		{
-			$this->images[$this->nbImages] = $image;
-			$this->nbImages++;
-			return true;
-		}
+            $req = $this->prepare("INSERT INTO image(titre, legende, image, type)
+                                   VALUES(?, ?, ?, ?)");
+                    
+            $ok = $req->execute(Array(
+                $_POST["titre"],
+                $_POST["desc"],
+                $content,
+                $_FILES['img']['type']
+            ));
+            
+            if(!$ok)
+            {
+                return false;
+            }
+            
+            $i = new Image(    $this, 
+                            $_POST["titre"], 
+                            $_FILES['img']['type'], 
+                            $_POST["desc"], 
+                            $content,
+                            $_FILES['img']['size']);
+                                            
+            $this->ajouterImage($i);
+            
+            return true;
+        }
+        
+        public function ajouterImage($image)
+        {
+            $this->images[$this->nbImages] = $image;
+            $this->nbImages++;
+            return true;
+        }
         
         public function getImage($id)
-		{
-			$trouve = false;
-			$i = 0;
-			while(!$trouve && $i < $this->nbImages)
-			{
-				$trouve = ($this->images[$i]->getId() == $id);
-				$i++;
-			}
-			
-			if(!$trouve)
-				return null;
-			
-			return $this->images[$i-1];
-		}
-		
-		// ============= GETTERS ============= //
-         
-		public function getImages()
         {
-			return $this->images;
+            $trouve = false;
+            $i = 0;
+            while(!$trouve && $i < $this->nbImages)
+            {
+                $trouve = ($this->images[$i]->getId() == $id);
+                $i++;
+            }
+            
+            if(!$trouve)
+                return null;
+            
+            return $this->images[$i-1];
         }
-		
+        
+        // ============= GETTERS ============= //
+         
+        public function getImages()
+        {
+            return $this->images;
+        }
+        
         public function getMembres()
         {
-			return $this->membres;
-		}
-		
-		public function getCategories()
-		{
-			return $this->categories;
-		}
-		
-		public function getProduits()
-		{
-			return $this->produits;
-		}
-		
-		public function getNbCategories()
-		{
-			return $this->nbCategories;
-		}
-		
-		public function getErreur()
-		{
-			return $this->erreur;
-		}
-	
-		
-	}
+            return $this->membres;
+        }
+        
+        public function getCategories()
+        {
+            return $this->categories;
+        }
+        
+        public function getProduits()
+        {
+            return $this->produits;
+        }
+        
+        public function getNbCategories()
+        {
+            return $this->nbCategories;
+        }
+        
+        public function getErreur()
+        {
+            return $this->erreur;
+        }
+    
+        
+    }
 ?>
