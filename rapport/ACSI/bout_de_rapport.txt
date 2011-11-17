@@ -106,5 +106,25 @@ aucune case cochée pour achat / location
 champ prix non numerique
 
 	
+Rapport projet web !
+
+Objectif du site :
+	Permettre a l'utilisateur de consulter les articles proposés par le site web.
+	Permettre a l'utilisateur d'acheter les articles proposés par le site web.
+	Permettre a l'utilisateur de commenter les articles proposés par le site web.
+	Permettre a l'utilisateur de noter les articles proposés par le site web.
+	Permettre a l'utilisateur de louer les articles proposés par le site web.
+	
+	
+Publique viser : 
+	
+	- Tout internaute est un visiteur de passage, qui peut venir pour la premiere fois sur le site, pour rechercher et consulter des produits,
+		par exemple pour comparer les prix avec la concurence. 
+		Il peut également etre un visiteur regulier qui verifie les promotions en cours. 
+	- Tout membre, novice a expert en bricolage, ayant besoin d'acheter ou de louer des articles de bricolage.
+	
+Façon d'utiliser l'archive :
+
+	- 
 
   
