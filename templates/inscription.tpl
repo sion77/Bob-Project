@@ -49,5 +49,5 @@
             ce qui constitue notre principale source de revenus 8D
         </p>
     </div>
-    <script language="text/javascript" src="js/inscription.js"></script>
+    <script type="text/javascript" src="js/inscription.js"></script>
 {/block}
