@@ -530,9 +530,7 @@
         {
 			if(!isset($_POST["nom"])    ||
 			   !isset($_POST["desc"])   ||
-			   !isset($_POST["prix"])   ||
-			   !isset($_POST["offreA"]) ||
-			   !isset($_POST["offreL"]) ||
+			   !isset($_POST["prix"])   ||	
 			   !isset($_POST["stock"])  ||
 			   !isset($_POST["cat"])    ||
 			   !isset($_POST["image"])    )
@@ -549,7 +547,7 @@
 				return false;
 			}		
 			
-			if($_POST["offreL"] == false && $_POST["offreA"] == false)
+			if(!isset($_POST["offreL"]) && !isset($_POST["offreA"]))
 			{
 				$this->erreur = "Il faut pouvoir acheter ou louer";
 				return false;
