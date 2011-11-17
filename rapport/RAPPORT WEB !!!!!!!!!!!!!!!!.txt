@@ -1,0 +1,136 @@
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////  
+//// TODO LIST
+////  
+////  - OBJECTIF ET PUBLIC ----> OK
+////  - LOGIQUE / ORGANISATION ----> EN COURS
+////  - ARBORESCENCE 
+////  - ARCHITECTURE ---> OK
+////  - TECHNOLOGIE UTILISEES ------> !!!! MANQUE AJAX ET SMARTY NEED HELP !
+////  - ARCHITECTURE DE LA DB ------> !!!! MANQUE LE SCHEMA 
+////  - EXPLICATION DES SESSIONS
+////  - PORTABILITE ----> en cours
+////  - RESISTANCE AUX CHNGEMENT ---> A MOITIE
+////
+//// + ajouter dans le rapport un bout de code qui represente le plus possible notre taf
+///
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+logique - organisation :
+
+Le site est composé de 4 grosses parties :
+- La partie achat
+- La partie location ( qui ressemble fortement a la partie achat )
+- La partie recherche
+- La partie administration
+
+
+
+
+////////////////////////////////////////////////////////////////
+TECHNOLOGIES UTILISEES
+
+HTML :
+Utilisé pour la structure des pages web, elle permet de définir les elements que contiens la page. On s'en est nottament servi pour
+organiser la page grace aux balises <div> et <span>.
+
+PHP :
+Nous avons utilisé PHP/Mysql pour lier notre site à une base de donnée, et pour le rendre "interactif". Nous l'utilisons nottament pour :
+- Créer des comptes utilisateurs,
+- Gérer les sessions,
+- Utiliser un panneau administrateur afin de gerer le contenu du site ( catégories, produits... )
+- Afficher le contenu de la base de donnée à l'utilisateur
+Toutes les catégories, membres, produits, avis sont stockées dans la base de donnée. Nous avons utilisé cette base de donnée pour stocker certaines
+images telles que les illustrations des produits mis à disposition.
+Ces installations ont nécéssité un certains nombre de contrôle de sécurité mais ce sont elles qui permettent d'avoir un site fonctionnel.
+
+Utilité des classes en PHP :
+???
+
+JS :
+Le javascript sur notre site nous sers principalement à controles les entrées de l'utilisateur, par exemple sur la page d'inscription afin de controler
+que les informations entrées sont valides.
+Nous l'utilisons donc dans certains formulaires du site afin de ne pas provoquer de trop grosse frustration chez l'utilisateur au cas ou il clique sur "valider"
+en ayant entré des informations non valides.
+
+CSS :
+Nous avons géré tout le design de notre site gràce a divers fichiers css, nous n'avons pas inséré de CSS directment dans le HTML.
+Le design a été decoupé en divers fichiers, chaqun étant utile pour le design d'une partie du site. L' "assemblage" des fichiers .css nécessaires
+se fait en partie grâce à SMARTY.
+
+AJAX :
+???
+
+Le code a été écrit avec notepad++, et nous avons utilisé github, un service web d'hébergement et de gestion de développement de logiciels,
+utilisant le programme Git, afin de synchroniser notre travail et nous organiser.
+Enfin, un certain nombre d'images, le logo, ou des éléments graphiques de l'interface ont été réalisées grâce à the GIMP. 
+ 
+*-/*-/*-/*-//*-/-/-/-/*-/*-/*-/*-///*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/*-/-/*-
+
+
+QUESTION 6 : VOIR RAPPORT ACSI !
++ rajouter
+
+La base de donnée nous a servi à stocker une très grande partie des données du site. Nous avons stocké :
+- Les informations sur les membres et les administrateurs
+- Les produits
+- Les catégories et les sous catégories de produits
+- Les avis sur les produits
+- De la publicité interne ( par exemple, au printemps on pourrait y mettre un lien vers la catégorie jardin )
+- Les images d'illustration des catégories et des produits.
+
+Voila un schéma de notre base :
+
+* inserer schema ici *
+
+
+
+////////////////////////////////////////////////////////////////
+
+
+QUESTION 4
+
+Architecture des pages :
+
+Nous avons utilisé des fichiers .css pour quasiment toute la msie en forme du site. Le seul endroit ou nous avons utilisé un tableau est
+la gestion des membres dans le panneau administrateur.
+Voila une liste non exhaustive des écrans de notre site avec les différentes "boites".
+
+screenshots du site avec schemas :
+
+...
+...
+...
+							
+////////////////////////////////////////////////////////////////		  
+									  
+8 - Resistance aux changements :
+
+Changement du design du site : 
+Si le client veut changer le design du site, il suffira de changer les fichiers.css ainsi que les images dans le dossier img.
+Par exemple pour changer les couleurs, la commande "remplacer tout" de notepad++ permettrait de changer les codes hexa assez rapidement.
+
+Type de materiel :
+Si le client veut que son site soit conçu pour une taille d'ecran bien précise, il faudrait alors changer la taille de la page
+dans les fichiers css ainsi que d'aggrandir certaines boites grace a la propriété CSS width.
+
+Changement du contenu :
+Notre site est adapté au cas ou on voudrait changer son contenu. Si le client ne souhaite plus vendre de produits de bricolage, mais de
+l'électroménager.
+Il suffirait de changer les noms des produits, catégories et de changer quelques images pour coller avec le nouveau thème du site.
+
+////////////////////////////////////////////////////////////////
+								  
+PORTABILITE :
+
+Différents navigateurs :
+
+Notre application est fonctionnelle sur les versions récentes de google chrome, internet explorer et firefox. Le site fonctionne également 
+sur des versions un peu plus anciennes, par exemple sur IE6. ( Nous n'avons pas utlisé de HTML5 ).
+La différence est que les navgateurs un peu anciens ne reconnaissent pas certaines propriétés CSS3 utilisées dans le code, par exemple
+box-shadow ou les effets de dégradé. Cependant, nous avons fait en sorte que l'affichage reste "décent", meme si le site sera quelque peu
+moins beau.
+	  
+									  
