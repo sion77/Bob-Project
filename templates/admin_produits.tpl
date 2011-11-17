@@ -5,6 +5,9 @@
     <h1>Ajouter un produit</h1>
 	<form method="post" action="index.php?admin=PRODUITS&amp;action=CREER">
 	<p>
+		<label for="nom">Nom du produit : </label>
+		<input type="text" name="nom" id="nom" /><br/>
+		
 		<input type="submit" value="Envoyer" />
 	</p>
 	</form>    
