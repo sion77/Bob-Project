@@ -215,6 +215,23 @@
                     
                     case "PRODUITS":
                         $template = "admin_produits";
+                        if(isset($_GET["action"]))
+                        {
+							switch($_GET["action"])
+							{
+								case "CREER":
+									if($Bob->creerProduit())
+									{
+										$message = "Le produit a bien été ajouté";
+									}
+									else
+									{
+										$erreur = true;
+										$message = $Bob->getErreur();
+									}
+								break;
+							}
+						}
                     break;
                     
                     /* Sinon, ou si on nous le demande explicitement */
@@ -242,7 +259,7 @@
                 {
                     $Bob->recherche($_POST['recherche']);
                     $template = "recherche";
-                    $message = "recherche effectuꥠ!";
+                    $message = "recherche effectuée!";
                 }
                 else
                 {
