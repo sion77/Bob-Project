@@ -10,6 +10,23 @@
 
 		<label for="desc">Description :</label><br/>
 		<textarea id="desc" name="desc" rows="15" cols="100"></textarea><br/><br/>
+
+		<label for="mere">Attacher à : </label>
+		<select id="cat" name="mere">
+			{foreach from=$categories item=cat} 
+			    {$cat->afficheOption()}
+			{/foreach}
+		</select>
+		<br/><br/>
+
+		<label for="image">Image : </label>
+		<select id="image" name="image">
+			<option value="NULL">(image par défaut)</option>
+			{foreach from=$images item=img} 
+			    <option value="{$img->getId()}">{$img->getTitre()}</option>
+			{/foreach}
+		</select>
+		<br/><br/>
 		
 		<input type="submit" value="Envoyer" />
 	</p>
