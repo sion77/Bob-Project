@@ -536,12 +536,11 @@
 			   !isset($_POST["cat"])    ||
 			   !isset($_POST["image"])    )
 			{
-				die(print_r($_POST));
 				$this->erreur = "Il manque des données !";
 				return false;
 			}
 			   
-			if($_POST["nom"] == "" || $_POST["prix"] == "")
+			if($_POST["nom"] == "" || $_POST["prixA"] == "" || $_POST["prixL"] == "")
 			{
 				$this->erreur = "Certains champs ne sont pas remplis !
 								 <br/> Le prix et le nom sont obligatoires";
@@ -570,9 +569,9 @@
 			$req = $this->prepare("
 			INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
 			                    `stockProd`, `prixProdLoc`, `PrixProdVente`) 
-			VALUES(?, ?, ?, ?, ?)");
+			VALUES(?, ?, ?, ?, ?, ?, ?)");
 			
-			$req->execute(array(
+			$ok = $req->execute(array(
 				$_POST["nom"],
 				$_POST["desc"],
 				$img ? $img->getId() : NULL,
@@ -580,7 +579,13 @@
 				$stock,
 				$prixL,
 				$prixA				
-			));
+			)) or die(print_r($this->errorInfo()));
+			
+			if(!$ok)
+			{
+				$this->erreur = "Erreur SQL";
+				return false;
+			}
 			
 			return true;
 		}
