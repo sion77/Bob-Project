@@ -536,12 +536,11 @@
 			   !isset($_POST["cat"])    ||
 			   !isset($_POST["image"])    )
 			{
-				die(print_r($_POST));
 				$this->erreur = "Il manque des données !";
 				return false;
 			}
 			   
-			if($_POST["nom"] == "" || $_POST["prix"] == "")
+			if($_POST["nom"] == "" || $_POST["prixA"] == "" || $_POST["prixL"] == "")
 			{
 				$this->erreur = "Certains champs ne sont pas remplis !
 								 <br/> Le prix et le nom sont obligatoires";
