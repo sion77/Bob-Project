@@ -579,7 +579,7 @@
 				$stock,
 				$prixL,
 				$prixA				
-			)) or die(print("Erreur SQL : ".$this->errorInfo()[2]));
+			)) or die(print_r($this->errorInfo()));
 			
 			if(!$ok)
 			{
