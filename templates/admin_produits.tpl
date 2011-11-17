@@ -6,7 +6,10 @@
 	<form method="post" action="index.php?admin=PRODUITS&amp;action=CREER">
 	<p>
 		<label for="nom">Nom du produit : </label>
-		<input type="text" name="nom" id="nom" /><br/>
+		<input type="text" name="nom" id="nom" /><br/><br/>
+
+		<label for="desc">Description :</label><br/>
+		<textarea id="desc" name="desc"></textarea><br/><br/>
 		
 		<input type="submit" value="Envoyer" />
 	</p>
