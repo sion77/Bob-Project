@@ -7,6 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
     <head>
         {include file="modele/entete.tpl"}
+		<link rel="shortcut icon" href="favicon.ico" >
+		<link rel="icon" type="image/gif" href="animated_favicon1.gif" >
     </head>
     <body>
         <div id="header">
