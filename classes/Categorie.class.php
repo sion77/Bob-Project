@@ -23,6 +23,7 @@
         public function getFils() { return $this->fils; }
         public function getNbFils() { return $this->nbFils; }
         public function getImg() { return $this->img; }
+        public function getProduits() { return $this->Bob->produits; }
         
         public function getFreres() 
         {
