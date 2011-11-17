@@ -569,7 +569,7 @@
 			$req = $this->prepare("
 			INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
 			                    `stockProd`, `prixProdLoc`, `PrixProdVente`) 
-			VALUES(?, ?, ?, ?, ?)");
+			VALUES(?, ?, ?, ?, ?, ?, ?)");
 			
 			$req->execute(array(
 				$_POST["nom"],
