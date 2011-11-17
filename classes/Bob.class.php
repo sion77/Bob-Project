@@ -571,7 +571,7 @@
 			                    `stockProd`, `prixProdLoc`, `PrixProdVente`) 
 			VALUES(?, ?, ?, ?, ?, ?, ?)");
 			
-			$req->execute(array(
+			$ok = $req->execute(array(
 				$_POST["nom"],
 				$_POST["desc"],
 				$img ? $img->getId() : NULL,
@@ -579,7 +579,13 @@
 				$stock,
 				$prixL,
 				$prixA				
-			));
+			)) or die(print("Erreur SQL : ".$this->errorInfo()[2]));
+			
+			if(!$ok)
+			{
+				$this->erreur = "Erreur SQL";
+				return false;
+			}
 			
 			return true;
 		}
