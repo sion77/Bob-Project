@@ -15,10 +15,10 @@
 		<input type="text" name="prix" id="prix" /><br/><br/>
 
 		<label for="offreA">Achetable :</label>
-		<input type="checkbox" name="offreA" id="offreA" checked="checked" /><br/><br/>
+		<input type="checkbox" name="offreA" id="offreA" checked="checked" /><br/>
 
 		<label for="offreL">Louable :</label>
-		<input type="checkbox" name="offreL" id="offreL" /><br/>
+		<input type="checkbox" name="offreL" id="offreL" /><br/><br/>
 
 		<label for="stock">Stock de base :</label>
 		<input type="text" name="stock" id="stock" value="0" /><br/><br/>
