@@ -537,6 +537,7 @@
 			   !isset($_POST["cat"])    ||
 			   !isset($_POST["image"])    )
 			{
+				die(print_r($_POST));
 				$this->erreur = "Il manque des données !";
 				return false;
 			}
