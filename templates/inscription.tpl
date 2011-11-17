@@ -15,12 +15,12 @@
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
                     <td><input onchange="checkPseudo();" id="pseudo" name="pseudo" type="text"  /></td>
-                    <td><span id="pseudoEtat">Non renseigné</span></td>
+                    <td><img src="img/bob_js1.png" id="pseudoEtat"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
                     <td><input onchange="checkPass();" id="pass" name="pass" type="password" /></td>
-                    <td><span id="passEtat">Non renseigné</span></td>
+                    <td><img src="img/bob_js1.png" id="passEtat"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
