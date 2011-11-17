@@ -15,7 +15,9 @@
         private $prixVente;
         private $prixLoc;
         
+        public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
+        public function getImg() { return NULL; }
         
         public function __construct($Bob, $cat, $nom, $desc, $stock, 
                                     $nbVentes, $nbLoc, $prixVente, $prixLoc, $id = 0)
