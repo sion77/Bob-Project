@@ -548,7 +548,7 @@
 				return false;
 			}		
 			
-			if(intval($_POST["offreL"]) == false && intval($_POST["offreA"]) == false)
+			if($_POST["offreL"] == false && $_POST["offreA"] == false)
 			{
 				$this->erreur = "Il faut pouvoir acheter ou louer";
 				return false;
