@@ -108,13 +108,11 @@
                     <div id="select-quantite">
                            <p>
                                <label for="note">Note :</label><br />
-                               <select name="note" id="note">
-                                   <option value="1">1</option>
-                                   <option value="2">2</option>
-                                   <option value="3">3</option>
-                                   <option value="4">4</option>
-                                   <option value="5">5</option>
-                               </select>
+                              	<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star1" onclick="etoile(1);" /></div>
+           			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star2" /></div>
+            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star3" /></div>
+            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star4" /></div>
+            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star5" /></div>
                            </p>
                     </div>
                     </tr>
@@ -123,4 +121,5 @@
                     </tr>    
                 </form>    
         </div>
+	<script type="text/javascript" src="js/notes.js"></script>
 {/block}
