@@ -108,12 +108,13 @@
                     <div id="select-quantite">
                            <p>
                                <label for="note">Note :</label><br />
-                              	<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star1" onclick="etoile(1);" /></div>
-           			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star2" /></div>
-            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star3" /></div>
-            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star4" /></div>
-            			<div class="rating-star"><img src="img/greystar.png" alt="YellowStar" id="star5" /></div>
+                              	<div class="rating-star"><img src="img/yellowstar.png" id="star1" onclick="etoile(1);" /></div>
+           			<div class="rating-star"><img src="img/greystar.png" id="star2" onclick="etoile(2);"/></div>
+            			<div class="rating-star"><img src="img/greystar.png" id="star3" onclick="etoile(3);"/></div>
+            			<div class="rating-star"><img src="img/greystar.png" id="star4" onclick="etoile(4);"/></div>
+            			<div class="rating-star"><img src="img/greystar.png" id="star5" onclick="etoile(5);"/></div>
                            </p>
+			   <input type="hidden" id="note" name="note" value="1" />
                     </div>
                     </tr>
                                         <tr>
