@@ -9,7 +9,7 @@
 		<input type="text" name="nom" id="nom" /><br/><br/>
 
 		<label for="desc">Description :</label><br/>
-		<textarea id="desc" name="desc"></textarea><br/><br/>
+		<textarea id="desc" name="desc" rows="15" cols="100"></textarea><br/><br/>
 		
 		<input type="submit" value="Envoyer" />
 	</p>
