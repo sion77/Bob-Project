@@ -530,7 +530,8 @@
         {
 			if(!isset($_POST["nom"])    ||
 			   !isset($_POST["desc"])   ||
-			   !isset($_POST["prix"])   ||	
+			   !isset($_POST["prixA"])  ||	
+			   !isset($_POST["prixL"])  ||	
 			   !isset($_POST["stock"])  ||
 			   !isset($_POST["cat"])    ||
 			   !isset($_POST["image"])    )
@@ -547,12 +548,39 @@
 				return false;
 			}		
 			
-			if(!isset($_POST["offreL"]) && !isset($_POST["offreA"]))
+			$prixA = intval($_POST["prixA"]);
+			$prixL = intval($_POST["prixL"]);
+			$stock = intval($_POST["stock"]);			
+								
+			if($stock < 0 || $prixA < 0 || $prixL < 0)
 			{
-				$this->erreur = "Il faut pouvoir acheter ou louer";
+				$this->erreur = "Valeurs incorrectes (prix ou stock)";
 				return false;
 			}
-					
+			
+			if($prixA == 0 && $prixL == 0)
+			{
+				$this->erreur = "Le produit doit pouvoir être achetabe OU/ET louable";
+				return false;
+			}
+			
+			$img = ($_POST["image"] != "NULL") ? $this->getImage(intval($_POST["image"])) : NULL;
+			$cat = ($_POST["cat"] != "NULL") ? $this->getImage(intval($_POST["cat"])) : NULL;
+			
+			$req = $this->prepare("
+			INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
+			                    `stockProd`, `prixProdLoc`, `PrixProdVente`) 
+			VALUES(?, ?, ?, ?, ?)");
+			
+			$req->execute(array(
+				$_POST["nom"],
+				$_POST["desc"],
+				$img ? $img->getId() : NULL,
+				$cat ? $cat->getId() : NULL,
+				$stock,
+				$prixL,
+				$prixA				
+			));
 			
 			return true;
 		}

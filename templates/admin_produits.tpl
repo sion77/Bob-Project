@@ -11,14 +11,11 @@
 		<label for="desc">Description :</label><br/>
 		<textarea id="desc" name="desc" rows="15" cols="100"></textarea><br/><br/>
 
-		<label for="prix">Prix :</label>
-		<input type="text" name="prix" id="prix" /><br/><br/>
-
-		<label for="offreA">Achetable :</label>
-		<input type="checkbox" name="offreA" id="offreA" checked="checked" /><br/>
-
-		<label for="offreL">Louable :</label>
-		<input type="checkbox" name="offreL" id="offreL" /><br/><br/>
+		<label for="prixA">Prix Achat (0 si non achetable) :</label>
+		<input type="text" name="prixA" id="prixA" value="0" /><br/><br/>
+		
+		<label for="prixL">Prix Location (0 si non louable) :</label>
+		<input type="text" name="prixL" id="prixL" value="0" /><br/><br/>
 
 		<label for="stock">Stock de base :</label>
 		<input type="text" name="stock" id="stock" value="0" /><br/><br/>
