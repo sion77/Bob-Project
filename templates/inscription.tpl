@@ -15,7 +15,7 @@
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
                     <td><input onchange="checkPseudo();" id="pseudo" name="pseudo" type="text"  /></td>
-                    <td><img src="img/bob_js1.png" id="pseudoEtat"></img></td>
+                    <td><img src="img/croix.png" id="pseudoEtat"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
@@ -26,7 +26,7 @@
                     <th><label for="pass2">Confirmation :</label></td>
                     <td><input onchange="checkPass2();" id="pass2" name="pass2" type="password" /></td>
                     <!-- td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span></td -->
-                    <td><span id="confirmEtat">Différents</span></td>
+                    <td><img src="img/croix.png" id="confirmEtat"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="centre"><input type="submit" value="Je m'inscris" /></td>
@@ -49,5 +49,5 @@
             ce qui constitue notre principale source de revenus 8D
         </p>
     </div>
-    <script language="text/javascript" src="script.js"></script>
+    <script language="text/javascript" src="js/inscription.js"></script>
 {/block}

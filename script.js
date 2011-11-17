@@ -21,11 +21,11 @@ function checkPseudo()
                     switch(xhr.responseText)
                     {
                         case "0" : 
-                            document.getElementById("pseudoEtat").src = "img/bob_js4.png";
+                            document.getElementById("pseudoEtat").src = "img/ok.png";
                         break;
                         
                         case "1" : 
-                            document.getElementById("pseudoEtat").src = "img/bob_js1.png";
+                            document.getElementById("pseudoEtat").src = "img/croix.png";
                         break;
                         
                         case "Erreur" : 
@@ -61,11 +61,11 @@ function checkPass()
     }
     else if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
     {
-        document.getElementById("passEtat").src = "img/bob_js4.png";
+        document.getElementById("passEtat").src = "img/bob_js3.png";
     }
     else if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
     {
-        document.getElementById("passEtat").src = "img/bob_js3.png";
+        document.getElementById("passEtat").src = "img/bob_js4.png";
     }
     else // Supérieur à 12 strictement
     {
@@ -84,16 +84,16 @@ function checkPass2()
     {    
         if(pass2 == pass)
         {
-            document.getElementById("confirmEtat").innerHTML = "Identiques";
+            document.getElementById("confirmEtat").src = "img/ok.png";
         }
         else
         {
-            document.getElementById("confirmEtat").innerHTML = "Differents";
+            document.getElementById("confirmEtat").src = "img/croix.png";
         }        
     }
     else
     {
-        document.getElementById("confirmEtat").innerHTML = "Non renseigné";
+        document.getElementById("confirmEtat").src = "img/croix.png";
     }
 }
 
