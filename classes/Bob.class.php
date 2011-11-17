@@ -526,6 +526,40 @@
 
         ///
         
+        public function creerProduit()
+        {
+			if(!isset($_POST["nom"])    ||
+			   !isset($_POST["desc"])   ||
+			   !isset($_POST["prix"])   ||
+			   !isset($_POST["offreA"]) ||
+			   !isset($_POST["offreL"]) ||
+			   !isset($_POST["stock"])  ||
+			   !isset($_POST["cat"])    ||
+			   !isset($_POST["image"])    )
+			{
+				$this->erreur = "Il manque des données !";
+				return false;
+			}
+			   
+			if($_POST["nom"] == "" || $_POST["prix"] == "")
+			{
+				$this->erreur = "Certains champs ne sont pas remplis !
+								 <br/> Le prix et le nom sont obligatoires";
+				return false;
+			}		
+			
+			if($_POST["offreL"] == false && $_POST["offreA"] == false)
+			{
+				$this->erreur = "Il faut pouvoir acheter ou louer";
+				return false;
+			}
+					
+			
+			return true;
+		}
+        
+        ///
+        
         public function uploadImage()
         {
             if(!isset($_POST['titre']) || !isset($_POST["desc"]) || !isset($_FILES['img']))
