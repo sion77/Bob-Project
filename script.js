@@ -21,11 +21,11 @@ function checkPseudo()
                     switch(xhr.responseText)
                     {
                         case "0" : 
-                            document.getElementById("pseudoEtat").innerHTML = "Pseudo ok";
+                            document.getElementById("pseudoEtat").src = "img/bob_js4.png";
                         break;
                         
                         case "1" : 
-                            document.getElementById("pseudoEtat").innerHTML = "Pseudo pas ok";
+                            document.getElementById("pseudoEtat").src = "img/bob_js1.png";
                         break;
                         
                         case "Erreur" : 
@@ -53,23 +53,23 @@ function checkPass()
     
     if(pass.length <= 0) // Vide (ou bizarre)
     {
-        document.getElementById("passEtat").innerHTML = "Mot de passe non renseigné";
+        document.getElementById("passEtat").src = "img/bob_js1.png";
     }
     else if(pass.length <= 4) // Entre 0 (exclu) et 4 (inclu)
     {
-        document.getElementById("passEtat").innerHTML = "Mot de passe trop court";
+        document.getElementById("passEtat").src = "img/bob_js1.png";
     }
     else if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
     {
-        document.getElementById("passEtat").innerHTML = "Mot de passe court";
+        document.getElementById("passEtat").src = "img/bob_js4.png";
     }
     else if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
     {
-        document.getElementById("passEtat").innerHTML = "Mot de passe correct";
+        document.getElementById("passEtat").src = "img/bob_js3.png";
     }
     else // Supérieur à 12 strictement
     {
-        document.getElementById("passEtat").innerHTML = "Mot de passe sécurisé";
+        document.getElementById("passEtat").src = "img/bob_js2.png";
     }
     
     checkPass2(); // Ne pas oublier !

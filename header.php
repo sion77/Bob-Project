@@ -20,11 +20,11 @@
 	
 	/*------- Inclusion des classes -----------*/
 	
-	require("Smarty\\Smarty.class.php");     // Contient Smarty
-	require("classes\\Image.class.php");     // Contient Image
-    require("classes\\Membre.class.php");    // Contient Membre
-    require("classes\\Categorie.class.php"); // Contient Categorie
-	require("classes\\Produit.class.php");   // Contient Produit
-    require("classes\\Bob.class.php");       // Contient Bob
+	require("Smarty/Smarty.class.php");     // Contient Smarty
+	require("classes/Image.class.php");     // Contient Image
+    require("classes/Membre.class.php");    // Contient Membre
+    require("classes/Categorie.class.php"); // Contient Categorie
+	require("classes/Produit.class.php");   // Contient Produit
+    require("classes/Bob.class.php");       // Contient Bob
 		    
 ?>
