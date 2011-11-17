@@ -5,6 +5,7 @@
 {/block}
 
 {block name=content}
+    <script type="text/javascript" src="js/inscription.js"></script>
     <div id="form-inscription">
         <h1>INSCRIPTION !</h1>
         <h4>Les deux mots de passe doivent être identiques.</h4>
@@ -49,5 +50,4 @@
             ce qui constitue notre principale source de revenus 8D
         </p>
     </div>
-    <script type="text/javascript" src="js/inscription.js"></script>
 {/block}
