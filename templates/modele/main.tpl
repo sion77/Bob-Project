@@ -22,8 +22,10 @@
                 </div>
                 <div id="espace_recherche">
                     <!--    <img src="img/search_icon.jpg" alt="search_icon"/> -->
+		<script type="text/javascript" src="js/clearrech.js"></script>
                     <form action="index.php?action=RECHERCHE" method="post">
-                        <input type="text" name="recherche" value="Rechercher" />
+			
+                        <input id="rechtext" type="text" name="recherche" value="Rechercher" onfocus="clearrechtext();" onblur="textout();"/>
                         <input type="submit" value="GO" />
                     </form>
                     <a href="index.php?page=RECHERCHE_AVANCEE" title="Recherche avancée">Recherche avancée</a>
