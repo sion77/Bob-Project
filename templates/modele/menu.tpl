@@ -19,7 +19,8 @@
         </ul>
     </li>
     <li><a href='index.php?page=CATEGORIES-LOCATION'>Louer</a>
-        {foreach from=$categories item=mere name=categorieSousMenu}
+       <ul class="sous-menu">
+            {foreach from=$categories item=mere name=categorieSousMenu}
                 {if $smarty.foreach.categorieSousMenu.first}
                     <span class="first-elem-sous-menu">
                 {elseif $smarty.foreach.categorieSousMenu.last}
@@ -34,6 +35,7 @@
                     </li>
                 </span>
             {/foreach}
+        </ul>
     </li>
     <li><a href='index.php?page=ABOUT'>A propos</a>
     </li>
