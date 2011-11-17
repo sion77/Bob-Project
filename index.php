@@ -219,7 +219,7 @@
                         {
 							switch($_GET["action"])
 							{
-								case "AJOUTER":
+								case "CREER":
 									if($Bob->creerProduit())
 									{
 										$message = "Le produit a bien été ajouté";
