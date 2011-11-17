@@ -105,6 +105,8 @@
                         </textarea>
                     </tr>
                     <tr>
+
+		    <script type="text/javascript" src="js/notes.js"></script>
                     <div id="select-quantite">
                            <p>
                                <label for="note">Note :</label><br />
@@ -122,5 +124,4 @@
                     </tr>    
                 </form>    
         </div>
-	<script type="text/javascript" src="js/notes.js"></script>
 {/block}
