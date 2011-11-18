@@ -11,8 +11,7 @@
     <div id="fiche-produit">
 	
 		{* Le path : tableau des parents *}
-		{assign var="prod" value=$Bob->getProduit($smarty.get.id)}
-        {assign var="path" value=$prod->getCat()->getPath()}
+		{assign var="path" value=$prod->getCat()->getPath()}
 		
         {* Pour chaque parent (jusqu'à soi) *}
 		{foreach from=$path item=cat name="fastbar"} 
@@ -56,14 +55,14 @@
                 <label for="pays">Quantité (stock : {$prod->getStock()}) :</label>
                 <input type="text" name="quantité" id="quantité" size="3" />	
             </div>
-            
+            <br/>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
             <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
             <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-            
-            </br><div id="fiche-produit-nbavis"><h6>( 1 Avis )</h6></div>
+		
+			<div id="fiche-produit-nbavis"><h6>( 1 Avis )</h6></div>
         </div>
                 
         <div class="avis-fiche-produit">
