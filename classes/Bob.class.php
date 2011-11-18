@@ -7,8 +7,8 @@
         private $produits;   // Tableau de produits
         private $nbProduits; // taille du tableau
         
-        private $categories;    // Tableau de categories
-        private $nbCategories;  // taille du tableau
+        private $categories;   // Tableau de categories
+        private $nbCategories; // taille du tableau
         
         private $images;   // Tableau d'images
         private $nbImages; // taille du tableau
