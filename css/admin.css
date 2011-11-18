@@ -461,3 +461,38 @@ padding-top : 40px;
 {
 	clear : both;
 }
+
+#page-admin-produits
+{
+padding-top : 35px;
+font-family : Verdana, serif;
+}
+
+#panneau-admin-produits
+{
+	padding : 30px;
+	margin-top : 30px;
+	margin-bottom : 30px;
+
+	box-shadow:1px 3px 8px #000000;
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	border-width: 2px;
+	border-style: inset;
+	border-color: #121212;
+
+	background: -moz-linear-gradient(top, #dedede, #acacac);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(#acacac));
+}
+
+#panneau-admin-produits h1
+{
+	text-decoration : none;
+	color: orange;
+	font-family : Verdana, Arial, Sans-serif;
+	font-weight : bold;
+	font-size : 28px;
+}
