@@ -16,17 +16,32 @@
             
             {* Pour chaque parent (jusqu'à soi) *}
             {foreach from=$path item=cat name="fastbar"} 
-            
-                {* Entre chaque categorie, on ajoute un '>' *}
-                {if !$smarty.foreach.fastbar.first}    
-                    >
-                {/if}
-                
+             
                 {* Pour chaque parent, on ajoute un lien pour revenir en arrière *}
                 {if !$smarty.foreach.fastbar.last}
-                    <a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">{$cat->getNom()}</a> 
+					{if !$smarty.foreach.fastbar.first}
+						<span id="sous-categorie-fiche-produit">
+							<a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+								{$cat->getNom()|lower|capitalize}</a> 
+							>
+						</span>
+					{else}
+						<span id="categorie-fiche-produit">
+							<a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+								{$cat->getNom()|upper}</a> 
+							>
+						</span>
+					{/if}
                 {else}
-                    {$cat->getNom()}
+					{if !$smarty.foreach.fastbar.first}
+						<span id="sous-categorie-fiche-produit">
+							{$cat->getNom()|lower|capitalize}
+						</span>
+					{else}
+						<span id="categorie-fiche-produit">
+							{$cat->getNom()|upper}
+						</span>
+					{/if}
                 {/if}
             {/foreach}
         </h2>            
@@ -40,9 +55,9 @@
 					<h4><a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}">{$f->getNom()}</a></h4>
 					{if $f->getImg() == null}
 						<img src="{$smarty.const.image_defaut_sous_categorie}"
-							 alt="categorie" style="height: 110px; width: 100px;" />
+							 alt="categorie" />
 					{else}
-						<img src="index.php?image={$f->getImg()->getId()}&amp;h=110&amp;w=110" 
+						<img src="index.php?image={$f->getImg()->getId()}" 
 							 alt="image : {$f->getImg()->getTitre()}"/>
 					{/if}                
 					<p>

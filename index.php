@@ -414,7 +414,23 @@
             
             // La fiche d'un produit
             case "FICHEPRODUIT":
-                $template = "fiche_produit";
+				if(!isset($_GET["id"]))
+				{
+					$template = "accueil";
+				}
+				else
+				{
+					$prod = $Bob->getProduit(intval($_GET["id"]));
+					if(!$prod)
+					{
+						$template = "accueil";
+					}
+					else
+					{					
+						$smarty->assign("prod", $prod);
+						$template = "fiche_produit";   
+					}
+				}
             break;
             
             // La recherche avancée

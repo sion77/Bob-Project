@@ -11,6 +11,7 @@
 * *Categorie.class.php* : contient Categorie
 * *Image.class.php* : contient Image
 * *Produit.class.php* : contient Produit
+* *Commentaire.class.php* : contient Commentaire et Reponse
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78

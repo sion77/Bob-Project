@@ -6,6 +6,8 @@
         private $mere;
         private $fils;
         private $nb_fils;
+		private $produits;
+		private $nb_produits;
         
         private $id;
         private $nom;
@@ -23,7 +25,7 @@
         public function getFils() { return $this->fils; }
         public function getNbFils() { return $this->nbFils; }
         public function getImg() { return $this->img; }
-        public function getProduits() { return $this->Bob->getProduits(); }
+        public function getProduits() { return $this->produits; }
         
         public function getFreres() 
         {
@@ -134,8 +136,8 @@
             
             return true;            
         }
-            
-        public function detacher($cat)
+                    		
+		public function detacher($cat)
         {
             // On cherche le fils
             $trouve = false;
@@ -232,7 +234,15 @@
             return $req->execute(array($this->id));
         }
 
-        // =========== AFFICHAGE =========== //
+        public function ajouterProduit($p)
+		{
+			$this->produits[$this->nb_produits] = $p;
+			$this->nbProduits++;
+			
+			return true;
+		}
+
+	   // =========== AFFICHAGE =========== //
 
         public function getCategorie($id)
         {
