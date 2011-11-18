@@ -43,7 +43,7 @@ Le panneau d'admin va devoir contenir :
 * La gestion des membres : **(FAIT)**
 * La gestion des catégories : **(FAIT)**
 * La gestion des produits
-	* Ajout d'un produit
+	* Ajout d'un produit : **(FAIT)**
 	* Modification d'un produit
 	* Suppression d'un produit
 * La gestion des commentaires
@@ -55,7 +55,12 @@ Et bien d'autres...
 
 ### Fiche produit
 
-On va la rendre automatique, il faut donner à Bob l'ensemble des produits
+* **Affichage du produit** :
+	* Fait
+* **Affichage des commentaires** :
+	* Statique pour le moment
+* **Création d'un commentaire**
+	* Formulaire fait
 
 ### Recherche produit
 
