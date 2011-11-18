@@ -96,3 +96,7 @@ function checkPass2()
         document.getElementById("confirmEtat").src = "img/croix.png";
     }
 }
+
+/* http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=root */
+/* document.getElementById("pseudoEtat").innerHTML */
+/* document.getElementById("idImage").src = "unLien/vers/uneImage.bmp"; */

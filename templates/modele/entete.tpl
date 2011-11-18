@@ -14,5 +14,15 @@
     {/foreach}
 {/if}
 
+{block name=script}
+    <!-- Pas de script -->
+{/block}
+
+{if isset($script)}
+    {foreach from=$script item=item}
+        <script type="text/javascript" src="js/{$item}.js"></script>
+    {/foreach}
+{/if}
+
 <title>Site - Chez Bob</title>
 

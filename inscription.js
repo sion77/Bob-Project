@@ -96,3 +96,4 @@ function checkPass2()
         document.getElementById("confirmEtat").src = "img/croix.png";
     }
 }
+

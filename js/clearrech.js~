@@ -1,0 +1,13 @@
+function clearrechtext()
+{	
+	document.getElementById("rechtext").value += "aa";
+}
+
+function textout()
+{
+
+	if (document.getElementById("rechtext").value == "")
+	{
+		document.getElementById("rechtext").value = "Rechercher";
+	}
+}
