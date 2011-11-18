@@ -35,7 +35,7 @@
         
         <h1> Exclusivité BricoBob !</h1>
             <h3> Titre article </h3>
-            <img id="pub" src="img/marteau.jpg" alt="Test image"/>
+            <img id="img_nouveaute" src="img/marteau.jpg" alt="Test image"/>
             
             
             <p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long

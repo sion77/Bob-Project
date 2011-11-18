@@ -1,11 +1,11 @@
-//timeoutID = window.setTimeout("generatePub()",3000);
-setTimeout(generatePub, 5000);
+
+//setTimeout(generatePub, 5000);
 
 
 function generatePub(){
-		alert("tg");
+		
+		document.getElementById("img_nouveaute").src = "img/greystar.png";
 		setTimeout(generatePub, 5000);
-		document.getElementById("pub").src = "img/greystar.png";
 }
 
 
