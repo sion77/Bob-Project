@@ -1,10 +1,10 @@
 <?php
     class Bob extends PDO
     {
-        private $membres;   // Tableau de membres et admins
+        private $membres;   // Tableau de membres/admins
         private $nbMembres; // taille du tableau
         
-        private $produits;     // Tableau de produits
+        private $produits;   // Tableau de produits
         private $nbProduits; // taille du tableau
         
         private $categories;    // Tableau de categories
@@ -12,6 +12,12 @@
         
         private $images;   // Tableau d'images
         private $nbImages; // taille du tableau
+		
+		private $commentaires;   // Tableau de commentaires/reponses
+		private $nbCommentaires; // taille du tableau
+		
+		private $reponses;   // Tableau de commentaires/reponses
+		private $nbReponses; // taille du tableau
         
         private $erreur;
                 

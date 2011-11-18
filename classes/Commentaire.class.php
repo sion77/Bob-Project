@@ -3,22 +3,39 @@
 		private $Bob;
 		private $membre;
 		private $produit;
+		
+		private $reponses;
+		private $nbReponses;
+		
 		private $id;
-		private $titre;
+		private $nom;
 		private $note;
 		private $desc;
 		private $date;
 		
+		public function getMembre() { return $this->membre; }
+		public function getProduit() { return $this->produits; }
+		public function getReponses() { return $this->reponses; }
+		
+		public function getId() { return $this->id; }
+		public function getNom() { return $this->membre; }
+		public function getNote() { return $this->note; }
+		public function getDesc() { return $this->desc; }
+		public function getDate() { return $this->date; }
+		
 		public function __construct($Bob, $membre, $produit, 
-									$titre, $note, $desc, $date,
+									$nom, $note, $desc, $date,
 									$id = 0)
 		{
 			$this->Bob = $Bob;
 			$this->membre = $membre;
 			$this->produit = $produit;
 			
+			$this->reponses = NULL;
+			$this->nbReponses = 0;
+			
 			$this->id = $id;
-			$this->titre = $titre;
+			$this->nom = $nom;
 			$this->note = $note;
 			$this->desc = $desc;
 			$this->date = $date;
@@ -27,5 +44,6 @@
 	
 	class Reponse extends Commentaire {
 		private $admin;
+		private $commentaire;
 	}	
 ?>

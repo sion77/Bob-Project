@@ -4,6 +4,9 @@
         private $Bob;
         private $cat;
         private $img;
+		
+		private $commentaires;
+		private $nbCommentaires;
         
         private $id;
         private $nom;
