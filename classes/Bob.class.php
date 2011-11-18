@@ -133,6 +133,7 @@
                 $p = new Produit(
                     $this, 
                     $this->getCategorie($rep["idCatProd"]), 
+					$this->getImage($rep["idImageProd"]),
                     $rep["nomProd"],
                     $rep["libelle"],
                     $rep["stockProd"], 
@@ -587,6 +588,29 @@
 				return false;
 			}
 			
+			$p = new Produit($this, $cat, $img, $_POST["nom"], $_POST["desc"], $stock, 
+                             0, 0, $prixA, $prixL); 
+							 
+			if(!$p)
+			{
+				$this->erreur = "Erreur lors de la création du produit";
+				return false;
+			}
+			
+			if(!$this->ajouterProduit($p))
+			{
+				$this->erreur = "Erreur lors de l'ajout du produit crée";
+				return false;
+			}	
+			
+			return true;
+		}
+		
+		public function ajouterProduit($p)
+		{
+			$this->produits[$this->nbProduits] = $p;
+			$this->nbProduits++;
+			
 			return true;
 		}
         
@@ -639,7 +663,7 @@
                 return false;
             }
             
-            $i = new Image(    $this, 
+            $i = new Image( $this, 
                             $_POST["titre"], 
                             $_FILES['img']['type'], 
                             $_POST["desc"], 
@@ -705,7 +729,6 @@
         {
             return $this->erreur;
         }
-    
-        
+            
     }
 ?>
