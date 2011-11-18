@@ -614,7 +614,26 @@
 			return true;
 		}
         
-        ///
+        public function getProduit($id)
+		{
+			$i = 0;
+            $trouve = false;
+            
+            while($i < $this->nbProduits && !$trouve)
+            {
+                $trouve = ($this->produits[$i]->getId() == $id);
+                $i++;
+            }
+			
+			$i--;
+            
+			if(!$trouve)
+				return false;
+				
+			return $this->produits[$i];
+		}
+		
+		///
         
         public function uploadImage()
         {

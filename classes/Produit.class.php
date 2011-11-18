@@ -17,8 +17,13 @@
         
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
-        public function getImg() { return $this->img; }
 		public function getDesc() { return $this->desc; }
+		
+        public function getImg() { return $this->img; }		
+		public function getCat() { return $this->cat; }
+		
+		public function getStock() { return $this->stock; }
+		public function getPrixVente() { return $this->prixVente; }
         
         public function __construct($Bob, $cat, $img, $nom, $desc, $stock, 
                                     $nbVentes, $nbLoc, $prixVente, $prixLoc, $id = 0)

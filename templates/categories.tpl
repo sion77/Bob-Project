@@ -14,7 +14,7 @@
                     {if $mere->getImg() == null}
                         <img src="{$smarty.const.image_defaut_categorie}" alt="Test categories"/>
                     {else}
-                        <img src="index.php?image={$mere->getImg()->getId()}&amp;h=170&amp;w=225" 
+                        <img src="index.php?image={$mere->getImg()->getId()}" 
                              alt="{$mere->getNom()}"/>
                     {/if}
                     <a href="index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}">{$mere->getNom()}</a>

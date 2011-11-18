@@ -9,46 +9,52 @@
 {* Le contenu de la page *}
 {block name=content}
     <div id="fiche-produit">
-        <span id="categorie-fiche-produit">JARDIN ></span><span id="sous-categorie-fiche-produit">Outils</span>
+	
+		{* Le path : tableau des parents *}
+		{assign var="prod" value=$Bob->getProduit($smarty.get.id)}
+        {assign var="path" value=$prod->getCat()->getPath()}
+		
+        {* Pour chaque parent (jusqu'à soi) *}
+		{foreach from=$path item=cat name="fastbar"} 
+				 
+			{* Pour chaque parent, on ajoute un lien pour revenir en arrière *}
+			{if !$smarty.foreach.fastbar.first}
+				<span id="sous-categorie-fiche-produit">
+					<a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+						{$cat->getNom()|lower|capitalize}</a> 					
+			{else}
+				<span id="categorie-fiche-produit">
+					<a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+						{$cat->getNom()|upper}</a> 					
+			{/if}
+			{if !$smarty.foreach.fastbar.last}
+				>
+			{/if}
+			</span>
+		{/foreach}
         
         <div id="image-fiche-produit">
-            <img src="img/tronconeuse.jpg" alt="Tronconeuse"/>
+            <img src="index.php?image={$prod->getId()}" alt="Tronconeuse"/>
         </div>
         <div id="fiche-technique-produit">
-            <h2> TRONCONEUSE DE LA MORT QUI TUE </h2>
+            <h2>{$prod->getNom()}</h2>
             
             <div id="fiche-technique-description-produit">
                 <p>
-                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique 
-                    Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique Ceci est la fiche technique
+					{$prod->getDesc()}
                 </p>
             </div>
             
             <div id="prix-fiche-produit">
-                <h4>666E</h4>
+                <h4>{$prod->getPrixVente()}€</h4>
             </div>
             <div id="ajouter-au-panier">
                 <h4>Ajouter au panier !</h4>
             </div>
 
             <div id="select-quantite">
-                <form method="post" action="#">
-                   <p>
-                       <label for="pays">Quantité :</label><br />
-                       <select name="quantité" id="quantité">
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                           <option value="5">5</option>
-                           <option value="6">6</option>
-                           <option value="7">7</option>
-                           <option value="8">8</option>
-                       </select>
-                   </p>
-                </form>
+                <label for="pays">Quantité (stock : {$prod->getStock()}) :</label>
+                <input type="text" name="quantité" id="quantité" size="3" />	
             </div>
             
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
@@ -57,31 +63,16 @@
             <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
             <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
             
-            </br><div id="fiche-produit-nbavis"><h6>( 5 Avis )</h6></div>
+            </br><div id="fiche-produit-nbavis"><h6>( 1 Avis )</h6></div>
         </div>
-        
+                
         <div class="avis-fiche-produit">
             <h3> Très efficace ! <h3>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
             <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <h6> Par : Jean-luc   le 06/06/06 </h6>
-            <p>
-                blabla blablablablablablablablablablablablablablablablablablablablablablablabla
-                blablablablablablablablablablablablablablablablablablablabla
-                blablablablablablablablablablablablablablablablablablablablablablablabla
-            </p>
-        </div>
-        
-        <div class="avis-fiche-produit">
-            <h3> Très efficace ! <h3>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
+            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
+            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
             <h6> Par : Jean-luc   le 06/06/06 </h6>
             <p>
                 blabla blablablablablablablablablablablablablablablablablablablablablablablabla
