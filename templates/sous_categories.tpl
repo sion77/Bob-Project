@@ -57,7 +57,7 @@
 						<img src="{$smarty.const.image_defaut_sous_categorie}"
 							 alt="categorie" />
 					{else}
-						<img src="index.php?image={$f->getImg()->getId()}" 
+						<img src="index.php?image={$f->getImg()->getId()}&amp;w=110&amp;h=110" 
 							 alt="image : {$f->getImg()->getTitre()}"/>
 					{/if}                
 					<p>
