@@ -20,11 +20,11 @@
 		public function getId() { return $this->id; }
 		public function getNom() { return $this->membre; }
 		public function getNote() { return $this->note; }
-		public function getDesc() { return $this->desc; }
+		public function getDesc() { return $this->texte; }
 		public function getDate() { return $this->date; }
 		
 		public function __construct($Bob, $membre, $produit, 
-									$nom, $note, $desc, $date,
+									$nom, $note, $texte, $date,
 									$id = 0)
 		{
 			$this->Bob = $Bob;
@@ -37,7 +37,7 @@
 			$this->id = $id;
 			$this->nom = $nom;
 			$this->note = $note;
-			$this->desc = $desc;
+			$this->texte = $texte;
 			$this->date = $date;
 		}
 	}

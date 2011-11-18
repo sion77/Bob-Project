@@ -15,10 +15,7 @@
 		
 		private $commentaires;   // Tableau de commentaires/reponses
 		private $nbCommentaires; // taille du tableau
-		
-		private $reponses;   // Tableau de commentaires/reponses
-		private $nbReponses; // taille du tableau
-        
+		       
         private $erreur;
                 
         // ============= INITS ============= //
@@ -36,6 +33,7 @@
             $this->initMembres();
             $this->initCategories();
             $this->initProduits();
+			$this->initCommentaires();
         }
         
         private function initMembres()
@@ -158,7 +156,60 @@
             return true;
         }
         
-        // ============= PUBLIC ============= //
+        private function initCommentaires()
+		{		
+			$this->nbCommentaires = 0;
+			            
+			$req = $this->query("	SELECT  idEval AS \"id\",
+											dateEval AS \"date\",
+											noteEval AS \"note\",
+											commentaireEval AS \"texte\",
+											'0' AS \"rep\"
+									FROM evaluation
+									WHERE idEval NOT IN( SELECT idRep FROM reponse )
+									
+								UNION
+								
+									SELECT  idEval AS \"id\",
+											dateEval AS \"date\",
+											noteEval AS \"note\",
+											commentaireEval AS \"texte\",
+											'1' AS \"rep\"
+									FROM evaluation
+									WHERE idEval IN( SELECT idRep FROM reponse )
+									
+								ORDER BY id
+								");      
+                    
+            while($rep = $req->fetch())
+            {
+				if(!$rep["rep"])
+				{
+					$c = new Commentaire($this,	null, null, "unNom",
+										 $rep["note"],
+										 $rep["date"],										 
+										 $rep["texte"], 
+										 $rep["id"]);
+				}
+				else
+				{
+					// $c = new Reponse();
+					$c = new Commentaire($this,	null, null, "unNom",
+										 $rep["note"],
+										 $rep["date"],										 
+										 $rep["texte"], 
+										 $rep["id"]);
+				}
+				
+				$this->commentaires[$this->nbCommentaires] = $c;		
+				$this->nbCommentaires++;
+            }
+            $req->closeCursor();
+            
+            return true;
+		}	
+				
+		// ============= PUBLIC ============= //
                 
         public function inscription($pseudo , $pass, $pass2) // return Membre ou false
         {
