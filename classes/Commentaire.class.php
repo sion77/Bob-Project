@@ -40,6 +40,16 @@
 			$this->desc = $desc;
 			$this->date = $date;
 		}
+		
+		public function ajoutreponse (r)
+		{
+			if (r == null)
+			{
+				return false;
+			}
+		
+		    else
+		
 	}
 	
 	class Reponse extends Commentaire {
