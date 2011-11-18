@@ -110,11 +110,13 @@
                     <div id="select-quantite">
                            <p>
                                <label for="note">Note :</label><br />
-                              	<div class="rating-star"><img src="img/yellowstar.png" id="star1" onclick="etoile(1);" onmouseover="focusetoile(1);" onmouseout="loosefocus();"/></div>
-								<div class="rating-star"><img src="img/greystar.png" id="star2" onclick="etoile(2);" onmouseover="focusetoile(2);" onmouseout="loosefocus();"/></div>
-								<div class="rating-star"><img src="img/greystar.png" id="star3" onclick="etoile(3);" onmouseover="focusetoile(3);" onmouseout="loosefocus();"/></div>
-								<div class="rating-star"><img src="img/greystar.png" id="star4" onclick="etoile(4);" onmouseover="focusetoile(4);" onmouseout="loosefocus();"/></div>
-								<div class="rating-star"><img src="img/greystar.png" id="star5" onclick="etoile(5);" onmouseover="focusetoile(5);" onmouseout="loosefocus();"/></div>
+							   <div id="chooseNote" onmouseout="loosefocus();">
+                              	<div class="rating-star"><img src="img/yellowstar.png" id="star1" onclick="etoile(1);" onmouseover="focusetoile(1);" /></div>
+								<div class="rating-star"><img src="img/greystar.png" id="star2" onclick="etoile(2);" onmouseover="focusetoile(2);" /></div>
+								<div class="rating-star"><img src="img/greystar.png" id="star3" onclick="etoile(3);" onmouseover="focusetoile(3);" /></div>
+								<div class="rating-star"><img src="img/greystar.png" id="star4" onclick="etoile(4);" onmouseover="focusetoile(4);" /></div>
+								<div class="rating-star"><img src="img/greystar.png" id="star5" onclick="etoile(5);" onmouseover="focusetoile(5);" /></div>
+							   </div>
 							</p>
 			   <input type="hidden" id="note" name="note" value="1" />
                     </div>
