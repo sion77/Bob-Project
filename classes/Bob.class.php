@@ -183,7 +183,7 @@
                                     AND E.idEval == P.idReponse -- car notre eval est la reponse
                                     
                                 ORDER BY id
-                                ");      
+                                ") or die(print_r($this->errorInfo()));      
                     
             while($rep = $req->fetch())
             {
