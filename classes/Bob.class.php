@@ -221,7 +221,7 @@
             }
             $req->closeCursor();
             
-            die(print_r($this->commentaire));
+            die(print_r($this->commentaires));
             
             return true;
         }    
