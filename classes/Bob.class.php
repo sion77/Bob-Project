@@ -160,32 +160,42 @@
         {        
             $this->nbCommentaires = 0;
                         
-            $req = $this->query("   SELECT idEval AS \"id\",
+            $req = $this->query("   SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
-                                           '0' AS \"rep\"
-                                    FROM evaluation
-                                    WHERE idEval NOT IN( SELECT idRep FROM reponse )
+                                           '0' AS \"rep\",
+                                           idUtilisateur AS \"user\",
+                                           idProduit AS \"prod\"
+                                    FROM evaluation E, evalProduit P
+                                    WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
+                                    AND E.idEval = P.idEval
                                     
                                 UNION
                                 
-                                    SELECT idEval AS \"id\",
+                                    SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
-                                           '1' AS \"rep\"
-                                    FROM evaluation
-                                    WHERE idEval IN( SELECT idRep FROM reponse )
+                                           '1' AS \"rep\",
+                                           idUtilisateur AS \"user\",
+                                           P.idEval AS \"com\" -- l'eval ciblée
+                                    FROM evaluation E, comporep P
+                                    WHERE E.idEval IN( SELECT idRep FROM reponse )
+                                    AND E.idEval = P.idReponse -- car notre eval est la reponse
                                     
                                 ORDER BY id
-                                ");      
+                                ") or die(print_r($this->errorInfo()));      
                     
+            $c = null;
             while($rep = $req->fetch())
             {
-                if(!$rep["rep"])
+				$user = $this->getMembre(intval($rep["user"]));
+								
+                if($rep["rep"] == 0)
                 {
-                    $c = new Commentaire($this, null, null, "unNom",
+					$prod = $this->getProduit(intval($rep["prod"]));
+                    $c = new Commentaire($this, $user, $prod, "unNom",
                                          $rep["note"],
                                          $rep["date"],                                         
                                          $rep["texte"], 
@@ -193,18 +203,25 @@
                 }
                 else
                 {
-                    $c = new Reponse($this, null, null, "unNom",
+					$com = $this->getProduit(intval($rep["com"]));
+                    $c = new Reponse($this, $user, $com, "unNom",
                                      $rep["note"],
                                      $rep["date"],                                         
                                      $rep["texte"], 
                                      $rep["id"]);
                 }
                 
+                if($c == null)
+                {
+					$this->erreur = "Erreur lors du chargement d'un commentaire";
+					return false;
+				}
+                
                 $this->commentaires[$this->nbCommentaires] = $c;        
                 $this->nbCommentaires++;
             }
             $req->closeCursor();
-            
+                        
             return true;
         }    
                 
@@ -628,7 +645,7 @@
                                 `stockProd`, `prixProdLoc`, `PrixProdVente`) 
             VALUES(?, ?, ?, ?, ?, ?, ?)");
             
-            $ok = $req->execute(array(
+            $req->execute(array(
                 $_POST["nom"],
                 $_POST["desc"],               
                 $img ? $img->getId() : NULL,
@@ -637,13 +654,7 @@
                 $prixL,
                 $prixA                
             )) or die(print_r($this->errorInfo()));
-            
-            if(!$ok)
-            {
-                $this->erreur = "Erreur SQL";
-                return false;
-            }
-            
+                        
             $p = new Produit($this, $cat, $img, $_POST["nom"], $_POST["desc"], $stock, 
                              0, 0, $prixA, $prixL); 
                              
@@ -689,8 +700,6 @@
             return $this->produits[$i];
         }
         
-        ///
-        
         public function calcBestSeller()
         {
             
@@ -701,6 +710,95 @@
             
         }
         
+        
+        ///
+        
+        public function creerCommentaire($p)
+        {
+			if($p == null)
+			{
+				$this->erreur = "le produit n'existe pas";
+				return false;				
+			}
+			
+			if(!isset($_SESSION["connecte"]))
+			{
+				$this->erreur = "Vous devez être connecté pour ajouter un commentaire";
+				return false;
+			}
+			
+			if(!isset($_SESSION["id"])       ||
+			   !isset($_POST["titre"])       ||
+			   !isset($_POST["commentaire"]) ||
+			   !isset($_POST["note"])           )
+			{
+				$this->erreur = "Il manque des données";
+				return false;
+			}
+					
+			$note = intval($_POST["note"]);
+			$membre = $this->getMembre(intval($_SESSION["id"]));
+			
+			// User: on desactive le html
+			$commentaire = htmlentities($_POST["commentaire"]); 
+			
+			
+			if($_POST["titre"] == "" ||
+			   $note <= 0            ||
+			   $membre == null       ||
+			   $commentaire == ""      )
+			{
+			    $this->erreur = "Certains champs sont vides (ou alors vous n'existez pas)";
+				return false;
+			}
+			
+			// Données vérifiées
+			// on a : $_POST["titre"], $note, $membre et $commentaire
+			
+			$req = $this->prepare("INSERT INTO evaluation(`idUtilisateur`, `noteEval`, `commentaireEval`, `dateEval`)
+			                       VALUES (?, ?, ?, NOW())");
+			                       
+			$req->execute(array(
+				$membre->getId(),
+				$note,
+				$commentaire
+			)) or die(print_r($this->errorInfo()));
+						
+			$c = new Commentaire($this, $membre, $p, 
+                                 $_POST["titre"], $note, $commentaire, date("r"));
+                                 
+            if(!$c)
+            {
+				$this->erreur = "Erreur lors de la création du commentaire";
+				return false;
+			}
+                                                                 
+            $this->ajouterCommentaire($c);
+            
+            $req = $this->prepare("INSERT INTO evalproduit(`idProduit`, `idEval`)
+			                       VALUES (?, ?)");
+			                       
+			$req->execute(array(
+				$p->getId(),
+				$c->getId(),
+			)) or die(print_r($this->errorInfo()));
+			
+			$p->ajouterCommentaire($c);
+          						
+			return true;
+		}
+		
+		public function ajouterCommentaire($c)
+		{
+			if($c == null)
+				return false;
+			
+			$this->commentaires[$this->nbCommentaires] = $c;
+			$this->nbCommentaires++;
+			
+			return true;
+		}
+       
         ///
         
         public function uploadImage()

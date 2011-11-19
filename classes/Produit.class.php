@@ -17,7 +17,7 @@
         private $nbLoc;
         private $prixVente;
         private $prixLoc;
-        
+                
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
         public function getDesc() { return $this->desc; }
@@ -55,11 +55,45 @@
                 
             if($this->img)
                 $this->img->ajouteCible($this);
-        }    
+                
+            $this->initCommentaires();
+        }
+        
+        private function initCommentaires()
+        {
+			$this->commentaires = array();
+            $this->nbCommentaires = 0;
+			
+			$coms = $this->Bob->getCommentaires();
+			if($coms != null)
+			{
+				foreach($coms as $c)
+				{
+					if($c instanceof Commentaire)
+					{
+						if($c->getProduit()->getId() == $this->id)
+						{
+							$this->ajouterCommentaire($c);
+						}
+					}
+				}
+			}
+		}    
         
         public function calcNoteMoy()
         {
 			return 1;
 		}    
+		
+		public function ajouterCommentaire($c)
+		{
+			if($c == null)
+				return false;
+			
+			$this->commentaires[$this->nbCommentaires] = $c;
+			$this->nbCommentaires++;
+			
+			return true;
+		}
     }
 ?>
