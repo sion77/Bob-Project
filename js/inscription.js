@@ -51,8 +51,7 @@ function checkPseudo(champ)
     {
         document.getElementById("pseudoEtat").src = "img/croix.png";
         document.getElementById("pseudoEtat").alt = "Vide";	
-    }
-    
+    }    
 }
 
 function checkPass(champ)
@@ -62,31 +61,33 @@ function checkPass(champ)
     if(pass.length <= 0) // Vide (ou bizarre)
     {
         document.getElementById("passEtat").src = "img/bob_js1.png";
+		checkPass2(); // Ne pas oublier !
         return false;
     }
-    else if(pass.length <= 4) // Entre 0 (exclu) et 4 (inclu)
+    if(pass.length <= 4) // Entre 0 (exclu) et 4 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js1.png";
+		checkPass2(); // Ne pas oublier !
         return false;
     }
-    else if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
+    if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js3.png";
+		checkPass2(); // Ne pas oublier !
         return true;
     }
-    else if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
+    if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js4.png";
+		checkPass2(); // Ne pas oublier !
         return true;
     }
-    else // Supérieur à 12 strictement
-    {
-        document.getElementById("passEtat").src = "img/bob_js2.png";
-        return true;
-    }
+	
+    // Supérieur à 12 strictement
     
-    checkPass2(); // Ne pas oublier !
-    
+    document.getElementById("passEtat").src = "img/bob_js2.png";
+	checkPass2(); // Ne pas oublier !
+    return true;
 }
 
 function checkPass2(champ)
@@ -94,25 +95,20 @@ function checkPass2(champ)
     var pass = document.getElementById("pass").value;
     var pass2 = champ.value;
     
-    if(pass2.length > 0)
+    if(pass2.length <= 0)
     {    
-        if(pass2 == pass)
-        {
-            document.getElementById("confirmEtat").src = "img/ok.png";
-            return true;
-        }
-        else
-        {
-            document.getElementById("confirmEtat").src = "img/croix.png";
-            return false;
-        }        
-    }
-    else
+		document.getElementById("confirmEtat").src = "img/croix.png";
+        return false;
+	}
+	
+    if(pass2 != pass)
     {
         document.getElementById("confirmEtat").src = "img/croix.png";
         return false;
     }
-    
+	
+	document.getElementById("confirmEtat").src = "img/ok.png";
+    return true;       
 }
 
 function verifForm(f)
@@ -121,7 +117,7 @@ function verifForm(f)
 	                       // Ne peut pas retourner le resultat car il se situe dans la fonction anonyme !
 		
     var pseudoOk = (document.getElementById("pseudoEtat").alt == "" || 
-	                document.getElementById("pseudoEtat").alt = "OK"  );
+	                document.getElementById("pseudoEtat").alt == "OK"  );
 					
     var passOk = checkPass(f.pass);
     var pass2Ok = checkPass2(f.pass2);

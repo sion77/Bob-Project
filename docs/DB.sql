@@ -152,6 +152,7 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`evaluation` (
   `idEval` INT(11) NOT NULL AUTO_INCREMENT ,
   `dateEval` DATE NULL DEFAULT NULL,
   `noteEval` INT(11) NOT NULL DEFAULT '1',
+  `titreEval` VARCHAR(30) NOT NULL, 
   `commentaireEval` TEXT NOT NULL ,
   PRIMARY KEY (`idEval`) )
 ENGINE = MyISAM
