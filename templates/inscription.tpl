@@ -11,7 +11,7 @@
         <h4>Les deux mots de passe doivent être identiques.</h4>
         <h6>Veuillez ne pas tenter d'injections SQL S.V.P, merci ;)</h6>
         
-        <form action="index.php?action=INSCRIPTION" method="post" >        
+        <form action="index.php?action=INSCRIPTION" method="post" onsubmit="return verifForm(this)">        
             <table>
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>

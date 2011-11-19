@@ -119,7 +119,7 @@ function verifForm(f)
    var passOk = checkPass(f.pass);
    var pass2Ok = checkPass2(f.pass2);
    
-   if(pseudoOk && passOk && pass2Ok)
+   if(pseudoOk == true && passOk == true && pass2Ok == true)
       return true;
    else
    {
