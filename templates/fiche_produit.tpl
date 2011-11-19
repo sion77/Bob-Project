@@ -40,10 +40,7 @@
             
             <div id="fiche-technique-description-produit">
                 <p>
-
 					{$prod->getDesc()}
-                </p>o
-                    {$prod->getDesc()}
                 </p>
             </div>
             
@@ -92,39 +89,35 @@
 		{/foreach}  
             
         <div id="ajouter-un-avis">
-                    <h1>Ajouter un avis</h1>
-                <form action="#" method="post">
-                    
-                    <tr>
-                        <th><label for="titre">Titre :</label></td>
-                        <td><input id="titre" name="titre" type="text" /></td>
-                        <th><label for="pseudo">Votre pseudo :</label></td>
-                        <td><input id="pseudo" name="pseudo" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <textarea name="commentaire" rows="8" cols="60">
-                        </textarea>
-                    </tr>
-                    <tr>
-
-            <script type="text/javascript" src="js/notes.js"></script>
-                    <div id="select-quantite">
-                           <p>
-                               <label for="note">Note :</label><br />
-                               <div id="chooseNote" onmouseout="loosefocus();">
-                                  <div class="rating-star"><img src="img/yellowstar.png" id="star1" onclick="etoile(1);" onmouseover="focusetoile(1);" /></div>
-                                <div class="rating-star"><img src="img/greystar.png" id="star2" onclick="etoile(2);" onmouseover="focusetoile(2);" /></div>
-                                <div class="rating-star"><img src="img/greystar.png" id="star3" onclick="etoile(3);" onmouseover="focusetoile(3);" /></div>
-                                <div class="rating-star"><img src="img/greystar.png" id="star4" onclick="etoile(4);" onmouseover="focusetoile(4);" /></div>
-                                <div class="rating-star"><img src="img/greystar.png" id="star5" onclick="etoile(5);" onmouseover="focusetoile(5);" /></div>
-                               </div>
-                            </p>
-               <input type="hidden" id="note" name="note" value="1" />
-                    </div>
-                    </tr>
-                                        <tr>
-                        <td colspan="2" class="centre"><input type="submit" value="Send !" /></td>
-                    </tr>    
-                </form>    
+			<h1>Ajouter un avis</h1>
+			<form action="index.php?action=AJOUTECOMMENTAIRE" method="post">
+			<p>
+				<label for="titre">Titre :</label>
+				<input id="titre" name="titre" type="text" />
+				<label for="pseudo">Votre pseudo :</label>
+				<input id="pseudo" name="pseudo" type="text" />
+				<br/>
+				<textarea name="commentaire" rows="8" cols="60"></textarea>
+				
+				<script type="text/javascript" src="js/notes.js"></script>
+				
+				<div id="select-quantite">				
+					<label for="note">Note :</label><br />
+					<div id="chooseNote" onmouseout="loosefocus();">
+						{for $i = 1; $i <= 5; $i++}
+							<div class="rating-star">
+								<img src="img/yellowstar.png" 
+									 id="star{$i}" 
+									 onclick="etoile{$i};" 
+									 onmouseover="focusetoile{$i};" />
+							</div>
+						{/for}
+					</div>	
+				</div>			
+				
+				<input type="hidden" id="note" name="note" value="1" />					
+				<input type="submit" value="Envoyer" />		
+			</p>		  
+			</form>    
         </div>
 {/block}
