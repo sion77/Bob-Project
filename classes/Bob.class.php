@@ -164,6 +164,7 @@
             $req = $this->query("   SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
+										   titreEval AS \"nom\",
                                            commentaireEval AS \"texte\",										   
                                            '0' AS \"rep\",										   
                                            idUser AS \"user\",										   
@@ -177,6 +178,7 @@
                                     SELECT idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
+										   titreEval AS \"nom\",
                                            commentaireEval AS \"texte\",										   
                                            '1' AS \"rep\",										   
                                            idUserRep AS \"user\",										   
@@ -195,7 +197,8 @@
                 if($rep["rep"] == 0)
                 {
 					$prod = $this->getProduit(intval($rep["prod"]));
-                    $c = new Commentaire($this, $user, $prod, "unNom",
+                    $c = new Commentaire($this, $user, $prod, 
+										 $rep["nom"],
                                          $rep["note"],
                                          $rep["texte"],
                                          $rep["date"], 
@@ -206,7 +209,8 @@
                 else
                 {
 					$com = $this->getProduit(intval($rep["com"]));
-                    $c = new Reponse($this, $user, $com, "unNom",
+                    $c = new Reponse($this, $user, $com,
+									 $rep["nom"],
                                      $rep["note"],
                                      $rep["texte"],
 									 $rep["date"],
@@ -745,12 +749,12 @@
 			
 			// User: on desactive le html
 			$commentaire = htmlentities($_POST["commentaire"]); 
+			$titre = htmlentities($_POST["titre"]); 
 			
-			
-			if($_POST["titre"] == "" ||
-			   $note <= 0            ||
-			   $membre == null       ||
-			   $commentaire == ""      )
+			if($titre == ""       ||
+			   $note <= 0         ||
+			   $membre == null    ||
+			   $commentaire == ""   )
 			{
 			    $this->erreur = "Certains champs sont vides (ou alors vous n'existez pas)";
 				return false;
@@ -768,7 +772,7 @@
 			)) or die(print_r($this->errorInfo()));
 						
 			$c = new Commentaire($this, $membre, $p, 
-                                 $_POST["titre"], $note, $commentaire, date("r"));
+                                 $titre, $note, $commentaire, date("r"));
                                  
             if(!$c)
             {
