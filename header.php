@@ -27,5 +27,9 @@
     require("classes/Commentaire.class.php"); // Contient Commentaire et Reponse
     require("classes/Produit.class.php");     // Contient Produit
     require("classes/Bob.class.php");         // Contient Bob
+	
+	/*--------- Fonctions usuelles -----------*/
+	
+	
               
 ?>

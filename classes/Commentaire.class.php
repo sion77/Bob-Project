@@ -24,6 +24,8 @@
         public function getNote() { return $this->note; }
         public function getTexte() { return $this->texte; }
         public function getDate() { return $this->date; }
+		
+		public function estReponse() { return false; }
         
         public function __construct($Bob, $membre, $produit, 
                                     $nom, $note, $texte, $date,
@@ -63,12 +65,14 @@
     
     class Reponse extends Commentaire {
         private $commentaire;
+		
+		public function estReponse() { return true; }
         
-        public function __construct($Bob, $admin, $commentaire, 
+        public function __construct($Bob, $membre, $commentaire, 
                                     $nom, $note, $texte, $date,
                                     $id = 0)
         {
-            Commentaire::__construct($Bob, $admin, $commentaire->getProduit(), 
+            Commentaire::__construct($Bob, $membre, $commentaire->getProduit(), 
                                      $nom, $note, $texte, $date,
                                      $id);
                                      
