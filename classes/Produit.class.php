@@ -55,7 +55,27 @@
                 
             if($this->img)
                 $this->img->ajouteCible($this);
-        }    
+                
+            initCommentaires();
+        }
+        
+        private function initCommentaires()
+        {
+			$this->commentaires = array();
+            $this->nbCommentaires = 0;
+			
+			$coms = $Bob->getCommentaires();
+			foreach($coms as $c)
+			{
+				if($c instanceof Commentaire)
+				{
+					if($c->getProduit()->getId() == $this->id)
+					{
+						$this->ajouterCommentaire($c);
+					}
+				}
+			}
+		}    
         
         public function calcNoteMoy()
         {
@@ -64,7 +84,13 @@
 		
 		public function ajouterCommentaire($c)
 		{
+			if($c == null)
+				return false;
 			
+			$this->commentaires[$this->nbCommentaires] = $c;
+			$this->nbCommentaires++;
+			
+			return true;
 		}
     }
 ?>
