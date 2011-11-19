@@ -52,7 +52,7 @@
 			
 				{* On affiche le titre, l'image et la description de la catégorie *}
 				<div class="sous-categorie">            
-					<h4><a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}&amp;w=110&amp;h=110">{$f->getNom()}</a></h4>
+					<h4><a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}">{$f->getNom()}</a></h4>
 					{if $f->getImg() == null}
 						<img src="{$smarty.const.image_defaut_sous_categorie}"
 							 alt="categorie" />
