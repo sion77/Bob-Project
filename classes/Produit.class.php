@@ -25,6 +25,7 @@
         public function getImg() { return $this->img; }        
         public function getCat() { return $this->cat; }
         public function getCommentaires() { return $this->commentaires; }
+        public function getNbCommentaires() { return $this->nbCommentaires; }
         
         public function getStock() { return $this->stock; }
         public function getPrixVente() { return $this->prixVente; }
@@ -51,6 +52,11 @@
                 
             if($this->img)
                 $this->img->ajouteCible($this);
-        }        
+        }    
+        
+        public function calcNoteMoy()
+        {
+			return 1;
+		}    
     }
 ?>

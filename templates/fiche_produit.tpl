@@ -56,13 +56,22 @@
                 <input type="text" name="quantité" id="quantité" size="3" />    
             </div>
             <br/>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-        
-            <div id="fiche-produit-nbavis"><h6>( 1 Avis )</h6></div>
+            
+            {if $prod->getNbCommentaires() > 0}
+				{assign var=note value=$prod->calcNoteMoy()}
+				{for $i = 1; $i <= $note; $i++}
+					<div class="rating-star">
+						<img src="img/yellowstar.png" alt="+" />
+					</div>
+				{/for}
+				{for $i = $note+1; $i <= 5; $i++}
+					<div class="rating-star">
+						<img src="img/greystar.png" alt="-" />
+					</div>
+				{/for}
+			{/if}
+			
+            <div id="fiche-produit-nbavis"><h6>( {$prod->getNbCommentaires()} Avis )</h6></div>
         </div>
                
         {assign var=coms value=$prod->getCommentaires()} 
@@ -72,12 +81,12 @@
 				{assign var=note value=$com->getNote()}
 				{for $i = 1; $i <= $note; $i++}
 					<div class="rating-star">
-						<img src="img/yellowstar.png" alt="YellowStar" />
+						<img src="img/yellowstar.png" alt="+" />
 					</div>
 				{/for}
-				{for $i = $note; $i <= 5; $i++}
+				{for $i = $note+1; $i <= 5; $i++}
 					<div class="rating-star">
-						<img src="img/greystar.png" alt="greyStar" />
+						<img src="img/greystar.png" alt="-" />
 					</div>				
 				{/for}
 				
