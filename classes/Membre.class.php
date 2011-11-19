@@ -24,11 +24,12 @@
             }
             
             $this->Bob = $Bob;
+			$this->nbCommentaires = 0;
             
             $this->id = $id;            
             $this->pseudo = $pseudo;
             $this->passCrypte = $passCrypte;
-            
+			            
             if(self::$maxId < $id)
             {
                 self::$maxId = $id;
@@ -69,6 +70,30 @@
             $req = $this->Bob->prepare("DELETE FROM utilisateur WHERE idUtilisateur = ?");
             return $req->execute(array($this->id));
         }    
+		
+		public function ajouterCommentaire($c)
+		{
+			if($c == null)
+				return false;
+			
+			$this->commentaires[$this->nbCommentaires] = $c;
+			$this->nbCommentaires++;
+			
+			return true;
+		}
+		
+		public function aCommente($p)
+		{
+			$trouve = false;
+			$i = 0;
+			while(!$trouve && $i < $this->nbCommentaires)
+			{
+				$trouve = ( $this->commentaires[$i]->estReponse() == false &&
+				            $this->commentaires[$i]->getProduit()->getId() == $p->getId());
+				$i++;
+			}
+			return $trouve;
+		}
     }
     
     class Admin extends Membre {
