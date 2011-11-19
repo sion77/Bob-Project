@@ -22,15 +22,18 @@ function checkPseudo(champ)
                     {
                         case "0" : 
                             document.getElementById("pseudoEtat").src = "img/ok.png";
+                            return true;
                         break;
                         
                         case "1" : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
+                            return false;
                         break;
                         
                         case "Erreur" : 
                         default : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
+                            return false;
                         break;
                     }
                 }        
@@ -39,11 +42,13 @@ function checkPseudo(champ)
         else
         {
             document.getElementById("pseudoEtat").src = "img/croix.png";
+            return false;
         }    
     }
     else
     {
         document.getElementById("pseudoEtat").src = "img/croix.png";
+        return false;
     }
     
 }
@@ -55,22 +60,27 @@ function checkPass(champ)
     if(pass.length <= 0) // Vide (ou bizarre)
     {
         document.getElementById("passEtat").src = "img/bob_js1.png";
+        return false;
     }
     else if(pass.length <= 4) // Entre 0 (exclu) et 4 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js1.png";
+        return false;
     }
     else if(pass.length <= 8) // Entre 4 (exclu) et 8 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js3.png";
+        return true;
     }
     else if (pass.length <= 12) // Entre 8 (exclu) et 12 (inclu)
     {
         document.getElementById("passEtat").src = "img/bob_js4.png";
+        return true;
     }
     else // Supérieur à 12 strictement
     {
         document.getElementById("passEtat").src = "img/bob_js2.png";
+        return true;
     }
     
     checkPass2(); // Ne pas oublier !
@@ -87,15 +97,18 @@ function checkPass2(champ)
         if(pass2 == pass)
         {
             document.getElementById("confirmEtat").src = "img/ok.png";
+            return true;
         }
         else
         {
             document.getElementById("confirmEtat").src = "img/croix.png";
+            return false;
         }        
     }
     else
     {
         document.getElementById("confirmEtat").src = "img/croix.png";
+        return false;
     }
     
 }
