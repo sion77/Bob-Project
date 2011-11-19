@@ -559,9 +559,10 @@
         "categories" => $Bob->getCategories(),
         "images" => $Bob->getImages(),
         "produits" => $Bob->getProduits(),
-        "commentaires" => $Bob->getCommentaires()
+        "commentaires" => $Bob->getCommentaires(),
+		"mostPopular" => $Bob->calcMostPopular()
     ));
-        
+	        
     // On affiche la page compilée à l'aide du template passé ici
     $smarty->display("templates\\".$template.".tpl");   
 ?>

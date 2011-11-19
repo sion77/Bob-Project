@@ -59,7 +59,14 @@
                 
         public function calcNoteMoy()
         {
-			return 1;
+			if($this->nbCommentaires == 0) return 1;
+			
+			$somme = 0.0;
+			for($i = 0; $i < $this->nbCommentaires; $i++)
+			{
+				$somme += $this->commentaires[$i]->getNote();
+			}
+			return $somme/$this->nbCommentaires;
 		}    
 		
 		public function ajouterCommentaire($c)

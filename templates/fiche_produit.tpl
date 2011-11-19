@@ -58,7 +58,7 @@
             <br/>
             
             {if $prod->getNbCommentaires() > 0}
-				{assign var=note value=$prod->calcNoteMoy()}
+				{assign var=note value=round($prod->calcNoteMoy())}
 				{for $i = 1; $i <= $note; $i++}
 					<div class="rating-star">
 						<img src="img/yellowstar.png" alt="+" />
