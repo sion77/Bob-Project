@@ -32,8 +32,8 @@
             $this->initImages();
             $this->initMembres();
             $this->initCategories();
-            $this->initProduits();
-            $this->initCommentaires();
+			$this->initProduits();
+			$this->initCommentaires();                        
         }
         
         private function initMembres()
@@ -159,13 +159,14 @@
         private function initCommentaires()
         {        
             $this->nbCommentaires = 0;
+			$this->commentaires = array();
                         
             $req = $this->query("   SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
-                                           commentaireEval AS \"texte\",
-                                           '0' AS \"rep\",
-                                           idUtilisateur AS \"user\",
+                                           commentaireEval AS \"texte\",										   
+                                           '0' AS \"rep\",										   
+                                           idUser AS \"user\",										   
                                            idProduit AS \"prod\"
                                     FROM evaluation E, evalProduit P
                                     WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
@@ -173,16 +174,15 @@
                                     
                                 UNION
                                 
-                                    SELECT E.idEval AS \"id\",
+                                    SELECT idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
-                                           commentaireEval AS \"texte\",
-                                           '1' AS \"rep\",
-                                           idUtilisateur AS \"user\",
-                                           P.idEval AS \"com\" -- l'eval ciblée
-                                    FROM evaluation E, comporep P
-                                    WHERE E.idEval IN( SELECT idRep FROM reponse )
-                                    AND E.idEval = P.idReponse -- car notre eval est la reponse
+                                           commentaireEval AS \"texte\",										   
+                                           '1' AS \"rep\",										   
+                                           idUserRep AS \"user\",										   
+                                           idEvalRep AS \"com\"
+                                    FROM evaluation E, reponse R
+                                    WHERE idEval = idRep
                                     
                                 ORDER BY id
                                 ") or die(print_r($this->errorInfo()));      
@@ -197,17 +197,19 @@
 					$prod = $this->getProduit(intval($rep["prod"]));
                     $c = new Commentaire($this, $user, $prod, "unNom",
                                          $rep["note"],
-                                         $rep["date"],                                         
-                                         $rep["texte"], 
+                                         $rep["texte"],
+                                         $rep["date"], 
                                          $rep["id"]);
+										 
+					$prod->ajouterCommentaire($c);
                 }
                 else
                 {
 					$com = $this->getProduit(intval($rep["com"]));
                     $c = new Reponse($this, $user, $com, "unNom",
                                      $rep["note"],
-                                     $rep["date"],                                         
-                                     $rep["texte"], 
+                                     $rep["texte"],
+									 $rep["date"],
                                      $rep["id"]);
                 }
                 
@@ -217,8 +219,8 @@
 					return false;
 				}
                 
-                $this->commentaires[$this->nbCommentaires] = $c;        
-                $this->nbCommentaires++;
+                $this->commentaires[$this->nbCommentaires] = $c;  
+				$this->nbCommentaires++;
             }
             $req->closeCursor();
                         
@@ -755,11 +757,10 @@
 			// Données vérifiées
 			// on a : $_POST["titre"], $note, $membre et $commentaire
 			
-			$req = $this->prepare("INSERT INTO evaluation(`idUtilisateur`, `noteEval`, `commentaireEval`, `dateEval`)
-			                       VALUES (?, ?, ?, NOW())");
+			$req = $this->prepare("INSERT INTO evaluation(`noteEval`, `commentaireEval`, `dateEval`)
+			                       VALUES (?, ?, NOW())");
 			                       
-			$req->execute(array(
-				$membre->getId(),
+			$req->execute(array(				
 				$note,
 				$commentaire
 			)) or die(print_r($this->errorInfo()));
@@ -775,12 +776,13 @@
                                                                  
             $this->ajouterCommentaire($c);
             
-            $req = $this->prepare("INSERT INTO evalproduit(`idProduit`, `idEval`)
-			                       VALUES (?, ?)");
+            $req = $this->prepare("INSERT INTO evalproduit(`idProduit`, `idEval`, `idUser`)
+			                       VALUES (?, ?, ?)");
 			                       
-			$req->execute(array(
+			$req->execute(array(			
 				$p->getId(),
 				$c->getId(),
+				$membre->getId()
 			)) or die(print_r($this->errorInfo()));
 			
 			$p->ajouterCommentaire($c);
@@ -917,7 +919,7 @@
             
         public function getCommentaires()
         {
-            return $this->commentaires;
+			return $this->commentaires;
         }
     }
 ?>

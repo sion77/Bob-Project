@@ -28,7 +28,7 @@
         public function getNbCommentaires() { return $this->nbCommentaires; }
         
         public function getStock() { return $this->stock; }
-        public function getPrixVente() { return $this->prixVente; }
+        public function getPrixVente() { return $this->prixVente; }		
         
         public function __construct($Bob, $cat, $img, $nom, $desc, $stock, 
                                     $nbVentes, $nbLoc, $prixVente, $prixLoc, $id = 0)
@@ -40,7 +40,6 @@
             $this->img = $img;
             $this->cat = $cat;
             
-            $this->commentaires = null;
             $this->nbCommentaires = 0;
             
             $this->stock = $stock;            
@@ -56,30 +55,8 @@
             if($this->img)
                 $this->img->ajouteCible($this);
                 
-            $this->initCommentaires();
         }
-        
-        private function initCommentaires()
-        {
-			$this->commentaires = array();
-            $this->nbCommentaires = 0;
-			
-			$coms = $this->Bob->getCommentaires();
-			if($coms != null)
-			{
-				foreach($coms as $c)
-				{
-					if($c instanceof Commentaire)
-					{
-						if($c->getProduit()->getId() == $this->id)
-						{
-							$this->ajouterCommentaire($c);
-						}
-					}
-				}
-			}
-		}    
-        
+                
         public function calcNoteMoy()
         {
 			return 1;
