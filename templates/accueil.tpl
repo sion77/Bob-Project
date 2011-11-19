@@ -31,7 +31,7 @@
             <span id="voirficheproduit_bestseller" class="voirficheproduit_coup_coeur"><a href='index.php?page=FICHEPRODUIT'>Voir fiche produit</a></span>
         </div>
         
-        <div class="boite_coup_coeur" id="nouveaute" >
+        <div class="boite_coup_coeur" id="nouveaute" onload="generatepub()">
         
         <h1> Exclusivité BricoBob !</h1>
             <h3> Titre article </h3>

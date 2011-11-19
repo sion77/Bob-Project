@@ -4,9 +4,9 @@ function verifAlphaNum(chaine)
     return regex.test(chaine);
 }
 
-function checkPseudo()
+function checkPseudo(champ)
 {
-    var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
+    var pseudo = encodeURIComponent(champ.value);
     
     if(pseudo.length > 0)
     {
@@ -30,7 +30,7 @@ function checkPseudo()
                         
                         case "Erreur" : 
                         default : 
-                            document.getElementById("pseudoEtat").innerHTML = "Erreur AJAX contacter administrateur";
+                            document.getElementById("pseudoEtat").src = "img/croix.png";
                         break;
                     }
                 }        
@@ -38,18 +38,19 @@ function checkPseudo()
         }
         else
         {
-            document.getElementById("pseudoEtat").innerHTML = "Pseudo incorrect (syntaxe)";
+            document.getElementById("pseudoEtat").src = "img/croix.png";
         }    
     }
     else
     {
-        document.getElementById("pseudoEtat").innerHTML = "Pseudo non renseigné";
+        document.getElementById("pseudoEtat").src = "img/croix.png";
     }
+    
 }
 
-function checkPass()
+function checkPass(champ)
 {    
-    var pass = document.getElementById("pass").value;    
+    var pass = champ.value;    
     
     if(pass.length <= 0) // Vide (ou bizarre)
     {
@@ -73,12 +74,13 @@ function checkPass()
     }
     
     checkPass2(); // Ne pas oublier !
+    
 }
 
-function checkPass2()
+function checkPass2(champ)
 {
     var pass = document.getElementById("pass").value;
-    var pass2 = document.getElementById("pass2").value;
+    var pass2 = champ.value;
     
     if(pass2.length > 0)
     {    
@@ -95,7 +97,20 @@ function checkPass2()
     {
         document.getElementById("confirmEtat").src = "img/croix.png";
     }
+    
 }
 
-
-
+function verifForm(f)
+{
+   var pseudoOk = checkPseudo(f.pseudo);
+   var passOk = checkPass(f.pass);
+   var pass2Ok = checkPass2(f.pass2);
+   
+   if(pseudoOk && passOk && pass2Ok)
+      return true;
+   else
+   {
+      alert("Veuillez remplir correctement tous les champs");
+      return false;
+   }
+}

@@ -11,21 +11,21 @@
         <h4>Les deux mots de passe doivent être identiques.</h4>
         <h6>Veuillez ne pas tenter d'injections SQL S.V.P, merci ;)</h6>
         
-        <form action="index.php?action=INSCRIPTION" method="post">        
+        <form action="index.php?action=INSCRIPTION" method="post" >        
             <table>
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
-                    <td><input onchange="checkPseudo();" id="pseudo" name="pseudo" type="text"  /></td>
+                    <td><input onchange="checkPseudo(this);" id="pseudo" name="pseudo" type="text"  /></td>
                     <td><img src="img/croix.png" id="pseudoEtat"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>
-                    <td><input onchange="checkPass();" id="pass" name="pass" type="password" /></td>
+                    <td><input onchange="checkPass(this);" id="pass" name="pass" type="password" /></td>
                     <td><img src="img/bob_js1.png" id="passEtat"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass2">Confirmation :</label></td>
-                    <td><input onchange="checkPass2();" id="pass2" name="pass2" type="password" /></td>
+                    <td><input onchange="checkPass2(this);" id="pass2" name="pass2" type="password" /></td>
                     <!-- td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span></td -->
                     <td><img src="img/croix.png" id="confirmEtat"></td>
                 </tr>
