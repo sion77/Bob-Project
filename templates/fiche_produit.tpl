@@ -67,21 +67,29 @@
         
             <div id="fiche-produit-nbavis"><h6>( 1 Avis )</h6></div>
         </div>
-                
-        <div class="avis-fiche-produit">
-            <h3> Très efficace ! <h3>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/yellowstar.png" alt="YellowStar" /></div>
-            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-            <div class="rating-star"><img src="img/greystar.png" alt="greyStar" /></div>
-            <h6> Par : Jean-luc   le 06/06/06 </h6>
-            <p>
-                blabla blablablablablablablablablablablablablablablablablablablablablablablabla
-                blablablablablablablablablablablablablablablablablablablabla
-                blablablablablablablablablablablablablablablablablablablablablablablabla
-            </p>
-        </div>    
+               
+        {assign var=coms value=$prod->getCommentaires()} 
+        {foreach from=$coms item=com}
+			<div class="avis-fiche-produit">
+				<h3>{$com->getNom()}</h3>
+				{assign var=note value=$com->getNote()}
+				{for $i = 1; $i <= $note; $i++}
+					<div class="rating-star">
+						<img src="img/yellowstar.png" alt="YellowStar" />
+					</div>
+				{/for}
+				{for $i = $note; $i <= 5; $i++}
+					<div class="rating-star">
+						<img src="img/greystar.png" alt="greyStar" />
+					</div>				
+				{/for}
+				
+				<h6>Par : {$com->getMembre()->getPseudo()} le {$com->getDate()} </h6>
+				<p>
+					{$com->getTexte()}
+				</p>
+			</div>  
+		{/foreach}  
             
         <div id="ajouter-un-avis">
                     <h1>Ajouter un avis</h1>
