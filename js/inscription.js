@@ -121,9 +121,30 @@ function verifForm(f)
    
    if(pseudoOk == true && passOk == true && pass2Ok == true)
       return true;
+
+   if (pseudoOk)
+   {
+	if (passOk)
+	{
+		if (pass2Ok)
+		{
+			return true;
+		}
+		else 
+		{
+			alert("La verification de mot de passe doit être identique au mot de passe.");
+			return false;
+		}
+	}
+	else
+	{
+		alert("Le mot de passe est trop court.");
+		return false;
+	}
+   }
    else
    {
-      alert("Veuillez remplir correctement tous les champs");
+      alert("Le pseudo n'est pas disponible.");
       return false;
    }
 }
