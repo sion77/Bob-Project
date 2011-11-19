@@ -630,9 +630,9 @@
             
             $ok = $req->execute(array(
                 $_POST["nom"],
-                $_POST["desc"],
-                $img ? $img->getId() : NULL,
+                $_POST["desc"],               
                 $cat ? $cat->getId() : NULL,
+                $img ? $img->getId() : NULL,
                 $stock,
                 $prixL,
                 $prixA                
