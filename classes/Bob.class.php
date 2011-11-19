@@ -165,6 +165,7 @@
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
                                            '0' AS \"rep\",
+                                           idUtilisateur AS \"user\",
                                            idProduit AS \"prod\"
                                     FROM evaluation E, evalProduit P
                                     WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
@@ -177,6 +178,7 @@
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
                                            '1' AS \"rep\",
+                                           idUtilisateur AS \"user\",
                                            P.idEval AS \"com\" -- l'eval ciblée
                                     FROM evaluation E, comporep P
                                     WHERE E.idEval IN( SELECT idRep FROM reponse )
@@ -187,7 +189,7 @@
                     
             while($rep = $req->fetch())
             {
-				$user = $this->getMembre(intval($rep["idMembre"]));
+				$user = $this->getMembre(intval($rep["user"]));
 								
                 if($rep["rep"] == 0)
                 {
