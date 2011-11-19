@@ -104,9 +104,15 @@
 				<div id="select-quantite">				
 					<label for="note">Note :</label><br />
 					<div id="chooseNote" onmouseout="loosefocus();">
-						{for $i = 1; $i <= 5; $i++}
+					
+						<img src="img/yellowstar.png" 
+									 id="star1" 
+									 onclick="etoile(1);" 
+									 onmouseover="focusetoile(1);" />
+									 
+						{for $i = 2; $i <= 5; $i++}
 							<div class="rating-star">
-								<img src="img/yellowstar.png" 
+								<img src="img/greystar.png" 
 									 id="star{$i}" 
 									 onclick="etoile({$i});" 
 									 onmouseover="focusetoile({$i});" />
