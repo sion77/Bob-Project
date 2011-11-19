@@ -217,21 +217,21 @@
                         $template = "admin_produits";
                         if(isset($_GET["action"]))
                         {
-							switch($_GET["action"])
-							{
-								case "CREER":
-									if($Bob->creerProduit())
-									{
-										$message = "Le produit a bien été ajouté";
-									}
-									else
-									{
-										$erreur = true;
-										$message = $Bob->getErreur();
-									}
-								break;
-							}
-						}
+                            switch($_GET["action"])
+                            {
+                                case "CREER":
+                                    if($Bob->creerProduit())
+                                    {
+                                        $message = "Le produit a bien été ajouté";
+                                    }
+                                    else
+                                    {
+                                        $erreur = true;
+                                        $message = $Bob->getErreur();
+                                    }
+                                break;
+                            }
+                        }
                     break;
                     
                     /* Sinon, ou si on nous le demande explicitement */
@@ -414,23 +414,23 @@
             
             // La fiche d'un produit
             case "FICHEPRODUIT":
-				if(!isset($_GET["id"]))
-				{
-					$template = "accueil";
-				}
-				else
-				{
-					$prod = $Bob->getProduit(intval($_GET["id"]));
-					if(!$prod)
-					{
-						$template = "accueil";
-					}
-					else
-					{					
-						$smarty->assign("prod", $prod);
-						$template = "fiche_produit";   
-					}
-				}
+                if(!isset($_GET["id"]))
+                {
+                    $template = "accueil";
+                }
+                else
+                {
+                    $prod = $Bob->getProduit(intval($_GET["id"]));
+                    if(!$prod)
+                    {
+                        $template = "accueil";
+                    }
+                    else
+                    {                    
+                        $smarty->assign("prod", $prod);
+                        $template = "fiche_produit";   
+                    }
+                }
             break;
             
             // La recherche avancée
@@ -520,7 +520,8 @@
         "membres" => $Bob->getMembres(),
         "categories" => $Bob->getCategories(),
         "images" => $Bob->getImages(),
-        "produits" => $Bob->getProduits()
+        "produits" => $Bob->getProduits(),
+        "commentaires" => $Bob->getCommentaires()
     ));
         
     // On affiche la page compilée à l'aide du template passé ici

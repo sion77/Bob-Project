@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="header">
-		 <div id="logo">
+         <div id="logo">
                     <a href="index.php">
                         <img src="img/logo.png" alt="Chez Bob"/>
                     </a>
@@ -23,9 +23,9 @@
                 </div>
                 <div id="espace_recherche">
                     <!--    <img src="img/search_icon.jpg" alt="search_icon"/> -->
-		<script type="text/javascript" src="js/clearrech.js"></script>
+        <script type="text/javascript" src="js/clearrech.js"></script>
                     <form action="index.php?action=RECHERCHE" method="post">
-			
+            
                         <input id="rechtext" type="text" name="recherche" value="Rechercher" onfocus="clearrechtext();" onblur="textout();"/>
                         <input type="submit" value="GO" />
                     </form>
