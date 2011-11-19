@@ -29,6 +29,9 @@
         
         public function getStock() { return $this->stock; }
         public function getPrixVente() { return $this->prixVente; }		
+		public function getPrixLocation() { return $this->prixVente; }	
+		public function getNbVentes() { return $this->nbVentes; }		
+		public function getNbLocations() { return $this->nbLoc; }			
         
         public function __construct($Bob, $cat, $img, $nom, $desc, $stock, 
                                     $nbVentes, $nbLoc, $prixVente, $prixLoc, $id = 0)

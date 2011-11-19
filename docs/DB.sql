@@ -310,7 +310,7 @@ INSERT INTO `produit` (`idProd` , `nomProd`, `libelle`, `idImageProd`,
 
 INSERT INTO `evaluation` (`idEval`, `titreEval`, `dateEval`, `noteEval`, `commentaireEval`) VALUES
 (1, "Merci !", NOW()-3, 4, "Avec elle, j'ai enfin pu me debarrasser de ma voisine en toute discretion !"),
-(2, "Bof", NOW(), 2, "Elle coupe mal le bois, elle sent je ne sais trop quoi et est en mauvaise etat..");
+(2, "Bof", NOW(), 2, "Elle coupe mal le bois, elle sent je ne sais trop quoi et est en mauvais etat..");
 
 INSERT INTO `evalproduit` (`idProduit`, `idEval`, `idUser`) VALUES
 (1, 1, 1),
