@@ -17,7 +17,7 @@
         private $nbLoc;
         private $prixVente;
         private $prixLoc;
-        
+                
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
         public function getDesc() { return $this->desc; }
@@ -61,5 +61,10 @@
         {
 			return 1;
 		}    
+		
+		public function ajouterCommentaire($c)
+		{
+			
+		}
     }
 ?>
