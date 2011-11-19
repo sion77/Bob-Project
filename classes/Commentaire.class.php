@@ -20,7 +20,7 @@
         public function getReponses() { return $this->reponses; }
         
         public function getId() { return $this->id; }
-        public function getNom() { return $this->membre; }
+        public function getNom() { return $this->nom; }
         public function getNote() { return $this->note; }
         public function getDesc() { return $this->texte; }
         public function getDate() { return $this->date; }
