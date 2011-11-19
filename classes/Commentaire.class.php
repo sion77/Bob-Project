@@ -13,6 +13,8 @@
         private $texte;
         private $date;
         
+        private static $maxId = 0;
+        
         public function getMembre() { return $this->membre; }
         public function getProduit() { return $this->produits; }
         public function getReponses() { return $this->reponses; }
@@ -34,7 +36,10 @@
             $this->reponses = NULL;
             $this->nbReponses = 0;
             
+            if($id == 0) $id = self::$maxId+1;
             $this->id = $id;
+            if($id > self::$maxId) self::$maxId = $id;
+            
             $this->nom = $nom;
             $this->note = $note;
             $this->texte = $texte;

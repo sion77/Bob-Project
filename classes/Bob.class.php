@@ -746,7 +746,7 @@
 				$note,
 				$commentaire
 			)) or die(print_r($this->errorInfo()));
-			
+						
 			$c = new Commentaire($this, $membre, $p, 
                                  $_POST["titre"], $note, $commentaire, date("r"));
                                  
@@ -757,6 +757,16 @@
 			}
                                                                  
             $this->ajouterCommentaire($c);
+            
+            $req = $this->prepare("INSERT INTO evalproduit(`idProduit`, `idEval`)
+			                       VALUES (?, ?)");
+			                       
+			$req->execute(array(
+				$p->getId(),
+				$c->getId(),
+			)) or die(print_r($this->errorInfo()));
+			
+			$p->ajouterCommentaire($c);
           						
 			return true;
 		}
