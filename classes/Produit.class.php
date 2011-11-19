@@ -24,6 +24,8 @@
         
         public function getImg() { return $this->img; }        
         public function getCat() { return $this->cat; }
+        public function getCommentaires() { return $this->commentaires; }
+        public function getNbCommentaires() { return $this->nbCommentaires; }
         
         public function getStock() { return $this->stock; }
         public function getPrixVente() { return $this->prixVente; }
@@ -38,6 +40,9 @@
             $this->img = $img;
             $this->cat = $cat;
             
+            $this->commentaires = null;
+            $this->nbCommentaires = 0;
+            
             $this->stock = $stock;            
             $this->prixVente = $prixVente;
             $this->prixLoc = $prixLoc;
@@ -50,6 +55,11 @@
                 
             if($this->img)
                 $this->img->ajouteCible($this);
-        }
+        }    
+        
+        public function calcNoteMoy()
+        {
+			return 1;
+		}    
     }
 ?>
