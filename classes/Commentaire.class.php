@@ -22,7 +22,7 @@
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }
         public function getNote() { return $this->note; }
-        public function getDesc() { return $this->texte; }
+        public function getTexte() { return $this->texte; }
         public function getDate() { return $this->date; }
         
         public function __construct($Bob, $membre, $produit, 
