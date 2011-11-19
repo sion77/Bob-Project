@@ -12,10 +12,10 @@
         
         private $images;   // Tableau d'images
         private $nbImages; // taille du tableau
-		
-		private $commentaires;   // Tableau de commentaires/reponses
-		private $nbCommentaires; // taille du tableau
-		       
+        
+        private $commentaires;   // Tableau de commentaires/reponses
+        private $nbCommentaires; // taille du tableau
+               
         private $erreur;
                 
         // ============= INITS ============= //
@@ -33,7 +33,7 @@
             $this->initMembres();
             $this->initCategories();
             $this->initProduits();
-			$this->initCommentaires();
+            $this->initCommentaires();
         }
         
         private function initMembres()
@@ -137,7 +137,7 @@
                 $p = new Produit(
                     $this, 
                     $this->getCategorie($rep["idCatProd"]), 
-					$this->getImage($rep["idImageProd"]),
+                    $this->getImage($rep["idImageProd"]),
                     $rep["nomProd"],
                     $rep["libelle"],
                     $rep["stockProd"], 
@@ -157,59 +157,58 @@
         }
         
         private function initCommentaires()
-		{		
-			$this->nbCommentaires = 0;
-			            
-			$req = $this->query("	SELECT  idEval AS \"id\",
-											dateEval AS \"date\",
-											noteEval AS \"note\",
-											commentaireEval AS \"texte\",
-											'0' AS \"rep\"
-									FROM evaluation
-									WHERE idEval NOT IN( SELECT idRep FROM reponse )
-									
-								UNION
-								
-									SELECT  idEval AS \"id\",
-											dateEval AS \"date\",
-											noteEval AS \"note\",
-											commentaireEval AS \"texte\",
-											'1' AS \"rep\"
-									FROM evaluation
-									WHERE idEval IN( SELECT idRep FROM reponse )
-									
-								ORDER BY id
-								");      
+        {        
+            $this->nbCommentaires = 0;
+                        
+            $req = $this->query("   SELECT idEval AS \"id\",
+                                           dateEval AS \"date\",
+                                           noteEval AS \"note\",
+                                           commentaireEval AS \"texte\",
+                                           '0' AS \"rep\"
+                                    FROM evaluation
+                                    WHERE idEval NOT IN( SELECT idRep FROM reponse )
+                                    
+                                UNION
+                                
+                                    SELECT idEval AS \"id\",
+                                           dateEval AS \"date\",
+                                           noteEval AS \"note\",
+                                           commentaireEval AS \"texte\",
+                                           '1' AS \"rep\"
+                                    FROM evaluation
+                                    WHERE idEval IN( SELECT idRep FROM reponse )
+                                    
+                                ORDER BY id
+                                ");      
                     
             while($rep = $req->fetch())
             {
-				if(!$rep["rep"])
-				{
-					$c = new Commentaire($this,	null, null, "unNom",
-										 $rep["note"],
-										 $rep["date"],										 
-										 $rep["texte"], 
-										 $rep["id"]);
-				}
-				else
-				{
-					// $c = new Reponse();
-					$c = new Commentaire($this,	null, null, "unNom",
-										 $rep["note"],
-										 $rep["date"],										 
-										 $rep["texte"], 
-										 $rep["id"]);
-				}
-				
-				$this->commentaires[$this->nbCommentaires] = $c;		
-				$this->nbCommentaires++;
+                if(!$rep["rep"])
+                {
+                    $c = new Commentaire($this, null, null, "unNom",
+                                         $rep["note"],
+                                         $rep["date"],                                         
+                                         $rep["texte"], 
+                                         $rep["id"]);
+                }
+                else
+                {
+                    $c = new Reponse($this, null, null, "unNom",
+                                     $rep["note"],
+                                     $rep["date"],                                         
+                                     $rep["texte"], 
+                                     $rep["id"]);
+                }
+                
+                $this->commentaires[$this->nbCommentaires] = $c;        
+                $this->nbCommentaires++;
             }
             $req->closeCursor();
             
             return true;
-		}	
-				
-		// ============= PUBLIC ============= //
+        }    
+                
+        // ============= PUBLIC ============= //
                 
         public function inscription($pseudo , $pass, $pass2) // return Membre ou false
         {
@@ -586,94 +585,94 @@
         
         public function creerProduit()
         {
-			if(!isset($_POST["nom"])    ||
-			   !isset($_POST["desc"])   ||
-			   !isset($_POST["prixA"])  ||	
-			   !isset($_POST["prixL"])  ||	
-			   !isset($_POST["stock"])  ||
-			   !isset($_POST["cat"])    ||
-			   !isset($_POST["image"])    )
-			{
-				$this->erreur = "Il manque des données !";
-				return false;
-			}
-			   
-			if($_POST["nom"] == "" || $_POST["prixA"] == "" || $_POST["prixL"] == "")
-			{
-				$this->erreur = "Certains champs ne sont pas remplis !
-								 <br/> Le prix et le nom sont obligatoires";
-				return false;
-			}		
-			
-			$prixA = intval($_POST["prixA"]);
-			$prixL = intval($_POST["prixL"]);
-			$stock = intval($_POST["stock"]);			
-								
-			if($stock < 0 || $prixA < 0 || $prixL < 0)
-			{
-				$this->erreur = "Valeurs incorrectes (prix ou stock)";
-				return false;
-			}
-			
-			if($prixA == 0 && $prixL == 0)
-			{
-				$this->erreur = "Le produit doit pouvoir être achetabe OU/ET louable";
-				return false;
-			}
-			
-			$img = ($_POST["image"] != "NULL") ? $this->getImage(intval($_POST["image"])) : NULL;
-			$cat = ($_POST["cat"] != "NULL") ? $this->getImage(intval($_POST["cat"])) : NULL;
-			
-			$req = $this->prepare("
-			INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
-			                    `stockProd`, `prixProdLoc`, `PrixProdVente`) 
-			VALUES(?, ?, ?, ?, ?, ?, ?)");
-			
-			$ok = $req->execute(array(
-				$_POST["nom"],
-				$_POST["desc"],
-				$img ? $img->getId() : NULL,
-				$cat ? $cat->getId() : NULL,
-				$stock,
-				$prixL,
-				$prixA				
-			)) or die(print_r($this->errorInfo()));
-			
-			if(!$ok)
-			{
-				$this->erreur = "Erreur SQL";
-				return false;
-			}
-			
-			$p = new Produit($this, $cat, $img, $_POST["nom"], $_POST["desc"], $stock, 
+            if(!isset($_POST["nom"])    ||
+               !isset($_POST["desc"])   ||
+               !isset($_POST["prixA"])  ||    
+               !isset($_POST["prixL"])  ||    
+               !isset($_POST["stock"])  ||
+               !isset($_POST["cat"])    ||
+               !isset($_POST["image"])    )
+            {
+                $this->erreur = "Il manque des données !";
+                return false;
+            }
+               
+            if($_POST["nom"] == "" || $_POST["prixA"] == "" || $_POST["prixL"] == "")
+            {
+                $this->erreur = "Certains champs ne sont pas remplis !
+                                 <br/> Le prix et le nom sont obligatoires";
+                return false;
+            }        
+            
+            $prixA = intval($_POST["prixA"]);
+            $prixL = intval($_POST["prixL"]);
+            $stock = intval($_POST["stock"]);            
+                                
+            if($stock < 0 || $prixA < 0 || $prixL < 0)
+            {
+                $this->erreur = "Valeurs incorrectes (prix ou stock)";
+                return false;
+            }
+            
+            if($prixA == 0 && $prixL == 0)
+            {
+                $this->erreur = "Le produit doit pouvoir être achetabe OU/ET louable";
+                return false;
+            }
+            
+            $img = ($_POST["image"] != "NULL") ? $this->getImage(intval($_POST["image"])) : NULL;
+            $cat = ($_POST["cat"] != "NULL") ? $this->getImage(intval($_POST["cat"])) : NULL;
+            
+            $req = $this->prepare("
+            INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
+                                `stockProd`, `prixProdLoc`, `PrixProdVente`) 
+            VALUES(?, ?, ?, ?, ?, ?, ?)");
+            
+            $ok = $req->execute(array(
+                $_POST["nom"],
+                $_POST["desc"],
+                $img ? $img->getId() : NULL,
+                $cat ? $cat->getId() : NULL,
+                $stock,
+                $prixL,
+                $prixA                
+            )) or die(print_r($this->errorInfo()));
+            
+            if(!$ok)
+            {
+                $this->erreur = "Erreur SQL";
+                return false;
+            }
+            
+            $p = new Produit($this, $cat, $img, $_POST["nom"], $_POST["desc"], $stock, 
                              0, 0, $prixA, $prixL); 
-							 
-			if(!$p)
-			{
-				$this->erreur = "Erreur lors de la création du produit";
-				return false;
-			}
-			
-			if(!$this->ajouterProduit($p))
-			{
-				$this->erreur = "Erreur lors de l'ajout du produit crée";
-				return false;
-			}	
-			
-			return true;
-		}
-		
-		public function ajouterProduit($p)
-		{
-			$this->produits[$this->nbProduits] = $p;
-			$this->nbProduits++;
-			
-			return true;
-		}
+                             
+            if(!$p)
+            {
+                $this->erreur = "Erreur lors de la création du produit";
+                return false;
+            }
+            
+            if(!$this->ajouterProduit($p))
+            {
+                $this->erreur = "Erreur lors de l'ajout du produit crée";
+                return false;
+            }    
+            
+            return true;
+        }
+        
+        public function ajouterProduit($p)
+        {
+            $this->produits[$this->nbProduits] = $p;
+            $this->nbProduits++;
+            
+            return true;
+        }
         
         public function getProduit($id)
-		{
-			$i = 0;
+        {
+            $i = 0;
             $trouve = false;
             
             while($i < $this->nbProduits && !$trouve)
@@ -681,16 +680,28 @@
                 $trouve = ($this->produits[$i]->getId() == $id);
                 $i++;
             }
-			
-			$i--;
             
-			if(!$trouve)
-				return false;
-				
-			return $this->produits[$i];
-		}
-		
-		///
+            $i--;
+            
+            if(!$trouve)
+                return false;
+                
+            return $this->produits[$i];
+        }
+        
+        ///
+        
+        public function calcBestSeller()
+        {
+            
+        }
+        
+        public function calcMostPopular()
+        {
+            
+        }
+        
+        ///
         
         public function uploadImage()
         {
@@ -806,5 +817,9 @@
             return $this->erreur;
         }
             
+        public function getCommentaires()
+        {
+            return $this->commentaires;
+        }
     }
 ?>
