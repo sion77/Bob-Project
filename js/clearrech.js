@@ -1,6 +1,9 @@
 function clearrechtext()
 {	
+	if (document.getElementById("rechtext").value = "Rechercher")
+	{
 	document.getElementById("rechtext").value = "";
+	}
 }
 
 function textout()
