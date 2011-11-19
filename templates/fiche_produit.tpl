@@ -108,8 +108,8 @@
 							<div class="rating-star">
 								<img src="img/yellowstar.png" 
 									 id="star{$i}" 
-									 onclick="etoile{$i};" 
-									 onmouseover="focusetoile{$i};" />
+									 onclick="etoile({$i});" 
+									 onmouseover="focusetoile({$i});" />
 							</div>
 						{/for}
 					</div>	
