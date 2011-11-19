@@ -6,22 +6,6 @@ CREATE SCHEMA IF NOT EXISTS `projet_bob` DEFAULT CHARACTER SET utf8 ;
 USE `projet_bob` ;
 
 -- -----------------------------------------------------
--- Table `projet_bob`.`individu`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`individu` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`individu` (
-  `numIndividu` INT(11) NOT NULL ,
-  `nomIndividu` VARCHAR(20) NOT NULL ,
-  `prenomIndividu` VARCHAR(20) NOT NULL ,
-  `adresseIndividu` TEXT NOT NULL ,
-  `telephoneIndividu` INT(11) NOT NULL ,
-  PRIMARY KEY (`numIndividu`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `projet_bob`.`utilisateur`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `projet_bob`.`utilisateur` ;
@@ -32,13 +16,9 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`utilisateur` (
   `passUtilisateur` VARCHAR(255) NOT NULL ,
   `mailUtilisateur` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`idUtilisateur`) ,
-  UNIQUE INDEX `pseudoUtilisateur_UNIQUE` (`pseudoUtilisateur` ASC) ,
-  CONSTRAINT `fk_utilisateur_individu`
-    FOREIGN KEY (`idUtilisateur` )
-    REFERENCES `projet_bob`.`individu` (`numIndividu` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `pseudoUtilisateur_UNIQUE` (`pseudoUtilisateur` ASC) )
 ENGINE = MyISAM
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -49,91 +29,16 @@ DROP TABLE IF EXISTS `projet_bob`.`admin` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`admin` (
   `idAdmin` INT(11) NOT NULL ,
-  INDEX `fk_admin_utilisateur` (`idAdmin` ASC),
-  PRIMARY KEY (`idAdmin`),
-  CONSTRAINT `fk_admin_utilisateur`
+  PRIMARY KEY (`idAdmin`) ,
+  INDEX `fk_admin_utilisateur` (`idAdmin` ASC) ,
+  INDEX `fk_admin_user` (`idAdmin` ASC) ,
+  CONSTRAINT `fk_admin_user`
     FOREIGN KEY (`idAdmin` )
     REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `projet_bob`.`categorie`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`categorie` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`categorie` (
-  `idCat` INT(11) NOT NULL AUTO_INCREMENT ,
-  `descriptionCat` TEXT NOT NULL ,
-  `nomCat` VARCHAR(255) NOT NULL ,
-  `idImgCat` INT(11) NULL DEFAULT NULL COMMENT 'image (fk)',
-  `idParent` INT(11) NULL DEFAULT NULL COMMENT 'sous categorie' ,
-  PRIMARY KEY (`idCat`) ,
-  INDEX `fk_categorie_categorie1` (`idParent` ASC) ,
-  INDEX `fk_categorie_img` (`idImgCat` ASC) ,
-  CONSTRAINT `fk_categorie_categorie1`
-    FOREIGN KEY (`idParent` )
-    REFERENCES `projet_bob`.`categorie` (`idCat` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_categorie_img`
-    FOREIGN KEY (`idImgCat` )
-    REFERENCES `projet_bob`.`image` (`idImage` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `projet_bob`.`image`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`image` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`image` (
-  `idImage` INT NOT NULL AUTO_INCREMENT,
-  `image` BLOB NULL ,
-  `titre` VARCHAR(45) NOT NULL ,
-  `legende` TEXT NULL,
-  `type` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`idImage`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `projet_bob`.`produit`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`produit` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`produit` (
-  `idProd` INT(11) NOT NULL AUTO_INCREMENT ,
-  `nomProd` VARCHAR(255) NOT NULL ,
-  `libelle` TEXT NOT NULL ,
-  `idImageProd` INT NOT NULL ,
-  `stockProd` INT(11) NOT NULL ,
-  `nbVentesProd` INT(11) NOT NULL ,
-  `nbLocProd` INT(11) NOT NULL ,
-  `prixProdVente` INT(11) NOT NULL ,
-  `prixProdLoc` INT(11) NOT NULL ,
-  `idCatProd` INT(11) NOT NULL ,
-  PRIMARY KEY (`idProd`) ,
-  INDEX `fk_produit_categorie1` (`idCatProd` ASC) ,
-  INDEX `fk_produit_image` (`idImageProd` ASC) ,
-  CONSTRAINT `fk_produit_categorie1`
-    FOREIGN KEY (`idCatProd` )
-    REFERENCES `projet_bob`.`categorie` (`idCat` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produit_image`
-    FOREIGN KEY (`idImageProd` )
-    REFERENCES `projet_bob`.`image` (`idImage` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -145,19 +50,104 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`ciblepub` (
   `idCible` INT(11) NOT NULL COMMENT 'prod/cat' ,
   PRIMARY KEY (`idCible`) ,
   INDEX `fk_cible_prod` (`idCible` ASC) ,
-  INDEX `fk_cible_cat` (`idCible` ASC) ,
-  CONSTRAINT `fk_cible_prod`
-    FOREIGN KEY (`idCible` )
-    REFERENCES `projet_bob`.`produit` (`idProd` )
+  INDEX `fk_cible_cat` (`idCible` ASC) )
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `projet_bob`.`image`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projet_bob`.`image` ;
+
+CREATE  TABLE IF NOT EXISTS `projet_bob`.`image` (
+  `idImage` INT(11) NOT NULL AUTO_INCREMENT ,
+  `image` BLOB NULL DEFAULT NULL ,
+  `titre` VARCHAR(45) NOT NULL ,
+  `legende` TEXT NULL DEFAULT NULL ,
+  `type` VARCHAR(20) NOT NULL ,
+  PRIMARY KEY (`idImage`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 0
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `projet_bob`.`categorie`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projet_bob`.`categorie` ;
+
+CREATE  TABLE IF NOT EXISTS `projet_bob`.`categorie` (
+  `idCat` INT(11) NOT NULL AUTO_INCREMENT ,
+  `descriptionCat` TEXT NOT NULL ,
+  `nomCat` VARCHAR(255) NOT NULL ,
+  `idImgCat` INT(11) NULL DEFAULT NULL COMMENT 'image (fk)' ,
+  `idParent` INT(11) NULL DEFAULT NULL COMMENT 'sous categorie' ,
+  PRIMARY KEY (`idCat`) ,
+  INDEX `fk_categorie_categorie1` (`idParent` ASC) ,
+  INDEX `fk_categorie_img` (`idImgCat` ASC) ,
+  INDEX `fk_cat_pere` (`idParent` ASC) ,
+  INDEX `fk_cat_ciblepub` (`idCat` ASC) ,
+  INDEX `fk_cat_img` (`idImgCat` ASC) ,
+  CONSTRAINT `fk_cat_pere`
+    FOREIGN KEY (`idParent` )
+    REFERENCES `projet_bob`.`categorie` (`idCat` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cible_cat`
-    FOREIGN KEY (`idCible` )
-    REFERENCES `projet_bob`.`categorie` (`idCat`)
+  CONSTRAINT `fk_cat_ciblepub`
+    FOREIGN KEY (`idCat` )
+    REFERENCES `projet_bob`.`ciblepub` (`idCible` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cat_img`
+    FOREIGN KEY (`idImgCat` )
+    REFERENCES `projet_bob`.`image` (`idImage` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+AUTO_INCREMENT = 0
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `projet_bob`.`produit`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projet_bob`.`produit` ;
+
+CREATE  TABLE IF NOT EXISTS `projet_bob`.`produit` (
+  `idProd` INT(11) NOT NULL AUTO_INCREMENT ,
+  `nomProd` VARCHAR(255) NOT NULL ,
+  `libelle` TEXT NOT NULL ,
+  `idImageProd` INT(11) NOT NULL ,
+  `stockProd` INT(11) NOT NULL ,
+  `nbVentesProd` INT(11) NOT NULL ,
+  `nbLocProd` INT(11) NOT NULL ,
+  `prixProdVente` INT(11) NOT NULL ,
+  `prixProdLoc` INT(11) NOT NULL ,
+  `idCatProd` INT(11) NOT NULL ,
+  PRIMARY KEY (`idProd`) ,
+  INDEX `fk_produit_categorie1` (`idCatProd` ASC) ,
+  INDEX `fk_produit_image` (`idImageProd` ASC) ,
+  INDEX `fk_prod_cat` (`idCatProd` ASC) ,
+  INDEX `fk_prod_ciblepub` (`idProd` ASC) ,
+  INDEX `fk_prod_img` (`idImageProd` ASC) ,
+  CONSTRAINT `fk_prod_cat`
+    FOREIGN KEY (`idCatProd` )
+    REFERENCES `projet_bob`.`categorie` (`idCat` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prod_ciblepub`
+    FOREIGN KEY (`idProd` )
+    REFERENCES `projet_bob`.`ciblepub` (`idCible` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prod_img`
+    FOREIGN KEY (`idImageProd` )
+    REFERENCES `projet_bob`.`image` (`idImage` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -167,55 +157,12 @@ DROP TABLE IF EXISTS `projet_bob`.`evaluation` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`evaluation` (
   `idEval` INT(11) NOT NULL AUTO_INCREMENT ,
-  `idUtilisateur` INT(11) NOT NULL ,
   `dateEval` DATE NOT NULL ,
   `noteEval` INT(11) NOT NULL ,
   `commentaireEval` TEXT NOT NULL ,
-  PRIMARY KEY (`idEval`),
-  CONSTRAINT `fk_usr_eval`
-    FOREIGN KEY (`idUtilisateur`)
-    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idEval`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `projet_bob`.`reponse`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`reponse` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`reponse` (
-  `idRep` INT(11) NOT NULL AUTO_INCREMENT ,
-  PRIMARY KEY (`idRep`))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `projet_bob`.`comporep`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projet_bob`.`comporep` ;
-
-CREATE  TABLE IF NOT EXISTS `projet_bob`.`comporep` (
-  `idEval` INT(11) NOT NULL ,
-  `idReponse` INT(11) NOT NULL ,
-  PRIMARY KEY (`idEval`, `idReponse`) ,
-  INDEX `fk_comporep_evaluation1` (`idEval` ASC) ,
-  INDEX `fk_comporep_reponse1` (`idReponse` ASC) ,
-  CONSTRAINT `fk_comporep_evaluation1`
-    FOREIGN KEY (`idEval` )
-    REFERENCES `projet_bob`.`evaluation` (`idEval` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comporep_reponse1`
-    FOREIGN KEY (`idReponse` )
-    REFERENCES `projet_bob`.`reponse` (`idRep` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -226,21 +173,52 @@ DROP TABLE IF EXISTS `projet_bob`.`evalproduit` ;
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`evalproduit` (
   `idProduit` INT(11) NOT NULL ,
   `idEval` INT(11) NOT NULL ,
+  `idUser` INT NULL ,
   PRIMARY KEY (`idEval`, `idProduit`) ,
   INDEX `fk_evalproduit_produit1` (`idProduit` ASC) ,
   INDEX `fk_evalproduit_evaluation1` (`idEval` ASC) ,
-  CONSTRAINT `fk_evalproduit_evaluation`
+  INDEX `fk_ep_produit` (`idProduit` ASC) ,
+  INDEX `fk_ep_eval` (`idEval` ASC) ,
+  INDEX `fk_ep_user` (`idUser` ASC) ,
+  CONSTRAINT `fk_ep_produit`
+    FOREIGN KEY (`idProduit` )
+    REFERENCES `projet_bob`.`produit` (`idProd` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ep_eval`
     FOREIGN KEY (`idEval` )
     REFERENCES `projet_bob`.`evaluation` (`idEval` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_evalproduit_produit1`
-    FOREIGN KEY (`idProduit` )
-    REFERENCES `projet_bob`.`produit` (`idProd` )
+  CONSTRAINT `fk_ep_user`
+    FOREIGN KEY (`idUser` )
+    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `projet_bob`.`individu`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projet_bob`.`individu` ;
+
+CREATE  TABLE IF NOT EXISTS `projet_bob`.`individu` (
+  `numIndividu` INT(11) NOT NULL ,
+  `nomIndividu` VARCHAR(20) NOT NULL ,
+  `prenomIndividu` VARCHAR(20) NOT NULL ,
+  `adresseIndividu` TEXT NOT NULL ,
+  `telephoneIndividu` INT(11) NOT NULL ,
+  PRIMARY KEY (`numIndividu`) ,
+  INDEX `fk_ind_user` (`numIndividu` ASC) ,
+  CONSTRAINT `fk_ind_user`
+    FOREIGN KEY (`numIndividu` )
+    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -252,44 +230,56 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`publicite` (
   `idPub` INT(11) NOT NULL AUTO_INCREMENT ,
   `idCible` INT(11) NOT NULL ,
   `offrePub` TEXT NOT NULL ,
-  `imgPub` INT NOT NULL ,
+  `imgPub` INT(11) NOT NULL ,
   PRIMARY KEY (`idPub`) ,
   INDEX `fk_pub_cible` (`idCible` ASC) ,
   INDEX `fk_pub_image` (`imgPub` ASC) ,
+  INDEX `fk_pub_cible` (`idCible` ASC) ,
+  INDEX `fk_pub_img` (`imgPub` ASC) ,
   CONSTRAINT `fk_pub_cible`
     FOREIGN KEY (`idCible` )
     REFERENCES `projet_bob`.`ciblepub` (`idCible` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pub_image`
+  CONSTRAINT `fk_pub_img`
     FOREIGN KEY (`imgPub` )
-    REFERENCES `projet_bob`.`image` (`idImage` )
+    REFERENCES `projet_bob`.`image` (`idImage`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- phpMyAdmin SQL Dump
--- version 3.3.9
--- http://www.phpmyadmin.net
---
--- Serveur: localhost
--- Généré le : Lun 14 Novembre 2011 à 21:53
--- Version du serveur: 5.5.8
--- Version de PHP: 5.3.5
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+DEFAULT CHARACTER SET = utf8;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+-- -----------------------------------------------------
+-- Table `projet_bob`.`reponse`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projet_bob`.`reponse` ;
 
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+CREATE  TABLE IF NOT EXISTS `projet_bob`.`reponse` (
+  `idRep` INT(11) NOT NULL AUTO_INCREMENT ,
+  `idEvalRep` INT(11) NULL ,
+  `idUserRep` INT(11) NULL ,
+  PRIMARY KEY (`idRep`) ,
+  INDEX `fk_rep` (`idRep` ASC) ,
+  INDEX `fk_rep_eval` (`idEvalRep` ASC) ,
+  INDEX `fk_rep_user` (`idUserRep` ASC) ,
+  CONSTRAINT `fk_rep`
+    FOREIGN KEY (`idRep` )
+    REFERENCES `projet_bob`.`evaluation` (`idEval` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rep_eval`
+    FOREIGN KEY (`idEvalRep` )
+    REFERENCES `projet_bob`.`evaluation` (`idEval` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rep_user`
+    FOREIGN KEY (`idUserRep` )
+    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
 
 -- Les images des 5 catégories
 INSERT INTO `image` (`idImage`, `image`, `titre`, `legende`, `type`) VALUES
@@ -313,3 +303,7 @@ INSERT INTO `categorie` (`idCat`, `idImgCat`, `descriptionCat`, `nomCat`, `idPar
 (4, 5, '', 'Sols', NULL),
 (5, 4, '', 'Quincaillerie', NULL),
 (6, 3, '', 'Peinture', NULL);
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
