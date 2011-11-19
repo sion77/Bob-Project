@@ -64,7 +64,7 @@
 			$this->commentaires = array();
             $this->nbCommentaires = 0;
 			
-			$coms = $Bob->getCommentaires();
+			$coms = $this->Bob->getCommentaires();
 			foreach($coms as $c)
 			{
 				if($c instanceof Commentaire)
