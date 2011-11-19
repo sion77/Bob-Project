@@ -7,6 +7,7 @@ function verifAlphaNum(chaine)
 function checkPseudo(champ)
 {
     var pseudo = encodeURIComponent(champ.value);
+	var retour;
     
     if(pseudo.length > 0)
     {
@@ -16,40 +17,40 @@ function checkPseudo(champ)
             xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
             xhr.send(null);
             xhr.onreadystatechange = function() 
-		{
+			{
                 if(xhr.readyState == 4 && xhr.status == 200) 
                 {
                     switch(xhr.responseText)
                     {
                         case "0" : 
-                            document.getElementById("pseudoEtat").src = "img/ok.png";
-			    return true;
+                            document.getElementById("pseudoEtat").src = "img/ok.png";	
+							document.getElementById("pseudoEtat").alt = "OK";	
                         break;
                         
                         case "1" : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
-			    return false;
+							document.getElementById("pseudoEtat").alt = "Déjà utilisé";	
                         break;
                         
                         case "Erreur" : 
                         default : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
-			    return true;
+							document.getElementById("pseudoEtat").alt = "";		
                         break;
                     }
                 }        
-            };
+            };	// Fin de la fonction de "onreadystatechange"
         }
         else
         {
             document.getElementById("pseudoEtat").src = "img/croix.png";
-            return false;
+            document.getElementById("pseudoEtat").alt = "Contient autre chose que des lettres et des chiffres";	
         }    
     }
     else
     {
         document.getElementById("pseudoEtat").src = "img/croix.png";
-        return false;
+        document.getElementById("pseudoEtat").alt = "Vide";	
     }
     
 }
@@ -116,36 +117,33 @@ function checkPass2(champ)
 
 function verifForm(f)
 {
-   var pseudoOk = checkPseudo(f.pseudo);
-   var passOk = checkPass(f.pass);
-   var pass2Ok = checkPass2(f.pass2);
-   
-   if(pseudoOk == true && passOk == true && pass2Ok == true)
-      return true;
-
-   if (pseudoOk)
-   {
-	if (passOk)
+	checkPseudo(f.pseudo); // Va modifier document.getElementById("pseudoEtat").alt
+	                       // Ne peut pas retourner le resultat car il se situe dans la fonction anonyme !
+		
+    var pseudoOk = (document.getElementById("pseudoEtat").alt == "" || 
+	                document.getElementById("pseudoEtat").alt = "OK"  );
+					
+    var passOk = checkPass(f.pass);
+    var pass2Ok = checkPass2(f.pass2);
+   		
+	if(!pseudoOk)
 	{
-		if (pass2Ok)
-		{
-			return true;
-		}
-		else 
-		{
-			alert("La verification de mot de passe doit être identique au mot de passe.");
-			return false;
-		}
-	}
-	else
-	{
-		alert("Le mot de passe est trop court.");
+		alert(document.getElementById("pseudoEtat").alt);
 		return false;
 	}
-   }
-   else
-   {
-      alert("Le pseudo n'est pas disponible.");
-      return false;
-   }
+
+	if(!passOk)
+	{
+		alert("Mot de passe vide ou trop court");
+		return false;
+	}
+	
+	if (!pass2Ok)
+	{
+		alert("Mot de passe de confirmation erronne");
+		return false;
+	}
+	
+	return true;	
 }
+
