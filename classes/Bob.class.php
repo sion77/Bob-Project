@@ -177,10 +177,10 @@
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
                                            '1' AS \"rep\",
-                                           idCom AS \"com\"
+                                           P.idEval AS \"com\" -- l'eval ciblée
                                     FROM evaluation E, comporep P
                                     WHERE E.idEval IN( SELECT idRep FROM reponse )
-                                    AND E.idEval == P.idEval
+                                    AND E.idEval == P.idReponse -- car notre eval est la reponse
                                     
                                 ORDER BY id
                                 ");      
