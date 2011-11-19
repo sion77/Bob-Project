@@ -710,7 +710,34 @@
         
         public function calcBestSeller()
         {
-            
+            $max = 0;
+			$bs = array(
+				"tab" => array(),
+				"nb"  => 0,
+				"rand" => 0
+			);
+			foreach($this->produits as $p)
+			{
+				$prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
+				         ($p->getNbLocations() * $p->getPrixLocation()));
+				$max = ($prix > $max) ? $prix : $max;
+			}
+			
+			foreach($this->produits as $p)
+			{
+				$prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
+				         ($p->getNbLocations() * $p->getPrixLocation()));
+						 
+				if($prix == $max)
+				{
+					$bs["tab"][$bs["nb"]] = $p;
+					$bs["nb"]++;
+				}
+			}
+			
+			$bs["rand"] = rand(0, $bs["nb"]-1);
+
+			return $bs;
         }
         
         public function calcMostPopular()
