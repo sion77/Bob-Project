@@ -52,7 +52,22 @@ form table .centre
 
 #espace_haut
 {
-	padding-bottom : 12px;
+	margin-bottom : 12px;
+	padding-bottom : 10px;
+	padding-top : 10px;
+	padding-left : 35px;
+	float : right ;
+	width : 700px;
+	-moz-border-radius:  12px;
+	-webkit-border-radius: 12px;
+	border-radius:  12px;
+	box-shadow: 2px 2px 5px #000000;
+
+border-style: solid;
+border-color: #888;
+border-width: 2px;
+
+background-color : #eee;
 }
 
 #espace_recherche 
