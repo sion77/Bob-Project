@@ -40,7 +40,7 @@
 			$this->desc = $desc;
 			$this->date = $date;
 		}
-		
+		/*
 		public function ajoutreponse (r)
 		{
 			if (r == null)
@@ -49,7 +49,8 @@
 			}
 		
 		    else
-		
+		}
+		*/
 	}
 	
 	class Reponse extends Commentaire {
