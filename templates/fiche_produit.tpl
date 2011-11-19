@@ -33,7 +33,7 @@
 		{/foreach}
         
         <div id="image-fiche-produit">
-            <img src="index.php?image={$prod->getId()}" alt="Tronconeuse"/>
+            <img src="index.php?image={$prod->getImg()->getId()}" alt="Tronconeuse"/>
         </div>
         <div id="fiche-technique-produit">
             <h2>{$prod->getNom()}</h2>
@@ -41,7 +41,7 @@
             <div id="fiche-technique-description-produit">
                 <p>
 					{$prod->getDesc()}
-                </p>
+                </p>o
             </div>
             
             <div id="prix-fiche-produit">
