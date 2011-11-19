@@ -200,6 +200,12 @@
                                      $rep["id"]);
                 }
                 
+                if($c == null)
+                {
+					$this->erreur = "Erreur lors du chargement d'un commentaire";
+					return false;
+				}
+                
                 $this->commentaires[$this->nbCommentaires] = $c;        
                 $this->nbCommentaires++;
             }

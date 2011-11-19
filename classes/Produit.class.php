@@ -65,13 +65,16 @@
             $this->nbCommentaires = 0;
 			
 			$coms = $this->Bob->getCommentaires();
-			foreach($coms as $c)
+			if($coms != null)
 			{
-				if($c instanceof Commentaire)
+				foreach($coms as $c)
 				{
-					if($c->getProduit()->getId() == $this->id)
+					if($c instanceof Commentaire)
 					{
-						$this->ajouterCommentaire($c);
+						if($c->getProduit()->getId() == $this->id)
+						{
+							$this->ajouterCommentaire($c);
+						}
 					}
 				}
 			}
