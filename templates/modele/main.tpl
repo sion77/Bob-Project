@@ -11,13 +11,13 @@
     </head>
     <body>
         <div id="header">
-            <div id="espace_haut">
-                <div id="logo">
+		 <div id="logo">
                     <a href="index.php">
-                        <img src="img/logo.jpg" alt="Chez Bob"/>
+                        <img src="img/logo.png" alt="Chez Bob"/>
                     </a>
                 </div>
                     
+            <div id="espace_haut">
                 <div id="espace_membre">
                     {include file="modele/espace_membre.tpl"}
                 </div>
