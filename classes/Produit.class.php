@@ -56,7 +56,7 @@
             if($this->img)
                 $this->img->ajouteCible($this);
                 
-            initCommentaires();
+            $this->initCommentaires();
         }
         
         private function initCommentaires()
