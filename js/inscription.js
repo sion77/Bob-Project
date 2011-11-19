@@ -34,7 +34,7 @@ function checkPseudo(champ)
                         case "Erreur" : 
                         default : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
-			    return false;
+			    return true;
                         break;
                     }
                 }        
