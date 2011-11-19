@@ -187,6 +187,7 @@
                                 ORDER BY id
                                 ") or die(print_r($this->errorInfo()));      
                     
+            $c = null;
             while($rep = $req->fetch())
             {
 				$user = $this->getMembre(intval($rep["user"]));
@@ -220,9 +221,7 @@
                 $this->nbCommentaires++;
             }
             $req->closeCursor();
-            
-            die(print_r($this->commentaires));
-            
+                        
             return true;
         }    
                 
