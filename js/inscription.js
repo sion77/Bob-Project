@@ -23,15 +23,18 @@ function checkPseudo(champ)
                     {
                         case "0" : 
                             document.getElementById("pseudoEtat").src = "img/ok.png";
+			    return true;
                         break;
                         
                         case "1" : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
+			    return false;
                         break;
                         
                         case "Erreur" : 
                         default : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
+			    return false;
                         break;
                     }
                 }        
