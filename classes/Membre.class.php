@@ -6,9 +6,9 @@
         protected $id;
         protected $pseudo;
         protected $passCrypte;
-		
-		private $commentaires;
-		private $nbCommentaires;
+        
+        private $commentaires;
+        private $nbCommentaires;
         
         private static $maxId = 0;
         
@@ -72,10 +72,10 @@
     }
     
     class Admin extends Membre {
-	
-		private $reponses;
-		private $nbReponses;
-	
+    
+        private $reponses;
+        private $nbReponses;
+    
         public function estAdmin() { return true; }
         public function upgrade() { return false; }
     }

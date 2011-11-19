@@ -15,25 +15,23 @@ function checkPseudo(champ)
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'http://localhost/Bob-Project/index.php?ajax=existe_membre&pseudo=' + pseudo);
             xhr.send(null);
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function() 
+		{
                 if(xhr.readyState == 4 && xhr.status == 200) 
                 {
                     switch(xhr.responseText)
                     {
                         case "0" : 
                             document.getElementById("pseudoEtat").src = "img/ok.png";
-                            return true;
                         break;
                         
                         case "1" : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
-                            return false;
                         break;
                         
                         case "Erreur" : 
                         default : 
                             document.getElementById("pseudoEtat").src = "img/croix.png";
-                            return false;
                         break;
                     }
                 }        
@@ -121,9 +119,30 @@ function verifForm(f)
    
    if(pseudoOk == true && passOk == true && pass2Ok == true)
       return true;
+
+   if (pseudoOk)
+   {
+	if (passOk)
+	{
+		if (pass2Ok)
+		{
+			return true;
+		}
+		else 
+		{
+			alert("La verification de mot de passe doit être identique au mot de passe.");
+			return false;
+		}
+	}
+	else
+	{
+		alert("Le mot de passe est trop court.");
+		return false;
+	}
+   }
    else
    {
-      alert("Veuillez remplir correctement tous les champs");
+      alert("Le pseudo n'est pas disponible.");
       return false;
    }
 }
