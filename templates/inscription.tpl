@@ -16,7 +16,7 @@
                 <tr>
                     <th><label for="pseudo">Pseudo :</label></td>
                     <td><input onchange="checkPseudo(this);" id="pseudo" name="pseudo" type="text"  /></td>
-                    <td><img src="img/croix.png" id="pseudoEtat"></img></td>
+                    <td><img src="img/croix.png" id="pseudoEtat" alt="rien"></img></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Mot de passe :</label></td>

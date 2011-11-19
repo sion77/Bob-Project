@@ -16,7 +16,7 @@
         private static $maxId = 0;
         
         public function getMembre() { return $this->membre; }
-        public function getProduit() { return $this->produits; }
+        public function getProduit() { return $this->produit; }
         public function getReponses() { return $this->reponses; }
         
         public function getId() { return $this->id; }

@@ -212,6 +212,8 @@
 									 $rep["date"],
                                      $rep["id"]);
                 }
+				
+				$user->ajouterCommentaire($c);
                 
                 if($c == null)
                 {

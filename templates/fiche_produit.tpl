@@ -98,41 +98,44 @@
 		{/foreach}  
         
         {if $connecte}
-			<div id="ajouter-un-avis">
-				<h1>Ajouter un avis</h1>
-				<form action="index.php?action=AJOUTECOMMENTAIRE&amp;id={$prod->getId()}" method="post">
-				<p>
-					<label for="titre">Titre :</label>
-					<input id="titre" name="titre" type="text" />
-					<br/>
-					<textarea name="commentaire" rows="8" cols="60"></textarea>
-					
-					<script type="text/javascript" src="js/notes.js"></script>
-					
-					<div id="select-quantite">				
-						<label for="note">Note :</label><br />
-						<div id="chooseNote" onmouseout="loosefocus();">
+			{assign var=m value=$Bob->getMembre($smarty.session.id)}
+			{if !$m->aCommente($prod)}
+				<div id="ajouter-un-avis">
+					<h1>Ajouter un avis</h1>
+					<form action="index.php?action=AJOUTECOMMENTAIRE&amp;id={$prod->getId()}" method="post">
+					<p>
+						<label for="titre">Titre :</label>
+						<input id="titre" name="titre" type="text" />
+						<br/>
+						<textarea name="commentaire" rows="8" cols="60"></textarea>
 						
-							<img src="img/yellowstar.png" 
-										 id="star1" 
-										 onclick="etoile(1);" 
-										 onmouseover="focusetoile(1);" />
-										 
-							{for $i = 2; $i <= 5; $i++}
-								<div class="rating-star">
-									<img src="img/greystar.png" 
-										 id="star{$i}" 
-										 onclick="etoile({$i});" 
-										 onmouseover="focusetoile({$i});" />
-								</div>
-							{/for}
-						</div>	
-					</div>			
-					
-					<input type="hidden" id="note" name="note" value="1" />					
-					<input type="submit" value="Envoyer" />		
-				</p>		  
-				</form>    
-			</div>
+						<script type="text/javascript" src="js/notes.js"></script>
+						
+						<div id="select-quantite">				
+							<label for="note">Note :</label><br />
+							<div id="chooseNote" onmouseout="loosefocus();">
+							
+								<img src="img/yellowstar.png" 
+											 id="star1" 
+											 onclick="etoile(1);" 
+											 onmouseover="focusetoile(1);" />
+											 
+								{for $i = 2; $i <= 5; $i++}
+									<div class="rating-star">
+										<img src="img/greystar.png" 
+											 id="star{$i}" 
+											 onclick="etoile({$i});" 
+											 onmouseover="focusetoile({$i});" />
+									</div>
+								{/for}
+							</div>	
+						</div>			
+						
+						<input type="hidden" id="note" name="note" value="1" />					
+						<input type="submit" value="Envoyer" />		
+					</p>		  
+					</form>    
+				</div>
+			{/if}
 		{/if}
 {/block}
