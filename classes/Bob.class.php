@@ -168,7 +168,7 @@
                                            idProduit AS \"prod\"
                                     FROM evaluation E, evalProduit P
                                     WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
-                                    AND E.idEval == P.idEval
+                                    AND E.idEval = P.idEval
                                     
                                 UNION
                                 
@@ -180,7 +180,7 @@
                                            P.idEval AS \"com\" -- l'eval ciblée
                                     FROM evaluation E, comporep P
                                     WHERE E.idEval IN( SELECT idRep FROM reponse )
-                                    AND E.idEval == P.idReponse -- car notre eval est la reponse
+                                    AND E.idEval = P.idReponse -- car notre eval est la reponse
                                     
                                 ORDER BY id
                                 ") or die(print_r($this->errorInfo()));      
