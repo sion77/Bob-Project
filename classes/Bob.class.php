@@ -715,7 +715,30 @@
         
         public function calcMostPopular()
         {
-            
+            $max = 0;
+			$mp = array(
+				"tab" => array(),
+				"nb"  => 0,
+				"rand" => 0
+			);
+			foreach($this->produits as $p)
+			{
+				$note = $p->calcNoteMoy();
+				$max = ($note > $max) ? $note : $max;
+			}
+			
+			foreach($this->produits as $p)
+			{
+				if($p->calcNoteMoy() == $max)
+				{
+					$mp["tab"][$mp["nb"]] = $p;
+					$mp["nb"]++;
+				}
+			}
+			
+			$mp["rand"] = rand(0, $mp["nb"]-1);
+
+			return $mp;
         }
         
         
