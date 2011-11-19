@@ -160,32 +160,39 @@
         {        
             $this->nbCommentaires = 0;
                         
-            $req = $this->query("   SELECT idEval AS \"id\",
+            $req = $this->query("   SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
-                                           '0' AS \"rep\"
-                                    FROM evaluation
-                                    WHERE idEval NOT IN( SELECT idRep FROM reponse )
+                                           '0' AS \"rep\",
+                                           idProduit AS \"prod\"
+                                    FROM evaluation E, evalProduit P
+                                    WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
+                                    AND E.idEval == P.idEval
                                     
                                 UNION
                                 
-                                    SELECT idEval AS \"id\",
+                                    SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
                                            commentaireEval AS \"texte\",
-                                           '1' AS \"rep\"
-                                    FROM evaluation
-                                    WHERE idEval IN( SELECT idRep FROM reponse )
+                                           '1' AS \"rep\",
+                                           idCom AS \"com\"
+                                    FROM evaluation E, comporep P
+                                    WHERE E.idEval IN( SELECT idRep FROM reponse )
+                                    AND E.idEval == P.idEval
                                     
                                 ORDER BY id
                                 ");      
                     
             while($rep = $req->fetch())
             {
-                if(!$rep["rep"])
+				$user = $this->getMembre(intval($rep["idMembre"]));
+								
+                if!$rep["rep"] == 0)
                 {
-                    $c = new Commentaire($this, null, null, "unNom",
+					$prod = $this->getProduit(intval($rep["prod"]));
+                    $c = new Commentaire($this, $user, $prod, "unNom",
                                          $rep["note"],
                                          $rep["date"],                                         
                                          $rep["texte"], 
@@ -193,7 +200,8 @@
                 }
                 else
                 {
-                    $c = new Reponse($this, null, null, "unNom",
+					$com = $this->getProduit(intval($rep["com"]));
+                    $c = new Reponse($this, $user, $com, "unNom",
                                      $rep["note"],
                                      $rep["date"],                                         
                                      $rep["texte"], 

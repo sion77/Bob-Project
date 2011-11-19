@@ -62,14 +62,17 @@
     }
     
     class Reponse extends Commentaire {
-        private $admin;
         private $commentaire;
         
         public function __construct($Bob, $admin, $commentaire, 
                                     $nom, $note, $texte, $date,
                                     $id = 0)
         {
-            
+            Commentaire::__construct($Bob, $admin, $commentaire->getProduit(), 
+                                     $nom, $note, $texte, $date,
+                                     $id);
+                                     
+            $this->commentaire = $commentaire;
         }
     }    
 ?>
