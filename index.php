@@ -322,7 +322,41 @@
                 unset($_SESSION["connecte"]);
                 session_destroy();
                 $template = "accueil";
-            break;    
+            break;   
+            
+            case "AJOUTECOMMENTAIRE":            
+				if(!isset($_GET["id"]))
+                {
+                    $template = "accueil";
+                    $message = "Id du produit manquant";
+                    $erreur = true;
+                }
+                else
+                {
+                    $prod = $Bob->getProduit(intval($_GET["id"]));
+                    if(!$prod)
+                    {
+                        $template = "accueil";
+                        $message = "Produit non trouvé";
+                        $erreur = true;
+                    }
+                    else
+                    {        
+						$smarty->assign("prod", $prod);
+						$template = "fiche_produit"; 
+							          
+						if(!$Bob->creerCommentaire($prod))
+						{
+							$erreur = true;
+							$message = $Bob->getErreur();
+						}
+						else
+						{
+							$message = "Commentaire bien ajouté";							  
+						}                        
+                    }
+                }
+            break;
                         
             /* Sinon, ou si on demande explicitement l'accueil */
             case "ACCUEIL":
@@ -417,6 +451,8 @@
                 if(!isset($_GET["id"]))
                 {
                     $template = "accueil";
+                    $message = "Id du produit manquant";
+                    $erreur = true;
                 }
                 else
                 {
@@ -424,6 +460,8 @@
                     if(!$prod)
                     {
                         $template = "accueil";
+                        $message = "Produit non trouvé";
+                        $erreur = true;
                     }
                     else
                     {                    

@@ -628,7 +628,7 @@
                                 `stockProd`, `prixProdLoc`, `PrixProdVente`) 
             VALUES(?, ?, ?, ?, ?, ?, ?)");
             
-            $ok = $req->execute(array(
+            $req->execute(array(
                 $_POST["nom"],
                 $_POST["desc"],               
                 $img ? $img->getId() : NULL,
@@ -637,13 +637,7 @@
                 $prixL,
                 $prixA                
             )) or die(print_r($this->errorInfo()));
-            
-            if(!$ok)
-            {
-                $this->erreur = "Erreur SQL";
-                return false;
-            }
-            
+                        
             $p = new Produit($this, $cat, $img, $_POST["nom"], $_POST["desc"], $stock, 
                              0, 0, $prixA, $prixL); 
                              
@@ -689,8 +683,6 @@
             return $this->produits[$i];
         }
         
-        ///
-        
         public function calcBestSeller()
         {
             
@@ -701,6 +693,85 @@
             
         }
         
+        
+        ///
+        
+        public function creerCommentaire($p)
+        {
+			if($p == null)
+			{
+				$this->erreur = "le produit n'existe pas";
+				return false;				
+			}
+			
+			if(!isset($_SESSION["connecte"]))
+			{
+				$this->erreur = "Vous devez être connecté pour ajouter un commentaire";
+				return false;
+			}
+			
+			if(!isset($_SESSION["id"])       ||
+			   !isset($_POST["titre"])       ||
+			   !isset($_POST["commentaire"]) ||
+			   !isset($_POST["note"])           )
+			{
+				$this->erreur = "Il manque des données";
+				return false;
+			}
+					
+			$note = intval($_POST["note"]);
+			$membre = $this->getMembre(intval($_SESSION["id"]));
+			
+			// User: on desactive le html
+			$commentaire = htmlentities($_POST["commentaire"]); 
+			
+			
+			if($_POST["titre"] == "" ||
+			   $note <= 0            ||
+			   $membre == null       ||
+			   $commentaire == ""      )
+			{
+			    $this->erreur = "Certains champs sont vides (ou alors vous n'existez pas)";
+				return false;
+			}
+			
+			// Données vérifiées
+			// on a : $_POST["titre"], $note, $membre et $commentaire
+			
+			$req = $this->prepare("INSERT INTO evaluation(`idUtilisateur`, `noteEval`, `commentaireEval`)
+			                       VALUES (?, ?, ?)");
+			                       
+			$req->execute(array(
+				$membre->getId(),
+				$note,
+				$commentaire
+			)) or die(print_r($this->errorInfo()));
+			
+			$c = new Commentaire($this, $membre, $p, 
+                                 $_POST["titre"], $note, $commentaire, $date);
+                                 
+            if(!$c)
+            {
+				$this->erreur = "Erreur lors de la création du commentaire";
+				return false;
+			}
+                                                                 
+            $this->ajouterCommentaire($c);
+          						
+			return true;
+		}
+		
+		public function ajouterCommentaire($c)
+		{
+			if($c == null)
+				return false;
+			
+			$this->commentaires[$this->nbCommentaires] = $c;
+			$this->nbCommentaires++;
+			
+			return true;
+		}
+       
         ///
         
         public function uploadImage()
