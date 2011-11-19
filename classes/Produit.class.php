@@ -40,6 +40,9 @@
             $this->img = $img;
             $this->cat = $cat;
             
+            $this->commentaires = null;
+            $this->nbCommentaires = 0;
+            
             $this->stock = $stock;            
             $this->prixVente = $prixVente;
             $this->prixLoc = $prixLoc;
