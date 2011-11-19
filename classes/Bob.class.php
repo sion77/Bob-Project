@@ -731,12 +731,12 @@
 			{
 				if($p->calcNoteMoy() == $max)
 				{
-					$mp["tab"][] = $p;
+					$mp["tab"][$mp["nb"]] = $p;
 					$mp["nb"]++;
 				}
 			}
 			
-			$mp["rand"] = rand(0, $mp["nb"]);
+			$mp["rand"] = rand(0, $mp["nb"]-1);
 
 			return $mp;
         }

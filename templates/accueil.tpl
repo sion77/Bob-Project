@@ -34,16 +34,15 @@
         <div class="boite_coup_coeur" id="nouveaute" onload="generatepub()">
         
         <h1> Exclusivité BricoBob !</h1>
-            <h3> Titre article </h3>
-            <img id="img_nouveaute" src="img/marteau.jpg" alt="Test image"/>
-            
-            
-            <p> Ceci est la description de l'article. Ce texte sera surement tronqué au cas ou il sera trop long
-                Certains elements ici seront a changer pour mettre des liens vers la fiche de l'article.
-                 </p>
+            <h3>{$mostPopular.tab[$mostPopular.rand]->getNom()}</h3>
+            <img id="img_nouveaute" src="index.php?image={$mostPopular.tab[$mostPopular.rand]->getImg()->getId()}&amp;h=120&amp;w=120" alt="Test image"/>
+                        
+            <p>
+				{$mostPopular.tab[$mostPopular.rand]->getDesc()}
+			</p>
                 
-            <span id="prix_article_nouveaute" class="prix_article_coup_coeur">79.99e</span> 
-            <span id="voirficheproduit_nouveaute" class="voirficheproduit_coup_coeur"><a href='index.php?page=FICHEPRODUIT'>Voir la fiche produit</a></span>
+            <span id="prix_article_nouveaute" class="prix_article_coup_coeur">{$mostPopular.tab[$mostPopular.rand]->getPrixVente()}e</span> 
+            <span id="voirficheproduit_nouveaute" class="voirficheproduit_coup_coeur"><a href='index.php?page=FICHEPRODUIT&id={$mostPopular.tab[$mostPopular.rand]->getId()}'>Voir la fiche produit</a></span>
         
         </div>
     </div>
