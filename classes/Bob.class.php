@@ -189,7 +189,7 @@
             {
 				$user = $this->getMembre(intval($rep["idMembre"]));
 								
-                if!$rep["rep"] == 0)
+                if($rep["rep"] == 0)
                 {
 					$prod = $this->getProduit(intval($rep["prod"]));
                     $c = new Commentaire($this, $user, $prod, "unNom",
