@@ -100,7 +100,7 @@
         {if $connecte}
 			<div id="ajouter-un-avis">
 				<h1>Ajouter un avis</h1>
-				<form action="index.php?action=AJOUTECOMMENTAIRE" method="post">
+				<form action="index.php?action=AJOUTECOMMENTAIRE&amp;id={$prod->getId()}" method="post">
 				<p>
 					<label for="titre">Titre :</label>
 					<input id="titre" name="titre" type="text" />
