@@ -621,7 +621,7 @@
             }
             
             $img = ($_POST["image"] != "NULL") ? $this->getImage(intval($_POST["image"])) : NULL;
-            $cat = ($_POST["cat"] != "NULL") ? $this->getImage(intval($_POST["cat"])) : NULL;
+            $cat = ($_POST["cat"] != "NULL") ? $this->getCategorie(intval($_POST["cat"])) : NULL;
             
             $req = $this->prepare("
             INSERT INTO produit(`nomProd`, `libelle`, `idImageProd`, `idCatProd`, 
@@ -631,8 +631,8 @@
             $ok = $req->execute(array(
                 $_POST["nom"],
                 $_POST["desc"],               
-                $cat ? $cat->getId() : NULL,
                 $img ? $img->getId() : NULL,
+                $cat ? $cat->getId() : NULL,
                 $stock,
                 $prixL,
                 $prixA                
