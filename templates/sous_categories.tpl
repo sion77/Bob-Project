@@ -82,7 +82,7 @@
                              alt="image : {$f->getImg()->getTitre()}"/>
                     {/if}                
                     <p>
-                        {$f->getDesc()}
+                        {$f->getPrixVente()}
                     </p>           
                 </div>            
             {/foreach}    
