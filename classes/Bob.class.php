@@ -738,8 +738,8 @@
 			// Données vérifiées
 			// on a : $_POST["titre"], $note, $membre et $commentaire
 			
-			$req = $this->prepare("INSERT INTO evaluation(`idUtilisateur`, `noteEval`, `commentaireEval`)
-			                       VALUES (?, ?, ?)");
+			$req = $this->prepare("INSERT INTO evaluation(`idUtilisateur`, `noteEval`, `commentaireEval`, `dateEval`)
+			                       VALUES (?, ?, ?, NOW())");
 			                       
 			$req->execute(array(
 				$membre->getId(),
@@ -748,7 +748,7 @@
 			)) or die(print_r($this->errorInfo()));
 			
 			$c = new Commentaire($this, $membre, $p, 
-                                 $_POST["titre"], $note, $commentaire, $date);
+                                 $_POST["titre"], $note, $commentaire, date());
                                  
             if(!$c)
             {
