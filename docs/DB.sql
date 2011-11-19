@@ -153,7 +153,7 @@ CREATE  TABLE IF NOT EXISTS `projet_bob`.`ciblepub` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cible_cat`
     FOREIGN KEY (`idCible` )
-    REFERENCES `projet_bob`.`categorie` (`idCat` )
+    REFERENCES `projet_bob`.`categorie` (`idCat`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
@@ -167,10 +167,16 @@ DROP TABLE IF EXISTS `projet_bob`.`evaluation` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`evaluation` (
   `idEval` INT(11) NOT NULL AUTO_INCREMENT ,
+  `idUtilisateur` INT(11) NOT NULL ,
   `dateEval` DATE NOT NULL ,
   `noteEval` INT(11) NOT NULL ,
   `commentaireEval` TEXT NOT NULL ,
-  PRIMARY KEY (`idEval`) )
+  PRIMARY KEY (`idEval`),
+  CONSTRAINT `fk_usr_eval`
+    FOREIGN KEY (`idUtilisateur`)
+    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = latin1;
 
@@ -182,16 +188,7 @@ DROP TABLE IF EXISTS `projet_bob`.`reponse` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`reponse` (
   `idRep` INT(11) NOT NULL AUTO_INCREMENT ,
-  `idAdmin` INT(11) NOT NULL ,
-  `reponse` TEXT NOT NULL ,
-  `dateRep` DATE NOT NULL ,
-  PRIMARY KEY (`idRep`) ,
-  INDEX `fk_reponse_admin1` (`idAdmin` ASC) ,
-  CONSTRAINT `fk_reponse_admin1`
-    FOREIGN KEY (`idAdmin` )
-    REFERENCES `projet_bob`.`admin` (`idAdmin` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idRep`))
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = latin1;
 
@@ -227,26 +224,19 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `projet_bob`.`evalproduit` ;
 
 CREATE  TABLE IF NOT EXISTS `projet_bob`.`evalproduit` (
-  `idUtilisateur` INT(11) NOT NULL ,
   `idProduit` INT(11) NOT NULL ,
   `idEval` INT(11) NOT NULL ,
-  PRIMARY KEY (`idUtilisateur`, `idProduit`) ,
-  INDEX `fk_evalproduit_utilisateur1` (`idUtilisateur` ASC) ,
+  PRIMARY KEY (`idEval`, `idProduit`) ,
   INDEX `fk_evalproduit_produit1` (`idProduit` ASC) ,
   INDEX `fk_evalproduit_evaluation1` (`idEval` ASC) ,
-  CONSTRAINT `fk_evalproduit_utilisateur1`
-    FOREIGN KEY (`idUtilisateur` )
-    REFERENCES `projet_bob`.`utilisateur` (`idUtilisateur` )
+  CONSTRAINT `fk_evalproduit_evaluation`
+    FOREIGN KEY (`idEval` )
+    REFERENCES `projet_bob`.`evaluation` (`idEval` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_evalproduit_produit1`
     FOREIGN KEY (`idProduit` )
     REFERENCES `projet_bob`.`produit` (`idProd` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_evalproduit_evaluation1`
-    FOREIGN KEY (`idEval` )
-    REFERENCES `projet_bob`.`evaluation` (`idEval` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
