@@ -748,7 +748,7 @@
 			)) or die(print_r($this->errorInfo()));
 			
 			$c = new Commentaire($this, $membre, $p, 
-                                 $_POST["titre"], $note, $commentaire, date());
+                                 $_POST["titre"], $note, $commentaire, date("r"));
                                  
             if(!$c)
             {
