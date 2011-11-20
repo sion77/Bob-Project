@@ -855,7 +855,7 @@
 							  - indice
 							  - produit
 				- nbExact
-				- nbRessemblant
+				- nbRessemble
 			*/
 			
 			if(!isset($_GET["nom"]))
@@ -904,20 +904,20 @@
 			}
 			$catChoosen = ($i > 0);
 			$nbCats = $i;
-		
+					
 			// On commence par faire la recherche sur le nom
 			$result = $this->recherche($_GET["nom"]); 
 			
 			// On filtre les resultats : de ressemblant -> (enlevé), de exact -> ressemblant
 			$i = 0;
-			$nbRessemblant = $result["nbRessemblant"];
-			while($i < $result["nbRessemblant"])
+			$nbRessemble = $result["nbRessemble"];
+			while($i < $result["nbRessemble"])
 			{ 
 				$prixV = $result["ressemble"][$i]["produit"]->getPrixVente();
 				$prixL = $result["ressemble"][$i]["produit"]->getPrixLocation();
 				$mere = $result["ressemble"][$i]["produit"]->getCat()->getPath();
 				$mere = $mere[0]->getId();
-				
+								
 				if($prixmin > $prixV && $prixmin > $prixL)
 				{					
 					$max = ($prixV > $prixL) ? $prixV : $prixL;
@@ -950,8 +950,8 @@
 				
 				if($result["ressemble"][$i]["indice"] < RECHERCHE_MARGE_ERREUR)
 				{
-					$result["ressemble"][$i] = $result["ressemble"][$result["nbRessemblant"]-1];					
-					$nbRessemblant--;
+					$result["ressemble"][$i] = $result["ressemble"][$result["nbRessemble"]-1];					
+					$nbRessemble--;
 				}
 									
 				$i++;
@@ -999,9 +999,9 @@
 				if(!$ok)
 				{
 					if(!$ko) {
-						$result["ressemblant"][$nbRessemblant]["produit"] = $result["exact"][$i];						
-						$result["ressemblant"][$nbRessemblant]["indice"] = 20;
-						$nbRessemblant++;
+						$result["ressemblant"][$nbRessemble]["produit"] = $result["exact"][$i];						
+						$result["ressemblant"][$nbRessemble]["indice"] = 20;
+						$nbRessemble++;
 					}
 						
 					$result["exact"][$i] = $result["exact"][$result["nbExact"]-1];					
@@ -1011,11 +1011,11 @@
 				$i++;
 			}			
 			
-			for($i = $nbRessemblant; $i < $result["nbRessemblant"]; $i++)
+			for($i = $nbRessemble; $i < $result["nbRessemble"]; $i++)
 			{
 				unset($result["ressemble"][$i]);
 			}
-			$result["nbRessemblant"] = $nbRessemblant;
+			$result["nbRessemble"] = $nbRessemble;
 									
 			return $result;
 		}	
