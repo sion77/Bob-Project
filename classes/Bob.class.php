@@ -169,7 +169,7 @@
                                            '0' AS \"rep\",										   
                                            idUser AS \"user\",										   
                                            idProduit AS \"prod\"
-                                    FROM evaluation E, evalProduit P
+                                    FROM evaluation E, evalproduit P
                                     WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
                                     AND E.idEval = P.idEval
                                     
