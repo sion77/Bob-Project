@@ -18,6 +18,20 @@
         public function getMembre() { return $this->membre; }
         public function getProduit() { return $this->produit; }
         public function getReponses() { return $this->reponses; }
+		
+		public function getNbReponses()
+		{
+			$rep = $this->nbReponses;
+			if($rep > 0)
+			{
+				foreach($this->reponses as $r)
+				{
+					$rep += $r->getNbReponses();
+				}	
+			}
+			
+			return $rep;
+		}
         
         public function getId() { return $this->id; }
         public function getNom() { return $this->nom; }

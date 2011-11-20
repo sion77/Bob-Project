@@ -233,6 +233,10 @@
                             }
                         }
                     break;
+					
+					case "EVALUATIONS":
+						$template = "admin_evaluations";
+					break;
                     
                     /* Sinon, ou si on nous le demande explicitement */
                     case "ACCUEIL":

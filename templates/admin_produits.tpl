@@ -6,6 +6,7 @@
     {assign var='design' value="special"}
 {/block}
 
+{* Le contenu de la page *}
 {block name=content}
     <div id="page-admin-produits">
         <div id="panneau-admin-produits">
@@ -49,8 +50,12 @@
             </form>    
             <h1>Modifier un produit</h1>
             <ul>
-                {foreach from=$produits item=cat}
-                    <li>{$cat->getNom()}</li>
+                {foreach from=$produits item=p}
+                    <li>
+						<a href="index.php?admin=PRODUITS&amp;page=MODIFIER&amp;id={$p->getId()}">
+							{$p->getNom()}
+						</a>
+					</li>
                 {/foreach}
             </ul>
         </div>

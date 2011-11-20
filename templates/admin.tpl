@@ -46,7 +46,7 @@
                 </div>
                 
                 </a>
-                <a href="index.php?admin=CATEGORIES">Gestion des questions</a>
+                <a href="index.php?admin=EVALUATIONS">Gestion des questions</a>
                 <p>Permet de voir la liste des commentaires sur les produits afin de pouvoir les moderer et de répondre aux eventuelles questions</p>
             </div>
             <div class="icon-panneau-admin">
