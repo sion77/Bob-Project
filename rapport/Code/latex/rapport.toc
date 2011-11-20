@@ -1,0 +1,33 @@
+\select@language {french}
+\contentsline {part}{I\hspace {1em}Objectif}{3}
+\contentsline {section}{\numberline {1}Objectifs du site}{3}
+\contentsline {part}{II\hspace {1em}Organisation}{5}
+\contentsline {section}{\numberline {2}Introduction}{5}
+\contentsline {subsection}{\numberline {2.1}Au sein de l'equipe}{5}
+\contentsline {subsection}{\numberline {2.2}Support du code}{5}
+\contentsline {subsection}{\numberline {2.3}Langages}{5}
+\contentsline {subsection}{\numberline {2.4}Biblioth\IeC {\`e}ques}{6}
+\contentsline {subsection}{\numberline {2.5}Base de donn\IeC {\'e}e}{6}
+\contentsline {section}{\numberline {3}Structure du code}{6}
+\contentsline {subsection}{\numberline {3.1}header.php}{6}
+\contentsline {subsection}{\numberline {3.2}index.php}{6}
+\contentsline {subsection}{\numberline {3.3}les fichiers de /classes}{6}
+\contentsline {subsection}{\numberline {3.4}les fichiers de /templates}{7}
+\contentsline {subsection}{\numberline {3.5}les fichiers de /css}{7}
+\contentsline {part}{III\hspace {1em}Le Site}{8}
+\contentsline {section}{\numberline {4}Hierarchie des pages}{8}
+\contentsline {section}{\numberline {5}Une page}{8}
+\contentsline {section}{\numberline {6}Un formulaire}{8}
+\contentsline {section}{\numberline {7}La s\IeC {\'e}curit\IeC {\'e}}{9}
+\contentsline {part}{IV\hspace {1em}Fonctionnalit\IeC {\'e}s}{10}
+\contentsline {section}{\numberline {8}Utilisateurs}{10}
+\contentsline {section}{\numberline {9}Administrateur}{10}
+\contentsline {section}{\numberline {10}Cat\IeC {\'e}gories}{10}
+\contentsline {section}{\numberline {11}Flexibilit\IeC {\'e}}{10}
+\contentsline {subsection}{\numberline {11.1}Changement du design du site}{10}
+\contentsline {subsection}{\numberline {11.2}Type de mat\IeC {\'e}riel}{10}
+\contentsline {subsection}{\numberline {11.3}Changement du contenu}{10}
+\contentsline {section}{\numberline {12}Portabilit\IeC {\'e}}{11}
+\contentsline {subsection}{\numberline {12.1}Diff\IeC {\'e}rents navigateurs}{11}
+\contentsline {subsection}{\numberline {12.2}Javascript}{11}
+\contentsline {part}{V\hspace {1em}Conclusion}{12}
