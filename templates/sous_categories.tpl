@@ -81,9 +81,9 @@
                         <img src="index.php?image={$f->getImg()->getId()}&amp;h=110&amp;w=110" 
                              alt="image : {$f->getImg()->getTitre()}"/>
                     {/if}                
-                    <p>
-                        {$f->getPrixVente()}
-                    </p>           
+                    <span class="prix_produit">
+                        {$f->getPrixVente()} €
+                    </span>           
                 </div>            
             {/foreach}    
         </div>          

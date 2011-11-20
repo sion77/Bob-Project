@@ -24,7 +24,7 @@
     </div>
     <div id="coup_coeur">
         <div class="boite_coup_coeur" id="best_seller">
-            <h1> Meilleure vente du momment !</h1>
+            <h1> Meilleure vente du moment !</h1>
             <h3>{$bestSeller.tab[$bestSeller.rand]->getNom()|lower|capitalize}</h3>
             
             <img src="index.php?image={$bestSeller.tab[$bestSeller.rand]->getImg()->getId()}&amp;h=120&amp;w=120" 
