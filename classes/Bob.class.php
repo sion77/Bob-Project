@@ -768,15 +768,57 @@
 			return $mp;
         }
 		
-		public function recherche()
-		{
-			$result = array();
-			$nbResult = 0;
+		public function recherche($str)
+		{				
+			$result = array(
+				"exact" => array(/* Produits */),
+				"ressemble" => array(/*
+					array(
+						"indice" => 0,
+						"produit" => null
+					)
+				*/)
+			);
 			
-			//foreach()
+			$max = 0;
+			$ecart = RECHERCHE_ECART;
+			$min = RECHERCHE_MARGE_ERREUR;
 			
+			$i = 0;
+			foreach($this->produits as $p)
+			{
+				if($p->getNom() == $str)
+				{
+					$result["exact"][$i] = $p;
+					$i++;
+				}
+				else
+				{
+					$pts = compare($p->getNom(), $str);
+					$max = ($pts > $max) ? $pts : $max;
+				}
+			}
 			
-			
+			$i = 0;
+			$req = $max; // Pour trier du plus au moins ressemblant
+			while($req >= $max-$ecart && $req >= $min)
+			{
+				foreach($this->produits as $p)
+				{
+					if($p->getNom() != $str)
+					{
+						$pts = compare($p->getNom(), $str);
+						if($req <= $pts)
+						{
+							$result["ressemble"][$i]["indice"] = $pts;
+							$result["ressemble"][$i]["produit"] = $p;
+							$i++;
+						}
+					}
+				}
+				$req--;
+			}			
+						
 			return $result;
 		}    
         

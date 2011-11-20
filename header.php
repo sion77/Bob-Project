@@ -18,7 +18,11 @@
     define("image_defaut_categorie", "img/catego.jpg");            // Image par défaut utilisée pour une catégorie
     define("image_defaut_sous_categorie", image_defaut_categorie); // Image par défaut utilisée pour une sous catégorie
     
-    /*------- Inclusion des classes -----------*/
+    // Configuration de la recherche
+	define("RECHERCHE_ECART", 3);        // Ecart avec l'indice max (non exact) pour etre accepte
+	define("RECHERCHE_MARGE_ERREUR", 5); // Indice min pour etre considere comme ressemblant
+	
+	/*------- Inclusion des classes -----------*/
     
     require("Smarty/Smarty.class.php");       // Contient Smarty
     require("classes/Image.class.php");       // Contient Image

@@ -255,17 +255,26 @@
         {
             // Si on veut faire une recherche rapide
             case "RECHERCHE":        
-                if(isset($_POST['recherche']))
+                if(isset($_GET['recherche']))
                 {
-                    $result = $Bob->recherche();
-                    $template = "recherche";
-                    $message = "recherche effectuée!";
-					$smarty->assign("result", $result);
+					if($_GET['recherche'] != "")
+					{
+						$result = $Bob->recherche($_GET['recherche']);
+						$template = "recherche";
+						$message = "recherche effectuée!";
+						$smarty->assign("result", $result);
+					}
+					else
+					{
+						$erreur = true;
+						$message = "Le champs de recherche est vide";
+						$template = ("accueil");
+					}
                 }
                 else
                 {
                     $erreur = true;
-                    $message = "Erreur recherche";
+                    $message = "Il manque des données";
                     $template = ("accueil");
                 }
             break;
