@@ -11,7 +11,8 @@
     <div id="page-rech-avancee">
         <div id="panneau-rech-avancee">
             <h1>Recherche Avancée</h1>
-            <form action="index.php?action=RECHERCHE_AVANCEE" method="post">
+            <form action="index.php" method="get">
+				<input type="hidden" name="action" value="RECHERCHE_AVANCEE" />
                 <div id="nom-prod-rech">
                     <label for="nomprod">Nom de produit :</label>
                     <input id="nomprod" name="nomprod" type="text" />

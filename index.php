@@ -257,9 +257,10 @@
             case "RECHERCHE":        
                 if(isset($_POST['recherche']))
                 {
-                    $Bob->recherche($_POST['recherche']);
+                    $result = $Bob->recherche();
                     $template = "recherche";
                     $message = "recherche effectuée!";
+					$smarty->assign("result", $result);
                 }
                 else
                 {

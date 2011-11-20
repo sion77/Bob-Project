@@ -767,7 +767,18 @@
 
 			return $mp;
         }
-        
+		
+		public function recherche()
+		{
+			$result = array();
+			$nbResult = 0;
+			
+			//foreach()
+			
+			
+			
+			return $result;
+		}    
         
         ///
         

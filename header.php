@@ -30,6 +30,45 @@
 	
 	/*--------- Fonctions usuelles -----------*/
 	
+	/* function traduitDate()
+	{
 	
-              
+	} */
+	
+	function compare($str1, $str2)
+	{
+		$s1 = str_split($str1); // Le tableau de caracteres de str1
+		$s2 = str_split($str2); // Le tableau de caracteres de str2
+		$t1 = strlen($str1);    // taille de s1
+		$t2 = strlen($str2);    // taille de s2
+		
+		$cpt = 0;                        // ' l'indice de ressemblance '
+		$min = ($t1 > $t2) ? $t2 : $t1;	 // La taille du plus petit tableau
+		
+		// A l'endroit
+		$i = 0; // Position parcourue		
+		while($i < $min)
+		{
+			if($s1[$i] == $s2[$i]) // Même caractere au même endroit
+				$cpt++;
+			$i++;
+		}
+		
+		// Puis à l'envers
+		$tt1 = $t1 - 1; // Indice parcouru pour s1
+		$tt2 = $t2 - 1; // Indice parcouru pour s2
+		$i = 0;         // Nombre de cases parcourues
+		while($i < $min)
+		{
+			if($s1[$tt1] == $s2[$tt2]) // Même caractere au même endroit (en partant de la fin)
+				$cpt++;
+				
+			$i++;
+			$tt1--;
+			$tt2--;
+		}
+		
+		// On retourne l'indice
+		return $cpt;
+	}              
 ?>
