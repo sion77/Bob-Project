@@ -15,15 +15,20 @@
         
         {* Pour chaque parent (jusqu'à soi) *}
         {foreach from=$path item=cat name="fastbar"} 
-                 
+            
             {* Pour chaque parent, on ajoute un lien pour revenir en arrière *}
+			{if isset($smarty.get.offre)}
+				{assign var=lien value="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}&amp;offre={$smarty.get.offre}"}
+			{else}
+				{assign var=lien value="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}"}
+			{/if}
             {if !$smarty.foreach.fastbar.first}
                 <span id="sous-categorie-fiche-produit">
-                    <a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+                    <a href="{$lien}">
                         {$cat->getNom()|lower|capitalize}</a>                     
             {else}
                 <span id="categorie-fiche-produit">
-                    <a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+                    <a href="{$lien}">
                         {$cat->getNom()|upper}</a>                     
             {/if}
             {if !$smarty.foreach.fastbar.last}
@@ -44,9 +49,18 @@
                 </p>
             </div>
             
-            <div id="prix-fiche-produit">
-                <h4>{$prod->getPrixVente()}€</h4>
-            </div>
+			{if !isset($smarty.get.offre) ||
+				($prod->getPrixVente() > 0 && $smarty.get.offre == "achat")}
+				<div class="prix-fiche-produit">
+					<h4>{$prod->getPrixVente()}€</h4>
+				</div>
+			{/if}
+			{if !isset($smarty.get.offre) ||
+				($prod->getPrixLocation() > 0 && $smarty.get.offre == "location")}
+				<div class="prix-fiche-produit">
+					<h4>{$prod->getPrixLocation()}€</h4>
+				</div>
+			{/if}
             <div id="ajouter-au-panier">
                 <h4>Ajouter au panier !</h4>
             </div>

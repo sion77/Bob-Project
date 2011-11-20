@@ -1,5 +1,5 @@
 <ul id="liste_menu">
-    <li><a href='index.php?page=CATEGORIES'>Acheter</a>
+    <li><a href='index.php?page=CATEGORIES&amp;offre=achat'>Acheter</a>
         <ul class="sous-menu">
             {foreach from=$categories item=mere name=categorieSousMenu}
                 {if $smarty.foreach.categorieSousMenu.first}
@@ -10,7 +10,7 @@
                     <span>
                 {/if}
                     <li>
-                        <a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}'>
+                        <a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}&amp;offre=achat'>
                             {$mere->getNom()}
                         </a>
                     </li>
@@ -18,7 +18,7 @@
             {/foreach}
         </ul>
     </li>
-    <li><a href='index.php?page=CATEGORIES-LOCATION'>Louer</a>
+    <li><a href='index.php?page=CATEGORIES&amp;offre=location'>Louer</a>
        <ul class="sous-menu">
             {foreach from=$categories item=mere name=categorieSousMenu}
                 {if $smarty.foreach.categorieSousMenu.first}
@@ -29,7 +29,7 @@
                     <span>
                 {/if}
                     <li>
-                        <a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}'>
+                        <a href='index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}&amp;offre=location'>
                             {$mere->getNom()}
                         </a>
                     </li>

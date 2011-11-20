@@ -17,8 +17,12 @@
                         <img src="index.php?image={$mere->getImg()->getId()}" 
                              alt="{$mere->getNom()}"/>
                     {/if}
-                    <a href="index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}">{$mere->getNom()}</a>
-                </div>        
+					{if isset($smarty.get.offre)}
+						<a href="index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}&amp;offre={$smarty.get.offre}">{$mere->getNom()}</a>
+					{else}
+						<a href="index.php?page=SOUSCATEGORIES&amp;id={$mere->getId()}">{$mere->getNom()}</a>
+					{/if}
+				</div>        
         {/foreach}
     </div>
 {/block}

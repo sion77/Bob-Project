@@ -19,15 +19,20 @@
              
                 {* Pour chaque parent, on ajoute un lien pour revenir en arrière *}
                 {if !$smarty.foreach.fastbar.last}
+					{if isset($smarty.get.offre)}
+						{assign var=lien value="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}&amp;offre={$smarty.get.offre}"}
+					{else}
+						{assign var=lien value="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}"}
+					{/if}
                     {if !$smarty.foreach.fastbar.first}
                         <span id="sous-categorie-fiche-produit">
-                            <a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+                            <a href="{$lien}">
                                 {$cat->getNom()|lower|capitalize}</a> 
                             >
                         </span>
                     {else}
                         <span id="categorie-fiche-produit">
-                            <a href="index.php?page=SOUSCATEGORIES&amp;id={$cat->getId()}">
+                            <a href="{$lien}">
                                 {$cat->getNom()|upper}</a> 
                             >
                         </span>
@@ -52,7 +57,15 @@
             
                 {* On affiche le titre, l'image et la description de la catégorie *}
                 <div class="sous-categorie">            
-                    <h4><a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}">{$f->getNom()}</a></h4>
+                    <h4>
+						{if isset($smarty.get.offre)}
+							<a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}&amp;offre={$smarty.get.offre}">
+						{else}
+							<a href="index.php?page=SOUSCATEGORIES&amp;id={$f->getId()}">
+						{/if}
+							{$f->getNom()}
+						</a>
+					</h4>
                     {if $f->getImg() == null}
                         <img src="{$smarty.const.image_defaut_sous_categorie}"
                              alt="categorie" />
@@ -70,10 +83,21 @@
         
             {* Bloc produit *}
             {foreach from=$sc->getProduits() item=f}
-            
+            {if (!isset($smarty.get.offre) ||
+			     ($f->getPrixLocation() > 0 && $smarty.get.offre == "location") ||
+			     ($f->getPrixVente() > 0 && $smarty.get.offre == "achat"))}
+				
                 {* On affiche le titre, l'image et la description de la catégorie *}
                 <div class="produit">            
-                    <h4><a href="index.php?page=FICHEPRODUIT&amp;id={$f->getId()}">{$f->getNom()}</a></h4>
+                    <h4>
+						{if isset($smarty.get.offre)}
+							<a href="index.php?page=FICHEPRODUIT&amp;id={$f->getId()}&offre={$smarty.get.offre}">
+						{else}
+							<a href="index.php?page=FICHEPRODUIT&amp;id={$f->getId()}">
+						{/if}
+							{$f->getNom()|lower|capitalize}
+						</a>
+					</h4>
                     {if $f->getImg() == null}
                         <img src="{$smarty.const.image_defaut_sous_categorie}"
                              alt="categorie" style="height: 110px; width: 100px;" />
@@ -82,9 +106,18 @@
                              alt="image : {$f->getImg()->getTitre()}"/>
                     {/if}                
                     <span class="prix_produit">
-                        {$f->getPrixVente()} €
+						{if isset($smarty.get.offre)}
+							{if $smarty.get.offre == "location"}
+								{$f->getPrixLocation()} €
+							{else}
+								{$f->getPrixVente()} €
+							{/if}							
+						{else}
+							{$f->getPrixVente()} €
+						{/if}
                     </span>           
-                </div>            
+                </div>   
+			{/if}
             {/foreach}    
         </div>          
     </div>

@@ -29,7 +29,7 @@
         
         public function getStock() { return $this->stock; }
         public function getPrixVente() { return $this->prixVente; }		
-		public function getPrixLocation() { return $this->prixVente; }	
+		public function getPrixLocation() { return $this->prixLoc; }	
 		public function getNbVentes() { return $this->nbVentes; }		
 		public function getNbLocations() { return $this->nbLoc; }			
         
