@@ -779,7 +779,7 @@
 					)
 				*/),
 				"nbExact" => 0,
-				"nbRessemblant" => 0
+				"nbRessemble" => 0
 			);
 			
 			$max = 0;
@@ -790,7 +790,7 @@
 			foreach($this->produits as $p)
 			{
 				$pts = compare($p->getNom(), $str);
-				if($pts == strlen($str)) // On considere exact si l'indice est supérieure ou égale à la taille du nom
+				if($pts >= strlen($str)) // On considere exact si l'indice est supérieure ou égale à la taille du nom
 				{
 					$result["exact"][$i] = $p;
 					$i++;
@@ -918,7 +918,7 @@
 				$mere = $result["ressemble"][$i]["produit"]->getCat()->getPath();
 				$mere = $mere[0]->getId();
 								
-				if($prixmin > $prixV && $prixmin > $prixL)
+				if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
 				{					
 					$max = ($prixV > $prixL) ? $prixV : $prixL;
 					$result["ressemble"][$i]["indice"] -= (($prixmin-$max)/4);
@@ -957,6 +957,7 @@
 				$i++;
 			}
 			
+			$nbExact = $result["nbExact"];
 			while($i < $result["nbExact"])
 			{ 
 				$ok = true;
@@ -966,7 +967,7 @@
 				$mere =  $result["exact"][$i]->getCat()->getPath();
 				$mere =  $mere[0]->getId();
 				
-				if($prixmin > $prixV && $prixmin > $prixL)
+				if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
 				{
 					$ok = false;
 				}
@@ -999,8 +1000,8 @@
 				if(!$ok)
 				{
 					if(!$ko) {
-						$result["ressemblant"][$nbRessemble]["produit"] = $result["exact"][$i];						
-						$result["ressemblant"][$nbRessemble]["indice"] = 20;
+						$result["ressemble"][$nbRessemble]["produit"] = $result["exact"][$i];						
+						$result["ressemble"][$nbRessemble]["indice"] = 20;
 						$nbRessemble++;
 					}
 						
@@ -1016,6 +1017,12 @@
 				unset($result["ressemble"][$i]);
 			}
 			$result["nbRessemble"] = $nbRessemble;
+			
+			for($i = $nbExact; $i < $result["nbExact"]; $i++)
+			{
+				unset($result["exact"][$i]);
+			}
+			$result["nbExact"] = $nbRessemble;
 									
 			return $result;
 		}	

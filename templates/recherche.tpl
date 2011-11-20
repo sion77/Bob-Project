@@ -13,7 +13,7 @@
 				  - indice
 				  - produit
 	- nbExact
-	- nbRessemblant
+	- nbRessemble
 
 *}
 
