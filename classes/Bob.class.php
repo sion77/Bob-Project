@@ -777,7 +777,9 @@
 						"indice" => 0,
 						"produit" => null
 					)
-				*/)
+				*/),
+				"nbExact" => 0,
+				"nbRessemblant" => 0
 			);
 			
 			$max = 0;
@@ -787,17 +789,18 @@
 			$i = 0;
 			foreach($this->produits as $p)
 			{
-				if($p->getNom() == $str)
+				$pts = compare($p->getNom(), $str);
+				if($pts == strlen($str)) // On considere exact si l'indice est supérieure ou égale à la taille du nom
 				{
 					$result["exact"][$i] = $p;
 					$i++;
 				}
 				else
-				{
-					$pts = compare($p->getNom(), $str);
+				{					
 					$max = ($pts > $max) ? $pts : $max;
 				}
 			}
+			$result["nbExact"] = $i;
 			
 			$i = 0;
 			$req = $max; // Pour trier du plus au moins ressemblant
@@ -805,10 +808,10 @@
 			{
 				foreach($this->produits as $p)
 				{
-					if($p->getNom() != $str)
-					{
-						$pts = compare($p->getNom(), $str);
-						if($req <= $pts)
+					$pts = compare($p->getNom(), $str);
+					if($pts != strlen($str))
+					{						
+						if($req == $pts)
 						{
 							$result["ressemble"][$i]["indice"] = $pts;
 							$result["ressemble"][$i]["produit"] = $p;
@@ -817,12 +820,207 @@
 					}
 				}
 				$req--;
-			}			
+			}	
+
+			$result["nbRessemble"] = $i;
 						
 			return $result;
 		}    
         
-        ///
+        public function rechercheAvancee()
+		{		
+			/*
+				2. Le système lance la recherche avec la recherche exacte
+				3. Le système lance la recherche sur le nom
+				4. Le système lance la recherche sur les produits qui ont des points communs
+				5. Le système affiche une page de résultat avec le resultat du 2 visible et
+				demande si les autres résultats peuvent être affichés
+			
+			
+				- nom
+				- checkbox catégories mères
+					- FORMAT : categorie_ID, valeur : ID
+					- Pour verifier, prendre la cat mère et utiliser getCategorie($id)
+                      en y mettant l'id de la cat du produit
+					  
+				- prixmin
+				- prixmax
+				- achat
+				- location
+				
+				
+				result :
+				- exact : tableau de produits
+				- ressemble : tableau :
+							  - indice
+							  - produit
+				- nbExact
+				- nbRessemblant
+			*/
+			
+			if(!isset($_GET["nom"]))
+			{
+				$this->erreur = "Il manque le nom du produit (obligatoire)";
+				return null;
+			}
+			
+			$prixmin = 0;
+			if(isset($_GET["prixmin"]))
+			{
+				$prixmin = intval($_GET["prixmin"]);
+			}
+			
+			$prixmax = 0;
+			if(isset($_GET["prixmax"]))
+			{
+				$prixmax = intval($_GET["prixmax"]);
+			}
+			
+			$achat = false;
+			$loc = false;
+			if(isset($_GET["achat"]))
+			{
+				$achat = true;
+			}
+			if(isset($_GET["location"]))
+			{
+				$loc = true;
+			}
+			if(!$achat && !$loc)
+			{
+				$achat = true;
+				$loc = true;
+			}
+			
+			$cats = array();
+			$i = 0;
+			foreach($this->categories as $c)
+			{
+				if(isset($_GET["categorie_".$c->getId()]))
+				{
+					$cats[$i] = $c->getId();							
+					$i++;
+				}				
+			}
+			$catChoosen = ($i > 0);
+			$nbCats = $i;
+		
+			// On commence par faire la recherche sur le nom
+			$result = $this->recherche($_GET["nom"]); 
+			
+			// On filtre les resultats : de ressemblant -> (enlevé), de exact -> ressemblant
+			$i = 0;
+			$nbRessemblant = $result["nbRessemblant"];
+			while($i < $result["nbRessemblant"])
+			{ 
+				$prixV = $result["ressemble"][$i]["produit"]->getPrixVente();
+				$prixL = $result["ressemble"][$i]["produit"]->getPrixLocation();
+				$mere = $result["ressemble"][$i]["produit"]->getCat()->getPath();
+				$mere = $mere[0]->getId();
+				
+				if($prixmin > $prixV && $prixmin > $prixL)
+				{					
+					$max = ($prixV > $prixL) ? $prixV : $prixL;
+					$result["ressemble"][$i]["indice"] -= (($prixmin-$max)/4);
+				}
+				
+				if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
+				{
+					$min = ($prixV > $prixL) ? $prixL : $prixV;
+					$result["ressemble"][$i]["indice"] -= (($min-$prixMax)/4);
+				}
+				
+				if($achat && ($prixV == 0) && !$loc)
+				{
+					$result["ressemble"][$i]["indice"] -= 20;
+				}
+				
+				if($loc && ($prixL == 0) && !$achat)
+				{
+					$result["ressemble"][$i]["indice"] -= 20;
+				}
+				
+				if($catChoosen)
+				{
+					if(!in_array($mere, $cats))
+					{
+						$result["ressemble"][$i]["indice"] -= $nbCats*3;
+					}
+				}
+				
+				if($result["ressemble"][$i]["indice"] < RECHERCHE_MARGE_ERREUR)
+				{
+					$result["ressemble"][$i] = $result["ressemble"][$result["nbRessemblant"]-1];					
+					$nbRessemblant--;
+				}
+									
+				$i++;
+			}
+			
+			while($i < $result["nbExact"])
+			{ 
+				$ok = true;
+				$ko = false;
+				$prixV = $result["exact"][$i]->getPrixVente();
+				$prixL = $result["exact"][$i]->getPrixLocation();
+				$mere =  $result["exact"][$i]->getCat()->getPath();
+				$mere =  $mere[0]->getId();
+				
+				if($prixmin > $prixV && $prixmin > $prixL)
+				{
+					$ok = false;
+				}
+				
+				if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
+				{
+					$ok = false;
+				}
+				
+				if($achat && ($prixV == 0) && !$loc)
+				{
+					$ok = false;
+					$ko = true;
+				}
+				
+				if($loc && ($prixL == 0) && !$achat)
+				{
+					$ok = false;
+					$ko = true;
+				}
+				
+				if($catChoosen)
+				{
+					if(!in_array($mere, $cats))
+					{
+						$ok = false;
+					}
+				}
+				
+				if(!$ok)
+				{
+					if(!$ko) {
+						$result["ressemblant"][$nbRessemblant]["produit"] = $result["exact"][$i];						
+						$result["ressemblant"][$nbRessemblant]["indice"] = 20;
+						$nbRessemblant++;
+					}
+						
+					$result["exact"][$i] = $result["exact"][$result["nbExact"]-1];					
+					$nbExact--;					
+				}
+									
+				$i++;
+			}			
+			
+			for($i = $nbRessemblant; $i < $result["nbRessemblant"]; $i++)
+			{
+				unset($result["ressemble"][$i]);
+			}
+			$result["nbRessemblant"] = $nbRessemblant;
+									
+			return $result;
+		}	
+				
+		///
         
         public function creerCommentaire($p)
         {

@@ -14,8 +14,8 @@
             <form action="index.php" method="get">
 				<input type="hidden" name="action" value="RECHERCHE_AVANCEE" />
                 <div id="nom-prod-rech">
-                    <label for="nomprod">Nom de produit :</label>
-                    <input id="nomprod" name="nomprod" type="text" />
+                    <label for="nom">Nom de produit :</label>
+                    <input id="nom" name="nom" type="text" />
                 </div>
 
                 <div id="selection-categorie">
@@ -43,10 +43,6 @@
                         <label for="location">Location</label> 
                     </div>            
                 </div>
-                
-                
-                
-                
                 
                 <div id="submit-rech-avancee">
                     <input type="submit" value="C'est parti !" />

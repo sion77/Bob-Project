@@ -253,6 +253,22 @@
     {
         switch($_GET["action"]) 
         {
+			// Si on veut faire une recherche rapide
+            case "RECHERCHE_AVANCEE":
+				$result = $Bob->rechercheAvancee();
+				if($result == null)
+				{
+					$template = "recherche_avancee";
+					$erreur = true;
+					$message = $Bob->getErreur();
+				}
+				else
+				{
+					$template = "recherche";
+					$smarty->assign("result", $result);
+				}
+			break;
+			
             // Si on veut faire une recherche rapide
             case "RECHERCHE":        
                 if(isset($_GET['recherche']))

@@ -6,6 +6,17 @@
     {assign var="design" value="special/recherche"}
 {/block}
 
+{*
+	result :
+	- exact : tableau de produits
+	- ressemble : tableau :
+				  - indice
+				  - produit
+	- nbExact
+	- nbRessemblant
+
+*}
+
 {* Le contenu de la page *}
 {block name=content}
     <div id="page-resultats-recherche">
@@ -15,7 +26,7 @@
 		<div id="bloc_produits_exact" class="bloc_produits">
 			{foreach from=$result.exact item=p}
 				{* On affiche le titre, l'image et la description du produit *}
-				<div class="produit">				 
+				<div class="produit">						
 					<h4><a href="index.php?page=FICHEPRODUIT&amp;id={$p->getId()}">{$p->getNom()}</a></h4>
 					{if $p->getImg() == null}
 						<img src="{$smarty.const.image_defaut_produit}"
@@ -36,7 +47,8 @@
 		<h2>Voir aussi</h2>
 		<div id="bloc_produits_ressemble" class="bloc_produits">
 			{foreach from=$result.ressemble item=r}
-				<div class="produit">				
+				<div class="produit">	
+					<!-- Indice : {$r.indice} -->
 					{* On affiche le titre, l'image et la description du produit *}
 					<div class="produit_trouve">				 
 						<h4><a href="index.php?page=FICHEPRODUIT&amp;id={$r.produit->getId()}">{$r.produit->getNom()}</a></h4>
