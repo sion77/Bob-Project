@@ -38,16 +38,15 @@
     <div id="pourquoi-sinscrire">
         <h2> Pourquoi s'inscrire sur Brico-Bob ? </h2>
         <p>
-            Il existe de nombreuses raisons qui pourraient vous pousser à vous inscrire sur Brico-Bob. Tout d'abord parce que 
-            ce site est cool.</br>
+            Il existe de nombreuses raisons qui pourraient vous pousser à vous inscrire sur Brico-Bob. </br>
             </br> 
             Ensuite parce que si vous ne le faites pas, vous ne pourrez rien acheter, ni louer, vous ne pourrez
             qu'admirer les superbes offres que nous vous proposons.</br>
             </br>
-            Ensuite parce que ce site est cool.</br>
-            </br>
-            Une autre raison importante    est que nous sommes de méchants administrateurs qui vendent vos données privées et nous enregistrons vos données banquaires,
-            ce qui constitue notre principale source de revenus 8D
+			L'inscriptions vous donne aussi le droit de commenter et de noter nos produits, afin de nous aider
+			à nous améliorer et proposer une qualité de service toujours meilleure ! Vous aiderez aussi
+			les autres clients à faire leur choix.
+            
         </p>
     </div>
 {/block}
