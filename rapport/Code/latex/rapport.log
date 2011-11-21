@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.31)  21 NOV 2011 00:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.31)  21 NOV 2011 01:10
 entering extended mode
  %&-line parsing enabled.
 **rapport.tex
@@ -249,37 +249,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-) [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 77--79
+) [7] (./site.tex (./pages-contenus.tex
+Overfull \hbox (2.9187pt too wide) in paragraph at lines 12--13
+[]\T1/cmr/m/n/10 Le menu est aussi déroulant lorsque l'u-til-isa-teur sur-v-ole
+ "Acheter" et "Louer",
+ []
+
+) [8]) [9] (./fonctionnalites.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
 
 
-Overfull \hbox (1.2941pt too wide) in paragraph at lines 102--103
+Overfull \hbox (1.2941pt too wide) in paragraph at lines 27--28
 []\T1/cmr/m/n/10 Notre ap-pli-ca-tion est fonc-tion-nelle sur les ver-sions ré-
 centes de Google chrome,
  []
 
-[10] [11] [12] (./rapport.aux) ) 
+[10]) [11] [12] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 3416 strings out of 495061
- 39831 string characters out of 1182620
+ 3425 strings out of 495061
+ 39960 string characters out of 1182620
  92237 words of memory out of 3000000
  6562 multiletter control sequences out of 15000+50000
  16152 words of font info for 48 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 27i,6n,24p,588b,680s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/sylafrs/.texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecbx2074.600pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1000.600pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.6
-00pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </h
-ome/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/sylaf
-rs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/sylafrs/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb>
-Output written on rapport.pdf (12 pages, 138773 bytes).
+ 27i,6n,24p,589b,680s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/sylafrs/.texmf-var/fonts/pk/ljfour/jkn
+appen/ec/ecbx2074.600pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecrm1000.600pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.
+600pk> </home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </
+home/sylafrs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/syla
+frs/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/sylafrs/.texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi10.pfb>
+Output written on rapport.pdf (12 pages, 141238 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
+ 385 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
