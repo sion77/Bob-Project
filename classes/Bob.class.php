@@ -1071,10 +1071,11 @@
 			// Données vérifiées
 			// on a : $_POST["titre"], $note, $membre et $commentaire
 			
-			$req = $this->prepare("INSERT INTO evaluation(`noteEval`, `commentaireEval`, `dateEval`)
-			                       VALUES (?, ?, NOW())");
+			$req = $this->prepare("INSERT INTO evaluation(`titreEval`, `noteEval`, `commentaireEval`, `dateEval`)
+			                       VALUES (?, ?, ?, NOW())") or die(print_r($this->errorInfo()));
 			                       
-			$req->execute(array(				
+			$req->execute(array(	
+				$titre,
 				$note,
 				$commentaire
 			)) or die(print_r($this->errorInfo()));
