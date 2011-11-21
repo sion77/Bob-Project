@@ -422,6 +422,13 @@ padding-top : 40px;
 .boite_images
 {
 	width : 600px;
+
+}
+
+#images-inutilisees
+{
+		clear : both;
+		margin-top : 35px;
 }
 
 .boite_images img
