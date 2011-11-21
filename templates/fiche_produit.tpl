@@ -113,7 +113,7 @@
         
         {if $connecte}
 			{assign var=m value=$Bob->getMembre($smarty.session.id)}
-			{if !$m->aCommente($prod)}
+			{if !$m->aCommente($prod) && !isset($smarty.get.action)}
 				<div id="ajouter-un-avis">
 					<h1>Ajouter un avis</h1>
 					<form action="index.php?action=AJOUTECOMMENTAIRE&amp;id={$prod->getId()}" method="post">

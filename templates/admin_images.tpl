@@ -36,14 +36,16 @@
                     {/if}
                 {/foreach}    
             </div>
-            <h2>Images inutilisées</h2>
-            <div class="boite_images">
-                {foreach from=$images item=img}
-                    {if !$img->used()}
-                        <img src="index.php?image={$img->getId()}&amp;h=64&amp;w=64" />
-                    {/if}
-                {/foreach}    
-            </div>
+			<div id="images-inutilisees">
+				<h2>Images inutilisées</h2>
+				<div class="boite_images">
+					{foreach from=$images item=img}
+						{if !$img->used()}
+							<img src="index.php?image={$img->getId()}&amp;h=64&amp;w=64" />
+						{/if}
+					{/foreach}    
+				</div>
+			</div>
             <div id="bas-images">
             </div>
         </div>

@@ -30,7 +30,7 @@
                 <p>Permet d'ajouter, de modifier, de supprimer et d'organiser les catégories</p>
             </div>
             <div class="icon-panneau-admin">
-                <a href="index.php?admin=CATEGORIES">
+                <a href="index.php?admin=PRODUITS">
                 <div id="gestion-produits">
                     
                 </div>
@@ -40,7 +40,7 @@
                 <p>Permet d'ajouter, de modifier, de supprimer et d'organiser les produits</p>
             </div>
             <div class="icon-panneau-admin">
-                <a href="index.php?admin=PRODUITS">
+                <a href="index.php?admin=EVALUATIONS">
                 <div id="gestion-question">
                     
                 </div>
@@ -52,7 +52,7 @@
             <div class="icon-panneau-admin">
                 <a href="index.php?admin=IMAGES">
                 <div id="gestion-image">
-                    
+                  
                 </div>
                 
                 </a>
