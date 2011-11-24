@@ -3,11 +3,10 @@
 \contentsline {part}{II\hspace {1em}Bob-Project}{2}
 \contentsline {section}{\numberline {1}Objectif}{2}
 \contentsline {section}{\numberline {2}Logique et Organisation}{2}
-\contentsline {section}{\numberline {3}Arborescence logique}{2}
-\contentsline {section}{\numberline {4}Architecture des pages}{2}
-\contentsline {section}{\numberline {5}Technologies utilis\IeC {\'e}es}{2}
-\contentsline {section}{\numberline {6}Base de donn\IeC {\'e}es}{2}
-\contentsline {section}{\numberline {7}Les sessions}{2}
-\contentsline {section}{\numberline {8}Portabilit\IeC {\'e}}{2}
-\contentsline {section}{\numberline {9}Flexibilit\IeC {\'e}}{2}
+\contentsline {section}{\numberline {3}Architecture des pages}{2}
+\contentsline {section}{\numberline {4}Technologies utilis\IeC {\'e}es}{2}
+\contentsline {section}{\numberline {5}Base de donn\IeC {\'e}es}{2}
+\contentsline {section}{\numberline {6}Les sessions}{2}
+\contentsline {section}{\numberline {7}Portabilit\IeC {\'e}}{2}
+\contentsline {section}{\numberline {8}Flexibilit\IeC {\'e}}{2}
 \contentsline {part}{III\hspace {1em}Conclusion}{2}
