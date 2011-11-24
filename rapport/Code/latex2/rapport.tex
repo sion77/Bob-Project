@@ -7,6 +7,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
+\usepackage{graphicx}
+
 \author{LAFON Sylvain, MAINGRET François et LEVASSEUR Thomas}
 \title{Projet "Bob-Project"}
 
@@ -15,26 +17,31 @@
 \tableofcontents
 \newpage
 	\part{Introduction}
-		\input{intro.tex}
-	
+		\input{Latex/intro.tex}
+		\newpage
 	\part{Bob-Project}
-		\section{Objectif}
-			%\input{objectif.tex}
+		\section{Objectifs}
+			\input{Latex/objectif.tex}
+			\newpage
 		\section{Logique et Organisation}
-			%\input{orga.tex}		
+			\input{Latex/orga.tex}		
 		\section{Architecture des pages}
-			%\input{archi.tex}
+			%\input{Latex/archi.tex}
 		\section{Technologies utilisées}
-			%\input{tech.tex}
+			%\input{Latex/tech.tex}
 		\section{Base de données}
-			%\input{db.tex}
+			%\input{Latex/db.tex}
 		\section{Les sessions}
-			%\input{sess.tex}
+			%\input{Latex/sess.tex}
 		\section{Portabilité}
-			%\input{port.tex}
-		\section{Flexibilité} % Résistance aux changements
-			%\input{flex.tex}
+			%\input{Latex/port.tex}
+		\section{Flexibilité} 
+			% Résistance aux changements
+			%\input{Latex/flex.tex}
 		
+	\newpage
+	\part{Manuel}
+		%\input{Latex/man.tex}
 	\part{Conclusion}
-		%\input{conclusion.tex}
+		%\input{Latex/conclusion.tex}
 \end{document}
