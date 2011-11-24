@@ -1,0 +1,39 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\author{LAFON Sylvain, MAINGRET François et LEVASSEUR Thomas}
+\title{Projet "Bob-Project"}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+	\part{Introduction}
+		\input{intro.tex}
+	
+	\part{Bob-Project}
+		\section{Objectif}
+			\input{objectif.tex}
+		\section{Logique et Organisation}
+			\input{orga.tex}		
+		\section{Architecture des pages}
+			\input{archi.tex}
+		\section{Technologies utilisées}
+			\input{tech.tex}
+		\section{Base de données}
+			\input{db.tex}
+		\section{Les sessions}
+			\input{sess.tex}
+		\section{Portabilité}
+			\input{port.tex}
+		\section{Flexibilité} % Résistance aux changements
+			\input{flex.tex}
+		
+	\part{Conclusion}
+		\input{conclusion.tex}
+\end{document}
