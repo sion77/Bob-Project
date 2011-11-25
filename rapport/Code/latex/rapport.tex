@@ -1,46 +1,47 @@
-\documentclass[10pt,a4paper]{article}
-
+\documentclass[11pt,a4paper]{article}
+\usepackage[french]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs}
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+
 \usepackage{graphicx}
+\usepackage{listings}
+
 \author{LAFON Sylvain, MAINGRET François et LEVASSEUR Thomas}
-\title{Rapport - Bob-Project}
+\title{Projet "Bob-Project"}
 
 \begin{document}
-
-	\maketitle
-	\tableofcontents
+\maketitle
+\tableofcontents
+	\part{Introduction}
+		\input{Latex/intro.tex}
+		\newpage
+	\part{Bob-Project}
+		\section{Objectifs}
+			\input{Latex/objectif.tex}
+			\newpage
+		\section{Logique et Organisation}
+			\input{Latex/orga.tex}		
+		\section{Architecture des pages}
+			\input{Latex/Archi.tex}
+		\section{Technologies utilisées}
+			\input{Latex/tech.tex}
+		\section{Base de données}
+			\input{Latex/db.tex}
+		\section{Les sessions}
+			\input{Latex/sess.tex}
+		\section{Portabilité}
+			\input{Latex/port.tex}
+		\section{Flexibilité} 
+			\input{Latex/flex.tex}
+		
 	\newpage
-%	\includegraphics[scale=1]{img}
-
-	\part{Objectif}
-		\input{objectif.tex}
-	
-	\newpage
-	\part{Organisation}
-		\section{Introduction}
-			\input{orga-intro.tex}
-
-		\section{Structure du code}
-			\input{code-struct.tex}
-	\newpage
-	\part{Le Site}		
-		\input{site.tex}
-	\newpage
-	\part{Fonctionnalités}
-		\input{fonctionnalites.tex}
-
+	\part{Manuel}
+		\input{Latex/man.tex}
 	\newpage
 	\part{Conclusion}
-	En conclusion, la partie vitrine du site est entièrement fonctionnelle ( la gestion du panier ne faisant pas partir du cahier des charges ). On pourrait toutefois se projeter dans l'avenir et envisager diverses améliorations telles que :
-Mettre plus de publicité internes pour inciter le client à acheter des produits qu'il n'avais pas envisagé.
-Mettre les « produits relatifs » sur une fiche produit, c'est à dire une liste de 3 ou 4 produits qui entrent en interaction avec le produit sur la fiche. Par exemple sur la fiche d'une perceuse des liens vers des forets différents et complémentaires.
-Un système de newsletter pour tenir le client informé des nouveautés et des promotions.
-
+		\input{Latex/concl.tex}
 \end{document}

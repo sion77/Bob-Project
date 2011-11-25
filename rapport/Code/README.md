@@ -7,12 +7,13 @@ Il ne change en rien le comportement de ce dernier.
 
 **Dossiers** :
 
-* *latex* : Source du rapport en latex
+* *Latex* : Source du rapport en latex
 
 **Fichiers** :
 
 * *rapport.pdf* : Rapport pdf
-* *rapport.odt* : Rapport LibreOffice
+* *bob.mwb* : Fichier pour MySql Workbench
+* *oral.odp* : Présentation OpenOffice (non utilisé)
 
 **Auteurs** :
 Sylafrs, Sion77 et RFK78
