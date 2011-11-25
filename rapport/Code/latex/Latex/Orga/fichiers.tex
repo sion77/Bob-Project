@@ -1,0 +1,44 @@
+\subsubsection{header.php}
+	Ce fichier va insérer la bibliothèque Smarty et les déclarations de classes, puis il va déclarer des constantes et crée quelques fonctions.
+	
+\subsubsection{index.php}
+	Ce fichier va tout d'abord appeller header.php puis va créer l'objet Bob et smarty.\\
+	Il va ensuite analyser la requete pour savoir quel template il va appeller pour fabriquer la page et va effectuer les actions qu'on lui demande de faire.\\
+	Il va ensuite passer à Smarty plusieurs variables puis générer la page.
+
+\subsubsection{les fichiers de /classes et de /Smarty}
+	Ces fichiers contiennent les classes qui contiennent les infos de la base de données et qui la manipule.
+	
+\subsubsection{les fichiers de /templates}
+	Ils permettent d'afficher une page en utilisant les variables qu'on lui prete, il y a deux style de templates : 	
+\begin{itemize}
+	\item les fichiers modèle : ils se situent dans /templates/modele
+	\begin{itemize}
+		\item main.tpl : Contient ce que toute page va contenir, il va appeller les autres fichiers templates de modèle
+		\item menu.tpl : Contient le menu du site
+		\item entete.tpl  : Contient les informations sur la page ($<head>$)
+		\item espace\_membre.tpl : Contient l'espace membre\\
+	\end{itemize}
+					
+	\item le fichier appelé pour la page : ils se situent dans /templates.\\
+	Il y en a un par page
+	\end{itemize}
+	
+\subsubsection{les fichiers de /css}
+	Ils permettent de coder le design du site, ils se situent dans /css. Ces fichiers sont séparés en plusieurs fichiers. On préférera en mettre un général puis un par page.
+\newpage
+\subsubsection{En somme}
+Seul index.php permet de générer une page, il va commencer par appeller toutes les ressources à l'aide de header.php (qui inclut les classes de /classes et /Smarty), il va ensuite regarder le type de la requete :
+\begin{itemize}
+\item Est-ce pour le panneau d'admin, une image, une information ?
+\item Est-ce une page ou une action que l'on nous demande ?
+\end{itemize}
+
+En fonction de cela nous allons faire telle ou telle action (méthodes de la classe Bob) puis choisir tel ou tel template à appeller.\\
+
+Une fois l'action faite et le template choisi, Smarty (l'objet) va prendre certaines variables (contenues dans Bob, ses attributs ainsi qu'un eventuel message) puis va utiliser le template pour générer une page.\\
+
+Le template appellé est une extension du template modèle templates/modele/main.tpl (divisé en plusieurs templates modèles),
+cela permet de garder une meme forme pour chaque page : seul le contenu, certains scripts sera modifié d'une page à l'autre !\\
+
+La page html ainsi générée fera appel à certaines feuilles de design de /css et à certains scripts /js

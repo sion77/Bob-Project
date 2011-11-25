@@ -1,0 +1,66 @@
+% Le code
+\lstset{language=PHP}
+\begin{lstlisting}
+<?php
+// (...)
+// Nous sommes dans Bob
+private function initMembres()
+{
+    // Au depart : pas de membres.
+    $this->nbMembres = 0;
+    
+    // Rappel : Admin est une classe speciale de Membre
+
+    // On fait notre requete qui a pour but de recuperer 
+    // les membres et administrateurs
+    $req = $this->query("  
+\end{lstlisting}
+\lstset{language=SQL}
+\begin{lstlisting}
+    SELECT idUtilisateur AS \"id\",
+        pseudoUtilisateur AS \"pseudo\",
+        passUtilisateur AS \"pass\",
+        '0' AS \"admin\"
+    FROM utilisateur
+    WHERE idUtilisateur NOT IN( SELECT idAdmin FROM admin )
+                            
+UNION
+                            
+    SELECT idUtilisateur AS \"id\",
+           pseudoUtilisateur AS \"pseudo\",
+           passUtilisateur AS \"pass\",
+           '1' AS \"admin\"
+    FROM utilisateur
+    WHERE idUtilisateur IN( SELECT idAdmin FROM admin )
+                            
+ORDER BY id"
+\end{lstlisting}
+\lstset{language=PHP}
+\begin{lstlisting}
+                        );            
+
+    // Pour chaque ligne du resultat
+    while($rep = $req->fetch())
+    {
+        // On stocke le membre dans le bon objet
+        if($rep["admin"])
+            $m = new Admin($this, $rep["id"], 
+                           $rep["pseudo"], $rep["pass"]);
+        else
+            $m = new Membre($this, $rep["id"], 
+                            $rep["pseudo"], $rep["pass"]);
+            
+        // On ajoute le membre au tableau de membres de l'objet Bob
+        // (on aurait pu utiliser $this->ajouterMembre($m); )
+        $this->membres[$this->nbMembres] = $m;            
+        $this->nbMembres++;
+    }
+
+    // On libere le resultat
+    $req->closeCursor();
+    
+    return true;
+}
+// (...)
+?>
+\end{lstlisting}

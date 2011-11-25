@@ -1,0 +1,49 @@
+% Manuel
+
+\subsection{Installation des fichiers}
+	Pour installer tout ce dont vous avez besoin, vous pouvez passer par plusieurs méthodes :
+
+\begin{itemize}
+	\item Vous pouvez aller sur : https://github.com/sion77/Bob-Project
+	\item Vous pouvez aussi aller sur votre boite mail où nous avons du vous envoyer le projet (allégé), dans ce cas vous devriez télécharger une version de Smarty (nous avons pris la 3.1.4, mais elle est bugée (nous avons fait avec car nous nous sommes pas posé de questions quant à certains disfonctionnements))
+\end{itemize}
+
+\subsection{Installation du serveur}
+	Pour le serveur, plusieurs choix s'offrent à vous :
+	\begin{enumerate}
+		\item Vous pouvez louer un serveur ou utiliser un vrai serveur distant
+		\item Utiliser un émulateur tel que Lamp (Xampp) ou bien Wamp
+	\end{enumerate}
+
+\subsection{Installation de la base de données}
+
+	\subsubsection{La base de données}
+	
+	Si vous avez utilisé un serveur loué ou un émulateur, il y a de fortes chances que la base de donnée soit déjà installée, si ce n'est pas le cas
+vous devez installer MySQL, voici une documentation pour : http://dev.mysql.com/doc/refman/5.5/en/installing.html\\
+
+	\subsubsection{PhpMyAdmin}
+	Une fois la base de donnée installée, vous devriez pouvoir utiliser, si vous l'avez installé, PhpMyAdmin ou bien MySQL Server pour pouvoir l'utiliser : Wamp installe PhpMyAdmin et on peut y acceder sur http://localhost/phpmyadmin.\\
+	Sur Free on peut y acceder sur sql.free.fr
+	
+	Sur phpMyAdmin, veuillez cliquer sur Importer et choisissez le fichier située dans (site)/docs/DB.sql\\
+	
+	Si vous ne voulez/pouvez pas installer phpMyAdmin, vous pouvez toujours utiliser MySql Workbench, qui ne nécessite pas d'etre installe sur le serveur (il s'y connecte)
+	
+	\subsubsection{Configurer le site}
+	
+	Pour indiquer au site comment se connecter à la base de données, veuillez ouvrir header.php et y modifier les lignes suivantes :
+	\lstset{language=PHP}
+	\begin{lstlisting}
+// Informations relatives a la BDD
+define("database_host", "localhost");  // Le serveur de la base de donnees
+define("database_port", 3306);         // Le port du serveur 
+define("database_name", "projet_bob"); // Le nom de la base
+define("database_user", "root");       // Le nom d'utilisateur
+define("database_pass", "");           // Le passe de l'utilisateur
+	\end{lstlisting}
+	
+\subsection{Deplacement des fichiers}
+	
+	Ensuite il faudra déplacer le repertoire contenant le site au bon endroit : en local (emulateur), vous devez aller à l'endroit que localhost regarde, par exemple sous wamp, c'est dans le répertoire www situé à l'endroit où wamp est installé
+	Et sur un serveur local, il s'agit de la racine, tout simplement.

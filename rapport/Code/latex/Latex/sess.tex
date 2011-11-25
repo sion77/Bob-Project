@@ -1,0 +1,11 @@
+% Les sessions
+
+Nous n'avons pas surutilisé les sessions : Nous ne les avons utilisé en fait, que pour la connexion :\\
+
+Si l'internaute est connecté, alors une session contenant le booleen 'connecte' et les informations sur lui (dont l'id)
+\begin{description}
+	\item[Avantages :] Permet de détruire 'connecte' pour déconnecter l'utilisateur sans avoir à recharger la page.
+	\item[Inconvénient :] N'utilisant pas QUE l'id mais surtout les autres informations que nous avons entré à la connexion du membre, et bien si des modifications sont faites, l'utilisateur ne le vera qu'à sa prochaine connexion. (Il suffira d'utiliser l'id pour changer cela)
+\end{description}
+
+Nous pourrions utiliser les sessions pour un éventuel captcha lors de l'inscription.
