@@ -32,8 +32,8 @@
             $this->initImages();
             $this->initMembres();
             $this->initCategories();
-			$this->initProduits();
-			$this->initCommentaires();                        
+        $this->initProduits();
+        $this->initCommentaires();                        
         }
         
         private function initMembres()
@@ -159,15 +159,15 @@
         private function initCommentaires()
         {        
             $this->nbCommentaires = 0;
-			$this->commentaires = array();
+            $this->commentaires = array();
                         
             $req = $this->query("   SELECT E.idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
-										   titreEval AS \"nom\",
-                                           commentaireEval AS \"texte\",										   
-                                           '0' AS \"rep\",										   
-                                           idUser AS \"user\",										   
+                                           titreEval AS \"nom\",
+                                           commentaireEval AS \"texte\",                                           
+                                           '0' AS \"rep\",                                           
+                                           idUser AS \"user\",                                           
                                            idProduit AS \"prod\"
                                     FROM evaluation E, evalproduit P
                                     WHERE E.idEval NOT IN( SELECT idRep FROM reponse )
@@ -178,10 +178,10 @@
                                     SELECT idEval AS \"id\",
                                            dateEval AS \"date\",
                                            noteEval AS \"note\",
-										   titreEval AS \"nom\",
-                                           commentaireEval AS \"texte\",										   
-                                           '1' AS \"rep\",										   
-                                           idUserRep AS \"user\",										   
+                                           titreEval AS \"nom\",
+                                           commentaireEval AS \"texte\",                                           
+                                           '1' AS \"rep\",                                           
+                                           idUserRep AS \"user\",                                           
                                            idEvalRep AS \"com\"
                                     FROM evaluation E, reponse R
                                     WHERE idEval = idRep
@@ -192,41 +192,41 @@
             $c = null;
             while($rep = $req->fetch())
             {
-				$user = $this->getMembre(intval($rep["user"]));
-								
+                $user = $this->getMembre(intval($rep["user"]));
+                                
                 if($rep["rep"] == 0)
                 {
-					$prod = $this->getProduit(intval($rep["prod"]));
+                    $prod = $this->getProduit(intval($rep["prod"]));
                     $c = new Commentaire($this, $user, $prod, 
-										 $rep["nom"],
+                                         $rep["nom"],
                                          $rep["note"],
                                          $rep["texte"],
                                          $rep["date"], 
                                          $rep["id"]);
-										 
-					$prod->ajouterCommentaire($c);
+                                         
+                    $prod->ajouterCommentaire($c);
                 }
                 else
                 {
-					$com = $this->getProduit(intval($rep["com"]));
+                    $com = $this->getProduit(intval($rep["com"]));
                     $c = new Reponse($this, $user, $com,
-									 $rep["nom"],
+                                     $rep["nom"],
                                      $rep["note"],
                                      $rep["texte"],
-									 $rep["date"],
+                                     $rep["date"],
                                      $rep["id"]);
                 }
-				
-				$user->ajouterCommentaire($c);
+                
+                $user->ajouterCommentaire($c);
                 
                 if($c == null)
                 {
-					$this->erreur = "Erreur lors du chargement d'un commentaire";
-					return false;
-				}
+                    $this->erreur = "Erreur lors du chargement d'un commentaire";
+                    return false;
+                }
                 
                 $this->commentaires[$this->nbCommentaires] = $c;  
-				$this->nbCommentaires++;
+                $this->nbCommentaires++;
             }
             $req->closeCursor();
                         
@@ -711,410 +711,410 @@
         public function calcBestSeller()
         {
             $max = 0;
-			$bs = array(
-				"tab" => array(),
-				"nb"  => 0,
-				"rand" => 0
-			);
-			foreach($this->produits as $p)
-			{
-				$prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
-				         ($p->getNbLocations() * $p->getPrixLocation()));
-				$max = ($prix > $max) ? $prix : $max;
-			}
-			
-			foreach($this->produits as $p)
-			{
-				$prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
-				         ($p->getNbLocations() * $p->getPrixLocation()));
-						 
-				if($prix == $max)
-				{
-					$bs["tab"][$bs["nb"]] = $p;
-					$bs["nb"]++;
-				}
-			}
-			
-			$bs["rand"] = rand(0, $bs["nb"]-1);
+            $bs = array(
+                "tab" => array(),
+                "nb"  => 0,
+                "rand" => 0
+            );
+            foreach($this->produits as $p)
+            {
+                $prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
+                         ($p->getNbLocations() * $p->getPrixLocation()));
+                $max = ($prix > $max) ? $prix : $max;
+            }
+            
+            foreach($this->produits as $p)
+            {
+                $prix = (($p->getNbVentes()    * $p->getPrixVente()) + 
+                         ($p->getNbLocations() * $p->getPrixLocation()));
+                         
+                if($prix == $max)
+                {
+                    $bs["tab"][$bs["nb"]] = $p;
+                    $bs["nb"]++;
+                }
+            }
+            
+            $bs["rand"] = rand(0, $bs["nb"]-1);
 
-			return $bs;
+            return $bs;
         }
         
         public function calcMostPopular()
         {
             $max = 0;
-			$mp = array(
-				"tab" => array(),
-				"nb"  => 0,
-				"rand" => 0
-			);
-			foreach($this->produits as $p)
-			{
-				$note = $p->calcNoteMoy();
-				$max = ($note > $max) ? $note : $max;
-			}
-			
-			foreach($this->produits as $p)
-			{
-				if($p->calcNoteMoy() == $max)
-				{
-					$mp["tab"][$mp["nb"]] = $p;
-					$mp["nb"]++;
-				}
-			}
-			
-			$mp["rand"] = rand(0, $mp["nb"]-1);
+            $mp = array(
+                "tab" => array(),
+                "nb"  => 0,
+                "rand" => 0
+            );
+            foreach($this->produits as $p)
+            {
+                $note = $p->calcNoteMoy();
+                $max = ($note > $max) ? $note : $max;
+            }
+            
+            foreach($this->produits as $p)
+            {
+                if($p->calcNoteMoy() == $max)
+                {
+                    $mp["tab"][$mp["nb"]] = $p;
+                    $mp["nb"]++;
+                }
+            }
+            
+            $mp["rand"] = rand(0, $mp["nb"]-1);
 
-			return $mp;
+            return $mp;
         }
-		
-		public function recherche($str)
-		{				
-			$result = array(
-				"exact" => array(/* Produits */),
-				"ressemble" => array(/*
-					array(
-						"indice" => 0,
-						"produit" => null
-					)
-				*/),
-				"nbExact" => 0,
-				"nbRessemble" => 0
-			);
-			
-			$max = 0;
-			$ecart = RECHERCHE_ECART;
-			$min = RECHERCHE_MARGE_ERREUR;
-			
-			$i = 0;
-			foreach($this->produits as $p)
-			{
-				$pts = compare($p->getNom(), $str);
-				if($pts >= strlen($str)) // On considere exact si l'indice est supérieure ou égale à la taille du nom
-				{
-					$result["exact"][$i] = $p;
-					$i++;
-				}
-				else
-				{					
-					$max = ($pts > $max) ? $pts : $max;
-				}
-			}
-			$result["nbExact"] = $i;
-			
-			$i = 0;
-			$req = $max; // Pour trier du plus au moins ressemblant
-			while($req >= $max-$ecart && $req >= $min)
-			{
-				foreach($this->produits as $p)
-				{
-					$pts = compare($p->getNom(), $str);
-					if($pts != strlen($str))
-					{						
-						if($req == $pts)
-						{
-							$result["ressemble"][$i]["indice"] = $pts;
-							$result["ressemble"][$i]["produit"] = $p;
-							$i++;
-						}
-					}
-				}
-				$req--;
-			}	
+        
+        public function recherche($str)
+        {                
+            $result = array(
+                "exact" => array(/* Produits */),
+                "ressemble" => array(/*
+                    array(
+                        "indice" => 0,
+                        "produit" => null
+                    )
+                */),
+                "nbExact" => 0,
+                "nbRessemble" => 0
+            );
+            
+            $max = 0;
+            $ecart = RECHERCHE_ECART;
+            $min = RECHERCHE_MARGE_ERREUR;
+            
+            $i = 0;
+            foreach($this->produits as $p)
+            {
+                $pts = compare($p->getNom(), $str);
+                if($pts >= strlen($str)) // On considere exact si l'indice est supérieure ou égale à la taille du nom
+                {
+                    $result["exact"][$i] = $p;
+                    $i++;
+                }
+                else
+                {                    
+                    $max = ($pts > $max) ? $pts : $max;
+                }
+            }
+            $result["nbExact"] = $i;
+            
+            $i = 0;
+            $req = $max; // Pour trier du plus au moins ressemblant
+            while($req >= $max-$ecart && $req >= $min)
+            {
+                foreach($this->produits as $p)
+                {
+                    $pts = compare($p->getNom(), $str);
+                    if($pts != strlen($str))
+                    {                        
+                        if($req == $pts)
+                        {
+                            $result["ressemble"][$i]["indice"] = $pts;
+                            $result["ressemble"][$i]["produit"] = $p;
+                            $i++;
+                        }
+                    }
+                }
+                $req--;
+            }    
 
-			$result["nbRessemble"] = $i;
-						
-			return $result;
-		}    
+            $result["nbRessemble"] = $i;
+                        
+            return $result;
+        }    
         
         public function rechercheAvancee()
-		{		
-			/*
-				2. Le système lance la recherche avec la recherche exacte
-				3. Le système lance la recherche sur le nom
-				4. Le système lance la recherche sur les produits qui ont des points communs
-				5. Le système affiche une page de résultat avec le resultat du 2 visible et
-				demande si les autres résultats peuvent être affichés
-			
-			
-				- nom
-				- checkbox catégories mères
-					- FORMAT : categorie_ID, valeur : ID
-					- Pour verifier, prendre la cat mère et utiliser getCategorie($id)
+        {        
+            /*
+                2. Le système lance la recherche avec la recherche exacte
+                3. Le système lance la recherche sur le nom
+                4. Le système lance la recherche sur les produits qui ont des points communs
+                5. Le système affiche une page de résultat avec le resultat du 2 visible et
+                demande si les autres résultats peuvent être affichés
+            
+            
+                - nom
+                - checkbox catégories mères
+                    - FORMAT : categorie_ID, valeur : ID
+                    - Pour verifier, prendre la cat mère et utiliser getCategorie($id)
                       en y mettant l'id de la cat du produit
-					  
-				- prixmin
-				- prixmax
-				- achat
-				- location
-				
-				
-				result :
-				- exact : tableau de produits
-				- ressemble : tableau :
-							  - indice
-							  - produit
-				- nbExact
-				- nbRessemble
-			*/
-			
-			if(!isset($_GET["nom"]))
-			{
-				$this->erreur = "Il manque le nom du produit (obligatoire)";
-				return null;
-			}
-			
-			$prixmin = 0;
-			if(isset($_GET["prixmin"]))
-			{
-				$prixmin = intval($_GET["prixmin"]);
-			}
-			
-			$prixmax = 0;
-			if(isset($_GET["prixmax"]))
-			{
-				$prixmax = intval($_GET["prixmax"]);
-			}
-			
-			$achat = false;
-			$loc = false;
-			if(isset($_GET["achat"]))
-			{
-				$achat = true;
-			}
-			if(isset($_GET["location"]))
-			{
-				$loc = true;
-			}
-			if(!$achat && !$loc)
-			{
-				$achat = true;
-				$loc = true;
-			}
-			
-			$cats = array();
-			$i = 0;
-			foreach($this->categories as $c)
-			{
-				if(isset($_GET["categorie_".$c->getId()]))
-				{
-					$cats[$i] = $c->getId();							
-					$i++;
-				}				
-			}
-			$catChoosen = ($i > 0);
-			$nbCats = $i;
-					
-			// On commence par faire la recherche sur le nom
-			$result = $this->recherche($_GET["nom"]); 
-			
-			// On filtre les resultats : de ressemblant -> (enlevé), de exact -> ressemblant
-			$i = 0;
-			$nbRessemble = $result["nbRessemble"];
-			while($i < $result["nbRessemble"])
-			{ 
-				$prixV = $result["ressemble"][$i]["produit"]->getPrixVente();
-				$prixL = $result["ressemble"][$i]["produit"]->getPrixLocation();
-				$mere = $result["ressemble"][$i]["produit"]->getCat()->getPath();
-				$mere = $mere[0]->getId();
-								
-				if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
-				{					
-					$max = ($prixV > $prixL) ? $prixV : $prixL;
-					$result["ressemble"][$i]["indice"] -= (($prixmin-$max)/4);
-				}
-				
-				if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
-				{
-					$min = ($prixV > $prixL) ? $prixL : $prixV;
-					$result["ressemble"][$i]["indice"] -= (($min-$prixMax)/4);
-				}
-				
-				if($achat && ($prixV == 0) && !$loc)
-				{
-					$result["ressemble"][$i]["indice"] -= 20;
-				}
-				
-				if($loc && ($prixL == 0) && !$achat)
-				{
-					$result["ressemble"][$i]["indice"] -= 20;
-				}
-				
-				if($catChoosen)
-				{
-					if(!in_array($mere, $cats))
-					{
-						$result["ressemble"][$i]["indice"] -= $nbCats*3;
-					}
-				}
-				
-				if($result["ressemble"][$i]["indice"] < RECHERCHE_MARGE_ERREUR)
-				{
-					$result["ressemble"][$i] = $result["ressemble"][$result["nbRessemble"]-1];					
-					$nbRessemble--;
-				}
-									
-				$i++;
-			}
-			
-			$nbExact = $result["nbExact"];
-			while($i < $result["nbExact"])
-			{ 
-				$ok = true;
-				$ko = false;
-				$prixV = $result["exact"][$i]->getPrixVente();
-				$prixL = $result["exact"][$i]->getPrixLocation();
-				$mere =  $result["exact"][$i]->getCat()->getPath();
-				$mere =  $mere[0]->getId();
-				
-				if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
-				{
-					$ok = false;
-				}
-				
-				if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
-				{
-					$ok = false;
-				}
-				
-				if($achat && ($prixV == 0) && !$loc)
-				{
-					$ok = false;
-					$ko = true;
-				}
-				
-				if($loc && ($prixL == 0) && !$achat)
-				{
-					$ok = false;
-					$ko = true;
-				}
-				
-				if($catChoosen)
-				{
-					if(!in_array($mere, $cats))
-					{
-						$ok = false;
-					}
-				}
-				
-				if(!$ok)
-				{
-					if(!$ko) {
-						$result["ressemble"][$nbRessemble]["produit"] = $result["exact"][$i];						
-						$result["ressemble"][$nbRessemble]["indice"] = 20;
-						$nbRessemble++;
-					}
-						
-					$result["exact"][$i] = $result["exact"][$result["nbExact"]-1];					
-					$nbExact--;					
-				}
-									
-				$i++;
-			}			
-			
-			for($i = $nbRessemble; $i < $result["nbRessemble"]; $i++)
-			{
-				unset($result["ressemble"][$i]);
-			}
-			$result["nbRessemble"] = $nbRessemble;
-			
-			for($i = $nbExact; $i < $result["nbExact"]; $i++)
-			{
-				unset($result["exact"][$i]);
-			}
-			$result["nbExact"] = $nbRessemble;
-									
-			return $result;
-		}	
-				
-		///
+                      
+                - prixmin
+                - prixmax
+                - achat
+                - location
+                
+                
+                result :
+                - exact : tableau de produits
+                - ressemble : tableau :
+                              - indice
+                              - produit
+                - nbExact
+                - nbRessemble
+            */
+            
+            if(!isset($_GET["nom"]))
+            {
+                $this->erreur = "Il manque le nom du produit (obligatoire)";
+                return null;
+            }
+            
+            $prixmin = 0;
+            if(isset($_GET["prixmin"]))
+            {
+                $prixmin = intval($_GET["prixmin"]);
+            }
+            
+            $prixmax = 0;
+            if(isset($_GET["prixmax"]))
+            {
+                $prixmax = intval($_GET["prixmax"]);
+            }
+            
+            $achat = false;
+            $loc = false;
+            if(isset($_GET["achat"]))
+            {
+                $achat = true;
+            }
+            if(isset($_GET["location"]))
+            {
+                $loc = true;
+            }
+            if(!$achat && !$loc)
+            {
+                $achat = true;
+                $loc = true;
+            }
+            
+            $cats = array();
+            $i = 0;
+            foreach($this->categories as $c)
+            {
+                if(isset($_GET["categorie_".$c->getId()]))
+                {
+                    $cats[$i] = $c->getId();                            
+                    $i++;
+                }                
+            }
+            $catChoosen = ($i > 0);
+            $nbCats = $i;
+                    
+            // On commence par faire la recherche sur le nom
+            $result = $this->recherche($_GET["nom"]); 
+            
+            // On filtre les resultats : de ressemblant -> (enlevé), de exact -> ressemblant
+            $i = 0;
+            $nbRessemble = $result["nbRessemble"];
+            while($i < $result["nbRessemble"])
+            { 
+                $prixV = $result["ressemble"][$i]["produit"]->getPrixVente();
+                $prixL = $result["ressemble"][$i]["produit"]->getPrixLocation();
+                $mere = $result["ressemble"][$i]["produit"]->getCat()->getPath();
+                $mere = $mere[0]->getId();
+                                
+                if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
+                {                    
+                    $max = ($prixV > $prixL) ? $prixV : $prixL;
+                    $result["ressemble"][$i]["indice"] -= (($prixmin-$max)/4);
+                }
+                
+                if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
+                {
+                    $min = ($prixV > $prixL) ? $prixL : $prixV;
+                    $result["ressemble"][$i]["indice"] -= (($min-$prixMax)/4);
+                }
+                
+                if($achat && ($prixV == 0) && !$loc)
+                {
+                    $result["ressemble"][$i]["indice"] -= 20;
+                }
+                
+                if($loc && ($prixL == 0) && !$achat)
+                {
+                    $result["ressemble"][$i]["indice"] -= 20;
+                }
+                
+                if($catChoosen)
+                {
+                    if(!in_array($mere, $cats))
+                    {
+                        $result["ressemble"][$i]["indice"] -= $nbCats*3;
+                    }
+                }
+                
+                if($result["ressemble"][$i]["indice"] < RECHERCHE_MARGE_ERREUR)
+                {
+                    $result["ressemble"][$i] = $result["ressemble"][$result["nbRessemble"]-1];                    
+                    $nbRessemble--;
+                }
+                                    
+                $i++;
+            }
+            
+            $nbExact = $result["nbExact"];
+            while($i < $result["nbExact"])
+            { 
+                $ok = true;
+                $ko = false;
+                $prixV = $result["exact"][$i]->getPrixVente();
+                $prixL = $result["exact"][$i]->getPrixLocation();
+                $mere =  $result["exact"][$i]->getCat()->getPath();
+                $mere =  $mere[0]->getId();
+                
+                if($prixmin > 0 && $prixmin > $prixV && $prixmin > $prixL)
+                {
+                    $ok = false;
+                }
+                
+                if($prixmax > 0 && $prixmax < $prixV && $prixmax < $prixL)
+                {
+                    $ok = false;
+                }
+                
+                if($achat && ($prixV == 0) && !$loc)
+                {
+                    $ok = false;
+                    $ko = true;
+                }
+                
+                if($loc && ($prixL == 0) && !$achat)
+                {
+                    $ok = false;
+                    $ko = true;
+                }
+                
+                if($catChoosen)
+                {
+                    if(!in_array($mere, $cats))
+                    {
+                        $ok = false;
+                    }
+                }
+                
+                if(!$ok)
+                {
+                    if(!$ko) {
+                        $result["ressemble"][$nbRessemble]["produit"] = $result["exact"][$i];                        
+                        $result["ressemble"][$nbRessemble]["indice"] = 20;
+                        $nbRessemble++;
+                    }
+                        
+                    $result["exact"][$i] = $result["exact"][$result["nbExact"]-1];                    
+                    $nbExact--;                    
+                }
+                                    
+                $i++;
+            }            
+            
+            for($i = $nbRessemble; $i < $result["nbRessemble"]; $i++)
+            {
+                unset($result["ressemble"][$i]);
+            }
+            $result["nbRessemble"] = $nbRessemble;
+            
+            for($i = $nbExact; $i < $result["nbExact"]; $i++)
+            {
+                unset($result["exact"][$i]);
+            }
+            $result["nbExact"] = $nbRessemble;
+                                    
+            return $result;
+        }    
+                
+        ///
         
         public function creerCommentaire($p)
         {
-			if($p == null)
-			{
-				$this->erreur = "le produit n'existe pas";
-				return false;				
-			}
-			
-			if(!isset($_SESSION["connecte"]))
-			{
-				$this->erreur = "Vous devez être connecté pour ajouter un commentaire";
-				return false;
-			}
-			
-			if(!isset($_SESSION["id"])       ||
-			   !isset($_POST["titre"])       ||
-			   !isset($_POST["commentaire"]) ||
-			   !isset($_POST["note"])           )
-			{
-				$this->erreur = "Il manque des données";
-				return false;
-			}
-					
-			$note = intval($_POST["note"]);
-			$membre = $this->getMembre(intval($_SESSION["id"]));
-			
-			// User: on desactive le html
-			$commentaire = htmlentities($_POST["commentaire"]); 
-			$titre = htmlentities($_POST["titre"]); 
-			
-			if($titre == ""       ||
-			   $note <= 0         ||
-			   $membre == null    ||
-			   $commentaire == ""   )
-			{
-			    $this->erreur = "Certains champs sont vides (ou alors vous n'existez pas)";
-				return false;
-			}
-			
-			// Données vérifiées
-			// on a : $_POST["titre"], $note, $membre et $commentaire
-			
-			$req = $this->prepare("INSERT INTO evaluation(`titreEval`, `noteEval`, `commentaireEval`, `dateEval`)
-			                       VALUES (?, ?, ?, NOW())") or die(print_r($this->errorInfo()));
-			                       
-			$req->execute(array(	
-				$titre,
-				$note,
-				$commentaire
-			)) or die(print_r($this->errorInfo()));
-						
-			$c = new Commentaire($this, $membre, $p, 
+            if($p == null)
+            {
+                $this->erreur = "le produit n'existe pas";
+                return false;                
+            }
+            
+            if(!isset($_SESSION["connecte"]))
+            {
+                $this->erreur = "Vous devez être connecté pour ajouter un commentaire";
+                return false;
+            }
+            
+            if(!isset($_SESSION["id"])       ||
+               !isset($_POST["titre"])       ||
+               !isset($_POST["commentaire"]) ||
+               !isset($_POST["note"])           )
+            {
+                $this->erreur = "Il manque des données";
+                return false;
+            }
+                    
+            $note = intval($_POST["note"]);
+            $membre = $this->getMembre(intval($_SESSION["id"]));
+            
+            // User: on desactive le html
+            $commentaire = htmlentities($_POST["commentaire"]); 
+            $titre = htmlentities($_POST["titre"]); 
+            
+            if($titre == ""       ||
+               $note <= 0         ||
+               $membre == null    ||
+               $commentaire == ""   )
+            {
+                $this->erreur = "Certains champs sont vides (ou alors vous n'existez pas)";
+                return false;
+            }
+            
+            // Données vérifiées
+            // on a : $_POST["titre"], $note, $membre et $commentaire
+            
+            $req = $this->prepare("INSERT INTO evaluation(`titreEval`, `noteEval`, `commentaireEval`, `dateEval`)
+                                   VALUES (?, ?, ?, NOW())") or die(print_r($this->errorInfo()));
+                                   
+            $req->execute(array(    
+                $titre,
+                $note,
+                $commentaire
+            )) or die(print_r($this->errorInfo()));
+                        
+            $c = new Commentaire($this, $membre, $p, 
                                  $titre, $note, $commentaire, date("r"));
                                  
             if(!$c)
             {
-				$this->erreur = "Erreur lors de la création du commentaire";
-				return false;
-			}
+                $this->erreur = "Erreur lors de la création du commentaire";
+                return false;
+            }
                                                                  
             $this->ajouterCommentaire($c);
             
             $req = $this->prepare("INSERT INTO evalproduit(`idProduit`, `idEval`, `idUser`)
-			                       VALUES (?, ?, ?)");
-			                       
-			$req->execute(array(			
-				$p->getId(),
-				$c->getId(),
-				$membre->getId()
-			)) or die(print_r($this->errorInfo()));
-			
-			$p->ajouterCommentaire($c);
-          						
-			return true;
-		}
-		
-		public function ajouterCommentaire($c)
-		{
-			if($c == null)
-				return false;
-			
-			$this->commentaires[$this->nbCommentaires] = $c;
-			$this->nbCommentaires++;
-			
-			return true;
-		}
+                                   VALUES (?, ?, ?)");
+                                   
+            $req->execute(array(            
+                $p->getId(),
+                $c->getId(),
+                $membre->getId()
+            )) or die(print_r($this->errorInfo()));
+            
+            $p->ajouterCommentaire($c);
+                                  
+            return true;
+        }
+        
+        public function ajouterCommentaire($c)
+        {
+            if($c == null)
+                return false;
+            
+            $this->commentaires[$this->nbCommentaires] = $c;
+            $this->nbCommentaires++;
+            
+            return true;
+        }
        
         ///
         
@@ -1234,7 +1234,7 @@
             
         public function getCommentaires()
         {
-			return $this->commentaires;
+            return $this->commentaires;
         }
     }
 ?>
